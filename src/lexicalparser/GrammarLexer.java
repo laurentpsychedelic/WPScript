@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g 2011-08-26 15:18:44
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g 2011-09-07 18:12:33
 
 package lexicalparser;
 
@@ -9,17 +9,18 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class GrammarLexer extends Lexer {
-    public static final int WS=7;
+    public static final int WS=11;
     public static final int NEWLINE=4;
     public static final int T__12=12;
-    public static final int T__11=11;
+    public static final int COMMA=8;
+    public static final int T__14=14;
     public static final int T__13=13;
-    public static final int T__10=10;
-    public static final int INT=6;
+    public static final int EQUAL=10;
+    public static final int RIGHT_P=7;
+    public static final int INT=9;
     public static final int ID=5;
     public static final int EOF=-1;
-    public static final int T__9=9;
-    public static final int T__8=8;
+    public static final int LEFT_P=6;
 
     // delegates
     // delegators
@@ -32,97 +33,17 @@ public class GrammarLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g"; }
-
-    // $ANTLR start "T__8"
-    public final void mT__8() throws RecognitionException {
-        try {
-            int _type = T__8;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:7:6: ( '=' )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:7:8: '='
-            {
-            match('='); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__8"
-
-    // $ANTLR start "T__9"
-    public final void mT__9() throws RecognitionException {
-        try {
-            int _type = T__9;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:8:6: ( '+' )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:8:8: '+'
-            {
-            match('+'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__9"
-
-    // $ANTLR start "T__10"
-    public final void mT__10() throws RecognitionException {
-        try {
-            int _type = T__10;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:9:7: ( '-' )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:9:9: '-'
-            {
-            match('-'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__10"
-
-    // $ANTLR start "T__11"
-    public final void mT__11() throws RecognitionException {
-        try {
-            int _type = T__11;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:10:7: ( '*' )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:10:9: '*'
-            {
-            match('*'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__11"
+    public String getGrammarFileName() { return "D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g"; }
 
     // $ANTLR start "T__12"
     public final void mT__12() throws RecognitionException {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:11:7: ( '(' )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:11:9: '('
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:7:7: ( '+' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:7:9: '+'
             {
-            match('('); 
+            match('+'); 
 
             }
 
@@ -139,10 +60,10 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:12:7: ( ')' )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:12:9: ')'
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:8:7: ( '-' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:8:9: '-'
             {
-            match(')'); 
+            match('-'); 
 
             }
 
@@ -154,15 +75,35 @@ public class GrammarLexer extends Lexer {
     }
     // $ANTLR end "T__13"
 
+    // $ANTLR start "T__14"
+    public final void mT__14() throws RecognitionException {
+        try {
+            int _type = T__14;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:9:7: ( '*' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:9:9: '*'
+            {
+            match('*'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__14"
+
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:61:5: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:61:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:92:5: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:92:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
             {
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:61:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:92:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt1=0;
             loop1:
             do {
@@ -176,7 +117,7 @@ public class GrammarLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:
             	    {
             	    if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -216,10 +157,10 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:62:5: ( ( '0' .. '9' )+ )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:62:9: ( '0' .. '9' )+
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:93:5: ( ( '0' .. '9' )+ )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:93:9: ( '0' .. '9' )+
             {
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:62:9: ( '0' .. '9' )+
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:93:9: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -233,7 +174,7 @@ public class GrammarLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:62:9: '0' .. '9'
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:93:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -260,15 +201,95 @@ public class GrammarLexer extends Lexer {
     }
     // $ANTLR end "INT"
 
+    // $ANTLR start "EQUAL"
+    public final void mEQUAL() throws RecognitionException {
+        try {
+            int _type = EQUAL;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:94:6: ( '=' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:94:8: '='
+            {
+            match('='); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "EQUAL"
+
+    // $ANTLR start "COMMA"
+    public final void mCOMMA() throws RecognitionException {
+        try {
+            int _type = COMMA;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:95:6: ( ',' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:95:8: ','
+            {
+            match(','); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "COMMA"
+
+    // $ANTLR start "LEFT_P"
+    public final void mLEFT_P() throws RecognitionException {
+        try {
+            int _type = LEFT_P;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:96:7: ( '(' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:96:9: '('
+            {
+            match('('); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "LEFT_P"
+
+    // $ANTLR start "RIGHT_P"
+    public final void mRIGHT_P() throws RecognitionException {
+        try {
+            int _type = RIGHT_P;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:97:8: ( ')' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:97:10: ')'
+            {
+            match(')'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RIGHT_P"
+
     // $ANTLR start "NEWLINE"
     public final void mNEWLINE() throws RecognitionException {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:63:8: ( ( '\\r' )? '\\n' )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:63:9: ( '\\r' )? '\\n'
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:98:8: ( ( '\\r' )? '\\n' )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:98:9: ( '\\r' )? '\\n'
             {
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:63:9: ( '\\r' )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:98:9: ( '\\r' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -277,7 +298,7 @@ public class GrammarLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:63:9: '\\r'
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:98:9: '\\r'
                     {
                     match('\r'); 
 
@@ -303,10 +324,10 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:64:5: ( ( ' ' | '\\t' )+ )
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:64:9: ( ' ' | '\\t' )+
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:99:5: ( ( ' ' | '\\t' )+ )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:99:9: ( ' ' | '\\t' )+
             {
-            // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:64:9: ( ' ' | '\\t' )+
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:99:9: ( ' ' | '\\t' )+
             int cnt4=0;
             loop4:
             do {
@@ -320,7 +341,7 @@ public class GrammarLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:
             	    {
             	    if ( input.LA(1)=='\t'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -357,37 +378,22 @@ public class GrammarLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | ID | INT | NEWLINE | WS )
-        int alt5=10;
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:8: ( T__12 | T__13 | T__14 | ID | INT | EQUAL | COMMA | LEFT_P | RIGHT_P | NEWLINE | WS )
+        int alt5=11;
         switch ( input.LA(1) ) {
-        case '=':
+        case '+':
             {
             alt5=1;
             }
             break;
-        case '+':
+        case '-':
             {
             alt5=2;
             }
             break;
-        case '-':
-            {
-            alt5=3;
-            }
-            break;
         case '*':
             {
-            alt5=4;
-            }
-            break;
-        case '(':
-            {
-            alt5=5;
-            }
-            break;
-        case ')':
-            {
-            alt5=6;
+            alt5=3;
             }
             break;
         case 'A':
@@ -443,7 +449,7 @@ public class GrammarLexer extends Lexer {
         case 'y':
         case 'z':
             {
-            alt5=7;
+            alt5=4;
             }
             break;
         case '0':
@@ -457,19 +463,39 @@ public class GrammarLexer extends Lexer {
         case '8':
         case '9':
             {
+            alt5=5;
+            }
+            break;
+        case '=':
+            {
+            alt5=6;
+            }
+            break;
+        case ',':
+            {
+            alt5=7;
+            }
+            break;
+        case '(':
+            {
             alt5=8;
+            }
+            break;
+        case ')':
+            {
+            alt5=9;
             }
             break;
         case '\n':
         case '\r':
             {
-            alt5=9;
+            alt5=10;
             }
             break;
         case '\t':
         case ' ':
             {
-            alt5=10;
+            alt5=11;
             }
             break;
         default:
@@ -481,70 +507,77 @@ public class GrammarLexer extends Lexer {
 
         switch (alt5) {
             case 1 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:10: T__8
-                {
-                mT__8(); 
-
-                }
-                break;
-            case 2 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:15: T__9
-                {
-                mT__9(); 
-
-                }
-                break;
-            case 3 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:20: T__10
-                {
-                mT__10(); 
-
-                }
-                break;
-            case 4 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:26: T__11
-                {
-                mT__11(); 
-
-                }
-                break;
-            case 5 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:32: T__12
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:10: T__12
                 {
                 mT__12(); 
 
                 }
                 break;
-            case 6 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:38: T__13
+            case 2 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:16: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
-            case 7 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:44: ID
+            case 3 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:22: T__14
+                {
+                mT__14(); 
+
+                }
+                break;
+            case 4 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:28: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 8 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:47: INT
+            case 5 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:31: INT
                 {
                 mINT(); 
 
                 }
                 break;
+            case 6 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:35: EQUAL
+                {
+                mEQUAL(); 
+
+                }
+                break;
+            case 7 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:41: COMMA
+                {
+                mCOMMA(); 
+
+                }
+                break;
+            case 8 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:47: LEFT_P
+                {
+                mLEFT_P(); 
+
+                }
+                break;
             case 9 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:51: NEWLINE
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:54: RIGHT_P
+                {
+                mRIGHT_P(); 
+
+                }
+                break;
+            case 10 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:62: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
-            case 10 :
-                // D:\\PA-WPA-View\\GUI\\OTHER_PROJECTS\\LexicalParser\\src\\lexicalparser\\Grammar.g:1:59: WS
+            case 11 :
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:1:70: WS
                 {
                 mWS(); 
 

@@ -40,17 +40,17 @@ stat:   expr NEWLINE {System.out.println($expr.value);}
 expr returns [Object value]
     :   e=multExpr {$value = $e.value;}
         (   '+' e=multExpr {
-            if ($value instanceof Double && $e.value instanceof Double) {
-                $value = (Double) $value + (Double) $e.value;
+            if ($value instanceof Numeric && $e.value instanceof Numeric) {
+                $value = new Numeric( ((Numeric) ($value)).value + ((Numeric) ($e.value)).value );
             } else {
-                System.err.println("[+] is defined only between numbers");
+                System.err.println("[+] is defined only between numeric types");
             }
         }
         |   '-' e=multExpr {
-            if ($value instanceof Double && $e.value instanceof Double) {
-                $value = (Double) $value - (Double) $e.value;
+            if ($value instanceof Numeric && $e.value instanceof Numeric) {
+                $value = new Numeric( ((Numeric) $value).value - ((Numeric) $e.value).value );
             } else {
-                System.err.println("[-] is defined only between numbers");
+                System.err.println("[-] is defined only between numeric types");
             }
         }
         )*
@@ -62,13 +62,25 @@ expr returns [Object value]
     ;
 
 multExpr returns [Object value]
-    :   e=atom {$value = $e.value;} ('*' e=atom {
-            if ($value instanceof Double && $e.value instanceof Double) {
-                $value = (Double) $value * (Double) $e.value;
-            } else {
-                System.err.println("[*] is defined only between numbers");
+    :   e=atom
+            {
+                $value = $e.value;       
             }
-    }   )*
+        (   '*' e=atom {
+                if ($value instanceof Numeric && $e.value instanceof Numeric) {
+                    $value = new Numeric( ((Numeric) $value).value * ((Numeric) $e.value).value );
+                } else {
+                    System.err.println("[*] is defined only between numeric types");
+                }
+            }
+        |   '/' e=atom {
+                if ($value instanceof Numeric && $e.value instanceof Numeric) {
+                    $value = new Numeric( ((Numeric) $value).value / ((Numeric) $e.value).value );
+                } else {
+                    System.err.println("[/] is defined only between numeric types");
+                }
+            }
+       )*
     ; 
 
 func_call returns [Object result]: simple_func {
@@ -100,7 +112,7 @@ args returns [LinkedList<Object> params]:
            })*;
 
 atom returns [Object value]
-    :   INT {$value = new Double(Double.parseDouble($INT.text));}
+    :   INT {$value = new Numeric(Double.parseDouble($INT.text));}
     |   ID
         {
             Object v = (Object)memory.get($ID.text);
@@ -120,19 +132,8 @@ string_literal returns [String value]:
     }
     ;
 
-/*
-variable returns [String value]
-    : 
-
-param_list : atom COMMA param_list { $value = $atom.value + ", " + $param_list.value }
-    ;
-*/
-
-//function_call : ID LEFT_P param_list RIGHT_P NEWLINE 
-//    ;
-
 ID  :   ('a'..'z'|'A'..'Z')+ ;
-INT :   '0'..'9'+ ;
+INT :   '0'..'9'+ ('.' '0'..'9'+)?;
 EQUAL: '=';
 COMMA: ',';
 DQUOTE: '"';

@@ -23,7 +23,7 @@ public class MeasurementSet {
     }
     @Override
     public String toString() {
-        return "Measurement Set (" + W() + ", " + H() + ")";
+        return "MeasurementSet[" + W() + "," + H() + "]";
     }
     public MeasurementSet(int W, int H) {
         result_object = new RetardanceResult(W, H);

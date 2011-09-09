@@ -24,7 +24,7 @@ public class LexicalParser {
         //String program = "a=1\nb=a\na=2\nb\n";
         //String program = "myfunc(1)\n";
         //String program = "myFunc(newTitle)\n";
-        String program = "a=newMeasurementSet(10,10)\n";
+        String program = "b=1+3.4\nc=b / 1.9\na=newMeasurementSet(b,c)\nb=a\n";
                 
         GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(program));
         CommonTokenStream tokens = new CommonTokenStream(lex);
@@ -38,7 +38,8 @@ public class LexicalParser {
             
             System.out.println("\n");
             for (Object o : parser.memory.keySet()) {
-                System.out.println("VAR [" + o + "]->" + parser.memory.get(o));
+                Object val = parser.memory.get(o);
+                System.out.println("VAR [" + o + "]->" + val);
             }
             
         } catch (RecognitionException e)  {

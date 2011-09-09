@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-08 21:09:56
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-09 22:02:18
 
 package lexicalparser;
 
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class GrammarLexer extends Lexer {
     public static final int WS=12;
+    public static final int T__16=16;
     public static final int T__15=15;
     public static final int NEWLINE=4;
     public static final int COMMA=8;
@@ -96,15 +97,35 @@ public class GrammarLexer extends Lexer {
     }
     // $ANTLR end "T__15"
 
+    // $ANTLR start "T__16"
+    public final void mT__16() throws RecognitionException {
+        try {
+            int _type = T__16;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:10:7: ( '/' )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:10:9: '/'
+            {
+            match('/'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__16"
+
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:134:5: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:134:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:135:5: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:135:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:134:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:135:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
             int cnt1=0;
             loop1:
             do {
@@ -158,10 +179,10 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:135:5: ( ( '0' .. '9' )+ )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:135:9: ( '0' .. '9' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:5: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:135:9: ( '0' .. '9' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:9: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -175,7 +196,7 @@ public class GrammarLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:135:9: '0' .. '9'
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -190,6 +211,54 @@ public class GrammarLexer extends Lexer {
                 }
                 cnt2++;
             } while (true);
+
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:19: ( '.' ( '0' .. '9' )+ )?
+            int alt4=2;
+            int LA4_0 = input.LA(1);
+
+            if ( (LA4_0=='.') ) {
+                alt4=1;
+            }
+            switch (alt4) {
+                case 1 :
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:20: '.' ( '0' .. '9' )+
+                    {
+                    match('.'); 
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:24: ( '0' .. '9' )+
+                    int cnt3=0;
+                    loop3:
+                    do {
+                        int alt3=2;
+                        int LA3_0 = input.LA(1);
+
+                        if ( ((LA3_0>='0' && LA3_0<='9')) ) {
+                            alt3=1;
+                        }
+
+
+                        switch (alt3) {
+                    	case 1 :
+                    	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:24: '0' .. '9'
+                    	    {
+                    	    matchRange('0','9'); 
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt3 >= 1 ) break loop3;
+                                EarlyExitException eee =
+                                    new EarlyExitException(3, input);
+                                throw eee;
+                        }
+                        cnt3++;
+                    } while (true);
+
+
+                    }
+                    break;
+
+            }
 
 
             }
@@ -207,8 +276,8 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:6: ( '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:136:8: '='
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:137:6: ( '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:137:8: '='
             {
             match('='); 
 
@@ -227,8 +296,8 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:137:6: ( ',' )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:137:8: ','
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:138:6: ( ',' )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:138:8: ','
             {
             match(','); 
 
@@ -247,8 +316,8 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = DQUOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:138:7: ( '\"' )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:138:9: '\"'
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:139:7: ( '\"' )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:139:9: '\"'
             {
             match('\"'); 
 
@@ -267,8 +336,8 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = LEFT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:139:7: ( '(' )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:139:9: '('
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:140:7: ( '(' )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:140:9: '('
             {
             match('('); 
 
@@ -287,8 +356,8 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = RIGHT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:140:8: ( ')' )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:140:10: ')'
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:141:8: ( ')' )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:141:10: ')'
             {
             match(')'); 
 
@@ -307,19 +376,19 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:141:8: ( ( '\\r' )? '\\n' )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:141:9: ( '\\r' )? '\\n'
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:142:8: ( ( '\\r' )? '\\n' )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:142:9: ( '\\r' )? '\\n'
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:141:9: ( '\\r' )?
-            int alt3=2;
-            int LA3_0 = input.LA(1);
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:142:9: ( '\\r' )?
+            int alt5=2;
+            int LA5_0 = input.LA(1);
 
-            if ( (LA3_0=='\r') ) {
-                alt3=1;
+            if ( (LA5_0=='\r') ) {
+                alt5=1;
             }
-            switch (alt3) {
+            switch (alt5) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:141:9: '\\r'
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:142:9: '\\r'
                     {
                     match('\r'); 
 
@@ -345,22 +414,22 @@ public class GrammarLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:142:5: ( ( ' ' | '\\t' )+ )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:142:9: ( ' ' | '\\t' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:143:5: ( ( ' ' | '\\t' )+ )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:143:9: ( ' ' | '\\t' )+
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:142:9: ( ' ' | '\\t' )+
-            int cnt4=0;
-            loop4:
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:143:9: ( ' ' | '\\t' )+
+            int cnt6=0;
+            loop6:
             do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA4_0=='\t'||LA4_0==' ') ) {
-                    alt4=1;
+                if ( (LA6_0=='\t'||LA6_0==' ') ) {
+                    alt6=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt6) {
             	case 1 :
             	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:
             	    {
@@ -378,12 +447,12 @@ public class GrammarLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt4 >= 1 ) break loop4;
+            	    if ( cnt6 >= 1 ) break loop6;
                         EarlyExitException eee =
-                            new EarlyExitException(4, input);
+                            new EarlyExitException(6, input);
                         throw eee;
                 }
-                cnt4++;
+                cnt6++;
             } while (true);
 
             skip();
@@ -399,22 +468,27 @@ public class GrammarLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:8: ( T__13 | T__14 | T__15 | ID | INT | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | NEWLINE | WS )
-        int alt5=12;
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:8: ( T__13 | T__14 | T__15 | T__16 | ID | INT | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | NEWLINE | WS )
+        int alt7=13;
         switch ( input.LA(1) ) {
         case '+':
             {
-            alt5=1;
+            alt7=1;
             }
             break;
         case '-':
             {
-            alt5=2;
+            alt7=2;
             }
             break;
         case '*':
             {
-            alt5=3;
+            alt7=3;
+            }
+            break;
+        case '/':
+            {
+            alt7=4;
             }
             break;
         case 'A':
@@ -470,7 +544,7 @@ public class GrammarLexer extends Lexer {
         case 'y':
         case 'z':
             {
-            alt5=4;
+            alt7=5;
             }
             break;
         case '0':
@@ -484,54 +558,54 @@ public class GrammarLexer extends Lexer {
         case '8':
         case '9':
             {
-            alt5=5;
+            alt7=6;
             }
             break;
         case '=':
             {
-            alt5=6;
+            alt7=7;
             }
             break;
         case ',':
             {
-            alt5=7;
+            alt7=8;
             }
             break;
         case '\"':
             {
-            alt5=8;
+            alt7=9;
             }
             break;
         case '(':
             {
-            alt5=9;
+            alt7=10;
             }
             break;
         case ')':
             {
-            alt5=10;
+            alt7=11;
             }
             break;
         case '\n':
         case '\r':
             {
-            alt5=11;
+            alt7=12;
             }
             break;
         case '\t':
         case ' ':
             {
-            alt5=12;
+            alt7=13;
             }
             break;
         default:
             NoViableAltException nvae =
-                new NoViableAltException("", 5, 0, input);
+                new NoViableAltException("", 7, 0, input);
 
             throw nvae;
         }
 
-        switch (alt5) {
+        switch (alt7) {
             case 1 :
                 // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:10: T__13
                 {
@@ -554,63 +628,70 @@ public class GrammarLexer extends Lexer {
                 }
                 break;
             case 4 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:28: ID
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:28: T__16
+                {
+                mT__16(); 
+
+                }
+                break;
+            case 5 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:34: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 5 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:31: INT
+            case 6 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:37: INT
                 {
                 mINT(); 
 
                 }
                 break;
-            case 6 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:35: EQUAL
+            case 7 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:41: EQUAL
                 {
                 mEQUAL(); 
 
                 }
                 break;
-            case 7 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:41: COMMA
+            case 8 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:47: COMMA
                 {
                 mCOMMA(); 
 
                 }
                 break;
-            case 8 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:47: DQUOTE
+            case 9 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:53: DQUOTE
                 {
                 mDQUOTE(); 
 
                 }
                 break;
-            case 9 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:54: LEFT_P
+            case 10 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:60: LEFT_P
                 {
                 mLEFT_P(); 
 
                 }
                 break;
-            case 10 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:61: RIGHT_P
+            case 11 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:67: RIGHT_P
                 {
                 mRIGHT_P(); 
 
                 }
                 break;
-            case 11 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:69: NEWLINE
+            case 12 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:75: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
-            case 12 :
-                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:77: WS
+            case 13 :
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:1:83: WS
                 {
                 mWS(); 
 

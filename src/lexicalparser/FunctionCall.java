@@ -20,8 +20,8 @@ public class FunctionCall {
         System.out.println("TITLE SET TO: " + title);
     }
 
-    public static MeasurementSet newMeasurementSet(Double W, Double H) {
-        return new MeasurementSet((int)W.doubleValue(), (int)H.doubleValue());
+    public static MeasurementSet newMeasurementSet(Numeric W, Numeric H) {
+      return new MeasurementSet((int)W.value, (int)H.value);
     }
 
     public static Object callFunction(LinkedList <Object> name_params) {

@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-08 21:09:55
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-09 22:02:18
 
 package lexicalparser;
 import java.util.LinkedList;
@@ -15,9 +15,10 @@ import org.antlr.runtime.tree.*;
 
 public class GrammarParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "NEWLINE", "ID", "LEFT_P", "RIGHT_P", "COMMA", "INT", "DQUOTE", "EQUAL", "WS", "'+'", "'-'", "'*'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "NEWLINE", "ID", "LEFT_P", "RIGHT_P", "COMMA", "INT", "DQUOTE", "EQUAL", "WS", "'+'", "'-'", "'*'", "'/'"
     };
     public static final int WS=12;
+    public static final int T__16=16;
     public static final int T__15=15;
     public static final int NEWLINE=4;
     public static final int COMMA=8;
@@ -196,7 +197,7 @@ public class GrammarParser extends Parser {
                 {
                 int LA2_2 = input.LA(2);
 
-                if ( (LA2_2==NEWLINE||LA2_2==LEFT_P||(LA2_2>=13 && LA2_2<=15)) ) {
+                if ( (LA2_2==NEWLINE||LA2_2==LEFT_P||(LA2_2>=13 && LA2_2<=16)) ) {
                     alt2=1;
                 }
                 else if ( (LA2_2==EQUAL) ) {
@@ -339,7 +340,7 @@ public class GrammarParser extends Parser {
                 if ( (LA4_2==LEFT_P) ) {
                     alt4=2;
                 }
-                else if ( (LA4_2==NEWLINE||LA4_2==RIGHT_P||(LA4_2>=13 && LA4_2<=15)) ) {
+                else if ( (LA4_2==NEWLINE||LA4_2==RIGHT_P||(LA4_2>=13 && LA4_2<=16)) ) {
                     alt4=1;
                 }
                 else {
@@ -397,10 +398,10 @@ public class GrammarParser extends Parser {
 
                     	    adaptor.addChild(root_0, e.getTree());
 
-                    	                if (retval.value instanceof Double && (e!=null?e.value:null) instanceof Double) {
-                    	                    retval.value = (Double) retval.value + (Double) (e!=null?e.value:null);
+                    	                if (retval.value instanceof Numeric && (e!=null?e.value:null) instanceof Numeric) {
+                    	                    retval.value = new Numeric( ((Numeric) (retval.value)).value + ((Numeric) ((e!=null?e.value:null))).value );
                     	                } else {
-                    	                    System.err.println("[+] is defined only between numbers");
+                    	                    System.err.println("[+] is defined only between numeric types");
                     	                }
                     	            
 
@@ -420,10 +421,10 @@ public class GrammarParser extends Parser {
 
                     	    adaptor.addChild(root_0, e.getTree());
 
-                    	                if (retval.value instanceof Double && (e!=null?e.value:null) instanceof Double) {
-                    	                    retval.value = (Double) retval.value - (Double) (e!=null?e.value:null);
+                    	                if (retval.value instanceof Numeric && (e!=null?e.value:null) instanceof Numeric) {
+                    	                    retval.value = new Numeric( ((Numeric) retval.value).value - ((Numeric) (e!=null?e.value:null)).value );
                     	                } else {
-                    	                    System.err.println("[-] is defined only between numbers");
+                    	                    System.err.println("[-] is defined only between numeric types");
                     	                }
                     	            
 
@@ -483,7 +484,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "multExpr"
-    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:64:1: multExpr returns [Object value] : e= atom ( '*' e= atom )* ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:64:1: multExpr returns [Object value] : e= atom ( '*' e= atom | '/' e= atom )* ;
     public final GrammarParser.multExpr_return multExpr() throws RecognitionException {
         GrammarParser.multExpr_return retval = new GrammarParser.multExpr_return();
         retval.start = input.LT(1);
@@ -491,14 +492,16 @@ public class GrammarParser extends Parser {
         Object root_0 = null;
 
         Token char_literal12=null;
+        Token char_literal13=null;
         GrammarParser.atom_return e = null;
 
 
         Object char_literal12_tree=null;
+        Object char_literal13_tree=null;
 
         try {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:65:5: (e= atom ( '*' e= atom )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:65:9: e= atom ( '*' e= atom )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:65:5: (e= atom ( '*' e= atom | '/' e= atom )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:65:9: e= atom ( '*' e= atom | '/' e= atom )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -508,39 +511,67 @@ public class GrammarParser extends Parser {
             state._fsp--;
 
             adaptor.addChild(root_0, e.getTree());
-            retval.value = (e!=null?e.value:null);
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:65:37: ( '*' e= atom )*
+
+                            retval.value = (e!=null?e.value:null);       
+                        
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:69:9: ( '*' e= atom | '/' e= atom )*
             loop5:
             do {
-                int alt5=2;
+                int alt5=3;
                 int LA5_0 = input.LA(1);
 
                 if ( (LA5_0==15) ) {
                     alt5=1;
                 }
+                else if ( (LA5_0==16) ) {
+                    alt5=2;
+                }
 
 
                 switch (alt5) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:65:38: '*' e= atom
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:69:13: '*' e= atom
             	    {
-            	    char_literal12=(Token)match(input,15,FOLLOW_15_in_multExpr236); 
+            	    char_literal12=(Token)match(input,15,FOLLOW_15_in_multExpr259); 
             	    char_literal12_tree = (Object)adaptor.create(char_literal12);
             	    adaptor.addChild(root_0, char_literal12_tree);
 
-            	    pushFollow(FOLLOW_atom_in_multExpr240);
+            	    pushFollow(FOLLOW_atom_in_multExpr263);
             	    e=atom();
 
             	    state._fsp--;
 
             	    adaptor.addChild(root_0, e.getTree());
 
-            	                if (retval.value instanceof Double && (e!=null?e.value:null) instanceof Double) {
-            	                    retval.value = (Double) retval.value * (Double) (e!=null?e.value:null);
-            	                } else {
-            	                    System.err.println("[*] is defined only between numbers");
-            	                }
-            	        
+            	                    if (retval.value instanceof Numeric && (e!=null?e.value:null) instanceof Numeric) {
+            	                        retval.value = new Numeric( ((Numeric) retval.value).value * ((Numeric) (e!=null?e.value:null)).value );
+            	                    } else {
+            	                        System.err.println("[*] is defined only between numeric types");
+            	                    }
+            	                
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:76:13: '/' e= atom
+            	    {
+            	    char_literal13=(Token)match(input,16,FOLLOW_16_in_multExpr279); 
+            	    char_literal13_tree = (Object)adaptor.create(char_literal13);
+            	    adaptor.addChild(root_0, char_literal13_tree);
+
+            	    pushFollow(FOLLOW_atom_in_multExpr283);
+            	    e=atom();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, e.getTree());
+
+            	                    if (retval.value instanceof Numeric && (e!=null?e.value:null) instanceof Numeric) {
+            	                        retval.value = new Numeric( ((Numeric) retval.value).value / ((Numeric) (e!=null?e.value:null)).value );
+            	                    } else {
+            	                        System.err.println("[/] is defined only between numeric types");
+            	                    }
+            	                
 
             	    }
             	    break;
@@ -578,40 +609,40 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "func_call"
-    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:74:1: func_call returns [Object result] : simple_func ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:86:1: func_call returns [Object result] : simple_func ;
     public final GrammarParser.func_call_return func_call() throws RecognitionException {
         GrammarParser.func_call_return retval = new GrammarParser.func_call_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        GrammarParser.simple_func_return simple_func13 = null;
+        GrammarParser.simple_func_return simple_func14 = null;
 
 
 
         try {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:74:34: ( simple_func )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:74:36: simple_func
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:86:34: ( simple_func )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:86:36: simple_func
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_simple_func_in_func_call264);
-            simple_func13=simple_func();
+            pushFollow(FOLLOW_simple_func_in_func_call312);
+            simple_func14=simple_func();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, simple_func13.getTree());
+            adaptor.addChild(root_0, simple_func14.getTree());
 
-                    System.out.print("Function call: " + (simple_func13!=null?simple_func13.name_params:null).get(0) + "(");
-                    for (int k=1; k<(simple_func13!=null?simple_func13.name_params:null).size(); k++) {
-                        System.out.print((simple_func13!=null?simple_func13.name_params:null).get(k));
-                        if (k<(simple_func13!=null?simple_func13.name_params:null).size()-1) {
+                    System.out.print("Function call: " + (simple_func14!=null?simple_func14.name_params:null).get(0) + "(");
+                    for (int k=1; k<(simple_func14!=null?simple_func14.name_params:null).size(); k++) {
+                        System.out.print((simple_func14!=null?simple_func14.name_params:null).get(k));
+                        if (k<(simple_func14!=null?simple_func14.name_params:null).size()-1) {
                             System.out.print(",");
                         } else {
                             System.out.println(")");
                         }
                     }
-                    retval.result = FunctionCall.callFunction((simple_func13!=null?simple_func13.name_params:null));
+                    retval.result = FunctionCall.callFunction((simple_func14!=null?simple_func14.name_params:null));
                 
 
             }
@@ -641,50 +672,50 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "simple_func"
-    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:87:1: simple_func returns [LinkedList<Object> name_params] : ID LEFT_P args RIGHT_P ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:99:1: simple_func returns [LinkedList<Object> name_params] : ID LEFT_P args RIGHT_P ;
     public final GrammarParser.simple_func_return simple_func() throws RecognitionException {
         GrammarParser.simple_func_return retval = new GrammarParser.simple_func_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token ID14=null;
-        Token LEFT_P15=null;
-        Token RIGHT_P17=null;
-        GrammarParser.args_return args16 = null;
+        Token ID15=null;
+        Token LEFT_P16=null;
+        Token RIGHT_P18=null;
+        GrammarParser.args_return args17 = null;
 
 
-        Object ID14_tree=null;
-        Object LEFT_P15_tree=null;
-        Object RIGHT_P17_tree=null;
+        Object ID15_tree=null;
+        Object LEFT_P16_tree=null;
+        Object RIGHT_P18_tree=null;
 
         try {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:87:53: ( ID LEFT_P args RIGHT_P )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:87:55: ID LEFT_P args RIGHT_P
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:99:53: ( ID LEFT_P args RIGHT_P )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:99:55: ID LEFT_P args RIGHT_P
             {
             root_0 = (Object)adaptor.nil();
 
-            ID14=(Token)match(input,ID,FOLLOW_ID_in_simple_func277); 
-            ID14_tree = (Object)adaptor.create(ID14);
-            adaptor.addChild(root_0, ID14_tree);
+            ID15=(Token)match(input,ID,FOLLOW_ID_in_simple_func325); 
+            ID15_tree = (Object)adaptor.create(ID15);
+            adaptor.addChild(root_0, ID15_tree);
 
-            LEFT_P15=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_simple_func279); 
-            LEFT_P15_tree = (Object)adaptor.create(LEFT_P15);
-            adaptor.addChild(root_0, LEFT_P15_tree);
+            LEFT_P16=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_simple_func327); 
+            LEFT_P16_tree = (Object)adaptor.create(LEFT_P16);
+            adaptor.addChild(root_0, LEFT_P16_tree);
 
-            pushFollow(FOLLOW_args_in_simple_func281);
-            args16=args();
+            pushFollow(FOLLOW_args_in_simple_func329);
+            args17=args();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, args16.getTree());
-            RIGHT_P17=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_simple_func283); 
-            RIGHT_P17_tree = (Object)adaptor.create(RIGHT_P17);
-            adaptor.addChild(root_0, RIGHT_P17_tree);
+            adaptor.addChild(root_0, args17.getTree());
+            RIGHT_P18=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_simple_func331); 
+            RIGHT_P18_tree = (Object)adaptor.create(RIGHT_P18);
+            adaptor.addChild(root_0, RIGHT_P18_tree);
 
               
-                    retval.name_params = (args16!=null?args16.params:null);
-                    retval.name_params.add(0, (ID14!=null?ID14.getText():null));
+                    retval.name_params = (args17!=null?args17.params:null);
+                    retval.name_params.add(0, (ID15!=null?ID15.getText():null));
                 
 
             }
@@ -714,35 +745,35 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "args"
-    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:93:1: args returns [LinkedList<Object> params] : a= atom ( COMMA b= args )* ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:105:1: args returns [LinkedList<Object> params] : a= atom ( COMMA b= args )* ;
     public final GrammarParser.args_return args() throws RecognitionException {
         GrammarParser.args_return retval = new GrammarParser.args_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token COMMA18=null;
+        Token COMMA19=null;
         GrammarParser.atom_return a = null;
 
         GrammarParser.args_return b = null;
 
 
-        Object COMMA18_tree=null;
+        Object COMMA19_tree=null;
 
         try {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:93:41: (a= atom ( COMMA b= args )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:94:5: a= atom ( COMMA b= args )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:105:41: (a= atom ( COMMA b= args )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:106:5: a= atom ( COMMA b= args )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_atom_in_args306);
+            pushFollow(FOLLOW_atom_in_args354);
             a=atom();
 
             state._fsp--;
 
             adaptor.addChild(root_0, a.getTree());
             retval.params = new LinkedList(); retval.params.add((a!=null?a.value:null));
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:94:65: ( COMMA b= args )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:106:65: ( COMMA b= args )*
             loop6:
             do {
                 int alt6=2;
@@ -755,13 +786,13 @@ public class GrammarParser extends Parser {
 
                 switch (alt6) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:94:66: COMMA b= args
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:106:66: COMMA b= args
             	    {
-            	    COMMA18=(Token)match(input,COMMA,FOLLOW_COMMA_in_args311); 
-            	    COMMA18_tree = (Object)adaptor.create(COMMA18);
-            	    adaptor.addChild(root_0, COMMA18_tree);
+            	    COMMA19=(Token)match(input,COMMA,FOLLOW_COMMA_in_args359); 
+            	    COMMA19_tree = (Object)adaptor.create(COMMA19);
+            	    adaptor.addChild(root_0, COMMA19_tree);
 
-            	    pushFollow(FOLLOW_args_in_args315);
+            	    pushFollow(FOLLOW_args_in_args363);
             	    b=args();
 
             	    state._fsp--;
@@ -810,29 +841,29 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:102:1: atom returns [Object value] : ( INT | ID | '(' expr ')' | string_literal );
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:114:1: atom returns [Object value] : ( INT | ID | '(' expr ')' | string_literal );
     public final GrammarParser.atom_return atom() throws RecognitionException {
         GrammarParser.atom_return retval = new GrammarParser.atom_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token INT19=null;
-        Token ID20=null;
-        Token char_literal21=null;
-        Token char_literal23=null;
-        GrammarParser.expr_return expr22 = null;
+        Token INT20=null;
+        Token ID21=null;
+        Token char_literal22=null;
+        Token char_literal24=null;
+        GrammarParser.expr_return expr23 = null;
 
-        GrammarParser.string_literal_return string_literal24 = null;
+        GrammarParser.string_literal_return string_literal25 = null;
 
 
-        Object INT19_tree=null;
-        Object ID20_tree=null;
-        Object char_literal21_tree=null;
-        Object char_literal23_tree=null;
+        Object INT20_tree=null;
+        Object ID21_tree=null;
+        Object char_literal22_tree=null;
+        Object char_literal24_tree=null;
 
         try {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:103:5: ( INT | ID | '(' expr ')' | string_literal )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:115:5: ( INT | ID | '(' expr ')' | string_literal )
             int alt7=4;
             switch ( input.LA(1) ) {
             case INT:
@@ -864,73 +895,73 @@ public class GrammarParser extends Parser {
 
             switch (alt7) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:103:9: INT
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:115:9: INT
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    INT19=(Token)match(input,INT,FOLLOW_INT_in_atom349); 
-                    INT19_tree = (Object)adaptor.create(INT19);
-                    adaptor.addChild(root_0, INT19_tree);
+                    INT20=(Token)match(input,INT,FOLLOW_INT_in_atom397); 
+                    INT20_tree = (Object)adaptor.create(INT20);
+                    adaptor.addChild(root_0, INT20_tree);
 
-                    retval.value = new Double(Double.parseDouble((INT19!=null?INT19.getText():null)));
+                    retval.value = new Numeric(Double.parseDouble((INT20!=null?INT20.getText():null)));
 
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:104:9: ID
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:116:9: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID20=(Token)match(input,ID,FOLLOW_ID_in_atom361); 
-                    ID20_tree = (Object)adaptor.create(ID20);
-                    adaptor.addChild(root_0, ID20_tree);
+                    ID21=(Token)match(input,ID,FOLLOW_ID_in_atom409); 
+                    ID21_tree = (Object)adaptor.create(ID21);
+                    adaptor.addChild(root_0, ID21_tree);
 
 
-                                Object v = (Object)memory.get((ID20!=null?ID20.getText():null));
+                                Object v = (Object)memory.get((ID21!=null?ID21.getText():null));
                                 if ( v!=null ) {
                                     retval.value = v;
                                 } else {                
-                                    System.err.println("undefined variable "+(ID20!=null?ID20.getText():null));
+                                    System.err.println("undefined variable "+(ID21!=null?ID21.getText():null));
                                 }
                             
 
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:113:9: '(' expr ')'
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:125:9: '(' expr ')'
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    char_literal21=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_atom381); 
-                    char_literal21_tree = (Object)adaptor.create(char_literal21);
-                    adaptor.addChild(root_0, char_literal21_tree);
+                    char_literal22=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_atom429); 
+                    char_literal22_tree = (Object)adaptor.create(char_literal22);
+                    adaptor.addChild(root_0, char_literal22_tree);
 
-                    pushFollow(FOLLOW_expr_in_atom383);
-                    expr22=expr();
+                    pushFollow(FOLLOW_expr_in_atom431);
+                    expr23=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr22.getTree());
-                    char_literal23=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_atom385); 
-                    char_literal23_tree = (Object)adaptor.create(char_literal23);
-                    adaptor.addChild(root_0, char_literal23_tree);
+                    adaptor.addChild(root_0, expr23.getTree());
+                    char_literal24=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_atom433); 
+                    char_literal24_tree = (Object)adaptor.create(char_literal24);
+                    adaptor.addChild(root_0, char_literal24_tree);
 
-                    retval.value = (expr22!=null?expr22.value:null);
+                    retval.value = (expr23!=null?expr23.value:null);
 
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:114:7: string_literal
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:126:7: string_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_string_literal_in_atom395);
-                    string_literal24=string_literal();
+                    pushFollow(FOLLOW_string_literal_in_atom443);
+                    string_literal25=string_literal();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, string_literal24.getTree());
-                    retval.value = (string_literal24!=null?string_literal24.value:null);
+                    adaptor.addChild(root_0, string_literal25.getTree());
+                    retval.value = (string_literal25!=null?string_literal25.value:null);
 
                     }
                     break;
@@ -961,41 +992,41 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "string_literal"
-    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:117:1: string_literal returns [String value] : DQUOTE ID DQUOTE ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:129:1: string_literal returns [String value] : DQUOTE ID DQUOTE ;
     public final GrammarParser.string_literal_return string_literal() throws RecognitionException {
         GrammarParser.string_literal_return retval = new GrammarParser.string_literal_return();
         retval.start = input.LT(1);
 
         Object root_0 = null;
 
-        Token DQUOTE25=null;
-        Token ID26=null;
-        Token DQUOTE27=null;
+        Token DQUOTE26=null;
+        Token ID27=null;
+        Token DQUOTE28=null;
 
-        Object DQUOTE25_tree=null;
-        Object ID26_tree=null;
-        Object DQUOTE27_tree=null;
+        Object DQUOTE26_tree=null;
+        Object ID27_tree=null;
+        Object DQUOTE28_tree=null;
 
         try {
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:117:38: ( DQUOTE ID DQUOTE )
-            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:118:5: DQUOTE ID DQUOTE
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:129:38: ( DQUOTE ID DQUOTE )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:130:5: DQUOTE ID DQUOTE
             {
             root_0 = (Object)adaptor.nil();
 
-            DQUOTE25=(Token)match(input,DQUOTE,FOLLOW_DQUOTE_in_string_literal417); 
-            DQUOTE25_tree = (Object)adaptor.create(DQUOTE25);
-            adaptor.addChild(root_0, DQUOTE25_tree);
+            DQUOTE26=(Token)match(input,DQUOTE,FOLLOW_DQUOTE_in_string_literal465); 
+            DQUOTE26_tree = (Object)adaptor.create(DQUOTE26);
+            adaptor.addChild(root_0, DQUOTE26_tree);
 
-            ID26=(Token)match(input,ID,FOLLOW_ID_in_string_literal419); 
-            ID26_tree = (Object)adaptor.create(ID26);
-            adaptor.addChild(root_0, ID26_tree);
+            ID27=(Token)match(input,ID,FOLLOW_ID_in_string_literal467); 
+            ID27_tree = (Object)adaptor.create(ID27);
+            adaptor.addChild(root_0, ID27_tree);
 
-            DQUOTE27=(Token)match(input,DQUOTE,FOLLOW_DQUOTE_in_string_literal421); 
-            DQUOTE27_tree = (Object)adaptor.create(DQUOTE27);
-            adaptor.addChild(root_0, DQUOTE27_tree);
+            DQUOTE28=(Token)match(input,DQUOTE,FOLLOW_DQUOTE_in_string_literal469); 
+            DQUOTE28_tree = (Object)adaptor.create(DQUOTE28);
+            adaptor.addChild(root_0, DQUOTE28_tree);
 
 
-                    retval.value = (ID26!=null?ID26.getText():null);
+                    retval.value = (ID27!=null?ID27.getText():null);
                 
 
             }
@@ -1037,25 +1068,27 @@ public class GrammarParser extends Parser {
     public static final BitSet FOLLOW_14_in_expr167 = new BitSet(new long[]{0x0000000000000660L});
     public static final BitSet FOLLOW_multExpr_in_expr171 = new BitSet(new long[]{0x0000000000006002L});
     public static final BitSet FOLLOW_func_call_in_expr196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_atom_in_multExpr231 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_15_in_multExpr236 = new BitSet(new long[]{0x0000000000000660L});
-    public static final BitSet FOLLOW_atom_in_multExpr240 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_simple_func_in_func_call264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_simple_func277 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_LEFT_P_in_simple_func279 = new BitSet(new long[]{0x0000000000000660L});
-    public static final BitSet FOLLOW_args_in_simple_func281 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RIGHT_P_in_simple_func283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_atom_in_args306 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_COMMA_in_args311 = new BitSet(new long[]{0x0000000000000660L});
-    public static final BitSet FOLLOW_args_in_args315 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_INT_in_atom349 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_atom361 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LEFT_P_in_atom381 = new BitSet(new long[]{0x0000000000000660L});
-    public static final BitSet FOLLOW_expr_in_atom383 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_RIGHT_P_in_atom385 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_string_literal_in_atom395 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DQUOTE_in_string_literal417 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_ID_in_string_literal419 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_DQUOTE_in_string_literal421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_atom_in_multExpr231 = new BitSet(new long[]{0x0000000000018002L});
+    public static final BitSet FOLLOW_15_in_multExpr259 = new BitSet(new long[]{0x0000000000000660L});
+    public static final BitSet FOLLOW_atom_in_multExpr263 = new BitSet(new long[]{0x0000000000018002L});
+    public static final BitSet FOLLOW_16_in_multExpr279 = new BitSet(new long[]{0x0000000000000660L});
+    public static final BitSet FOLLOW_atom_in_multExpr283 = new BitSet(new long[]{0x0000000000018002L});
+    public static final BitSet FOLLOW_simple_func_in_func_call312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_simple_func325 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_LEFT_P_in_simple_func327 = new BitSet(new long[]{0x0000000000000660L});
+    public static final BitSet FOLLOW_args_in_simple_func329 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RIGHT_P_in_simple_func331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_atom_in_args354 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_COMMA_in_args359 = new BitSet(new long[]{0x0000000000000660L});
+    public static final BitSet FOLLOW_args_in_args363 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_INT_in_atom397 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_atom409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LEFT_P_in_atom429 = new BitSet(new long[]{0x0000000000000660L});
+    public static final BitSet FOLLOW_expr_in_atom431 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RIGHT_P_in_atom433 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_string_literal_in_atom443 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DQUOTE_in_string_literal465 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_ID_in_string_literal467 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_DQUOTE_in_string_literal469 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -24,7 +24,13 @@ public class LexicalParser {
         //String program = "a=1\nb=a\na=2\nb\n";
         //String program = "myfunc(1)\n";
         //String program = "myFunc(newTitle)\n";
-        String program = "b=1+3.4\nc=b / 1.9\na=newMeasurementSet(b,c)\nb=a\n";
+        String program = "b=1+3.4\n"
+                       + "c=b / 1.9\n"
+                       + "a=newMeasurementSet(b,c)\n"
+                       + "b=a\n"
+                       + "c=true\n"
+                       + "c=false\n"
+                       + "d=2\n";
                 
         GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(program));
         CommonTokenStream tokens = new CommonTokenStream(lex);
@@ -36,11 +42,7 @@ public class LexicalParser {
             
             System.out.println("\nTREE : \n" + ((Tree)r.tree).toStringTree());
             
-            System.out.println("\n");
-            for (Object o : parser.memory.keySet()) {
-                Object val = parser.memory.get(o);
-                System.out.println("VAR [" + o + "]->" + val);
-            }
+            parser.dumpGlobalMemory();
             
         } catch (RecognitionException e)  {
             e.printStackTrace();

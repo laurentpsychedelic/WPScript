@@ -34,7 +34,6 @@ public class FunctionCall {
             }
             //java.lang.String
             Method method = FunctionCall.class.getMethod(name, types);
-            System.out.println(method.getGenericParameterTypes().length);
             LinkedList <Object> params = new LinkedList();
             for (int k=1; k<name_params.size(); k++) {
                 params.add(name_params.get(k));

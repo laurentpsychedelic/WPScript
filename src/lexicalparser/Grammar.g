@@ -14,8 +14,22 @@ import java.util.HashMap;
 @members {
     /** Map variable name to Integer object holding value */
     HashMap memory = new HashMap();
-    
+
+    public void dumpGlobalMemory() {
+        System.out.println("\nGLOBAL MEMORY DUMP");
+        for (Object o : memory.keySet()) {
+            Object val = memory.get(o);
+            System.out.println("VAR [" + o + "]->" + val);
+        }
+    }
+
+    private void _WPAScriptPanic(String message) {
+        System.out.println(message);
+        System.exit(0);
+    }
+
     public static void main(String[] args) throws Exception {
+
         GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(args[0]));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
@@ -29,11 +43,20 @@ import java.util.HashMap;
     }
 }
 
-prog:   stat+ ;
+prog returns [Object value]
+    :  (e=stat)+ {
+        $value = $e.value;
+    };
                 
-stat:   expr NEWLINE {System.out.println($expr.value);}
+stat   returns [Object value]
+    :   expr NEWLINE {
+            $value = $expr.value;
+        }
     |   ID '=' expr NEWLINE
-        {memory.put($ID.text, $expr.value);}
+        {
+            memory.put($ID.text, $expr.value);
+            $value = $expr.value;
+        }
     |   NEWLINE
     ;
 
@@ -46,7 +69,7 @@ expr returns [Object value]
                 System.err.println("[+] is defined only between numeric types");
             }
         }
-        |   '-' e=multExpr {
+     |   '-' e=multExpr {
             if ($value instanceof Numeric && $e.value instanceof Numeric) {
                 $value = new Numeric( ((Numeric) $value).value - ((Numeric) $e.value).value );
             } else {
@@ -54,10 +77,9 @@ expr returns [Object value]
             }
         }
         )*
-        | func_call
+     | func_call
         {
             $value = $func_call.result;
-            //System.out.println($func_call.result);
         }
     ;
 
@@ -83,16 +105,8 @@ multExpr returns [Object value]
        )*
     ; 
 
+
 func_call returns [Object result]: simple_func {
-        System.out.print("Function call: " + $simple_func.name_params.get(0) + "(");
-        for (int k=1; k<$simple_func.name_params.size(); k++) {
-            System.out.print($simple_func.name_params.get(k));
-            if (k<$simple_func.name_params.size()-1) {
-                System.out.print(",");
-            } else {
-                System.out.println(")");
-            }
-        }
         $result = FunctionCall.callFunction($simple_func.name_params);
     };
 
@@ -111,8 +125,18 @@ args returns [LinkedList<Object> params]:
             $params = $b.params;
            })*;
 
+
 atom returns [Object value]
-    :   INT {$value = new Numeric(Double.parseDouble($INT.text));}
+    :   NUM {$value = new Numeric(Double.parseDouble($NUM.text));}
+    |   BOOL {
+            if ($BOOL.text.equalsIgnoreCase("TRUE")) {
+                $value = new Boolean(true);
+            } else if ($BOOL.text.equalsIgnoreCase("FALSE")) {
+                $value = new Boolean(false);
+            } else {
+                _WPAScriptPanic("BOOL value: " + $BOOL.text + " invalid! BOOL type value must be TRUE or FALSE");
+            }
+        }
     |   ID
         {
             Object v = (Object)memory.get($ID.text);
@@ -132,12 +156,16 @@ string_literal returns [String value]:
     }
     ;
 
-ID  :   ('a'..'z'|'A'..'Z')+ ;
-INT :   '0'..'9'+ ('.' '0'..'9'+)?;
+NUM :   '0'..'9'+ ('.' '0'..'9'+)?;
+BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));
+IF  : ('I'|'i') ('F'|'f');
+ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 EQUAL: '=';
 COMMA: ',';
 DQUOTE: '"';
 LEFT_P: '(';
 RIGHT_P: ')';
+LEFT_CB : '{'; // left curved bracket
+RIGHT_CB : '}'; // right curved bracket
 NEWLINE:'\r'? '\n' ;
 WS  :   (' '|'\t')+ {skip();} ;

@@ -24,9 +24,9 @@ public class LexicalParser {
         //String program = "a=1\nb=a\na=2\nb\n";
         //String program = "myfunc(1)\n";
         //String program = "myFunc(newTitle)\n";
-        String program = "b=1+3.4\n"
-                       + "c=b / 1.9\n"
-                       + "a=newMeasurementSet(b,c)\n"
+        String program = "a=1+3.4\n"
+                       + "b=a / 1.9+3\n"
+                       + "a=newMeasurementSet(a,b)\n"
                        + "b=a\n"
                        + "c=true\n"
                        + "c=false\n"
@@ -42,7 +42,17 @@ public class LexicalParser {
             
             System.out.println("\nTREE : \n" + ((Tree)r.tree).toStringTree());
             
-            parser.dumpGlobalMemory();
+            /*parser.dumpScriptCommands();
+            System.out.flush();
+            System.err.flush();
+            System.out.println();
+            parser.compilationCheck();
+            */
+            boolean compilation_ok = parser.compilationCheck();
+            if (compilation_ok) {
+                parser.execute();
+                parser.dumpGlobalMemory(System.out);
+            }
             
         } catch (RecognitionException e)  {
             e.printStackTrace();

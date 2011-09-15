@@ -1,5 +1,9 @@
 grammar Grammar;
-options {output=AST;}
+
+options {
+    output=AST;
+    backtrack=true;
+}
 
 @lexer::header {
 package lexicalparser;
@@ -7,24 +11,104 @@ package lexicalparser;
 
 @header {
 package lexicalparser;
+
+import java.io.PrintStream;
 import java.util.LinkedList;
 import java.util.HashMap;
 }
 
 @members {
     /** Map variable name to Integer object holding value */
-    HashMap memory = new HashMap();
+    protected HashMap memory = new HashMap();
+    protected HashMap compilation_memory =  new HashMap();
+    private LinkedList <Object> commands = new LinkedList();
+    protected int line_number = 1;
 
-    public void dumpGlobalMemory() {
-        System.out.println("\nGLOBAL MEMORY DUMP");
+    private boolean _PANIC_STATE_ = false;
+    private boolean _COMPILATION_ERROR_STATE_ = false;
+    private boolean _RUNTIME_ERROR_STATE_ = false;
+
+    public void dumpGlobalMemory(PrintStream ps) {
+        ps.println("\nGLOBAL MEMORY DUMP");
         for (Object o : memory.keySet()) {
             Object val = memory.get(o);
-            System.out.println("VAR [" + o + "]->" + val);
+            ps.println("VAR [" + o + "]->" + val);
         }
     }
 
-    private void _WPAScriptPanic(String message) {
-        System.out.println(message);
+    public void dumpScriptCommands() {
+        System.out.println("\nSCRIPT COMMANDS DUMP");
+        for (Object o : commands) {
+            System.out.println("COMMAND->" + o);
+        }
+    }
+
+    public boolean compilationCheck() {
+        try {
+            compilation_memory.clear();
+            System.out.println("\nCOMPILATION CHECK");
+            for (Object o : commands) {
+                if (!(o instanceof Expression)) {
+                    _WPAScriptPanic("Command must be an instance of Expression");
+                }
+                ((Expression) o).compilationCheck();
+            }
+            compilation_memory.clear();
+            return true;
+        } catch (CompilationErrorException e) {
+            _WPAScriptCompilationError(e.getMessage(), e.getLineNumber());
+            return false;
+        }
+    }
+
+    public Object execute() {
+        Object ret_val = null;
+        for (Object c : commands) {
+            if (!(c instanceof Expression)) {
+                _WPAScriptPanic("Top level command must be instances of Expression!");
+            }
+            ret_val = ((Expression) c).eval();
+        }
+        return ret_val;
+    }
+
+    protected void _WPAScriptPanic(String message) {
+
+        if (!_PANIC_STATE_) {
+            _PANIC_STATE_ = true;
+            System.err.println("PANIC OCCURED!");
+        }System.err.println(message);
+
+        dumpGlobalMemory(System.err);
+
+        System.exit(0);
+    }
+
+    protected void _WPAScriptCompilationError(String message, int line_num) {
+        if (!_COMPILATION_ERROR_STATE_) {
+            _COMPILATION_ERROR_STATE_ = true;
+            System.err.println("COMPILATION");
+        }
+        System.err.println("ERROR (l" + line_num + "):: " + message);
+    }
+
+    protected void _WPAScriptCompilationWarning(String message, int line_num) {
+        if (!_COMPILATION_ERROR_STATE_) {
+            _COMPILATION_ERROR_STATE_ = true;
+            System.err.println("COMPILATION");
+        }
+        System.err.println("WARNING (l" + line_num + "):: " + message);
+    }
+
+    protected void _WPAScriptRuntimeError(String message, int line_num) {
+        if (!_RUNTIME_ERROR_STATE_) {
+            _RUNTIME_ERROR_STATE_ = true;
+            System.err.println("RUNTIME");
+        }
+        System.err.println("ERROR (l" + line_num + "):: " + message);
+        
+        dumpGlobalMemory(System.err);
+
         System.exit(0);
     }
 
@@ -43,118 +127,114 @@ import java.util.HashMap;
     }
 }
 
-prog returns [Object value]
-    :  (e=stat)+ {
-        $value = $e.value;
-    };
-                
-stat   returns [Object value]
-    :   expr NEWLINE {
-            $value = $expr.value;
-        }
-    |   ID '=' expr NEWLINE
-        {
-            memory.put($ID.text, $expr.value);
-            $value = $expr.value;
-        }
-    |   NEWLINE
+prog :  (s=stat { commands.add($s.expr); } )+;
+
+stat returns [Expression expr]
+    : expression NEWLINE {
+        $expr = $expression.expr;
+        line_number++;
+    }
+    | ID EQUAL expression NEWLINE {
+        $expr = new Expression(this,  new VariableAssignment(this, $ID.text, $expression.expr) );
+        line_number++;
+    }
+    | NEWLINE {
+        line_number++;
+    }
     ;
 
-expr returns [Object value]
-    :   e=multExpr {$value = $e.value;}
-        (   '+' e=multExpr {
-            if ($value instanceof Numeric && $e.value instanceof Numeric) {
-                $value = new Numeric( ((Numeric) ($value)).value + ((Numeric) ($e.value)).value );
-            } else {
-                System.err.println("[+] is defined only between numeric types");
-            }
-        }
-     |   '-' e=multExpr {
-            if ($value instanceof Numeric && $e.value instanceof Numeric) {
-                $value = new Numeric( ((Numeric) $value).value - ((Numeric) $e.value).value );
-            } else {
-                System.err.println("[-] is defined only between numeric types");
-            }
-        }
-        )*
-     | func_call
-        {
-            $value = $func_call.result;
-        }
-    ;
-
-multExpr returns [Object value]
-    :   e=atom
-            {
-                $value = $e.value;       
-            }
-        (   '*' e=atom {
-                if ($value instanceof Numeric && $e.value instanceof Numeric) {
-                    $value = new Numeric( ((Numeric) $value).value * ((Numeric) $e.value).value );
-                } else {
-                    System.err.println("[*] is defined only between numeric types");
-                }
-            }
-        |   '/' e=atom {
-                if ($value instanceof Numeric && $e.value instanceof Numeric) {
-                    $value = new Numeric( ((Numeric) $value).value / ((Numeric) $e.value).value );
-                } else {
-                    System.err.println("[/] is defined only between numeric types");
-                }
-            }
-       )*
-    ; 
-
-
-func_call returns [Object result]: simple_func {
-        $result = FunctionCall.callFunction($simple_func.name_params);
+expression returns [Expression expr]
+    : terms {
+        $expr = new Expression( this, new Term(this, $terms.terms) );
+    }
+    | function_call {
+        $expr = new Expression( this, new FunctionCall( this, $function_call.name_params ) );
     };
 
-simple_func returns [LinkedList<Object> name_params]: ID LEFT_P args RIGHT_P
-    {  
+terms returns [LinkedList<Object> terms]
+    : t=term {
+        $terms = new LinkedList();
+        $terms.add( new Term(this, $t.atoms) );
+    } ( PLUS t=term {
+            $terms.add(Operator.OPERATOR_PLUS);
+            $terms.add( new Term(this, $t.atoms) );
+        }
+      | MINUS t=term {
+            $terms.add(Operator.OPERATOR_MINUS);
+            $terms.add( new Term(this, $t.atoms) );
+        } )*;
+//terms : term ( PLUS term | MINUS term )*;
+
+term returns [LinkedList<Object> atoms]
+    : a=atom {
+        $atoms = new LinkedList();
+        $atoms.add($a.value);
+    } ( MULT a=atom {
+            $atoms.add(Operator.OPERATOR_MULT);
+            $atoms.add($a.value);
+        }
+      | DIV a=atom {
+            $atoms.add(Operator.OPERATOR_DIV);
+            $atoms.add($a.value);
+        }
+    )*;
+//term : atom ( MULT atom | DIV atom )*;
+
+function_call returns [LinkedList<Object> name_params]:
+    ID LEFT_P args RIGHT_P {  
         $name_params = $args.params;
         $name_params.add(0, $ID.text);
     };
+//function_call : ID LEFT_P args RIGHT_P;
 
 args returns [LinkedList<Object> params]:
-    a=atom {$params = new LinkedList(); $params.add($a.value);} (COMMA b=args 
-           {
-            for (int k=0; k<$params.size(); k++) {
-                $b.params.add(0, $params.get(k));
-            }
-            $params = $b.params;
-           })*;
-
+    a=expression {
+        $params = new LinkedList();
+        $params.add($a.expr);
+    } (COMMA b=args {
+        for (int k=0; k<$params.size(); k++) {
+            $b.params.add(0, $params.get(k));
+        }
+        $params = $b.params;
+    } )*;
+//args :
+//    atom (COMMA atom)*;
 
 atom returns [Object value]
-    :   NUM {$value = new Numeric(Double.parseDouble($NUM.text));}
-    |   BOOL {
-            if ($BOOL.text.equalsIgnoreCase("TRUE")) {
-                $value = new Boolean(true);
-            } else if ($BOOL.text.equalsIgnoreCase("FALSE")) {
-                $value = new Boolean(false);
-            } else {
-                _WPAScriptPanic("BOOL value: " + $BOOL.text + " invalid! BOOL type value must be TRUE or FALSE");
-            }
+    : NUM {
+        $value = new Numeric( Float.parseFloat($NUM.text) );
+    }
+    | BOOL {
+        if ($BOOL.text.equalsIgnoreCase("true")) {
+            $value = new Bool(this, true);
+        } else if ($BOOL.text.equalsIgnoreCase("false")) {
+            $value = new Bool(this, false);
+        } else {
+            _WPAScriptPanic("Token [" + $BOOL.text + "] must be equal to \"true\" or \"false\" (boolean type)");
         }
-    |   ID
-        {
-            Object v = (Object)memory.get($ID.text);
-            if ( v!=null ) {
-                $value = v;
-            } else {                
-                System.err.println("undefined variable "+$ID.text);
-            }
-        }
-    |   '(' expr ')' {$value = $expr.value;}
-    | string_literal {$value = $string_literal.value;}
-    ;
-
-string_literal returns [String value]:
-    DQUOTE ID DQUOTE {
-        $value = $ID.text;
+    }
+    | LEFT_P expression RIGHT_P {
+        $value = $expression.expr;
+    }
+    | ID {
+        $value = new Variable(this, $ID.text);
+    }
+    | string_literal {
+        $value = $string_literal.value;
     }
     ;
+//atom returns [Object value]
+//    : NUM
+//    | BOOL
+//    | LEFT_P expression RIGHT_P
+//    | ID
+//    | string_literal;
+
+string_literal returns [String value] : DQUOTE ID DQUOTE {
+        $value = $ID.text;
+    };
+//string_literal: DQUOTE ID DQUOTE;
+
 
 NUM :   '0'..'9'+ ('.' '0'..'9'+)?;
 BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));
@@ -165,6 +245,10 @@ COMMA: ',';
 DQUOTE: '"';
 LEFT_P: '(';
 RIGHT_P: ')';
+MULT: '*';
+DIV: '/';
+PLUS: '+';
+MINUS: '-';
 LEFT_CB : '{'; // left curved bracket
 RIGHT_CB : '}'; // right curved bracket
 NEWLINE:'\r'? '\n' ;

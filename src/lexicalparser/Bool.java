@@ -9,14 +9,19 @@ package lexicalparser;
  *
  * @author laurent
  */
-public class Numeric extends Calculable {
-    private double value = 0.0f;
-    public Numeric(double _value) {
+public class Bool extends Calculable {
+
+    private boolean value;
+
+    public Bool(GrammarParser _interpreter, boolean _value) {
         value = _value;
+        interpreter = _interpreter;
+        line_number = interpreter.line_number;
     }
+
     @Override
     public String toString() {
-        return "NUMERIC:: " + Double.toString(value);
+        return "BOOL:: " + Boolean.toString(value);
     }
 
     @Override
@@ -28,4 +33,5 @@ public class Numeric extends Calculable {
     public void compilationCheck() {
         //NOTHING
     }
+
 }

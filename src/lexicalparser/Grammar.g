@@ -21,7 +21,7 @@ import java.util.HashMap;
     /** Map variable name to Integer object holding value */
     protected HashMap memory = new HashMap();
     protected HashMap compilation_memory =  new HashMap();
-    private LinkedList <Object> commands = new LinkedList();
+    private LinkedList <Expression> commands = new LinkedList();
     protected int line_number = 1;
 
     private boolean _PANIC_STATE_ = false;
@@ -49,7 +49,7 @@ import java.util.HashMap;
             System.out.println("\nCOMPILATION CHECK");
             for (Object o : commands) {
                 if (!(o instanceof Expression)) {
-                    _WPAScriptPanic("Command must be an instance of Expression");
+                    _WPAScriptPanic("Command must be an instance of Expression [" + o.getClass() + "]");
                 }
                 ((Expression) o).compilationCheck();
             }
@@ -127,7 +127,31 @@ import java.util.HashMap;
     }
 }
 
-prog :  (s=stat { commands.add($s.expr); } )+;
+prog :
+    s=stats {
+        commands.clear();
+        for (Expression e : $s.expressions) {
+            commands.add(e);
+        }
+    };
+
+block returns [LinkedList<Expression> expressions]:
+    LEFT_CB NEWLINE? stats NEWLINE? RIGHT_CB {
+        $expressions = $stats.expressions;
+    };
+
+stats returns [LinkedList<Expression> expressions]:
+    s=stat {
+        $expressions = new LinkedList();
+        if ($s.expr!=null) {
+            $expressions.add($s.expr);
+        }
+    } (s=stat {
+        if ($s.expr!=null) {
+            $expressions.add($s.expr);
+        }
+    }
+    )*;
 
 stat returns [Expression expr]
     : expression NEWLINE {
@@ -141,7 +165,39 @@ stat returns [Expression expr]
     | NEWLINE {
         line_number++;
     }
-    ;
+    | block {
+        $expr = new Expression(this, $block.expressions);
+    }
+    | if_expression {
+        $expr = new Expression(this, $if_expression.expr);
+    };
+    
+
+if_expression returns [IfExpression expr]
+    : p=pre_if_expression {
+        Expression condition = null;
+        Expression expr_if = null;
+        Expression expr_else = null;
+        if (0 < $p.exprs.size()) {
+            condition = $p.exprs.get(0);
+        }
+        if (1 < $p.exprs.size()) {
+            expr_if = $p.exprs.get(1);
+        }
+        if (2 < $p.exprs.size()) {
+            expr_else = $p.exprs.get(2);
+        }
+        $expr = new IfExpression( this, condition, expr_if, expr_else );
+    };
+
+pre_if_expression returns [LinkedList<Expression> exprs] 
+    : IF LEFT_P e=expression RIGHT_P NEWLINE? s=stat {
+        $exprs = new LinkedList();
+        $exprs.add( $e.expr );
+        $exprs.add( $s.expr );
+    } NEWLINE? (ELSE NEWLINE? s=stat {
+        $exprs.add( $s.expr );
+    })?;
 
 expression returns [Expression expr]
     : terms {
@@ -206,9 +262,9 @@ atom returns [Object value]
     }
     | BOOL {
         if ($BOOL.text.equalsIgnoreCase("true")) {
-            $value = new Bool(this, true);
+            $value = new Bool(true);
         } else if ($BOOL.text.equalsIgnoreCase("false")) {
-            $value = new Bool(this, false);
+            $value = new Bool(false);
         } else {
             _WPAScriptPanic("Token [" + $BOOL.text + "] must be equal to \"true\" or \"false\" (boolean type)");
         }
@@ -239,6 +295,7 @@ string_literal returns [String value] : DQUOTE ID DQUOTE {
 NUM :   '0'..'9'+ ('.' '0'..'9'+)?;
 BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));
 IF  : ('I'|'i') ('F'|'f');
+ELSE: ('E'|'e') ('L'|'l') ('S'|'s') ('E'|'e');
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 EQUAL: '=';
 COMMA: ',';

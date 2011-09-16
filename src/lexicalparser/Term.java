@@ -88,6 +88,11 @@ public class Term extends Calculable {
                 val = _doOperation(ele, operator, ele2);
                 ele = val;
             }
+            if (val instanceof Double) {
+                val = new Numeric((Double) val);
+            } else if (val instanceof Boolean) {
+                val = new Bool((Boolean) val);
+            }
             return val;
         } catch (ClassCastException e) {
             interpreter._WPAScriptPanic(e.getMessage());

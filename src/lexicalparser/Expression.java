@@ -5,22 +5,34 @@
 
 package lexicalparser;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author laurent
  */
 public class Expression extends Calculable {
 
-    Calculable calculation;
-    public Expression(GrammarParser _interpreter, Calculable _calculation) {
-        calculation = _calculation;
+    LinkedList<Calculable> calculation = new LinkedList();
+    public Expression(GrammarParser _interpreter, Object _calculation) {
+        if (_calculation instanceof Calculable){
+            calculation.add((Calculable)_calculation);
+        } else if (_calculation instanceof LinkedList){
+            for (Calculable _c : (LinkedList <Calculable>)_calculation) {
+                calculation.add(_c);
+            }
+        }
         interpreter = _interpreter;
         line_number = interpreter.line_number;
     }
 
     @Override
     public Object eval() {
-        return calculation.eval();
+        Object ret_val = null;
+        for (Calculable c : calculation) {
+            ret_val = c.eval();
+        }
+        return ret_val;
     }
 
     @Override
@@ -30,7 +42,9 @@ public class Expression extends Calculable {
 
     @Override
     public void compilationCheck() throws CompilationErrorException {
-        calculation.compilationCheck();
+        for (Calculable c : calculation) {
+            c.compilationCheck();
+        }
     }
 
 }

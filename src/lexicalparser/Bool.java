@@ -13,10 +13,8 @@ public class Bool extends Calculable {
 
     private boolean value;
 
-    public Bool(GrammarParser _interpreter, boolean _value) {
+    public Bool(boolean _value) {
         value = _value;
-        interpreter = _interpreter;
-        line_number = interpreter.line_number;
     }
 
     @Override

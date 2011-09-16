@@ -308,5 +308,5 @@ PLUS: '+';
 MINUS: '-';
 LEFT_CB : '{'; // left curved bracket
 RIGHT_CB : '}'; // right curved bracket
-NEWLINE:'\r'? '\n' ;
-WS  :   (' '|'\t')+ {skip();} ;
+NEWLINE:'\n' ;
+WS  :   (' '|'\t'|'\r')+ {skip();} ;

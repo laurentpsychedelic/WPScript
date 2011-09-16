@@ -1,0 +1,294 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
+ * TestFrame.java
+ *
+ * Created on 2011/09/16, 16:14:08
+ */
+package lexicalparser;
+
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+import java.io.PrintStream;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextArea;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
+import org.antlr.runtime.ANTLRStringStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.Token;
+
+/**
+ *
+ * @author LFabre
+ */
+public class ScriptWindow extends javax.swing.JFrame {
+    BufferedReader reader;
+    /** Creates new form TestFrame */
+    public ScriptWindow() {
+        initComponents();
+        _updateScriptPane();
+            
+        PipedInputStream pIn = null;
+        PipedOutputStream pOut = new PipedOutputStream();
+        PrintStream my_stream = new PrintStream(pOut);
+        System.setOut(my_stream);
+        System.setErr(my_stream);
+        try {
+            pIn = new PipedInputStream(pOut);
+        } catch (IOException ex) {
+            Logger.getLogger(ScriptWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        reader = new BufferedReader(new InputStreamReader(pIn));
+        // Write to standard output and error and the log files
+            
+        
+        _start_deamon();
+    }
+    
+    private void _start_deamon() {
+        Thread t = new Thread(deamon);
+        t.setDaemon(true);
+        t.start();
+    }
+    
+    boolean CLOSING = false;
+    
+    Runnable deamon = new Runnable() {
+
+        @Override
+        public void run() {
+            while (!CLOSING) {
+                if (reader==null) {
+                    continue;
+                }
+                try {
+                    String line = reader.readLine();
+                    if(line != null) {
+                        jTextOutputArea.append(line + "\n");
+                    }
+                } catch (IOException ex) {
+                    //NOTHING
+                }
+            }
+        }
+    };
+    
+    String prog = "if (a==b) {\na = b+1\n}\n";
+    
+    void _updateScriptPane() {
+        int cp = jScriptPane.getCaretPosition();
+        
+        jScriptPane.setText("");
+        
+        GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(prog));
+        CommonTokenStream tokens = new CommonTokenStream(lex);
+        
+        LinkedList<String> initStyles = new LinkedList();
+        LinkedList<String> initString = new LinkedList();
+                
+        List lt = tokens.getTokens();
+        for (Object t : lt) {
+            int type = ((Token)t).getType();
+            String text = ((Token)t).getText();
+            String style = "regular";
+            if (type==9 || type==12) {
+                style = "bold";
+            }
+            initStyles.add(style);
+            initString.add(text);
+        }
+        
+
+        StyledDocument doc = jScriptPane.getStyledDocument();
+        addStylesToDocument(doc);
+
+        try {
+            for (int i=0; i < initString.size(); i++) {
+                doc.insertString(doc.getLength(), initString.get(i),
+                                 doc.getStyle(initStyles.get(i)));
+            }
+        } catch (BadLocationException ble) {
+            System.err.println("Couldn't insert initial text into text pane.");
+        }
+        
+        try {
+            jScriptPane.setCaretPosition(cp);
+        } catch (IllegalArgumentException e) {
+            //NOTHING
+        }
+    }
+    
+        protected void addStylesToDocument(StyledDocument doc) {
+        //Initialize some styles.
+        Style def = StyleContext.getDefaultStyleContext().
+                        getStyle(StyleContext.DEFAULT_STYLE);
+
+        Style regular = doc.addStyle("regular", def);
+        StyleConstants.setFontFamily(def, "SansSerif");
+
+        Style s = doc.addStyle("italic", regular);
+        StyleConstants.setItalic(s, true);
+
+        s = doc.addStyle("bold", regular);
+        StyleConstants.setBold(s, true);
+        StyleConstants.setForeground(s, Color.red);
+        StyleConstants.setUnderline(s, true);
+        
+        s = doc.addStyle("small", regular);
+        StyleConstants.setFontSize(s, 10);
+
+        s = doc.addStyle("large", regular);
+        StyleConstants.setFontSize(s, 16);
+
+    }
+
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPaneScript = new javax.swing.JScrollPane();
+        jScriptPane = new javax.swing.JTextPane();
+        jButtonExecute = new javax.swing.JButton();
+        jScrollPaneOutput = new javax.swing.JScrollPane();
+        jTextOutputArea = new javax.swing.JTextArea();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        jScriptPane.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jScriptPaneKeyTyped(evt);
+            }
+        });
+        jScrollPaneScript.setViewportView(jScriptPane);
+
+        jButtonExecute.setText("RUN");
+        jButtonExecute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExecuteActionPerformed(evt);
+            }
+        });
+
+        jTextOutputArea.setColumns(20);
+        jTextOutputArea.setEditable(false);
+        jTextOutputArea.setRows(5);
+        jScrollPaneOutput.setViewportView(jTextOutputArea);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneScript, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPaneOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonExecute)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneScript, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonExecute)
+                        .addGap(207, 207, 207))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPaneOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExecuteActionPerformed
+        prog = jScriptPane.getText();
+        jTextOutputArea.setText("");
+        LexicalParser.executeProgram(prog);
+    }//GEN-LAST:event_jButtonExecuteActionPerformed
+
+    private void jScriptPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jScriptPaneKeyTyped
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE || evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            prog = jScriptPane.getText(); 
+            _updateScriptPane();
+        }
+    }//GEN-LAST:event_jScriptPaneKeyTyped
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        CLOSING = true;
+    }//GEN-LAST:event_formWindowClosing
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                new ScriptWindow().setVisible(true);
+            }
+        });
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonExecute;
+    private javax.swing.JTextPane jScriptPane;
+    private javax.swing.JScrollPane jScrollPaneOutput;
+    private javax.swing.JScrollPane jScrollPaneScript;
+    private javax.swing.JTextArea jTextOutputArea;
+    // End of variables declaration//GEN-END:variables
+}

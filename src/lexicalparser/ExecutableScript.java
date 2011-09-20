@@ -26,6 +26,7 @@ public class ExecutableScript {
         try {
             tree = parser.prog();            
         } catch (RecognitionException e)  {
+            e.printStackTrace();
             parser._WPAScriptCompilationError("Compilation failed! Wrong syntax", e.line);
             throw new CompilationErrorException("Compilation failed! Wrong syntax", e.line);
         }

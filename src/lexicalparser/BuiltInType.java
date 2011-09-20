@@ -11,7 +11,7 @@ package lexicalparser;
 public abstract class BuiltInType extends Calculable {
     abstract public Object getNativeValue();
     @Override
-    public final Object eval(){
+    public Object eval(){
         return this;
     }
 }

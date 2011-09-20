@@ -11,7 +11,6 @@
 package lexicalparser;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -130,7 +129,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
     };
     
-    String prog = "a = [ \"value\" : 1.2 ]";
+    String prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2) }\n";
     
     /*String prog = "a = 1 + 3.4\n"
                        //+ "b=a / 1.9+3\n"

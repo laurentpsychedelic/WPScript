@@ -321,10 +321,10 @@ string_literal returns [CharString value] : s=STRING_LITERAL {
 //string_literal: DQUOTE ID DQUOTE;
 
 dictionary returns [Dictionary value] :
-    LEFT_B dictionary_elements RIGHT_B {
+    LEFT_CB dictionary_elements RIGHT_CB {
         HashMap vs = new HashMap();
         int size = $dictionary_elements.keys_values.size();
-        if (size==0 || size%2!=0) {
+        if (size==0 || size\%2!=0) {
             _WPAScriptPanic("Dictionary must have a even number of elements!", line_number);
         }
         for (int k=0; k<size; k+=2) {
@@ -338,10 +338,16 @@ dictionary_elements returns [LinkedList<Object> keys_values] :
         $keys_values = new LinkedList();
         $keys_values.add($e1.expr);
         $keys_values.add($e2.expr);
-    } (e1=expression TP e2=expression)* {
-        $keys_values.add($e1.expr);
-        $keys_values.add($e2.expr);
-    };
+    } (NEWLINE? COMMA NEWLINE? d=dictionary_elements {
+            if ($d.keys_values==null) {
+                _WPAScriptPanic("Dictionary elements sublist is null!", line_number);
+            }
+            for (int k=0; k<$d.keys_values.size(); k++) {
+                $keys_values.add($d.keys_values.get(k));
+            }
+        }
+        )* 
+    ;
 
 NUM :   '0'..'9'+ ('.' '0'..'9'+)?;
 BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));

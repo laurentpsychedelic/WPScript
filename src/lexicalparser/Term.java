@@ -95,8 +95,7 @@ public class Term extends Calculable {
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder("TERMS:: " + ((Object) this).hashCode());
-        str.append(" >> ");
+        StringBuilder str = new StringBuilder("TERMS:: ");
         Object ele = elements.get(0);
         if (ele instanceof Term) {
             str.append("(");

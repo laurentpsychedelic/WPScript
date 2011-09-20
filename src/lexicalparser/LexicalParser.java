@@ -4,8 +4,6 @@
  */
 package lexicalparser;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
@@ -28,14 +26,14 @@ public class LexicalParser {
                        //+ "b=a / 1.9+3\n"
                        + "b=newMeasurementSet(a,a)\n"
                        //+ "b=a\n"
-                       + "c=true\n"
+                       + "e=\"string\"\n"
                        + "c=false\n"
                        + "if (c)\n"
                        + "  if_var=1\n"
                        + "else \n"
                        + "  else_var=1+1\n"
                        + "\n";
-                       ;
+
         GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(program));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
@@ -68,26 +66,14 @@ public class LexicalParser {
      * @param program 
      */
     public static void executeProgram(String program)  {
-        //String program = "a=1\nb=a\na=2\nb\n";
-        //String program = "myfunc(1)\n";
-        //String program = "myFunc(newTitle)\n";
-        
         GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(program));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
         GrammarParser parser = new GrammarParser(tokens);
 
         try {
-            GrammarParser.prog_return r = parser.prog();
+            parser.prog();
             
-            System.out.println("\nTREE : \n" + ((Tree)r.tree).toStringTree());
-            
-            parser.dumpScriptCommands();
-            System.out.flush();
-            /*System.err.flush();
-            System.out.println();
-            parser.compilationCheck();
-            */
             boolean compilation_ok = parser.compilationCheck();
             if (compilation_ok) {
                 parser.execute();

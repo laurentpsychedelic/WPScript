@@ -25,18 +25,14 @@ public class Term extends Calculable {
             double val1 = Double.NaN;
             double val2 = Double.NaN;
             if (ele1 instanceof Numeric) {
-                val1 = (Double) ((Numeric) ele1).eval();
-            } else if (ele1 instanceof Double) {
-                val1 = (Double) (ele1);
+                val1 = (Double) ((Numeric) ele1).getNativeValue();
             } else {
-                interpreter._WPAScriptPanic("Arithmetic operation must be done with Numeric or Double type!");
+                interpreter._WPAScriptPanic("Arithmetic operation must be done with Numeric or Double type!", line_number);
             }
             if (ele2 instanceof Numeric) {
-                val2 = (Double) ((Numeric) ele2).eval();
-            } else if (ele2 instanceof Double) {
-                val2 = (Double) (ele2);
+                val2 = (Double) ((Numeric) ele2).getNativeValue();
             } else {
-                interpreter._WPAScriptPanic("Arithmetic operation must be done with Numeric or Double type!");
+                interpreter._WPAScriptPanic("Arithmetic operation must be done with Numeric or Double type!", line_number);
             }
 
             if (operator == Operator.OPERATOR_PLUS) {
@@ -52,10 +48,10 @@ public class Term extends Calculable {
                     val = val1 / val2;
                 }
             } else {
-                interpreter._WPAScriptPanic("Wrong operator! [" + operator + "]");
+                interpreter._WPAScriptPanic("Wrong operator! [" + operator + "]", line_number);
             }
         } catch (ClassCastException e) {
-            interpreter._WPAScriptPanic(e.getMessage());
+            interpreter._WPAScriptPanic(e.getMessage(), line_number);
         }
         return new Numeric(val);
     }
@@ -66,15 +62,17 @@ public class Term extends Calculable {
     @Override
     public Object eval() {
         if (elements.size()%2!=1) {
-            interpreter._WPAScriptPanic("Wrong number of elements in TERM list.");
+            interpreter._WPAScriptPanic("Wrong number of elements in TERM list.", line_number);
         }
         try {
             Object val;
             Object ele = elements.get(0);
             if (ele instanceof Calculable) {
                 ele = ((Calculable) ele).eval();
+            } else if (ele instanceof String) {
+                
             } else {
-                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression");
+                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "]", line_number);
             }
             val = ele;
             for (int k=1; k<elements.size(); k+=2) {
@@ -83,19 +81,14 @@ public class Term extends Calculable {
                 if (ele2 instanceof Calculable) {
                     ele2 = ((Calculable) ele2).eval();
                 } else {
-                    interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression");
+                    interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]", line_number);
                 }
                 val = _doOperation(ele, operator, ele2);
                 ele = val;
             }
-            if (val instanceof Double) {
-                val = new Numeric((Double) val);
-            } else if (val instanceof Boolean) {
-                val = new Bool((Boolean) val);
-            }
             return val;
         } catch (ClassCastException e) {
-            interpreter._WPAScriptPanic(e.getMessage());
+            interpreter._WPAScriptPanic(e.getMessage(), line_number);
         }
         return null;
     }
@@ -114,7 +107,7 @@ public class Term extends Calculable {
         } else if (ele instanceof String) {
             str.append("VAR:").append((String) ele);
         } else {
-            interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "]");
+            interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "]", line_number);
         }
         for (int k=1; k<elements.size(); k+=2) {
             Operator operator = (Operator) (elements.get(k));
@@ -127,7 +120,7 @@ public class Term extends Calculable {
             } else if (ele2 instanceof Calculable) {
                 str.append(((Calculable) ele2).toString());
             } else {
-                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]");
+                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]", line_number);
             }
         }
         return str.toString();
@@ -136,30 +129,32 @@ public class Term extends Calculable {
     @Override
     public void compilationCheck() throws CompilationErrorException {
         if (elements.size()%2!=1) {
-            interpreter._WPAScriptPanic("Wrong number of elements in TERM list.");
+            interpreter._WPAScriptPanic("Wrong number of elements in TERM list.", line_number);
         }
         try {
             Object ele = elements.get(0);
             if (ele instanceof Calculable) {
                 ((Calculable) ele).compilationCheck();
+            } else if (ele instanceof String) {
+                //NOTHING
             } else {
-                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression");
+                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "[", line_number);
             }
             for (int k=1; k<elements.size(); k+=2) {
                 Object operator = elements.get(k);
                 if (!(operator instanceof Operator)) {
-                    interpreter._WPAScriptPanic("Must be an operator [" + operator.getClass() + "]");
+                    interpreter._WPAScriptPanic("Must be an operator [" + operator.getClass() + "]", line_number);
                 }
 
                 Object ele2 = elements.get(k+1);
                 if (ele2 instanceof Calculable) {
                     ((Calculable) ele2).compilationCheck();
                 } else {
-                    interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression");
+                    interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]", line_number);
                 }
             }
         } catch (ClassCastException e) {
-            interpreter._WPAScriptPanic(e.getMessage());
+            interpreter._WPAScriptPanic(e.getMessage(), line_number);
         }
     }
 }

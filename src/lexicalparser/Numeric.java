@@ -9,7 +9,7 @@ package lexicalparser;
  *
  * @author laurent
  */
-public class Numeric extends Calculable {
+public class Numeric extends BuiltInType {
     private double value = 0.0f;
     public Numeric(double _value) {
         value = _value;
@@ -20,7 +20,7 @@ public class Numeric extends Calculable {
     }
 
     @Override
-    public Object eval() {
+    public Object getNativeValue() {
         return value;
     }
 

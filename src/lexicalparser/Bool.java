@@ -9,7 +9,7 @@ package lexicalparser;
  *
  * @author laurent
  */
-public class Bool extends Calculable {
+public class Bool extends BuiltInType {
 
     private boolean value;
 
@@ -23,13 +23,13 @@ public class Bool extends Calculable {
     }
 
     @Override
-    public Object eval() {
-        return value;
+    public void compilationCheck() {
+        //NOTHING
     }
 
     @Override
-    public void compilationCheck() {
-        //NOTHING
+    public Object getNativeValue() {
+        return value;
     }
 
 }

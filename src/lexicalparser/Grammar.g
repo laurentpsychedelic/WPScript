@@ -1,8 +1,9 @@
 grammar Grammar;
 
 options {
-    output=AST;
-    backtrack=true;
+    output = AST;
+    backtrack = true;
+    memoize = true;
 }
 
 @lexer::header {
@@ -17,7 +18,31 @@ import java.util.LinkedList;
 import java.util.HashMap;
 }
 
+@lexer::members {
+    public boolean skip_ws = true;
+}
+
+@rulecatch {
+    catch (RecognitionException rec_exc) {
+        throw rec_exc;
+    }
+}
+
 @members {
+
+    /*@Override
+    protected void mismatch(IntStream input, int ttype, BitSet follow)
+        throws RecognitionException
+    {
+      throw new MismatchedTokenException(ttype, input);
+    }*/
+    @Override
+    public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow)
+        throws RecognitionException
+    {
+        throw e;
+    }
+
     /** Map variable name to Integer object holding value */
     protected HashMap memory = new HashMap();
     protected HashMap compilation_memory =  new HashMap();
@@ -49,11 +74,12 @@ import java.util.HashMap;
             System.out.println("\nCOMPILATION CHECK");
             for (Object o : commands) {
                 if (!(o instanceof Expression)) {
-                    _WPAScriptPanic("Command must be an instance of Expression [" + o.getClass() + "]");
+                    _WPAScriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
                 }
                 ((Expression) o).compilationCheck();
             }
             compilation_memory.clear();
+            System.out.println("\nCOMPILATION OK");
             return true;
         } catch (CompilationErrorException e) {
             _WPAScriptCompilationError(e.getMessage(), e.getLineNumber());
@@ -65,24 +91,24 @@ import java.util.HashMap;
         Object ret_val = null;
         for (Object c : commands) {
             if (!(c instanceof Expression)) {
-                _WPAScriptPanic("Top level command must be instances of Expression!");
+                _WPAScriptPanic("Top level command must be instances of Expression!", 0);
             }
             ret_val = ((Expression) c).eval();
         }
         return ret_val;
     }
 
-    protected void _WPAScriptPanic(String message) {
+    protected void _WPAScriptPanic(String message, int line_num) {
 
         if (!_PANIC_STATE_) {
             _PANIC_STATE_ = true;
             System.err.println("PANIC OCCURED!");
-        }System.err.println(message);
+        }
+        System.err.println("ERROR (l" + line_num + "):: " + message);
 
         dumpGlobalMemory(System.err);
-
-        System.exit(0);
     }
+
 
     protected void _WPAScriptCompilationError(String message, int line_num) {
         if (!_COMPILATION_ERROR_STATE_) {
@@ -91,6 +117,7 @@ import java.util.HashMap;
         }
         System.err.println("ERROR (l" + line_num + "):: " + message);
     }
+
 
     protected void _WPAScriptCompilationWarning(String message, int line_num) {
         if (!_COMPILATION_ERROR_STATE_) {
@@ -108,8 +135,6 @@ import java.util.HashMap;
         System.err.println("ERROR (l" + line_num + "):: " + message);
         
         dumpGlobalMemory(System.err);
-
-        System.exit(0);
     }
 
     public static void main(String[] args) throws Exception {
@@ -266,7 +291,7 @@ atom returns [Object value]
         } else if ($BOOL.text.equalsIgnoreCase("false")) {
             $value = new Bool(false);
         } else {
-            _WPAScriptPanic("Token [" + $BOOL.text + "] must be equal to \"true\" or \"false\" (boolean type)");
+            _WPAScriptPanic("Token [" + $BOOL.text + "] must be equal to \"true\" or \"false\" (boolean type)", line_number);
         }
     }
     | LEFT_P expression RIGHT_P {
@@ -278,19 +303,45 @@ atom returns [Object value]
     | string_literal {
         $value = $string_literal.value;
     }
+    | dictionary {
+        $value = $dictionary.value;
+    }
     ;
 //atom returns [Object value]
 //    : NUM
 //    | BOOL
 //    | LEFT_P expression RIGHT_P
 //    | ID
-//    | string_literal;
+//    | string_literal
+//    | dictionary;
 
-string_literal returns [String value] : DQUOTE ID DQUOTE {
-        $value = $ID.text;
+string_literal returns [CharString value] : s=STRING_LITERAL {
+        $value = new CharString( $s.text.replaceAll("^\"", "").replaceAll("\"$", "") );
     };
 //string_literal: DQUOTE ID DQUOTE;
 
+dictionary returns [Dictionary value] :
+    LEFT_B dictionary_elements RIGHT_B {
+        HashMap vs = new HashMap();
+        int size = $dictionary_elements.keys_values.size();
+        if (size==0 || size%2!=0) {
+            _WPAScriptPanic("Dictionary must have a even number of elements!", line_number);
+        }
+        for (int k=0; k<size; k+=2) {
+            vs.put($dictionary_elements.keys_values.get(k), $dictionary_elements.keys_values.get(k+1));
+        }
+        $value = new Dictionary(this, vs);
+    };
+
+dictionary_elements returns [LinkedList<Object> keys_values] :
+    (e1=expression TP e2=expression) {
+        $keys_values = new LinkedList();
+        $keys_values.add($e1.expr);
+        $keys_values.add($e2.expr);
+    } (e1=expression TP e2=expression)* {
+        $keys_values.add($e1.expr);
+        $keys_values.add($e2.expr);
+    };
 
 NUM :   '0'..'9'+ ('.' '0'..'9'+)?;
 BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));
@@ -305,8 +356,16 @@ RIGHT_P: ')';
 MULT: '*';
 DIV: '/';
 PLUS: '+';
+STRING_LITERAL: '"' ID '"';
 MINUS: '-';
 LEFT_CB : '{'; // left curved bracket
 RIGHT_CB : '}'; // right curved bracket
-NEWLINE:'\n' ;
-WS  :   (' '|'\t'|'\r')+ {skip();} ;
+LEFT_B : '[';
+RIGHT_B: ']';
+NEWLINE:'\n';
+TP: ':';
+WS :   (' '|'\t'|'\r')+ { 
+if (skip_ws) {
+    skip();
+}  
+};

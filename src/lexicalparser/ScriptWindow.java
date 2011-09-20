@@ -13,8 +13,6 @@ package lexicalparser;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PipedInputStream;
@@ -24,7 +22,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -39,65 +36,121 @@ import org.antlr.runtime.Token;
  * @author LFabre
  */
 public class ScriptWindow extends javax.swing.JFrame {
-    BufferedReader reader;
+    BufferedReader reader_out;
+    BufferedReader reader_err;
     /** Creates new form TestFrame */
     public ScriptWindow() {
         initComponents();
-        _updateScriptPane();
+        setTitle("WPAScript Ver. 0.1 :: Editor Window");
             
-        PipedInputStream pIn = null;
-        PipedOutputStream pOut = new PipedOutputStream();
-        PrintStream my_stream = new PrintStream(pOut);
-        System.setOut(my_stream);
-        System.setErr(my_stream);
+        PipedInputStream pIn_out = null;
+        PipedInputStream pIn_err = null;
+        PipedOutputStream pOut_out = new PipedOutputStream();
+        PipedOutputStream pOut_err = new PipedOutputStream();
+        PrintStream my_stream_out = new PrintStream(pOut_out);
+        PrintStream my_stream_err = new PrintStream(pOut_err);
+        System.setOut(my_stream_out);
+        System.setErr(my_stream_err);
         try {
-            pIn = new PipedInputStream(pOut);
+            pIn_out = new PipedInputStream(pOut_out);
+            pIn_err = new PipedInputStream(pOut_err);
         } catch (IOException ex) {
             Logger.getLogger(ScriptWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
-        reader = new BufferedReader(new InputStreamReader(pIn));
+        reader_out = new BufferedReader(new InputStreamReader(pIn_out));
+        reader_err = new BufferedReader(new InputStreamReader(pIn_err));
         // Write to standard output and error and the log files
-            
+         
+        StyledDocument doc = jScriptPane.getStyledDocument();
+        _addStylesToScriptPaneDocument(doc);
+        doc = jMessagesPane.getStyledDocument();
+        _addStylesToMessagesPaneDocument(doc);
+        
+        _updateScriptPane();
         
         _start_deamon();
     }
     
     private void _start_deamon() {
-        Thread t = new Thread(deamon);
+        Thread t = new Thread(deamon_out);
         t.setDaemon(true);
         t.start();
+        Thread t2 = new Thread(deamon_err);
+        t2.setDaemon(true);
+        t2.start();
     }
     
     boolean CLOSING = false;
     
-    Runnable deamon = new Runnable() {
+    Runnable deamon_out = new Runnable() {
 
         @Override
         public void run() {
             while (!CLOSING) {
-                if (reader==null) {
-                    continue;
-                }
-                try {
-                    String line = reader.readLine();
-                    if(line != null) {
-                        jTextOutputArea.append(line + "\n");
+                if (reader_out!=null) {
+                    try {
+                        String line = reader_out.readLine();
+                        if(line != null) {
+                            StyledDocument doc = jMessagesPane.getStyledDocument();
+                            try {
+                                doc.insertString(doc.getLength(), line+"\n", doc.getStyle("regular"));
+                            } catch (BadLocationException ex) {
+                                //TODO
+                            }
+                        }
+                    } catch (IOException ex) {
+                        //NOTHING
                     }
-                } catch (IOException ex) {
-                    //NOTHING
                 }
             }
         }
     };
     
-    String prog = "if (a==b) {\na = b+1\n}\n";
+    Runnable deamon_err = new Runnable() {
+
+        @Override
+        public void run() {
+            while (!CLOSING) {
+                if (reader_err!=null) {
+                    try {
+                        String line = reader_err.readLine();
+                        if(line != null) {
+                            StyledDocument doc = jMessagesPane.getStyledDocument();
+                            try {
+                                doc.insertString(doc.getLength(), line+"\n", doc.getStyle("error"));
+                            } catch (BadLocationException ex) {
+                                //TODO
+                            }
+                        }
+                    } catch (IOException ex) {
+                        //NOTHING
+                    }
+                }
+            }
+        }
+    };
     
-    void _updateScriptPane() {
+    String prog = "a = [ \"value\" : 1.2 ]";
+    
+    /*String prog = "a = 1 + 3.4\n"
+                       //+ "b=a / 1.9+3\n"
+                       + "b = newMeasurementSet(a, a)\n"
+                       //+ "b=a\n"
+                       + "c = true\n"
+                       + "c = false\n"
+                       + "if (c) {\n"
+                       + "    if_var = 1\n"
+                       + "} else {\n"
+                       + "    else_var = \"my_string\"\n"
+                       + "}\n";*/
+    
+    private void _updateScriptPane() {
         int cp = jScriptPane.getCaretPosition();
         
         jScriptPane.setText("");
         
         GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(prog));
+        lex.skip_ws = false;
         CommonTokenStream tokens = new CommonTokenStream(lex);
         
         LinkedList<String> initStyles = new LinkedList();
@@ -107,18 +160,13 @@ public class ScriptWindow extends javax.swing.JFrame {
         for (Object t : lt) {
             int type = ((Token)t).getType();
             String text = ((Token)t).getText();
-            String style = "regular";
-            if (type==9 || type==12) {
-                style = "bold";
-            }
+            String style = _getStyle(type);
             initStyles.add(style);
             initString.add(text);
         }
         
-
         StyledDocument doc = jScriptPane.getStyledDocument();
-        addStylesToDocument(doc);
-
+        
         try {
             for (int i=0; i < initString.size(); i++) {
                 doc.insertString(doc.getLength(), initString.get(i),
@@ -135,28 +183,123 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
     }
     
-        protected void addStylesToDocument(StyledDocument doc) {
+    private String _getStyle(int token_type) {
+        String style = "regular";
+        switch (token_type) {
+            case GrammarLexer.ID :
+                style = "word";
+                break;            
+            case GrammarLexer.NUM :
+                style = "number";
+                break;
+            case GrammarLexer.STRING_LITERAL:
+                style = "string_literal";
+                break;
+            case GrammarLexer.BOOL :
+                style = "bool";
+                break;
+            case GrammarLexer.IF ://FALL-THROUGH
+            case GrammarLexer.ELSE :
+                style = "if_else";
+                break;
+            
+            case GrammarLexer.MINUS ://FALL-THROUGH
+            case GrammarLexer.MULT :
+            case GrammarLexer.PLUS :
+            case GrammarLexer.DIV :
+                style = "operator";
+                break;
+            case GrammarLexer.LEFT_B ://FALL-THROUGH
+            case GrammarLexer.RIGHT_B :
+            case GrammarLexer.LEFT_CB :
+            case GrammarLexer.RIGHT_CB :
+            case GrammarLexer.LEFT_P :
+            case GrammarLexer.RIGHT_P :
+            case GrammarLexer.COMMA :
+            case GrammarLexer.EQUAL :
+            case GrammarLexer.TP:
+            case GrammarLexer.DQUOTE :
+                style = "punctuation";
+                break;
+            case GrammarLexer.NEWLINE ://FALL-THROUGH
+            case GrammarLexer.EOF :
+            case GrammarLexer.WS :
+                style = "regular";
+                break;
+            default:
+                style = "unknown";
+                break;
+        }
+        return style;
+    }
+    
+    private static final int font_size_script = 16; 
+    
+    private void _addStylesToScriptPaneDocument(StyledDocument doc) {
         //Initialize some styles.
         Style def = StyleContext.getDefaultStyleContext().
                         getStyle(StyleContext.DEFAULT_STYLE);
 
         Style regular = doc.addStyle("regular", def);
         StyleConstants.setFontFamily(def, "SansSerif");
-
-        Style s = doc.addStyle("italic", regular);
-        StyleConstants.setItalic(s, true);
-
-        s = doc.addStyle("bold", regular);
-        StyleConstants.setBold(s, true);
-        StyleConstants.setForeground(s, Color.red);
-        StyleConstants.setUnderline(s, true);
+        StyleConstants.setFontSize(def, font_size_script);
         
-        s = doc.addStyle("small", regular);
-        StyleConstants.setFontSize(s, 10);
+        Style bool = doc.addStyle("bool", regular);
+        StyleConstants.setForeground(bool, Color.blue);
+        
+        Style word = doc.addStyle("word", regular);
+        StyleConstants.setBold(word, true);
+        StyleConstants.setItalic(word, true);
+        
+        Style number = doc.addStyle("number", regular);
+        StyleConstants.setItalic(number, true);
+        StyleConstants.setForeground(number, Color.magenta);
+        
+        Style if_else = doc.addStyle("if_else", regular);
+        StyleConstants.setForeground(if_else, Color.red);
+        
+        Style operator = doc.addStyle("operator", regular);
+        StyleConstants.setBold(operator, true);
+        
+        Style punctuation = doc.addStyle("punctuation", operator);
+        StyleConstants.setForeground(punctuation, Color.gray);
+        
+        Style string_literal = doc.addStyle("string_literal", operator);
+        StyleConstants.setForeground(string_literal, Color.orange);
+        StyleConstants.setItalic(string_literal, true);
+        
+        Style unknown = doc.addStyle("unknown", regular);
+        StyleConstants.setItalic(unknown, true);
+        StyleConstants.setForeground(unknown, Color.red);
+        StyleConstants.setStrikeThrough(unknown, true);
+        //"bool"
+        //"word"
+        //"number"
+        //"if_else"
+        //"regular"
+        //"operator"
+        //"punctuation"
+        //"unknown"
 
-        s = doc.addStyle("large", regular);
-        StyleConstants.setFontSize(s, 16);
+    }
+    
+    private final int font_size_messages = 10;
+    
+    private void _addStylesToMessagesPaneDocument(StyledDocument doc) {
+        Style def = StyleContext.getDefaultStyleContext().
+                        getStyle(StyleContext.DEFAULT_STYLE);
 
+        Style regular = doc.addStyle("regular", def);
+        StyleConstants.setFontFamily(def, "SansSerif");
+        StyleConstants.setForeground(regular, Color.gray);
+        StyleConstants.setFontSize(def, font_size_messages);
+        
+        Style error = doc.addStyle("error", regular);
+        StyleConstants.setForeground(error, Color.red);
+        StyleConstants.setBold(error, true);
+        
+        //"regular"
+        //"error"
     }
 
     /** This method is called from within the constructor to
@@ -171,8 +314,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         jScrollPaneScript = new javax.swing.JScrollPane();
         jScriptPane = new javax.swing.JTextPane();
         jButtonExecute = new javax.swing.JButton();
-        jScrollPaneOutput = new javax.swing.JScrollPane();
-        jTextOutputArea = new javax.swing.JTextArea();
+        jScrollPaneMessages = new javax.swing.JScrollPane();
+        jMessagesPane = new javax.swing.JTextPane();
+        jButtonCompilation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -195,10 +339,14 @@ public class ScriptWindow extends javax.swing.JFrame {
             }
         });
 
-        jTextOutputArea.setColumns(20);
-        jTextOutputArea.setEditable(false);
-        jTextOutputArea.setRows(5);
-        jScrollPaneOutput.setViewportView(jTextOutputArea);
+        jScrollPaneMessages.setViewportView(jMessagesPane);
+
+        jButtonCompilation.setText("COMPILE");
+        jButtonCompilation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCompilationActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,11 +355,13 @@ public class ScriptWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneScript, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPaneOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneScript, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPaneMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonExecute)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCompilation, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(jButtonExecute, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -222,24 +372,31 @@ public class ScriptWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonExecute)
-                        .addGap(207, 207, 207))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPaneOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jButtonCompilation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonExecute))
+                    .addComponent(jScrollPaneMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    ExecutableScript script;
+    
     private void jButtonExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExecuteActionPerformed
         prog = jScriptPane.getText();
-        jTextOutputArea.setText("");
-        LexicalParser.executeProgram(prog);
+        jMessagesPane.setText("");
+        if (script!=null) {
+            script.execute();
+            script.dumpGlobalMemory();
+        } else {
+            System.err.println("No valid script to execute!");
+        }
     }//GEN-LAST:event_jButtonExecuteActionPerformed
 
     private void jScriptPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jScriptPaneKeyTyped
-        if (evt.getKeyCode() == KeyEvent.VK_SPACE || evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (true){//evt.getKeyCode() == KeyEvent.VK_SPACE || evt.getKeyCode() == KeyEvent.VK_ENTER) {
             prog = jScriptPane.getText(); 
             _updateScriptPane();
         }
@@ -248,6 +405,19 @@ public class ScriptWindow extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         CLOSING = true;
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButtonCompilationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilationActionPerformed
+        prog = jScriptPane.getText();
+        jMessagesPane.setText("");
+        script = null;
+        try {
+            script = new ExecutableScript(prog);
+            script.printTree();
+            script.dumpCommands();
+        } catch (CompilationErrorException cee) {
+            //NOTHING
+        }
+    }//GEN-LAST:event_jButtonCompilationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,20 +445,21 @@ public class ScriptWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-
+            @Override
             public void run() {
                 new ScriptWindow().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCompilation;
     private javax.swing.JButton jButtonExecute;
+    private javax.swing.JTextPane jMessagesPane;
     private javax.swing.JTextPane jScriptPane;
-    private javax.swing.JScrollPane jScrollPaneOutput;
+    private javax.swing.JScrollPane jScrollPaneMessages;
     private javax.swing.JScrollPane jScrollPaneScript;
-    private javax.swing.JTextArea jTextOutputArea;
     // End of variables declaration//GEN-END:variables
 }

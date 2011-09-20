@@ -39,17 +39,13 @@ public class IfExpression extends Calculable {
         if (!(cond instanceof Bool)) {
             interpreter._WPAScriptRuntimeError("Condition must be an instance of BOOL [" + cond.getClass() + "]", line_number);
         }
-        if ((Boolean)((Bool)cond).eval()) {
+        if ((Boolean)((Bool)cond).getNativeValue()) {
             if (calculation_if!=null) {
                 calculation_if.eval();
-            } else {
-                System.err.println("Nothing in IF block");
             }
         } else {
             if (calculation_else!=null) {
                 calculation_else.eval();
-            } else {
-                System.err.println("Nothing in ELSE block");
             }
         }
         return null;

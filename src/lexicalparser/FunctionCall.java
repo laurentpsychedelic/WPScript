@@ -29,18 +29,12 @@ public class FunctionCall extends Calculable {
             Class [] types = new Class[name_params.size()-1];
             for (int k=1; k<name_params.size(); k++) {
                 Object par_val = ((Calculable) name_params.get(k)).eval();
-                if (par_val instanceof Double) {
-                    par_val = new Numeric((Double) par_val);
-                }
                 Class cl = par_val.getClass();
                 types[k-1] = cl;
             }
             LinkedList<Object> params_values = new LinkedList();
             for (int k=1; k<name_params.size(); k++) {
                 Object par_val = ((Calculable) name_params.get(k)).eval();
-                if (par_val instanceof Double) {
-                    par_val = new Numeric((Double) par_val);
-                }
                 params_values.add( par_val );
             }
 
@@ -50,7 +44,7 @@ public class FunctionCall extends Calculable {
         } catch (NoSuchMethodException ex) {
             failed = true;
         } catch (SecurityException ex) {
-            interpreter._WPAScriptPanic("FUNC_CALL>> Security Exception!");
+            interpreter._WPAScriptPanic("FUNC_CALL>> Security Exception!", line_number);
             failed = true;
         }
         catch (IllegalAccessException ex) {
@@ -74,33 +68,30 @@ public class FunctionCall extends Calculable {
     public String toString() {
         return "Function call [" + name_params.get(0) + "] " + ((Object) this).hashCode();
     }
+    
+    private Method [] methods = BuiltInFunctionsInterface.class.getMethods();
 
     @Override
     public void compilationCheck() {
-        /*boolean failed = false;
-        try {
-            String name = (String) (name_params.get(0));
-            Class [] types = new Class[name_params.size()-1];
-            for (int k=1; k<name_params.size(); k++) {
-                Class cl = name_params.get(k).getClass();
-                types[k-1] = cl;
-            }
-            //java.lang.String
-            Method method = BuiltInFunctionsInterface.class.getMethod(name, types);
-            if (method == null) {
-                failed = true;
-            }
-
-        } catch (NoSuchMethodException ex) {
-            failed = true;
-        } catch (SecurityException ex) {
-            interpreter._WPAScriptPanic("FUNC_CALL>> Security Exception!");
-            failed = true;
+        boolean not_found = true;
+        if (name_params==null || name_params.get(0)== null) {
+            interpreter._WPAScriptPanic("FUNCTION_CALL:: Name or parameters not correctly defined!", line_number);
         }
-
-        if (failed) {
-            interpreter._WPAScriptCompilationError("FUNC_CALL>> No such function [" + name_params.get(0) + "]");
-        }*/
-        interpreter._WPAScriptCompilationWarning("cannot check function existence with current language version!", line_number);
+        String name = "";
+        name = ((String)name_params.get(0));
+        if (methods != null) {
+            for (Method method : methods) {
+                if (method == null) {
+                    continue;
+                }
+                if (name.equals(method.getName())) {
+                    not_found = false;
+                    break;
+                }
+            }        
+        }
+        if (not_found) {
+            interpreter._WPAScriptCompilationError("Function [" + name + "] not found!", line_number);
+        }
     }
 }

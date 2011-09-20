@@ -11,6 +11,6 @@ package lexicalparser;
  */
 public class BuiltInFunctionsInterface {
     public static MeasurementSet newMeasurementSet(Numeric W, Numeric H) {
-      return new MeasurementSet( (int) Math.round((Double)W.eval()),  (int) Math.round((Double)H.eval()));
+      return new MeasurementSet( (int) Math.round((Double)W.getNativeValue()),  (int) Math.round((Double)H.getNativeValue()));
     }
 }

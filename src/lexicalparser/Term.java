@@ -14,9 +14,17 @@ import java.util.LinkedList;
 public class Term extends Calculable {
     LinkedList<Object> elements;
     public Term(GrammarParser _interpreter, LinkedList<Object> _elements) {
+        _init(_interpreter, _elements);
+        line_number = interpreter.line_number;
+    }
+    public Term(GrammarParser _interpreter, int _line_number, LinkedList<Object> _elements) {
+        _init(_interpreter, _elements);
+        line_number = _line_number;
+    }
+    
+    private void _init(GrammarParser _interpreter, LinkedList<Object> _elements) {
         elements = _elements;
         interpreter = _interpreter;
-        line_number = interpreter.line_number;
     }
 
     private Numeric _doOperation(Object ele1, Operator operator, Object ele2) {
@@ -69,9 +77,7 @@ public class Term extends Calculable {
             Object ele = elements.get(0);
             if (ele instanceof Calculable) {
                 ele = ((Calculable) ele).eval();
-            } else if (ele instanceof String) {
-                
-            } else {
+            } else if (!(ele instanceof BuiltInType)) {
                 interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "]", line_number);
             }
             val = ele;
@@ -155,5 +161,32 @@ public class Term extends Calculable {
         } catch (ClassCastException e) {
             interpreter._WPAScriptPanic(e.getMessage(), line_number);
         }
+    }
+
+    @Override
+    public Calculable getSimplifiedCalculable() {
+        if (elements.size()==1) {
+            if (elements.get(0) instanceof Calculable) {
+                return ((Calculable) elements.get(0)).getSimplifiedCalculable();
+            }
+        }
+        LinkedList<Object> new_elements = new LinkedList();
+        Object ele = elements.get(0);
+        if (ele instanceof Calculable) {
+            new_elements.add(((Calculable)ele).getSimplifiedCalculable());
+        } else {
+            interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "]", line_number);
+        }
+        for (int k=1; k<elements.size(); k+=2) {
+            Operator operator = (Operator) (elements.get(k));
+            new_elements.add(operator);
+            Object ele2 = elements.get(k+1);
+            if  (ele2 instanceof Calculable) {
+                new_elements.add(((Calculable)ele2).getSimplifiedCalculable());
+            } else {
+                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]", line_number);
+            }
+        }
+        return new Term(interpreter, line_number, new_elements);
     }
 }

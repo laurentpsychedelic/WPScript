@@ -39,4 +39,9 @@ public class Variable extends Calculable {
         return val;
     }
 
+    @Override
+    public Calculable getSimplifiedCalculable() {
+        return this;
+    }
+
 }

@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g 2011-09-20 16:06:21
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-21 13:52:18
 
 package lexicalparser;
 
@@ -68,7 +68,7 @@ public class GrammarParser extends Parser {
     }
 
     public String[] getTokenNames() { return GrammarParser.tokenNames; }
-    public String getGrammarFileName() { return "D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g"; }
+    public String getGrammarFileName() { return "/home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g"; }
 
 
 
@@ -108,6 +108,19 @@ public class GrammarParser extends Parser {
             for (Object o : commands) {
                 System.out.println("COMMAND->" + o);
             }
+        }
+
+        public void treeRefactoring() {
+            LinkedList <Expression> new_commands = new LinkedList();
+            System.out.println("\nTREE REFACTORING");
+            for (Object o : commands) {
+                if (!(o instanceof Expression)) {
+                    _WPAScriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
+                }
+                new_commands.add( (Expression) ((Expression) o).getSimplifiedCalculable() );
+            }
+            commands = new_commands;
+            System.out.println("\nTREE REFACTORING OVER");
         }
 
         public boolean compilationCheck() {
@@ -200,7 +213,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "prog"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:155:1: prog : s= stats ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:168:1: prog : s= stats ;
     public final GrammarParser.prog_return prog() throws RecognitionException {
         GrammarParser.prog_return retval = new GrammarParser.prog_return();
         retval.start = input.LT(1);
@@ -213,8 +226,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:155:6: (s= stats )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:156:5: s= stats
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:168:6: (s= stats )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:169:5: s= stats
             {
             root_0 = (Object)adaptor.nil();
 
@@ -261,7 +274,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "block"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:163:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:176:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
     public final GrammarParser.block_return block() throws RecognitionException {
         GrammarParser.block_return retval = new GrammarParser.block_return();
         retval.start = input.LT(1);
@@ -282,8 +295,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:163:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:164:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:176:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:177:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
@@ -292,12 +305,12 @@ public class GrammarParser extends Parser {
             LEFT_CB1_tree = (Object)adaptor.create(LEFT_CB1);
             adaptor.addChild(root_0, LEFT_CB1_tree);
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:164:13: ( NEWLINE )?
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:177:13: ( NEWLINE )?
             int alt1=2;
             alt1 = dfa1.predict(input);
             switch (alt1) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                     {
                     NEWLINE2=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_block109); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -316,7 +329,7 @@ public class GrammarParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, stats3.getTree());
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:164:28: ( NEWLINE )?
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:177:28: ( NEWLINE )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -325,7 +338,7 @@ public class GrammarParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                     {
                     NEWLINE4=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_block114); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -377,7 +390,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "stats"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:168:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:181:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
     public final GrammarParser.stats_return stats() throws RecognitionException {
         GrammarParser.stats_return retval = new GrammarParser.stats_return();
         retval.start = input.LT(1);
@@ -390,8 +403,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:168:51: (s= stat (s= stat )* )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:169:5: s= stat (s= stat )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:181:51: (s= stat (s= stat )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:182:5: s= stat (s= stat )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -409,7 +422,7 @@ public class GrammarParser extends Parser {
                       }
                   
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:174:7: (s= stat )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:187:7: (s= stat )*
             loop3:
             do {
                 int alt3=2;
@@ -431,7 +444,7 @@ public class GrammarParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:174:8: s= stat
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:187:8: s= stat
             	    {
             	    pushFollow(FOLLOW_stat_in_stats143);
             	    s=stat();
@@ -484,7 +497,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "stat"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:181:1: stat returns [Expression expr] : ( expression NEWLINE | ID EQUAL expression NEWLINE | NEWLINE | block | if_expression );
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:194:1: stat returns [Expression expr] : ( expression NEWLINE | ID EQUAL expression NEWLINE | NEWLINE | block | if_expression );
     public final GrammarParser.stat_return stat() throws RecognitionException {
         GrammarParser.stat_return retval = new GrammarParser.stat_return();
         retval.start = input.LT(1);
@@ -513,12 +526,12 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:182:5: ( expression NEWLINE | ID EQUAL expression NEWLINE | NEWLINE | block | if_expression )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:195:5: ( expression NEWLINE | ID EQUAL expression NEWLINE | NEWLINE | block | if_expression )
             int alt4=5;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:182:7: expression NEWLINE
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:195:7: expression NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -543,7 +556,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:186:7: ID EQUAL expression NEWLINE
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:199:7: ID EQUAL expression NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -578,7 +591,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:190:7: NEWLINE
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:203:7: NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -596,7 +609,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:193:7: block
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:206:7: block
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -615,7 +628,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:196:7: if_expression
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:209:7: if_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -661,7 +674,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "if_expression"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:201:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:214:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
     public final GrammarParser.if_expression_return if_expression() throws RecognitionException {
         GrammarParser.if_expression_return retval = new GrammarParser.if_expression_return();
         retval.start = input.LT(1);
@@ -674,8 +687,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:202:5: (p= pre_if_expression )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:202:7: p= pre_if_expression
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:215:5: (p= pre_if_expression )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:215:7: p= pre_if_expression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -731,7 +744,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "pre_if_expression"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:218:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:231:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
     public final GrammarParser.pre_if_expression_return pre_if_expression() throws RecognitionException {
         GrammarParser.pre_if_expression_return retval = new GrammarParser.pre_if_expression_return();
         retval.start = input.LT(1);
@@ -760,8 +773,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:219:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:219:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:232:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:232:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
             {
             root_0 = (Object)adaptor.nil();
 
@@ -786,12 +799,12 @@ public class GrammarParser extends Parser {
             RIGHT_P17_tree = (Object)adaptor.create(RIGHT_P17);
             adaptor.addChild(root_0, RIGHT_P17_tree);
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:219:38: ( NEWLINE )?
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:232:38: ( NEWLINE )?
             int alt5=2;
             alt5 = dfa5.predict(input);
             switch (alt5) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                     {
                     NEWLINE18=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression270); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -817,7 +830,7 @@ public class GrammarParser extends Parser {
                       retval.exprs.add( (s!=null?s.expr:null) );
                   
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:7: ( NEWLINE )?
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:7: ( NEWLINE )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -830,7 +843,7 @@ public class GrammarParser extends Parser {
             }
             switch (alt6) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                     {
                     NEWLINE19=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression279); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -843,7 +856,7 @@ public class GrammarParser extends Parser {
 
             }
 
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:16: ( ELSE ( NEWLINE )? s= stat )?
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:16: ( ELSE ( NEWLINE )? s= stat )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -856,19 +869,19 @@ public class GrammarParser extends Parser {
             }
             switch (alt8) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:17: ELSE ( NEWLINE )? s= stat
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:17: ELSE ( NEWLINE )? s= stat
                     {
                     ELSE20=(Token)match(input,ELSE,FOLLOW_ELSE_in_pre_if_expression283); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     ELSE20_tree = (Object)adaptor.create(ELSE20);
                     adaptor.addChild(root_0, ELSE20_tree);
                     }
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:22: ( NEWLINE )?
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:22: ( NEWLINE )?
                     int alt7=2;
                     alt7 = dfa7.predict(input);
                     switch (alt7) {
                         case 1 :
-                            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                             {
                             NEWLINE21=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression285); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -927,7 +940,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:227:1: expression returns [Expression expr] : ( terms | function_call );
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:240:1: expression returns [Expression expr] : ( terms | function_call );
     public final GrammarParser.expression_return expression() throws RecognitionException {
         GrammarParser.expression_return retval = new GrammarParser.expression_return();
         retval.start = input.LT(1);
@@ -942,7 +955,7 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:228:5: ( terms | function_call )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:241:5: ( terms | function_call )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -975,7 +988,7 @@ public class GrammarParser extends Parser {
             }
             switch (alt9) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:228:7: terms
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:241:7: terms
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -994,7 +1007,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:231:7: function_call
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:244:7: function_call
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1040,7 +1053,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "terms"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:235:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term )* ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:248:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term )* ;
     public final GrammarParser.terms_return terms() throws RecognitionException {
         GrammarParser.terms_return retval = new GrammarParser.terms_return();
         retval.start = input.LT(1);
@@ -1057,8 +1070,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:236:5: (t= term ( PLUS t= term | MINUS t= term )* )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:236:7: t= term ( PLUS t= term | MINUS t= term )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:249:5: (t= term ( PLUS t= term | MINUS t= term )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:249:7: t= term ( PLUS t= term | MINUS t= term )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1074,7 +1087,7 @@ public class GrammarParser extends Parser {
                       retval.terms.add( new Term(this, (t!=null?t.atoms:null)) );
                   
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:239:7: ( PLUS t= term | MINUS t= term )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:252:7: ( PLUS t= term | MINUS t= term )*
             loop10:
             do {
                 int alt10=3;
@@ -1090,7 +1103,7 @@ public class GrammarParser extends Parser {
 
                 switch (alt10) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:239:9: PLUS t= term
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:252:9: PLUS t= term
             	    {
             	    PLUS24=(Token)match(input,PLUS,FOLLOW_PLUS_in_terms346); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1113,7 +1126,7 @@ public class GrammarParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:243:9: MINUS t= term
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:256:9: MINUS t= term
             	    {
             	    MINUS25=(Token)match(input,MINUS,FOLLOW_MINUS_in_terms362); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1170,7 +1183,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "term"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:249:1: term returns [LinkedList<Object> atoms] : a= atom ( MULT a= atom | DIV a= atom )* ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:262:1: term returns [LinkedList<Object> atoms] : a= atom ( MULT a= atom | DIV a= atom )* ;
     public final GrammarParser.term_return term() throws RecognitionException {
         GrammarParser.term_return retval = new GrammarParser.term_return();
         retval.start = input.LT(1);
@@ -1187,8 +1200,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:250:5: (a= atom ( MULT a= atom | DIV a= atom )* )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:250:7: a= atom ( MULT a= atom | DIV a= atom )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:263:5: (a= atom ( MULT a= atom | DIV a= atom )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:263:7: a= atom ( MULT a= atom | DIV a= atom )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1204,7 +1217,7 @@ public class GrammarParser extends Parser {
                       retval.atoms.add((a!=null?a.value:null));
                   
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:253:7: ( MULT a= atom | DIV a= atom )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:266:7: ( MULT a= atom | DIV a= atom )*
             loop11:
             do {
                 int alt11=3;
@@ -1220,7 +1233,7 @@ public class GrammarParser extends Parser {
 
                 switch (alt11) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:253:9: MULT a= atom
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:266:9: MULT a= atom
             	    {
             	    MULT26=(Token)match(input,MULT,FOLLOW_MULT_in_term396); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1243,7 +1256,7 @@ public class GrammarParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:257:9: DIV a= atom
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:270:9: DIV a= atom
             	    {
             	    DIV27=(Token)match(input,DIV,FOLLOW_DIV_in_term412); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1300,7 +1313,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "function_call"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:264:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P args RIGHT_P ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:277:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P args RIGHT_P ;
     public final GrammarParser.function_call_return function_call() throws RecognitionException {
         GrammarParser.function_call_return retval = new GrammarParser.function_call_return();
         retval.start = input.LT(1);
@@ -1319,8 +1332,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:264:55: ( ID LEFT_P args RIGHT_P )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:265:5: ID LEFT_P args RIGHT_P
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:277:55: ( ID LEFT_P args RIGHT_P )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:278:5: ID LEFT_P args RIGHT_P
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1380,7 +1393,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "args"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:271:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:284:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
     public final GrammarParser.args_return args() throws RecognitionException {
         GrammarParser.args_return retval = new GrammarParser.args_return();
         retval.start = input.LT(1);
@@ -1397,8 +1410,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:271:41: (a= expression ( COMMA b= args )* )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:272:5: a= expression ( COMMA b= args )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:284:41: (a= expression ( COMMA b= args )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:285:5: a= expression ( COMMA b= args )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1414,7 +1427,7 @@ public class GrammarParser extends Parser {
                       retval.params.add((a!=null?a.expr:null));
                   
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:275:7: ( COMMA b= args )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:288:7: ( COMMA b= args )*
             loop12:
             do {
                 int alt12=2;
@@ -1433,7 +1446,7 @@ public class GrammarParser extends Parser {
 
                 switch (alt12) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:275:8: COMMA b= args
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:288:8: COMMA b= args
             	    {
             	    COMMA32=(Token)match(input,COMMA,FOLLOW_COMMA_in_args472); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1492,7 +1505,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:284:1: atom returns [Object value] : ( NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary );
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:297:1: atom returns [Object value] : ( NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary );
     public final GrammarParser.atom_return atom() throws RecognitionException {
         GrammarParser.atom_return retval = new GrammarParser.atom_return();
         retval.start = input.LT(1);
@@ -1519,7 +1532,7 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:285:5: ( NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:298:5: ( NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary )
             int alt13=6;
             switch ( input.LA(1) ) {
             case NUM:
@@ -1562,7 +1575,7 @@ public class GrammarParser extends Parser {
 
             switch (alt13) {
                 case 1 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:285:7: NUM
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:298:7: NUM
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1580,7 +1593,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:288:7: BOOL
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:301:7: BOOL
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1604,7 +1617,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:297:7: LEFT_P expression RIGHT_P
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:310:7: LEFT_P expression RIGHT_P
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1633,7 +1646,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:300:7: ID
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:313:7: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1651,7 +1664,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:303:7: string_literal
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:316:7: string_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1670,7 +1683,7 @@ public class GrammarParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:306:7: dictionary
+                    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:319:7: dictionary
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1716,7 +1729,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "string_literal"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:318:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:331:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
     public final GrammarParser.string_literal_return string_literal() throws RecognitionException {
         GrammarParser.string_literal_return retval = new GrammarParser.string_literal_return();
         retval.start = input.LT(1);
@@ -1729,8 +1742,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:318:43: (s= STRING_LITERAL )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:318:45: s= STRING_LITERAL
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:331:43: (s= STRING_LITERAL )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:331:45: s= STRING_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1773,7 +1786,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "dictionary"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:323:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:336:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
     public final GrammarParser.dictionary_return dictionary() throws RecognitionException {
         GrammarParser.dictionary_return retval = new GrammarParser.dictionary_return();
         retval.start = input.LT(1);
@@ -1790,8 +1803,8 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:323:39: ( LEFT_CB dictionary_elements RIGHT_CB )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:324:5: LEFT_CB dictionary_elements RIGHT_CB
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:336:39: ( LEFT_CB dictionary_elements RIGHT_CB )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:337:5: LEFT_CB dictionary_elements RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1853,7 +1866,7 @@ public class GrammarParser extends Parser {
     };
 
     // $ANTLR start "dictionary_elements"
-    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:336:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:349:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
     public final GrammarParser.dictionary_elements_return dictionary_elements() throws RecognitionException {
         GrammarParser.dictionary_elements_return retval = new GrammarParser.dictionary_elements_return();
         retval.start = input.LT(1);
@@ -1878,13 +1891,13 @@ public class GrammarParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:336:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:337:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:349:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:350:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
             {
             root_0 = (Object)adaptor.nil();
 
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:337:5: (e1= expression TP e2= expression )
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:337:6: e1= expression TP e2= expression
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:350:5: (e1= expression TP e2= expression )
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:350:6: e1= expression TP e2= expression
             {
             pushFollow(FOLLOW_expression_in_dictionary_elements625);
             e1=expression();
@@ -1913,7 +1926,7 @@ public class GrammarParser extends Parser {
                       retval.keys_values.add((e2!=null?e2.expr:null));
                   
             }
-            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
             loop16:
             do {
                 int alt16=2;
@@ -1941,9 +1954,9 @@ public class GrammarParser extends Parser {
 
                 switch (alt16) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
             	    {
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:8: ( NEWLINE )?
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:8: ( NEWLINE )?
             	    int alt14=2;
             	    int LA14_0 = input.LA(1);
 
@@ -1952,7 +1965,7 @@ public class GrammarParser extends Parser {
             	    }
             	    switch (alt14) {
             	        case 1 :
-            	            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+            	            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
             	            {
             	            NEWLINE45=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements637); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -1970,7 +1983,7 @@ public class GrammarParser extends Parser {
             	    COMMA46_tree = (Object)adaptor.create(COMMA46);
             	    adaptor.addChild(root_0, COMMA46_tree);
             	    }
-            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:23: ( NEWLINE )?
+            	    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:23: ( NEWLINE )?
             	    int alt15=2;
             	    int LA15_0 = input.LA(1);
 
@@ -1979,7 +1992,7 @@ public class GrammarParser extends Parser {
             	    }
             	    switch (alt15) {
             	        case 1 :
-            	            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+            	            // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
             	            {
             	            NEWLINE47=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements642); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -2041,8 +2054,8 @@ public class GrammarParser extends Parser {
 
     // $ANTLR start synpred1_Grammar
     public final void synpred1_Grammar_fragment() throws RecognitionException {   
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:164:13: ( NEWLINE )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:164:13: NEWLINE
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:177:13: ( NEWLINE )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:177:13: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred1_Grammar109); if (state.failed) return ;
 
@@ -2055,8 +2068,8 @@ public class GrammarParser extends Parser {
         GrammarParser.stat_return s = null;
 
 
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:174:8: (s= stat )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:174:8: s= stat
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:187:8: (s= stat )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:187:8: s= stat
         {
         pushFollow(FOLLOW_stat_in_synpred3_Grammar143);
         s=stat();
@@ -2070,8 +2083,8 @@ public class GrammarParser extends Parser {
 
     // $ANTLR start synpred4_Grammar
     public final void synpred4_Grammar_fragment() throws RecognitionException {   
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:182:7: ( expression NEWLINE )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:182:7: expression NEWLINE
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:195:7: ( expression NEWLINE )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:195:7: expression NEWLINE
         {
         pushFollow(FOLLOW_expression_in_synpred4_Grammar168);
         expression();
@@ -2086,8 +2099,8 @@ public class GrammarParser extends Parser {
 
     // $ANTLR start synpred5_Grammar
     public final void synpred5_Grammar_fragment() throws RecognitionException {   
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:186:7: ( ID EQUAL expression NEWLINE )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:186:7: ID EQUAL expression NEWLINE
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:199:7: ( ID EQUAL expression NEWLINE )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:199:7: ID EQUAL expression NEWLINE
         {
         match(input,ID,FOLLOW_ID_in_synpred5_Grammar180); if (state.failed) return ;
         match(input,EQUAL,FOLLOW_EQUAL_in_synpred5_Grammar182); if (state.failed) return ;
@@ -2104,8 +2117,8 @@ public class GrammarParser extends Parser {
 
     // $ANTLR start synpred7_Grammar
     public final void synpred7_Grammar_fragment() throws RecognitionException {   
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:193:7: ( block )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:193:7: block
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:206:7: ( block )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:206:7: block
         {
         pushFollow(FOLLOW_block_in_synpred7_Grammar206);
         block();
@@ -2119,8 +2132,8 @@ public class GrammarParser extends Parser {
 
     // $ANTLR start synpred8_Grammar
     public final void synpred8_Grammar_fragment() throws RecognitionException {   
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:219:38: ( NEWLINE )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:219:38: NEWLINE
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:232:38: ( NEWLINE )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:232:38: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred8_Grammar270); if (state.failed) return ;
 
@@ -2130,8 +2143,8 @@ public class GrammarParser extends Parser {
 
     // $ANTLR start synpred9_Grammar
     public final void synpred9_Grammar_fragment() throws RecognitionException {   
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:7: ( NEWLINE )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:7: NEWLINE
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:7: ( NEWLINE )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:7: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred9_Grammar279); if (state.failed) return ;
 
@@ -2141,8 +2154,8 @@ public class GrammarParser extends Parser {
 
     // $ANTLR start synpred10_Grammar
     public final void synpred10_Grammar_fragment() throws RecognitionException {   
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:22: ( NEWLINE )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:22: NEWLINE
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:22: ( NEWLINE )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:22: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred10_Grammar285); if (state.failed) return ;
 
@@ -2155,11 +2168,11 @@ public class GrammarParser extends Parser {
         GrammarParser.stat_return s = null;
 
 
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:17: ( ELSE ( NEWLINE )? s= stat )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:17: ELSE ( NEWLINE )? s= stat
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:17: ( ELSE ( NEWLINE )? s= stat )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:17: ELSE ( NEWLINE )? s= stat
         {
         match(input,ELSE,FOLLOW_ELSE_in_synpred11_Grammar283); if (state.failed) return ;
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:223:22: ( NEWLINE )?
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:236:22: ( NEWLINE )?
         int alt17=2;
         int LA17_0 = input.LA(1);
 
@@ -2172,7 +2185,7 @@ public class GrammarParser extends Parser {
         }
         switch (alt17) {
             case 1 :
-                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                 {
                 match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred11_Grammar285); if (state.failed) return ;
 
@@ -2196,8 +2209,8 @@ public class GrammarParser extends Parser {
         GrammarParser.args_return b = null;
 
 
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:275:8: ( COMMA b= args )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:275:8: COMMA b= args
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:288:8: ( COMMA b= args )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:288:8: COMMA b= args
         {
         match(input,COMMA,FOLLOW_COMMA_in_synpred17_Grammar472); if (state.failed) return ;
         pushFollow(FOLLOW_args_in_synpred17_Grammar476);
@@ -2215,10 +2228,10 @@ public class GrammarParser extends Parser {
         GrammarParser.dictionary_elements_return d = null;
 
 
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
         {
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:8: ( NEWLINE )?
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:8: ( NEWLINE )?
         int alt18=2;
         int LA18_0 = input.LA(1);
 
@@ -2227,7 +2240,7 @@ public class GrammarParser extends Parser {
         }
         switch (alt18) {
             case 1 :
-                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                 {
                 match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred25_Grammar637); if (state.failed) return ;
 
@@ -2237,7 +2250,7 @@ public class GrammarParser extends Parser {
         }
 
         match(input,COMMA,FOLLOW_COMMA_in_synpred25_Grammar640); if (state.failed) return ;
-        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:341:23: ( NEWLINE )?
+        // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:354:23: ( NEWLINE )?
         int alt19=2;
         int LA19_0 = input.LA(1);
 
@@ -2246,7 +2259,7 @@ public class GrammarParser extends Parser {
         }
         switch (alt19) {
             case 1 :
-                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\lexicalparser\\Grammar.g:0:0: NEWLINE
+                // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:0:0: NEWLINE
                 {
                 match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred25_Grammar642); if (state.failed) return ;
 
@@ -2482,7 +2495,7 @@ public class GrammarParser extends Parser {
             this.transition = DFA1_transition;
         }
         public String getDescription() {
-            return "164:13: ( NEWLINE )?";
+            return "177:13: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -2567,7 +2580,7 @@ public class GrammarParser extends Parser {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "181:1: stat returns [Expression expr] : ( expression NEWLINE | ID EQUAL expression NEWLINE | NEWLINE | block | if_expression );";
+            return "194:1: stat returns [Expression expr] : ( expression NEWLINE | ID EQUAL expression NEWLINE | NEWLINE | block | if_expression );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -2666,7 +2679,7 @@ public class GrammarParser extends Parser {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "219:38: ( NEWLINE )?";
+            return "232:38: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -2750,7 +2763,7 @@ public class GrammarParser extends Parser {
             this.transition = DFA7_transition;
         }
         public String getDescription() {
-            return "223:22: ( NEWLINE )?";
+            return "236:22: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;

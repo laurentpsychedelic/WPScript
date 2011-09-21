@@ -15,5 +15,6 @@ public abstract class Calculable {
     @Override
     public abstract String toString();
     public abstract Object eval();
+    public abstract Calculable getSimplifiedCalculable();
     protected int line_number = -1;
 }

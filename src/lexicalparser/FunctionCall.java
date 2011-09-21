@@ -66,6 +66,7 @@ public class FunctionCall extends Calculable {
 
     @Override
     public String toString() {
+        System.err.println("TODO: implement FunctionCall toString method");
         return "Function call [" + name_params.get(0) + "] " + ((Object) this).hashCode();
     }
     
@@ -93,5 +94,19 @@ public class FunctionCall extends Calculable {
         if (not_found) {
             interpreter._WPAScriptCompilationError("Function [" + name + "] not found!", line_number);
         }
+    }
+
+    @Override
+    public Calculable getSimplifiedCalculable() {
+        LinkedList<Object> new_name_params = new LinkedList();
+        if (name_params==null || name_params.get(0)== null) {
+            interpreter._WPAScriptPanic("FUNCTION_CALL:: Name or parameters not correctly defined!", line_number);
+        }
+        String name = "";
+        new_name_params.add((String)name_params.get(0));
+        for (int k=1; k<name_params.size(); k++) {
+            new_name_params.add(((Calculable)name_params.get(k)).getSimplifiedCalculable());
+        }
+        return new FunctionCall(interpreter, new_name_params);
     }
 }

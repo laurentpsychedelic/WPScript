@@ -30,6 +30,13 @@ public class ExecutableScript {
             parser._WPAScriptCompilationError("Compilation failed! Wrong syntax", e.line);
             throw new CompilationErrorException("Compilation failed! Wrong syntax", e.line);
         }
+        
+        System.out.println("COMMANDS BEFORE SIMPILIFICATION");
+        parser.dumpScriptCommands();
+        parser.treeRefactoring();
+        System.out.println("COMMANDS AFTER SIMPILIFICATION");
+        parser.dumpScriptCommands();
+        
         compilation_ok = parser.compilationCheck();
         if (!compilation_ok) {
             parser._WPAScriptCompilationError("Compilation failed! Semantic error]", parser.line_number);

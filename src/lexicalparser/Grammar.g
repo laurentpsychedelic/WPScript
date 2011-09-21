@@ -68,6 +68,19 @@ import java.util.HashMap;
         }
     }
 
+    public void treeRefactoring() {
+        LinkedList <Expression> new_commands = new LinkedList();
+        System.out.println("\nTREE REFACTORING");
+        for (Object o : commands) {
+            if (!(o instanceof Expression)) {
+                _WPAScriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
+            }
+            new_commands.add( (Expression) ((Expression) o).getSimplifiedCalculable() );
+        }
+        commands = new_commands;
+        System.out.println("\nTREE REFACTORING OVER");
+    }
+
     public boolean compilationCheck() {
         try {
             compilation_memory.clear();

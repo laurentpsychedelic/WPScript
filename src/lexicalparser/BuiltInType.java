@@ -14,4 +14,8 @@ public abstract class BuiltInType extends Calculable {
     public Object eval(){
         return this;
     }
+    @Override
+    public Calculable getSimplifiedCalculable() {
+        return this;
+    }
 }

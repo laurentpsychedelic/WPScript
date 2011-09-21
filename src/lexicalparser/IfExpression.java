@@ -5,8 +5,6 @@
 
 package lexicalparser;
 
-import java.util.LinkedList;
-
 /**
  *
  * @author laurent
@@ -16,16 +14,24 @@ public class IfExpression extends Calculable {
     Expression calculation_if;
     Expression calculation_else;
     public IfExpression(GrammarParser _interpreter, Calculable _condition, Expression _calculation_if, Expression _calculation_else) {
+        _init(_interpreter, _condition, _calculation_if, _calculation_else);
+        line_number = interpreter.line_number;
+    }
+    public IfExpression(GrammarParser _interpreter, int _line_number, Calculable _condition, Expression _calculation_if, Expression _calculation_else) {
+        _init(_interpreter, _condition, _calculation_if, _calculation_else);
+        line_number = _line_number;
+    }
+    
+    private void _init(GrammarParser _interpreter, Calculable _condition, Expression _calculation_if, Expression _calculation_else) {
         condition = _condition;
         calculation_if = _calculation_if;
         calculation_else = _calculation_else;
         interpreter = _interpreter;
-        line_number = interpreter.line_number;
     }
 
     @Override
     public void compilationCheck() throws CompilationErrorException {
-        //NOTHING //TODO check variables existence
+        interpreter._WPAScriptCompilationWarning("Cannot check If Expressions at compilation time in this version of the language!", line_number);
     }
 
     @Override
@@ -49,6 +55,14 @@ public class IfExpression extends Calculable {
             }
         }
         return null;
+    }
+
+    @Override
+    public Calculable getSimplifiedCalculable() {
+        Calculable new_condition = (Calculable) condition.getSimplifiedCalculable();
+        Expression new_calculation_if = (Expression) calculation_if.getSimplifiedCalculable();
+        Expression new_calculation_else = (Expression) calculation_else.getSimplifiedCalculable();
+        return new IfExpression(interpreter, line_number, new_condition, new_calculation_if, new_calculation_else);
     }
 
 }

@@ -33,32 +33,74 @@ public class Term extends Calculable {
         try {
             double val1 = Double.NaN;
             double val2 = Double.NaN;
-            if (ele1 instanceof Numeric) {
+            if (ele1 instanceof Numeric && ele2 instanceof Numeric) {
                 val1 = (Double) ((Numeric) ele1).getNativeValue();
-            } else {
-                interpreter._WPAScriptPanic("Arithmetic operation must be done with Numeric or Double type!", line_number);
-            }
-            if (ele2 instanceof Numeric) {
                 val2 = (Double) ((Numeric) ele2).getNativeValue();
-            } else {
-                interpreter._WPAScriptPanic("Arithmetic operation must be done with Numeric or Double type!", line_number);
-            }
-
-            if (operator == Operator.OPERATOR_PLUS) {
-                    val = val1 + val2;
-            } else if (operator == Operator.OPERATOR_MINUS) {
-                    val = val1 - val2;
-            } else if (operator == Operator.OPERATOR_MULT) {
-                    val = val1 * val2;
-            } else if (operator == Operator.OPERATOR_DIV) {
-                if (val2 == 0) {
-                    interpreter._WPAScriptRuntimeError("Division by 0 !", line_number);
+                if (operator == Operator.OPERATOR_PLUS) {
+                        val = val1 + val2;
+                } else if (operator == Operator.OPERATOR_MINUS) {
+                        val = val1 - val2;
+                } else if (operator == Operator.OPERATOR_MULT) {
+                        val = val1 * val2;
+                } else if (operator == Operator.OPERATOR_DIV) {
+                    if (val2 == 0) {
+                        interpreter._WPAScriptRuntimeError("Division by 0 !", line_number);
+                    } else {
+                        val = val1 / val2;
+                    }
                 } else {
-                    val = val1 / val2;
+                    interpreter._WPAScriptPanic("Wrong operator! [" + operator + "]", line_number);
+                }
+            } else if (ele1 instanceof CharString || ele2 instanceof CharString) { 
+                if (operator == Operator.OPERATOR_PLUS) {
+                    if (ele1 instanceof CharString && ele2 instanceof CharString) {
+                        String str1 = (String) ((CharString) ele1).getNativeValue();
+                        String str2 = (String) ((CharString) ele2).getNativeValue();
+                        return new CharString(str1 + str2);
+                    } else {
+                        if (ele1 instanceof Numeric) {
+                            String str1 = Double.toString((Double) ((Numeric) ele1).getNativeValue());
+                            String str2 = (String) ((CharString) ele2).getNativeValue();
+                            return new CharString(str1 + str2);
+                        } else if (ele2 instanceof Numeric) {
+                            String str1 = (String) ((CharString) ele1).getNativeValue();
+                            String str2 = Double.toString((Double) ((Numeric) ele2).getNativeValue());
+                            return new CharString(str1 + str2);
+                        } else {
+                            interpreter._WPAScriptPanic("String concatenation undefined for given types [" + ele1 + " " + operator + " " + ele2 + "]" , line_number);
+                        }
+                    }
+                } else if (operator == Operator.OPERATOR_MULT) {
+                    if (ele1 instanceof CharString && ele2 instanceof CharString) {
+                        interpreter._WPAScriptPanic("String duplication undefined for given types [" + ele1 + " " + operator + " " + ele2 + "]" , line_number);
+                    } else {
+                        if (ele1 instanceof Numeric) {
+                            int num = (int) Math.round( (Double) ((Numeric) ele1).getNativeValue());
+                            String str_ele = (String) ((CharString) ele2).getNativeValue();
+                            StringBuilder str = new StringBuilder();
+                            for (int k=0; k<num; k++) {
+                                str.append(str_ele);
+                            }
+                            return new CharString(str.toString());
+                        } else if (ele2 instanceof Numeric) {
+                            int num = (int) Math.round( (Double) ((Numeric) ele2).getNativeValue());
+                            String str_ele = (String) ((CharString) ele1).getNativeValue();
+                            StringBuilder str = new StringBuilder();
+                            for (int k=0; k<num; k++) {
+                                str.append(str_ele);
+                            }
+                            return new CharString(str.toString());
+                        } else {
+                            interpreter._WPAScriptPanic("String duplication undefined for given types [" + ele1 + " " + operator + " " + ele2 + "]" , line_number);
+                        }
+                    }
+                } else {
+                    interpreter._WPAScriptRuntimeError("Operation unsupported in current language version for given types [" + ele1 + " " + operator + " " + ele2 + "]" , line_number);
                 }
             } else {
-                interpreter._WPAScriptPanic("Wrong operator! [" + operator + "]", line_number);
+                interpreter._WPAScriptRuntimeError("Unknown operation for given types [" + ele1 + " " + operator + ele2 + "]" , line_number);
             }
+            
         } catch (ClassCastException e) {
             interpreter._WPAScriptPanic(e.getMessage(), line_number);
         }
@@ -166,7 +208,6 @@ public class Term extends Calculable {
 
     @Override
     public Calculable getSimplifiedCalculable() {
-        interpreter._WPAScriptCompilationWarning("TODO: implement tree refactoring [BuiltIn type precalculation] for element Term!", line_number);
         if (elements.size()==1) {
             if (elements.get(0) instanceof Calculable) {
                 return ((Calculable) elements.get(0)).getSimplifiedCalculable();

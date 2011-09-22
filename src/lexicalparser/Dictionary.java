@@ -84,7 +84,6 @@ public class Dictionary extends BuiltInType {
     
     @Override
     public Calculable getSimplifiedCalculable() {
-        interpreter._WPAScriptCompilationWarning("TODO: correct Dictionary@getSimplifiedCalculable", line_number);
         HashMap new_dictionary = new HashMap();
         for (Object _key : dictionary.keySet()) {
             Object new_key = null;

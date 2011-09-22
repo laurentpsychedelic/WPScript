@@ -208,6 +208,9 @@ stat returns [Expression expr]
     }
     | if_expression {
         $expr = new Expression(this, $if_expression.expr);
+    }
+    | while_expression {
+        $expr = new Expression(this, $while_expression.expr);
     };
     
 
@@ -236,6 +239,26 @@ pre_if_expression returns [LinkedList<Expression> exprs]
     } NEWLINE? (ELSE NEWLINE? s=stat {
         $exprs.add( $s.expr );
     })?;
+
+while_expression returns [WhileExpression expr]
+    : p=pre_while_expression {
+        Expression condition = null;
+        Expression expression = null;
+        if (0 < $p.exprs.size()) {
+            condition = $p.exprs.get(0);
+        }
+        if (1 < $p.exprs.size()) {
+            expression = $p.exprs.get(1);
+        }
+        $expr = new WhileExpression( this, condition, expression);
+    };
+
+pre_while_expression returns [LinkedList<Expression> exprs]
+    : WHILE LEFT_P e=expression RIGHT_P NEWLINE? s=stat {
+        $exprs = new LinkedList();
+        $exprs.add( $e.expr );
+        $exprs.add( $s.expr );
+    };
 
 expression returns [Expression expr]
     : terms {
@@ -366,6 +389,7 @@ NUM :   '0'..'9'+ ('.' '0'..'9'+)?;
 BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));
 IF  : ('I'|'i') ('F'|'f');
 ELSE: ('E'|'e') ('L'|'l') ('S'|'s') ('E'|'e');
+WHILE: ('W'|'w') ('H'|'h') ('I'|'i') ('L'|'l') ('E'|'e');
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 EQUAL: '=';
 COMMA: ',';

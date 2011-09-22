@@ -66,14 +66,25 @@ public class FunctionCall extends Calculable {
 
     @Override
     public String toString() {
-        System.err.println("TODO: implement FunctionCall toString method");
-        return "Function call [" + name_params.get(0) + "] " + ((Object) this).hashCode();
+        StringBuilder str = new StringBuilder("FUNCTION CALL:: ");
+        str.append(name_params.get(0));
+        str.append("(");
+        int size = name_params.size();
+        for (int k=1; k<size; k++) {
+            str.append(name_params.get(k));
+            if (k != size-1) {
+                str.append(", ");
+            }
+        }
+        str.append(")");
+        return str.toString();
+        //return "Function call [" + name_params.get(0) + "] " + ((Object) this).hashCode();
     }
     
     private Method [] methods = BuiltInFunctionsInterface.class.getMethods();
 
     @Override
-    public void compilationCheck() {
+    public void compilationCheck() throws CompilationErrorException {
         boolean not_found = true;
         if (name_params==null || name_params.get(0)== null) {
             interpreter._WPAScriptPanic("FUNCTION_CALL:: Name or parameters not correctly defined!", line_number);
@@ -93,6 +104,12 @@ public class FunctionCall extends Calculable {
         }
         if (not_found) {
             interpreter._WPAScriptCompilationError("Function [" + name + "] not found!", line_number);
+        }
+        for (int k=1; k<name_params.size(); k++) {
+            Object param = name_params.get(k);
+            if (param instanceof Calculable) {
+                ((Calculable)param).compilationCheck();
+            }
         }
     }
 

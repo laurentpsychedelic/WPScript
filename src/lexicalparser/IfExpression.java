@@ -31,7 +31,16 @@ public class IfExpression extends Calculable {
 
     @Override
     public void compilationCheck() throws CompilationErrorException {
-        interpreter._WPAScriptCompilationWarning("Cannot check If Expressions at compilation time in this version of the language!", line_number);
+        condition.compilationCheck();
+        if (calculation_if==null && calculation_else==null) {
+            interpreter._WPAScriptCompilationError("Both IF and ELSE block are null!", line_number);
+        }
+        if (calculation_if != null) {
+            calculation_if.compilationCheck();
+        }
+        if (calculation_else != null) {
+            calculation_else.compilationCheck();
+        }
     }
 
     @Override

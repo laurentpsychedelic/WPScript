@@ -131,7 +131,9 @@ public class ScriptWindow extends javax.swing.JFrame {
     
     //String prog = "a = 2 + 1\n";
     
-    String prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
+    //String prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
+    
+    String prog = "a = 2 * \"string\" + \"yo\" * 3\n";
     
     /*String prog = "a = 1 + 3.4\n"
                        //+ "b=a / 1.9+3\n"

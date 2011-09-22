@@ -27,7 +27,8 @@ public class Term extends Calculable {
         interpreter = _interpreter;
     }
 
-    private Numeric _doOperation(Object ele1, Operator operator, Object ele2) {
+    private BuiltInType _doOperation(Object ele1, Operator operator, Object ele2) {
+        interpreter._WPAScriptCompilationWarning("TODO: implement binary operators for non numeric types!", line_number);
         double val = 0;
         try {
             double val1 = Double.NaN;
@@ -165,6 +166,7 @@ public class Term extends Calculable {
 
     @Override
     public Calculable getSimplifiedCalculable() {
+        interpreter._WPAScriptCompilationWarning("TODO: implement tree refactoring [BuiltIn type precalculation] for element Term!", line_number);
         if (elements.size()==1) {
             if (elements.get(0) instanceof Calculable) {
                 return ((Calculable) elements.get(0)).getSimplifiedCalculable();
@@ -173,19 +175,30 @@ public class Term extends Calculable {
         LinkedList<Object> new_elements = new LinkedList();
         Object ele = elements.get(0);
         if (ele instanceof Calculable) {
+            ele = ((Calculable)ele).getSimplifiedCalculable();
             new_elements.add(((Calculable)ele).getSimplifiedCalculable());
         } else {
             interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "]", line_number);
         }
         for (int k=1; k<elements.size(); k+=2) {
-            Operator operator = (Operator) (elements.get(k));
-            new_elements.add(operator);
             Object ele2 = elements.get(k+1);
+            
             if  (ele2 instanceof Calculable) {
-                new_elements.add(((Calculable)ele2).getSimplifiedCalculable());
+                ele2 = ((Calculable)ele2).getSimplifiedCalculable();
             } else {
                 interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]", line_number);
             }
+            Operator operator = (Operator) (elements.get(k));
+            if (ele instanceof BuiltInType && ele2 instanceof BuiltInType) {
+                BuiltInType new_ele = _doOperation(ele, operator, ele2);
+                new_elements.set(new_elements.size()-1, new_ele);
+                ele = new_ele;
+                continue;
+            } else {
+                new_elements.add(operator);
+                new_elements.add(((Calculable)ele2).getSimplifiedCalculable());
+            }
+            
         }
         return new Term(interpreter, line_number, new_elements);
     }

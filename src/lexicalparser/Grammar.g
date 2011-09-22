@@ -193,11 +193,11 @@ stats returns [LinkedList<Expression> expressions]:
 
 stat returns [Expression expr]
     : expression NEWLINE {
-        $expr = $expression.expr;
+        $expr = new Expression(true, $expression.expr);
         line_number++;
     }
     | ID EQUAL expression NEWLINE {
-        $expr = new Expression(this,  new VariableAssignment(this, $ID.text, $expression.expr) );
+        $expr = new Expression(true, this,  new VariableAssignment(this, $ID.text, $expression.expr) );
         line_number++;
     }
     | NEWLINE {

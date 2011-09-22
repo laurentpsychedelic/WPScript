@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-21 13:52:18
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-22 09:09:23
 
 package lexicalparser;
 
@@ -548,7 +548,7 @@ public class GrammarParser extends Parser {
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = (expression6!=null?expression6.expr:null);
+                              retval.expr = new Expression(true, (expression6!=null?expression6.expr:null));
                               line_number++;
                           
                     }
@@ -583,7 +583,7 @@ public class GrammarParser extends Parser {
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(this,  new VariableAssignment(this, (ID8!=null?ID8.getText():null), (expression10!=null?expression10.expr:null)) );
+                              retval.expr = new Expression(true, this,  new VariableAssignment(this, (ID8!=null?ID8.getText():null), (expression10!=null?expression10.expr:null)) );
                               line_number++;
                           
                     }

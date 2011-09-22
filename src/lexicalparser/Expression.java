@@ -12,17 +12,24 @@ import java.util.LinkedList;
  * @author laurent
  */
 public class Expression extends Calculable {
-
+    private boolean TOP_LEVEL = false;
     LinkedList<Calculable> calculation = new LinkedList();
+    public Expression(boolean _TOP_LEVEL, Expression _expression) {
+        this(_TOP_LEVEL, _expression.interpreter, _expression.calculation);
+    }
     public Expression(GrammarParser _interpreter, Object _calculation) {
-        _init(_interpreter, _calculation);
+        this(false, _interpreter, _calculation);
+    }
+    public Expression(boolean _TOP_LEVEL, GrammarParser _interpreter, Object _calculation) {
+        _init(_TOP_LEVEL, _interpreter, _calculation);
         line_number = interpreter.line_number;
     }
-    public Expression(GrammarParser _interpreter, int _line_number, Object _calculation) {
-        _init(_interpreter, _calculation);
+    public Expression(boolean _TOP_LEVEL, GrammarParser _interpreter, int _line_number, Object _calculation) {
+        _init(_TOP_LEVEL, _interpreter, _calculation);
         line_number = _line_number;
     }
-    private void _init(GrammarParser _interpreter, Object _calculation) {
+    private void _init(boolean _TOP_LEVEL, GrammarParser _interpreter, Object _calculation) {
+        TOP_LEVEL = _TOP_LEVEL;
         if (_calculation instanceof Calculable){
             calculation.add((Calculable)_calculation);
         } else if (_calculation instanceof LinkedList){
@@ -56,12 +63,16 @@ public class Expression extends Calculable {
 
     @Override
     public Calculable getSimplifiedCalculable() {
-        interpreter._WPAScriptCompilationWarning("TODO: implement tree refactoring for element Expression!", line_number);
+        if (!TOP_LEVEL) {
+            if (calculation.size()==1) {
+                return calculation.get(0).getSimplifiedCalculable();
+            }
+        }
         LinkedList<Calculable> new_calculation = new LinkedList();
         for (Calculable c : calculation) {
             new_calculation.add(c.getSimplifiedCalculable());
         }
-        return new Expression(interpreter, line_number, new_calculation);
+        return new Expression(TOP_LEVEL, interpreter, line_number, new_calculation);
     }
 
 }

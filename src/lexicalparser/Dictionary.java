@@ -44,16 +44,16 @@ public class Dictionary extends BuiltInType {
         for (Object _key : dictionary.keySet()) {
             Object new_key = null;
             Object new_value = null;
-            if (_key instanceof Expression) {
-                new_key = ((Expression) _key).eval();
+            if (_key instanceof Calculable) {
+                new_key = ((Calculable) _key).eval();
             } else {
-                interpreter._WPAScriptPanic("Dictionary key must be an instance of Expression! [" + _key.getClass() + "]", line_number);
+                interpreter._WPAScriptPanic("Dictionary key must be calculable! [" + _key.getClass() + "]", line_number);
             }
             Object _value = dictionary.get(_key);
-            if (_value instanceof Expression) {
-                new_value = ((Expression) _value).eval();
+            if (_value instanceof Calculable) {
+                new_value = ((Calculable) _value).eval();
             } else {
-                interpreter._WPAScriptPanic("Dictionary value must be an instance of Expression! [" + _key.getClass() + "]", line_number);
+                interpreter._WPAScriptPanic("Dictionary value must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
             }
             new_dictionary.put(new_key, new_value);
         }
@@ -63,16 +63,16 @@ public class Dictionary extends BuiltInType {
     @Override
     public void compilationCheck() throws CompilationErrorException {
 	for (Object _key : dictionary.keySet()) {
-            if (_key instanceof Expression) {
-                ((Expression) _key).compilationCheck();
+            if (_key instanceof Calculable) {
+                ((Calculable) _key).compilationCheck();
             } else {
-                interpreter._WPAScriptPanic("Dictionary key must be an instance of Expression! [" + _key.getClass() + "]", line_number);
+                interpreter._WPAScriptPanic("Dictionary key must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
             }
             Object _value = dictionary.get(_key);
-            if (_value instanceof Expression) {
-                ((Expression) _value).compilationCheck();
+            if (_value instanceof Calculable) {
+                ((Calculable) _value).compilationCheck();
             } else {
-                interpreter._WPAScriptPanic("Dictionary value must be an instance of Expression! [" + _key.getClass() + "]", line_number);
+                interpreter._WPAScriptPanic("Dictionary value must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
             }
         }
     }
@@ -84,20 +84,21 @@ public class Dictionary extends BuiltInType {
     
     @Override
     public Calculable getSimplifiedCalculable() {
+        interpreter._WPAScriptCompilationWarning("TODO: correct Dictionary@getSimplifiedCalculable", line_number);
         HashMap new_dictionary = new HashMap();
         for (Object _key : dictionary.keySet()) {
             Object new_key = null;
             Object new_value = null;
-            if (_key instanceof Expression) {
-                new_key = ((Expression) _key).getSimplifiedCalculable();
+            if (_key instanceof Calculable) {
+                new_key = ((Calculable) _key).getSimplifiedCalculable();
             } else {
-                interpreter._WPAScriptPanic("Dictionary key must be an instance of Expression! [" + _key.getClass() + "]", line_number);
+                interpreter._WPAScriptPanic("Dictionary key must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
             }
             Object _value = dictionary.get(_key);
-            if (_value instanceof Expression) {
-                new_value = ((Expression) _value).getSimplifiedCalculable();
+            if (_value instanceof Calculable) {
+                new_value = ((Calculable) _value).getSimplifiedCalculable();
             } else {
-                interpreter._WPAScriptPanic("Dictionary value must be an instance of Expression! [" + _key.getClass() + "]", line_number);
+                interpreter._WPAScriptPanic("Dictionary value must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
             }
             new_dictionary.put(new_key, new_value);
         }

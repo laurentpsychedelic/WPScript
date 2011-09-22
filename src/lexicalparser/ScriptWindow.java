@@ -129,9 +129,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
     };
     
-    String prog = "a = 2\n";
+    //String prog = "a = 2 + 1\n";
     
-    //String prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2) }\n";
+    String prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
     
     /*String prog = "a = 1 + 3.4\n"
                        //+ "b=a / 1.9+3\n"
@@ -386,7 +386,6 @@ public class ScriptWindow extends javax.swing.JFrame {
     ExecutableScript script;
     
     private void jButtonExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExecuteActionPerformed
-        prog = jScriptPane.getText();
         jMessagesPane.setText("");
         if (script!=null) {
             script.execute();
@@ -409,6 +408,9 @@ public class ScriptWindow extends javax.swing.JFrame {
 
     private void jButtonCompilationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilationActionPerformed
         prog = jScriptPane.getText();
+        if (!prog.endsWith("\n")) {
+            prog = prog + "\n";
+        }
         jMessagesPane.setText("");
         script = null;
         try {

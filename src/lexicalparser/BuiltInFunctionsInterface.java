@@ -13,4 +13,10 @@ public class BuiltInFunctionsInterface {
     public static MeasurementSet newMeasurementSet(Numeric W, Numeric H) {
       return new MeasurementSet( (int) Math.round((Double)W.getNativeValue()),  (int) Math.round((Double)H.getNativeValue()));
     }
+    private static void _print(Object object) {
+        System.out.print(object.toString());
+    }
+    public static void print(Numeric number) {
+        _print(number.getNativeValue());
+    }
 }

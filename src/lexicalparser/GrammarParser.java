@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-23 06:16:11
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g 2011-09-24 16:54:53
 
 package lexicalparser;
 
@@ -956,13 +956,13 @@ public class GrammarParser extends Parser {
     // $ANTLR end "pre_if_expression"
 
     public static class while_expression_return extends ParserRuleReturnScope {
-        public WhileExpression expr;
+        public LoopExpression expr;
         Object tree;
         public Object getTree() { return tree; }
     };
 
     // $ANTLR start "while_expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:243:1: while_expression returns [WhileExpression expr] : p= pre_while_expression ;
+    // /home/laurent/dev/WPAScript/working_copy/src/lexicalparser/Grammar.g:243:1: while_expression returns [LoopExpression expr] : p= pre_while_expression ;
     public final GrammarParser.while_expression_return while_expression() throws RecognitionException {
         GrammarParser.while_expression_return retval = new GrammarParser.while_expression_return();
         retval.start = input.LT(1);
@@ -996,7 +996,7 @@ public class GrammarParser extends Parser {
                       if (1 < (p!=null?p.exprs:null).size()) {
                           expression = (p!=null?p.exprs:null).get(1);
                       }
-                      retval.expr = new WhileExpression( this, condition, expression);
+                      retval.expr = new LoopExpression( this, condition, expression);
                   
             }
 

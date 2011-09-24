@@ -240,7 +240,7 @@ pre_if_expression returns [LinkedList<Expression> exprs]
         $exprs.add( $s.expr );
     })?;
 
-while_expression returns [WhileExpression expr]
+while_expression returns [LoopExpression expr]
     : p=pre_while_expression {
         Expression condition = null;
         Expression expression = null;
@@ -250,7 +250,7 @@ while_expression returns [WhileExpression expr]
         if (1 < $p.exprs.size()) {
             expression = $p.exprs.get(1);
         }
-        $expr = new WhileExpression( this, condition, expression);
+        $expr = new LoopExpression( this, condition, expression);
     };
 
 pre_while_expression returns [LinkedList<Expression> exprs]

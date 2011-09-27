@@ -29,12 +29,20 @@ public class LoopExpression extends Calculable {
         line_number = _line_number;
     }  
     private void _init(GrammarParser _interpreter, Expression _pre_calculation, Expression _increment_calculation, Calculable _condition, Expression _calculation) {
-         interpreter = _interpreter;
+        pre_calculation = _pre_calculation;
+        increment_calculation = _increment_calculation;
+        interpreter = _interpreter;
          condition = _condition;
          calculation = _calculation;
     }
     @Override
-    public void compilationCheck() throws CompilationErrorException {
+    public void compilationCheck() throws CompilationErrorException, PanicException {
+        if (pre_calculation != null) {  
+            pre_calculation.compilationCheck();
+        }
+        if (increment_calculation != null) {
+            increment_calculation.compilationCheck();
+        }
         condition.compilationCheck();
         if (calculation != null) {
             calculation.compilationCheck();
@@ -51,7 +59,7 @@ public class LoopExpression extends Calculable {
     }
 
     @Override
-    public Object eval() {
+    public Object eval() throws PanicException {
         if (pre_calculation != null) {
             pre_calculation.eval();
         }
@@ -78,7 +86,7 @@ public class LoopExpression extends Calculable {
     }
 
     @Override
-    public Calculable getSimplifiedCalculable() {
+    public Calculable getSimplifiedCalculable() throws PanicException {
         Expression new_pre_calculation = (Expression) (pre_calculation==null ? null : pre_calculation.getSimplifiedCalculable());
         Expression new_increment_calculation = (Expression) (increment_calculation==null ? null : increment_calculation.getSimplifiedCalculable());
         Calculable new_condition = (Calculable) condition.getSimplifiedCalculable();

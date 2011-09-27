@@ -30,7 +30,7 @@ public class IfExpression extends Calculable {
     }
 
     @Override
-    public void compilationCheck() throws CompilationErrorException {
+    public void compilationCheck() throws CompilationErrorException, PanicException {
         condition.compilationCheck();
         if (calculation_if==null && calculation_else==null) {
             interpreter._WPAScriptCompilationError("Both IF and ELSE block are null!", line_number);
@@ -49,7 +49,7 @@ public class IfExpression extends Calculable {
     }
 
     @Override
-    public Object eval() {
+    public Object eval() throws PanicException {
         Object cond = condition.eval();
         if (!(cond instanceof Bool)) {
             interpreter._WPAScriptRuntimeError("Condition must be an instance of BOOL [" + cond.getClass() + "]", line_number);
@@ -67,7 +67,7 @@ public class IfExpression extends Calculable {
     }
 
     @Override
-    public Calculable getSimplifiedCalculable() {
+    public Calculable getSimplifiedCalculable() throws PanicException {
         Calculable new_condition = (Calculable) condition.getSimplifiedCalculable();
         Expression new_calculation_if = (Expression) calculation_if.getSimplifiedCalculable();
         Expression new_calculation_else = (Expression) calculation_else.getSimplifiedCalculable();

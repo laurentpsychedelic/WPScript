@@ -17,7 +17,7 @@ public class ExecutableScript {
     GrammarParser parser;
     private GrammarParser.prog_return tree;
     private boolean compilation_ok = false;
-    public ExecutableScript(String program) throws CompilationErrorException  {
+    public ExecutableScript(String program) throws CompilationErrorException, PanicException {
         GrammarLexer lex = new GrammarLexer(new ANTLRStringStream(program));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
@@ -43,7 +43,7 @@ public class ExecutableScript {
             throw new CompilationErrorException("Compilation failed! Semantic error]", parser.line_number);
         }
     }
-    public Object execute() {
+    public Object execute() throws PanicException {
         Object result = null;
         if (compilation_ok) {
             result = parser.execute();

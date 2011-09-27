@@ -27,27 +27,62 @@ public class Term extends Calculable {
         interpreter = _interpreter;
     }
 
-    private BuiltInType _doOperation(Object ele1, Operator operator, Object ele2) {
-        interpreter._WPAScriptCompilationWarning("TODO: implement binary operators for non numeric types!", line_number);
-        double val = 0;
+    private BuiltInType _doOperation(Object ele1, Operator operator, Object ele2) throws PanicException {
+        BuiltInType return_val = null;
         try {
-            double val1 = Double.NaN;
-            double val2 = Double.NaN;
             if (ele1 instanceof Numeric && ele2 instanceof Numeric) {
-                val1 = (Double) ((Numeric) ele1).getNativeValue();
-                val2 = (Double) ((Numeric) ele2).getNativeValue();
-                if (operator == Operator.OPERATOR_PLUS) {
-                        val = val1 + val2;
-                } else if (operator == Operator.OPERATOR_MINUS) {
-                        val = val1 - val2;
-                } else if (operator == Operator.OPERATOR_MULT) {
-                        val = val1 * val2;
-                } else if (operator == Operator.OPERATOR_DIV) {
-                    if (val2 == 0) {
-                        interpreter._WPAScriptRuntimeError("Division by 0 !", line_number);
+                double val1 = (Double) ((Numeric) ele1).getNativeValue();
+                double val2 = (Double) ((Numeric) ele2).getNativeValue();
+                if (operator == Operator.OPERATOR_PLUS || operator == Operator.OPERATOR_MINUS || operator == Operator.OPERATOR_MULT || operator == Operator.OPERATOR_DIV) {
+                    double val = Double.NaN;
+                    /*   */if (operator == Operator.OPERATOR_PLUS) {
+                            val = val1 + val2;
+                    } else if (operator == Operator.OPERATOR_MINUS) {
+                            val = val1 - val2;
+                    } else if (operator == Operator.OPERATOR_MULT) {
+                            val = val1 * val2;
+                    } else if (operator == Operator.OPERATOR_DIV) {
+                        if (val2 == 0) {
+                            interpreter._WPAScriptRuntimeError("Division by 0 !", line_number);
+                        } else {
+                            val = val1 / val2;
+                        }                        
                     } else {
-                        val = val1 / val2;
+                        interpreter._WPAScriptPanic("Wrong operator! [" + operator + "]", line_number);
                     }
+                    return_val =  new Numeric(val);
+                } else if (operator == Operator.OPERATOR_CMP_LT || operator == Operator.OPERATOR_CMP_GT 
+                        || operator == Operator.OPERATOR_CMP_LT_EQ || operator == Operator.OPERATOR_CMP_GT_EQ
+                        || operator == Operator.OPERATOR_CMP_EQ || operator == Operator.OPERATOR_CMP_NEQ) {
+                    boolean val = false;
+                    /*   */if (operator == Operator.OPERATOR_CMP_LT) {
+                        val = val1 <  val2;
+                    } else if (operator == Operator.OPERATOR_CMP_LT_EQ) {
+                        val = val1 <= val2;
+                    } else if (operator == Operator.OPERATOR_CMP_GT) {
+                        val = val1 >  val2;
+                    } else if (operator == Operator.OPERATOR_CMP_GT_EQ) {
+                        val = val1 >= val2;
+                    } else if (operator == Operator.OPERATOR_CMP_EQ) {
+                        val = val1 == val2;
+                    } else if (operator == Operator.OPERATOR_CMP_NEQ) {
+                        val = val1 != val2;
+                    }
+                    return_val = new Bool(val);
+                } else {
+                    interpreter._WPAScriptPanic("Wrong operator! [" + operator + "]", line_number);
+                }
+            } else if (ele1 instanceof Bool || ele2 instanceof Bool) { 
+                boolean val = false;
+                boolean val1 = (Boolean) ((Bool) ele1).getNativeValue();
+                boolean val2 = (Boolean) ((Bool) ele2).getNativeValue();                
+                if (operator == Operator.OPERATOR_AND || operator == Operator.OPERATOR_OR) {
+                    /*   */if (operator == Operator.OPERATOR_AND) {
+                        val = val1 & val2;
+                    } else if (operator == Operator.OPERATOR_OR) {
+                        val = val1 | val2;
+                    }
+                    return_val = new Bool(val);
                 } else {
                     interpreter._WPAScriptPanic("Wrong operator! [" + operator + "]", line_number);
                 }
@@ -56,16 +91,16 @@ public class Term extends Calculable {
                     if (ele1 instanceof CharString && ele2 instanceof CharString) {
                         String str1 = (String) ((CharString) ele1).getNativeValue();
                         String str2 = (String) ((CharString) ele2).getNativeValue();
-                        return new CharString(str1 + str2);
+                        return_val = new CharString(str1 + str2);
                     } else {
                         if (ele1 instanceof Numeric) {
                             String str1 = Double.toString((Double) ((Numeric) ele1).getNativeValue());
                             String str2 = (String) ((CharString) ele2).getNativeValue();
-                            return new CharString(str1 + str2);
+                            return_val = new CharString(str1 + str2);
                         } else if (ele2 instanceof Numeric) {
                             String str1 = (String) ((CharString) ele1).getNativeValue();
                             String str2 = Double.toString((Double) ((Numeric) ele2).getNativeValue());
-                            return new CharString(str1 + str2);
+                            return_val = new CharString(str1 + str2);
                         } else {
                             interpreter._WPAScriptPanic("String concatenation undefined for given types [" + ele1 + " " + operator + " " + ele2 + "]" , line_number);
                         }
@@ -81,7 +116,7 @@ public class Term extends Calculable {
                             for (int k=0; k<num; k++) {
                                 str.append(str_ele);
                             }
-                            return new CharString(str.toString());
+                            return_val = new CharString(str.toString());
                         } else if (ele2 instanceof Numeric) {
                             int num = (int) Math.round( (Double) ((Numeric) ele2).getNativeValue());
                             String str_ele = (String) ((CharString) ele1).getNativeValue();
@@ -89,7 +124,7 @@ public class Term extends Calculable {
                             for (int k=0; k<num; k++) {
                                 str.append(str_ele);
                             }
-                            return new CharString(str.toString());
+                            return_val = new CharString(str.toString());
                         } else {
                             interpreter._WPAScriptPanic("String duplication undefined for given types [" + ele1 + " " + operator + " " + ele2 + "]" , line_number);
                         }
@@ -104,14 +139,14 @@ public class Term extends Calculable {
         } catch (ClassCastException e) {
             interpreter._WPAScriptPanic(e.getMessage(), line_number);
         }
-        return new Numeric(val);
+        return return_val;
     }
     /**
      * Calculate the product/division of atoms represented by this object
      * @return
      */
     @Override
-    public Object eval() {
+    public Object eval() throws PanicException {
         if (elements.size()%2!=1) {
             interpreter._WPAScriptPanic("Wrong number of elements in TERM list.", line_number);
         }
@@ -154,8 +189,6 @@ public class Term extends Calculable {
             str.append(((Calculable) ele).toString());
         } else if (ele instanceof String) {
             str.append("VAR:").append((String) ele);
-        } else {
-            interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele.getClass() + "]", line_number);
         }
         for (int k=1; k<elements.size(); k+=2) {
             Operator operator = (Operator) (elements.get(k));
@@ -167,15 +200,13 @@ public class Term extends Calculable {
                 str.append(")");
             } else if (ele2 instanceof Calculable) {
                 str.append(((Calculable) ele2).toString());
-            } else {
-                interpreter._WPAScriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]", line_number);
             }
         }
         return str.toString();
     }
 
     @Override
-    public void compilationCheck() throws CompilationErrorException {
+    public void compilationCheck() throws CompilationErrorException, PanicException {
         if (elements.size()%2!=1) {
             interpreter._WPAScriptPanic("Wrong number of elements in TERM list.", line_number);
         }
@@ -207,7 +238,7 @@ public class Term extends Calculable {
     }
 
     @Override
-    public Calculable getSimplifiedCalculable() {
+    public Calculable getSimplifiedCalculable() throws PanicException {
         if (elements.size()==1) {
             if (elements.get(0) instanceof Calculable) {
                 return ((Calculable) elements.get(0)).getSimplifiedCalculable();
@@ -234,10 +265,11 @@ public class Term extends Calculable {
                 BuiltInType new_ele = _doOperation(ele, operator, ele2);
                 new_elements.set(new_elements.size()-1, new_ele);
                 ele = new_ele;
-                continue;
             } else {
                 new_elements.add(operator);
-                new_elements.add(((Calculable)ele2).getSimplifiedCalculable());
+                Calculable new_ele = ((Calculable)ele2).getSimplifiedCalculable();
+                new_elements.add(new_ele);
+                ele = new_ele;
             }
             
         }

@@ -22,7 +22,7 @@ public class FunctionCall extends Calculable {
     }
 
     @Override
-    public Object eval() {
+    public Object eval() throws PanicException {
         boolean failed = false;
         try {
             String name = (String) (name_params.get(0));
@@ -84,7 +84,7 @@ public class FunctionCall extends Calculable {
     private Method [] methods = BuiltInFunctionsInterface.class.getMethods();
 
     @Override
-    public void compilationCheck() throws CompilationErrorException {
+    public void compilationCheck() throws CompilationErrorException, PanicException {
         boolean not_found = true;
         if (name_params==null || name_params.get(0)== null) {
             interpreter._WPAScriptPanic("FUNCTION_CALL:: Name or parameters not correctly defined!", line_number);
@@ -114,7 +114,7 @@ public class FunctionCall extends Calculable {
     }
 
     @Override
-    public Calculable getSimplifiedCalculable() {
+    public Calculable getSimplifiedCalculable() throws PanicException {
         LinkedList<Object> new_name_params = new LinkedList();
         if (name_params==null || name_params.get(0)== null) {
             interpreter._WPAScriptPanic("FUNCTION_CALL:: Name or parameters not correctly defined!", line_number);

@@ -34,12 +34,12 @@ public class Dictionary extends BuiltInType {
     }
     
     @Override
-    public Object eval() {
+    public Object eval() throws PanicException {
         _doEval();
         return this;
     }
     
-    private void _doEval() {
+    private void _doEval() throws PanicException {
         HashMap new_dictionary = new HashMap();
         for (Object _key : dictionary.keySet()) {
             Object new_key = null;
@@ -61,7 +61,7 @@ public class Dictionary extends BuiltInType {
     }
 
     @Override
-    public void compilationCheck() throws CompilationErrorException {
+    public void compilationCheck() throws CompilationErrorException, PanicException {
 	for (Object _key : dictionary.keySet()) {
             if (_key instanceof Calculable) {
                 ((Calculable) _key).compilationCheck();
@@ -83,7 +83,7 @@ public class Dictionary extends BuiltInType {
     }
     
     @Override
-    public Calculable getSimplifiedCalculable() {
+    public Calculable getSimplifiedCalculable() throws PanicException {
         HashMap new_dictionary = new HashMap();
         for (Object _key : dictionary.keySet()) {
             Object new_key = null;

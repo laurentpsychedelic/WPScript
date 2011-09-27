@@ -68,20 +68,25 @@ import java.util.HashMap;
         }
     }
 
-    public void treeRefactoring() {
+    public void treeRefactoring() throws PanicException {
         LinkedList <Expression> new_commands = new LinkedList();
         System.out.println("\nTREE REFACTORING");
         for (Object o : commands) {
             if (!(o instanceof Expression)) {
                 _WPAScriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
             }
-            new_commands.add( (Expression) ((Expression) o).getSimplifiedCalculable() );
+            Calculable new_command = ((Expression) o).getSimplifiedCalculable();
+            if (new_command instanceof Expression) {
+                new_commands.add( (Expression) new_command );
+            } else {
+                _WPAScriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
+            }
         }
         commands = new_commands;
         System.out.println("\nTREE REFACTORING OVER");
     }
 
-    public boolean compilationCheck() {
+    public boolean compilationCheck() throws PanicException {
         try {
             compilation_memory.clear();
             System.out.println("\nCOMPILATION CHECK");
@@ -100,7 +105,7 @@ import java.util.HashMap;
         }
     }
 
-    public Object execute() {
+    public Object execute() throws PanicException {
         Object ret_val = null;
         for (Object c : commands) {
             if (!(c instanceof Expression)) {
@@ -111,7 +116,7 @@ import java.util.HashMap;
         return ret_val;
     }
 
-    protected void _WPAScriptPanic(String message, int line_num) {
+    protected void _WPAScriptPanic(String message, int line_num) throws PanicException {
 
         if (!_PANIC_STATE_) {
             _PANIC_STATE_ = true;
@@ -120,6 +125,7 @@ import java.util.HashMap;
         System.err.println("ERROR (l" + line_num + "):: " + message);
 
         dumpGlobalMemory(System.err);
+        throw new PanicException(message, line_num);
     }
 
 
@@ -148,6 +154,14 @@ import java.util.HashMap;
         System.err.println("ERROR (l" + line_num + "):: " + message);
         
         dumpGlobalMemory(System.err);
+    }
+
+    protected void _WPAScriptRuntimeWarning(String message, int line_num) {
+        if (!_RUNTIME_ERROR_STATE_) {
+            _RUNTIME_ERROR_STATE_ = true;
+            System.err.println("RUNTIME");
+        }
+        System.err.println("WARNING (l" + line_num + "):: " + message);
     }
 
     public static void main(String[] args) throws Exception {
@@ -192,26 +206,36 @@ stats returns [LinkedList<Expression> expressions]:
     )*;
 
 stat returns [Expression expr]
-    : expression NEWLINE {
-        $expr = new Expression(true, $expression.expr);
-        line_number++;
-    }
-    | ID EQUAL expression NEWLINE {
-        $expr = new Expression(true, this,  new VariableAssignment(this, $ID.text, $expression.expr) );
+    : pre_stat NEWLINE {
+        $expr = $pre_stat.expr;
         line_number++;
     }
     | NEWLINE {
         line_number++;
     }
     | block {
-        $expr = new Expression(this, $block.expressions);
+        $expr = new Expression(true, this, $block.expressions);
     }
     | if_expression {
-        $expr = new Expression(this, $if_expression.expr);
+        $expr = new Expression(true, this, $if_expression.expr);
     }
     | while_expression {
-        $expr = new Expression(this, $while_expression.expr);
+        $expr = new Expression(true, this, $while_expression.expr);
+    }
+    | for_expression {
+        $expr = new Expression(true, this, $for_expression.expr);
     };
+pre_stat returns [Expression expr]
+    : expression {
+        $expr = new Expression(true, $expression.expr);
+    }
+    | ID EQUAL expression {
+        $expr = new Expression(true, this,  new VariableAssignment(this, $ID.text, $expression.expr) );
+    }
+    | ID PLUS_PLUS {
+        $expr = new Expression(true, this,  new VariableAssignment(this, $ID.text, true));
+    }
+    ;
     
 
 if_expression returns [IfExpression expr]
@@ -260,6 +284,28 @@ pre_while_expression returns [LinkedList<Expression> exprs]
         $exprs.add( $s.expr );
     };
 
+for_expression returns [LoopExpression expr]
+    : p=pre_for_expression {
+        Expression init = null;
+        Expression increment = null;
+        Expression condition = null;
+        Expression expression = null;
+        init = $p.exprs.get(0);
+        condition = $p.exprs.get(1);
+        increment = $p.exprs.get(2);
+        expression = $p.exprs.get(3);
+        $expr = new LoopExpression( this, init, increment, condition, expression);
+    };
+
+pre_for_expression returns [LinkedList<Expression> exprs]
+    : FOR LEFT_P e_init=pre_stat PV e_cond=expression PV e_inc=pre_stat RIGHT_P NEWLINE? s=stat {
+        $exprs = new LinkedList();
+        $exprs.add( $e_init.expr );
+        $exprs.add( $e_cond.expr );
+        $exprs.add( $e_inc.expr );
+        $exprs.add( $s.expr );
+    };
+
 expression returns [Expression expr]
     : terms {
         $expr = new Expression( this, new Term(this, $terms.terms) );
@@ -279,6 +325,14 @@ terms returns [LinkedList<Object> terms]
       | MINUS t=term {
             $terms.add(Operator.OPERATOR_MINUS);
             $terms.add( new Term(this, $t.atoms) );
+        }
+      | AND t=term {
+            $terms.add(Operator.OPERATOR_AND);
+            $terms.add( new Term(this, $t.atoms) );
+        }
+      | OR t=term {
+            $terms.add(Operator.OPERATOR_OR);
+            $terms.add( new Term(this, $t.atoms) );
         } )*;
 //terms : term ( PLUS term | MINUS term )*;
 
@@ -294,7 +348,36 @@ term returns [LinkedList<Object> atoms]
             $atoms.add(Operator.OPERATOR_DIV);
             $atoms.add($a.value);
         }
-    )*;
+      | CMP_LT a=atom {
+            $atoms.add(Operator.OPERATOR_CMP_LT);
+            $atoms.add($a.value);
+        } 
+      | CMP_LT_EQ a=atom {
+            $atoms.add(Operator.OPERATOR_CMP_LT_EQ);
+            $atoms.add($a.value);
+        } 
+      | CMP_GT a=atom {
+            $atoms.add(Operator.OPERATOR_CMP_GT);
+            $atoms.add($a.value);
+        }
+      | CMP_GT_EQ a=atom {
+            $atoms.add(Operator.OPERATOR_CMP_GT_EQ);
+            $atoms.add($a.value);
+        } 
+      | CMP_EQ a=atom {
+            $atoms.add(Operator.OPERATOR_CMP_EQ);
+            $atoms.add($a.value);
+        }
+      | CMP_NEQ a=atom {
+            $atoms.add(Operator.OPERATOR_CMP_NEQ);
+            $atoms.add($a.value);
+        }
+    )*
+    | ID PLUS_PLUS {
+        $atoms = new LinkedList();
+        VariableAssignment va = new VariableAssignment(this, $ID.text, true);
+        $atoms.add(va);
+    };
 //term : atom ( MULT atom | DIV atom )*;
 
 function_call returns [LinkedList<Object> name_params]:
@@ -326,8 +409,6 @@ atom returns [Object value]
             $value = new Bool(true);
         } else if ($BOOL.text.equalsIgnoreCase("false")) {
             $value = new Bool(false);
-        } else {
-            _WPAScriptPanic("Token [" + $BOOL.text + "] must be equal to \"true\" or \"false\" (boolean type)", line_number);
         }
     }
     | LEFT_P expression RIGHT_P {
@@ -360,9 +441,6 @@ dictionary returns [Dictionary value] :
     LEFT_CB dictionary_elements RIGHT_CB {
         HashMap vs = new HashMap();
         int size = $dictionary_elements.keys_values.size();
-        if (size==0 || size\%2!=0) {
-            _WPAScriptPanic("Dictionary must have a even number of elements!", line_number);
-        }
         for (int k=0; k<size; k+=2) {
             vs.put($dictionary_elements.keys_values.get(k), $dictionary_elements.keys_values.get(k+1));
         }
@@ -375,9 +453,6 @@ dictionary_elements returns [LinkedList<Object> keys_values] :
         $keys_values.add($e1.expr);
         $keys_values.add($e2.expr);
     } (NEWLINE? COMMA NEWLINE? d=dictionary_elements {
-            if ($d.keys_values==null) {
-                _WPAScriptPanic("Dictionary elements sublist is null!", line_number);
-            }
             for (int k=0; k<$d.keys_values.size(); k++) {
                 $keys_values.add($d.keys_values.get(k));
             }
@@ -390,6 +465,7 @@ BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l')
 IF  : ('I'|'i') ('F'|'f');
 ELSE: ('E'|'e') ('L'|'l') ('S'|'s') ('E'|'e');
 WHILE: ('W'|'w') ('H'|'h') ('I'|'i') ('L'|'l') ('E'|'e');
+FOR : ('F'|'f') ('O'|'o') ('R'|'r');
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 EQUAL: '=';
 COMMA: ',';
@@ -399,14 +475,25 @@ RIGHT_P: ')';
 MULT: '*';
 DIV: '/';
 PLUS: '+';
-STRING_LITERAL: '"' ID '"';
+PLUS_PLUS: '+' '+';
 MINUS: '-';
+MINUS_MINUS: '-' '-';
+CMP_LT: '<';
+CMP_LT_EQ: '<' '=';
+CMP_GT: '>';
+CMP_GT_EQ: '>' '=';
+CMP_EQ: '=' '=';
+CMP_NEQ:'!' '=';
+AND: '&';
+OR : '|';
+STRING_LITERAL: '"' ID '"';
 LEFT_CB : '{'; // left curved bracket
 RIGHT_CB : '}'; // right curved bracket
 LEFT_B : '[';
 RIGHT_B: ']';
 NEWLINE:'\n';
 TP: ':';
+PV: ';';
 WS :   (' '|'\t'|'\r')+ { 
 if (skip_ws) {
     skip();

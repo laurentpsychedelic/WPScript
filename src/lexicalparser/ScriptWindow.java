@@ -135,9 +135,14 @@ public class ScriptWindow extends javax.swing.JFrame {
     
     //String prog = "a = 2 * \"string\" + \"yo\" * 3\n";
     
-    //String prog = "a=0\nwhile (a<2) {\n    print(a)\n}\n";
+    //String prog = "a=0\nwhile (a<2) {\n    print(a)\n    a = a + 1\n}\n";
     
-    String prog = "a=0\nprint(a)\n";
+    //String prog = "a=1\nb=a++\n";
+    String prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
+    
+    //String prog = "a=0\nprint(a)\n";
+    
+    //String prog = "a = 0\nb = a==0\nc= b & false\n";
     
     /*String prog = "a = 1 + 3.4\n"
                        //+ "b=a / 1.9+3\n"
@@ -207,13 +212,24 @@ public class ScriptWindow extends javax.swing.JFrame {
                 break;
             case GrammarLexer.IF ://FALL-THROUGH
             case GrammarLexer.ELSE :
-                style = "if_else";
+            case GrammarLexer.WHILE :
+            case GrammarLexer.FOR :
+                style = "if_else_loop";
                 break;
-            
-            case GrammarLexer.MINUS ://FALL-THROUGH
+            case GrammarLexer.PLUS ://FALL-THROUGH
+            case GrammarLexer.PLUS_PLUS:
+            case GrammarLexer.MINUS :
+            case GrammarLexer.MINUS_MINUS:
             case GrammarLexer.MULT :
-            case GrammarLexer.PLUS :
             case GrammarLexer.DIV :
+            case GrammarLexer.CMP_EQ:
+            case GrammarLexer.CMP_NEQ:
+            case GrammarLexer.CMP_LT:
+            case GrammarLexer.CMP_LT_EQ:
+            case GrammarLexer.CMP_GT:
+            case GrammarLexer.CMP_GT_EQ:
+            case GrammarLexer.AND:
+            case GrammarLexer.OR:
                 style = "operator";
                 break;
             case GrammarLexer.LEFT_B ://FALL-THROUGH
@@ -225,6 +241,7 @@ public class ScriptWindow extends javax.swing.JFrame {
             case GrammarLexer.COMMA :
             case GrammarLexer.EQUAL :
             case GrammarLexer.TP:
+            case GrammarLexer.PV:
             case GrammarLexer.DQUOTE :
                 style = "punctuation";
                 break;
@@ -262,10 +279,11 @@ public class ScriptWindow extends javax.swing.JFrame {
         StyleConstants.setItalic(number, true);
         StyleConstants.setForeground(number, Color.magenta);
         
-        Style if_else = doc.addStyle("if_else", regular);
-        StyleConstants.setForeground(if_else, Color.red);
+        Style if_else = doc.addStyle("if_else_loop", regular);
+        StyleConstants.setForeground(if_else, Color.blue);
         
         Style operator = doc.addStyle("operator", regular);
+        StyleConstants.setForeground(operator, new Color(0, 0, 128));
         StyleConstants.setBold(operator, true);
         
         Style punctuation = doc.addStyle("punctuation", operator);
@@ -394,7 +412,11 @@ public class ScriptWindow extends javax.swing.JFrame {
     private void jButtonExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExecuteActionPerformed
         jMessagesPane.setText("");
         if (script!=null) {
-            script.execute();
+            try {
+                script.execute();
+            } catch (PanicException pe) {
+                //NOTHING
+            }
             script.dumpGlobalMemory();
         } else {
             System.err.println("No valid script to execute!");
@@ -424,6 +446,8 @@ public class ScriptWindow extends javax.swing.JFrame {
             script.printTree();
             script.dumpCommands();
         } catch (CompilationErrorException cee) {
+            //NOTHING
+        } catch (PanicException pe) {
             //NOTHING
         }
     }//GEN-LAST:event_jButtonCompilationActionPerformed

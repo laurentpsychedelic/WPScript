@@ -11,10 +11,10 @@ package lexicalparser;
  */
 public abstract class Calculable {
     GrammarParser interpreter;
-    public abstract void compilationCheck() throws CompilationErrorException;
+    public abstract void compilationCheck() throws CompilationErrorException, PanicException;
     @Override
     public abstract String toString();
-    public abstract Object eval();
-    public abstract Calculable getSimplifiedCalculable();
+    public abstract Object eval() throws PanicException;
+    public abstract Calculable getSimplifiedCalculable() throws PanicException;
     protected int line_number = -1;
 }

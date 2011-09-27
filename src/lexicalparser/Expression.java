@@ -41,7 +41,7 @@ public class Expression extends Calculable {
     }
 
     @Override
-    public Object eval() {
+    public Object eval() throws PanicException {
         Object ret_val = null;
         for (Calculable c : calculation) {
             ret_val = c.eval();
@@ -55,14 +55,14 @@ public class Expression extends Calculable {
     }
 
     @Override
-    public void compilationCheck() throws CompilationErrorException {
+    public void compilationCheck() throws CompilationErrorException, PanicException {
         for (Calculable c : calculation) {
             c.compilationCheck();
         }
     }
 
     @Override
-    public Calculable getSimplifiedCalculable() {
+    public Calculable getSimplifiedCalculable() throws PanicException {
         if (!TOP_LEVEL) {
             if (calculation.size()==1) {
                 return calculation.get(0).getSimplifiedCalculable();

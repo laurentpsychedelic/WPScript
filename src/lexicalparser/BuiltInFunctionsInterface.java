@@ -14,9 +14,12 @@ public class BuiltInFunctionsInterface {
       return new MeasurementSet( (int) Math.round((Double)W.getNativeValue()),  (int) Math.round((Double)H.getNativeValue()));
     }
     private static void _print(Object object) {
-        System.out.print(object.toString());
+        System.out.println(object.toString());
     }
     public static void print(Numeric number) {
+        _print(number.getNativeValue());
+    }
+    public static void print(CharString number) {
         _print(number.getNativeValue());
     }
 }

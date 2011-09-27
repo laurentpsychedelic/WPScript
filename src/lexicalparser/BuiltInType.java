@@ -11,11 +11,11 @@ package lexicalparser;
 public abstract class BuiltInType extends Calculable {
     abstract public Object getNativeValue();
     @Override
-    public Object eval(){
+    public Object eval() throws PanicException {
         return this;
     }
     @Override
-    public Calculable getSimplifiedCalculable() {
+    public Calculable getSimplifiedCalculable() throws PanicException {
         return this;
     }
 }

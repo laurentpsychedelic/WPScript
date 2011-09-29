@@ -320,51 +320,59 @@ pre_for_expression returns [LinkedList<Expression> exprs]
         $exprs.add( $e_inc.expr );
         $exprs.add( $s.expr );
     }
-    | FOR LEFT_P range RIGHT_P NEWLINE? {
+    | FOR LEFT_P ID EQUAL range RIGHT_P NEWLINE? s=stat {
         $exprs = new LinkedList();
-        $exprs.add( $range.range_ele.get(0) );
-        $exprs.add( $range.range_ele.get(2) );
-        $exprs.add( $range.range_ele.get(1) );
+
+        boolean plus_minus = true;
+
+        Calculable init = $range.range_ele.get(0);
+        Calculable increment = $range.range_ele.size()==3 ? $range.range_ele.get(1) : new Numeric(1.0f);
+        Calculable condition = $range.range_ele.get($range.range_ele.size()-1);
+
+        try {
+            if (increment.getSimplifiedCalculable() instanceof Numeric) {
+                double val = (Double) ((Numeric) increment.getSimplifiedCalculable()).getNativeValue();
+                plus_minus = val>=0;
+            }
+        } catch (Exception e) {
+            //NOTHING
+        }
+
+        VariableAssignment va = new VariableAssignment(this, $ID.text, init);
+        Expression init_expr = new Expression(true, this, va);
+        
+        LinkedList<Object> term_ele = new LinkedList();
+        term_ele.add(new Variable(this, $ID.text));
+        term_ele.add(Operator.OPERATOR_PLUS);
+        term_ele.add(increment);
+        Term t = new Term(this, term_ele);
+        VariableAssignment vai = new VariableAssignment(this, $ID.text, t);
+        Expression increment_expr = new Expression(true, this, vai);
+
+        LinkedList<Object> term_elec = new LinkedList();
+        term_elec.add(new Variable(this, $ID.text));
+        term_elec.add(plus_minus ? Operator.OPERATOR_CMP_LT_EQ : Operator.OPERATOR_CMP_GT_EQ);
+        term_elec.add(condition);
+        Term tc = new Term(this, term_elec);
+        Expression condition_expr = new Expression(true, this, tc);
+
+        $exprs = new LinkedList();
+        $exprs.add( init_expr );
+        $exprs.add( condition_expr );
+        $exprs.add( increment_expr );
         $exprs.add( $s.expr );
     };
 
-range returns [LinkedList<Expression> range_ele]
-    : id=ID EQUAL e=expression {
+range returns [LinkedList<Calculable> range_ele]
+    : a=expression {
         $range_ele = new LinkedList();
-        VariableAssignment va = new VariableAssignment(this, $id.text, $e.expr);
-        $range_ele.add(new Expression(this, va));
-    } 
-    (ARROW e=expression {
-        VariableAssignment va0 = (VariableAssignment)(((Expression) $range_ele.get(0)).getCalculation().get(0));
-        String var_name = va0.getVariableName();
-        LinkedList<Object> term_ele = new LinkedList();
-        term_ele.add(new Variable(this, var_name));
-        term_ele.add(Operator.OPERATOR_PLUS);
-        term_ele.add($e.expr);
-        Term t = new Term(this, term_ele);
-        $range_ele.add(new Expression(this, t));
-    })?
-    ARROW e=expression {
-        if ($range_ele.size() == 1) {
-            VariableAssignment va0 = (VariableAssignment)(((Expression) $range_ele.get(0)).getCalculation().get(0));
-            String var_name = va0.getVariableName();
-            LinkedList<Object> term_ele = new LinkedList();
-            term_ele.add(new Variable(this, var_name));
-            term_ele.add(Operator.OPERATOR_PLUS);
-            term_ele.add(new Numeric(1.0f));
-            Term t = new Term(this, term_ele);
-            $range_ele.add(new Expression(this, t));
-        } else {
-            VariableAssignment va0 = (VariableAssignment)(((Expression) $range_ele.get(0)).getCalculation().get(0));
-            String var_name = va0.getVariableName();
-            LinkedList<Object> term_ele = new LinkedList();
-            term_ele.add(new Variable(this, var_name));
-            term_ele.add(Operator.OPERATOR_CMP_LT_EQ);
-            term_ele.add($e.expr);
-            Term t = new Term(this, term_ele);
-            $range_ele.add(new Expression(this, t));
+        $range_ele.add($a.expr);
+    } (ARROW b=range {
+        for (int k=0; k<$range_ele.size(); k++) {
+            $b.range_ele.add(0, $range_ele.get(k));
         }
-    };
+        $range_ele = $b.range_ele;
+    } )*;
 
 expression returns [Expression expr]
     : terms {
@@ -478,6 +486,9 @@ args returns [LinkedList<Object> params]:
 atom returns [Object value]
     : NUM {
         $value = new Numeric( Float.parseFloat($NUM.text) );
+    }
+    | MINUS NUM {
+        $value = new Numeric( -1.0 * Float.parseFloat($NUM.text) );
     }
     | BOOL {
         if ($BOOL.text.equalsIgnoreCase("true")) {

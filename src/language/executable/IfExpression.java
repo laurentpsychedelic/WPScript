@@ -75,7 +75,7 @@ public class IfExpression extends Calculable {
     public Calculable getSimplifiedCalculable() throws PanicException {
         Calculable new_condition = (Calculable) condition.getSimplifiedCalculable();
         Expression new_calculation_if = (Expression) calculation_if.getSimplifiedCalculable();
-        Expression new_calculation_else = (Expression) calculation_else.getSimplifiedCalculable();
+        Expression new_calculation_else = calculation_else!=null ? (Expression) calculation_else.getSimplifiedCalculable() : null;
         return new IfExpression(interpreter, line_number, new_condition, new_calculation_if, new_calculation_else);
     }
 

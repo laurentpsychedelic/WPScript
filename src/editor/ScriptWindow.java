@@ -164,8 +164,9 @@ public class ScriptWindow extends javax.swing.JFrame {
     //String prog = "a=0\nwhile (a<2) {\n    print(a)\n    a = a + 1\n}\n";
     
     //String prog = "a=1\nb=a++\n";
-    String prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
-    
+    //String prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
+    String prog = "for (a=10->-2->-10) {\n    print(a)\n    if (a==0) {\n        print(\"YO\")\n    }\n}\n";
+   
     //String prog = "a=0\nprint(a)\n";
     
     //String prog = "a = 0\nb = a==0\nc= b & false\n";
@@ -202,7 +203,7 @@ public class ScriptWindow extends javax.swing.JFrame {
             initStyles.add(style);
             initString.add(text);
         }
-        
+       
         StyledDocument doc = jScriptPane.getStyledDocument();
         
         try {

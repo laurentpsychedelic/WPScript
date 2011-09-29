@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/language/Script.g 2011-09-28 14:05:00
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/language/Script.g 2011-09-29 21:01:16
 
 package language;
 
@@ -68,10 +68,10 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:5: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:5: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:9: ( '0' .. '9' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:9: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -85,7 +85,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:9: '0' .. '9'
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -101,7 +101,7 @@ public class ScriptLexer extends Lexer {
                 cnt1++;
             } while (true);
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:19: ( '.' ( '0' .. '9' )+ )?
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:19: ( '.' ( '0' .. '9' )+ )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -110,10 +110,10 @@ public class ScriptLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:20: '.' ( '0' .. '9' )+
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:20: '.' ( '0' .. '9' )+
                     {
                     match('.'); 
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:24: ( '0' .. '9' )+
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:24: ( '0' .. '9' )+
                     int cnt2=0;
                     loop2:
                     do {
@@ -127,7 +127,7 @@ public class ScriptLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:538:24: '0' .. '9'
+                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:24: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -165,7 +165,7 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BOOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:539:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -183,10 +183,10 @@ public class ScriptLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:539:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
                     {
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:539:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:539:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                         input.consume();
@@ -231,10 +231,10 @@ public class ScriptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:539:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
                     {
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:539:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:539:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                         input.consume();
@@ -302,8 +302,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:540:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:540:7: ( 'I' | 'i' ) ( 'F' | 'f' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:551:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:551:7: ( 'I' | 'i' ) ( 'F' | 'f' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -339,8 +339,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:541:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:541:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:552:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:552:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -394,8 +394,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:542:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:542:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:553:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:553:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -458,8 +458,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = FOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:543:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:543:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:554:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:554:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -504,8 +504,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:544:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:544:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:555:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:555:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -516,7 +516,7 @@ public class ScriptLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:544:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:555:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -565,8 +565,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:6: ( '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:8: '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:6: ( '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:8: '='
             {
             match('='); 
 
@@ -585,8 +585,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:546:6: ( ',' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:546:8: ','
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:6: ( ',' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:8: ','
             {
             match(','); 
 
@@ -605,8 +605,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DQUOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:547:7: ( '\"' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:547:9: '\"'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:558:7: ( '\"' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:558:9: '\"'
             {
             match('\"'); 
 
@@ -625,8 +625,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:548:7: ( '(' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:548:9: '('
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:559:7: ( '(' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:559:9: '('
             {
             match('('); 
 
@@ -645,8 +645,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:8: ( ')' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:549:10: ')'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:560:8: ( ')' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:560:10: ')'
             {
             match(')'); 
 
@@ -665,8 +665,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:5: ( '*' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:550:7: '*'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:561:5: ( '*' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:561:7: '*'
             {
             match('*'); 
 
@@ -685,8 +685,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:551:4: ( '/' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:551:6: '/'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:562:4: ( '/' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:562:6: '/'
             {
             match('/'); 
 
@@ -705,8 +705,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:552:5: ( '+' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:552:7: '+'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:563:5: ( '+' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:563:7: '+'
             {
             match('+'); 
 
@@ -725,8 +725,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS_PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:553:10: ( '+' '+' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:553:12: '+' '+'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:10: ( '+' '+' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:12: '+' '+'
             {
             match('+'); 
             match('+'); 
@@ -746,8 +746,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:554:6: ( '-' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:554:8: '-'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:6: ( '-' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:8: '-'
             {
             match('-'); 
 
@@ -766,8 +766,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS_MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:555:12: ( '-' '-' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:555:14: '-' '-'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:12: ( '-' '-' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:14: '-' '-'
             {
             match('-'); 
             match('-'); 
@@ -787,8 +787,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:7: ( '<' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:9: '<'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:7: ( '<' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:9: '<'
             {
             match('<'); 
 
@@ -807,8 +807,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:10: ( '<' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:12: '<' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:10: ( '<' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:12: '<' '='
             {
             match('<'); 
             match('='); 
@@ -828,8 +828,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:558:7: ( '>' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:558:9: '>'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:7: ( '>' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:9: '>'
             {
             match('>'); 
 
@@ -848,8 +848,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:559:10: ( '>' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:559:12: '>' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:10: ( '>' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:12: '>' '='
             {
             match('>'); 
             match('='); 
@@ -869,8 +869,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:560:7: ( '=' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:560:9: '=' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:7: ( '=' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:9: '=' '='
             {
             match('='); 
             match('='); 
@@ -890,8 +890,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_NEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:561:8: ( '!' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:561:9: '!' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:8: ( '!' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:9: '!' '='
             {
             match('!'); 
             match('='); 
@@ -911,8 +911,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:562:4: ( '&' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:562:6: '&'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:4: ( '&' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:6: '&'
             {
             match('&'); 
 
@@ -931,8 +931,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:563:4: ( '|' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:563:6: '|'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:574:4: ( '|' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:574:6: '|'
             {
             match('|'); 
 
@@ -951,8 +951,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:15: ( '\"' ID '\"' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:17: '\"' ID '\"'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:575:15: ( '\"' ID '\"' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:575:17: '\"' ID '\"'
             {
             match('\"'); 
             mID(); 
@@ -973,8 +973,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:9: ( '{' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:11: '{'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:576:9: ( '{' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:576:11: '{'
             {
             match('{'); 
 
@@ -993,8 +993,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:10: ( '}' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:12: '}'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:577:10: ( '}' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:577:12: '}'
             {
             match('}'); 
 
@@ -1013,8 +1013,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:8: ( '[' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:10: '['
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:578:8: ( '[' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:578:10: '['
             {
             match('['); 
 
@@ -1033,8 +1033,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:8: ( ']' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:10: ']'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:579:8: ( ']' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:579:10: ']'
             {
             match(']'); 
 
@@ -1053,8 +1053,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:6: ( '-' '>' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:8: '-' '>'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:580:6: ( '-' '>' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:580:8: '-' '>'
             {
             match('-'); 
             match('>'); 
@@ -1074,8 +1074,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:8: ( '\\n' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:9: '\\n'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:581:8: ( '\\n' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:581:9: '\\n'
             {
             match('\n'); 
 
@@ -1094,8 +1094,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = TP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:3: ( ':' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:5: ':'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:582:3: ( ':' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:582:5: ':'
             {
             match(':'); 
 
@@ -1114,8 +1114,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:3: ( ';' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:5: ';'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:3: ( ';' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:5: ';'
             {
             match(';'); 
 
@@ -1134,10 +1134,10 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:4: ( ( ' ' | '\\t' | '\\r' )+ )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:8: ( ' ' | '\\t' | '\\r' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:4: ( ( ' ' | '\\t' | '\\r' )+ )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:8: ( ' ' | '\\t' | '\\r' )+
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:8: ( ' ' | '\\t' | '\\r' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:8: ( ' ' | '\\t' | '\\r' )+
             int cnt6=0;
             loop6:
             do {

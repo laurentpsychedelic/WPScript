@@ -280,6 +280,11 @@ public class Term extends Calculable {
             }
             
         }
+        if (new_elements.size()==1) {
+            if (new_elements.get(0) instanceof Calculable) {
+                return ((Calculable) new_elements.get(0)).getSimplifiedCalculable();
+            }
+        }
         return new Term(interpreter, line_number, new_elements);
     }
 }

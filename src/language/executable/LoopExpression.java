@@ -4,6 +4,7 @@
  */
 package language.executable;
 
+import javax.swing.JOptionPane;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
@@ -63,12 +64,15 @@ public class LoopExpression extends Calculable {
             return "LOOP expression:: FOR[" + (pre_calculation==null ? "null":pre_calculation.toString()) + " ; " + (increment_calculation==null ? "null":increment_calculation.toString() + " ; " + condition.toString()) + "] {" + (calculation!=null?calculation.toString():"null") + "}";
         }
     }
+    
+    public static final int _INFINITE_LOOP_NUMBER_ = 20;
 
     @Override
     public Object eval() throws PanicException {
         if (pre_calculation != null) {
             pre_calculation.eval();
         }
+        int cnt = 0;
         while (true) {
             Object cond = condition.eval();
             if (!(cond instanceof Bool)) {
@@ -87,6 +91,15 @@ public class LoopExpression extends Calculable {
                 }
             } else {
                 return null;
+            }
+            cnt++;
+            if (cnt >= _INFINITE_LOOP_NUMBER_) {
+                cnt = 0;
+                int answer = JOptionPane.showConfirmDialog(null, "May be inside infinite loop! Continue?", "Warning", JOptionPane.WARNING_MESSAGE);
+                if (answer != JOptionPane.OK_OPTION) {
+                    //throw new RuntimeExceptionError()://TODO !!
+                    return null;
+                }
             }
         }
     }

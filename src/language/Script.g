@@ -578,7 +578,7 @@ CMP_EQ: '=' '=';
 CMP_NEQ:'!' '=';
 AND: '&';
 OR : '|';
-STRING_LITERAL: '"' ID '"';
+STRING_LITERAL: '"' ((' '?) ID (' ')?)+ '"';
 LEFT_CB : '{'; // left curved bracket
 RIGHT_CB : '}'; // right curved bracket
 LEFT_B : '[';

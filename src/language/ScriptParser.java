@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/language/Script.g 2011-09-30 09:07:07
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g 2011-09-30 15:11:13
 
 package language;
 
@@ -87,7 +87,7 @@ public class ScriptParser extends Parser {
     }
 
     public String[] getTokenNames() { return ScriptParser.tokenNames; }
-    public String getGrammarFileName() { return "/home/laurent/dev/WPAScript/working_copy/src/language/Script.g"; }
+    public String getGrammarFileName() { return "D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g"; }
 
 
 
@@ -250,7 +250,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "prog"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:189:1: prog : s= stats ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:189:1: prog : s= stats ;
     public final ScriptParser.prog_return prog() throws RecognitionException {
         ScriptParser.prog_return retval = new ScriptParser.prog_return();
         retval.start = input.LT(1);
@@ -263,8 +263,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:189:6: (s= stats )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:190:5: s= stats
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:189:6: (s= stats )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:190:5: s= stats
             {
             root_0 = (Object)adaptor.nil();
 
@@ -311,7 +311,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "block"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:197:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:197:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
     public final ScriptParser.block_return block() throws RecognitionException {
         ScriptParser.block_return retval = new ScriptParser.block_return();
         retval.start = input.LT(1);
@@ -332,8 +332,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:197:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:198:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:197:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:198:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
@@ -342,12 +342,12 @@ public class ScriptParser extends Parser {
             LEFT_CB1_tree = (Object)adaptor.create(LEFT_CB1);
             adaptor.addChild(root_0, LEFT_CB1_tree);
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:198:13: ( NEWLINE )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:198:13: ( NEWLINE )?
             int alt1=2;
             alt1 = dfa1.predict(input);
             switch (alt1) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                     {
                     NEWLINE2=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_block109); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -366,7 +366,7 @@ public class ScriptParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, stats3.getTree());
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:198:28: ( NEWLINE )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:198:28: ( NEWLINE )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -375,7 +375,7 @@ public class ScriptParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                     {
                     NEWLINE4=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_block114); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -427,7 +427,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "stats"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:202:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:202:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
     public final ScriptParser.stats_return stats() throws RecognitionException {
         ScriptParser.stats_return retval = new ScriptParser.stats_return();
         retval.start = input.LT(1);
@@ -440,8 +440,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:202:51: (s= stat (s= stat )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:203:5: s= stat (s= stat )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:202:51: (s= stat (s= stat )* )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:203:5: s= stat (s= stat )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -459,7 +459,7 @@ public class ScriptParser extends Parser {
                       }
                   
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:208:7: (s= stat )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:208:7: (s= stat )*
             loop3:
             do {
                 int alt3=2;
@@ -481,7 +481,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:208:8: s= stat
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:208:8: s= stat
             	    {
             	    pushFollow(FOLLOW_stat_in_stats143);
             	    s=stat();
@@ -534,7 +534,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "stat"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:215:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression );
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:215:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression );
     public final ScriptParser.stat_return stat() throws RecognitionException {
         ScriptParser.stat_return retval = new ScriptParser.stat_return();
         retval.start = input.LT(1);
@@ -559,12 +559,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:216:5: ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:216:5: ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression )
             int alt4=6;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:216:7: pre_stat NEWLINE
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:216:7: pre_stat NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -589,7 +589,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:220:7: NEWLINE
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:220:7: NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -607,7 +607,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:223:7: block
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:223:7: block
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -626,7 +626,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:226:7: if_expression
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:226:7: if_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -645,7 +645,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:229:7: while_expression
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:229:7: while_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -664,7 +664,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:232:7: for_expression
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:232:7: for_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -710,7 +710,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_stat"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:235:1: pre_stat returns [Expression expr] : ( expression | BREAK | ID EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:235:1: pre_stat returns [Expression expr] : ( expression | BREAK | ID EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
     public final ScriptParser.pre_stat_return pre_stat() throws RecognitionException {
         ScriptParser.pre_stat_return retval = new ScriptParser.pre_stat_return();
         retval.start = input.LT(1);
@@ -747,12 +747,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:236:5: ( expression | BREAK | ID EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:236:5: ( expression | BREAK | ID EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
             int alt5=7;
             alt5 = dfa5.predict(input);
             switch (alt5) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:236:7: expression
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:236:7: expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -771,7 +771,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:239:7: BREAK
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:239:7: BREAK
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -789,7 +789,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:242:7: ID EQUAL expression
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:242:7: ID EQUAL expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -818,7 +818,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:245:7: ID PLUS_PLUS
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:245:7: ID PLUS_PLUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -841,7 +841,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:248:7: PLUS_PLUS ID
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:248:7: PLUS_PLUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -864,7 +864,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:251:7: ID MINUS_MINUS
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:251:7: ID MINUS_MINUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -887,7 +887,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:254:7: MINUS_MINUS ID
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:254:7: MINUS_MINUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -937,7 +937,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "if_expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:260:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:260:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
     public final ScriptParser.if_expression_return if_expression() throws RecognitionException {
         ScriptParser.if_expression_return retval = new ScriptParser.if_expression_return();
         retval.start = input.LT(1);
@@ -950,8 +950,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:261:5: (p= pre_if_expression )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:261:7: p= pre_if_expression
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:261:5: (p= pre_if_expression )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:261:7: p= pre_if_expression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1007,7 +1007,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_if_expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:277:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:277:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
     public final ScriptParser.pre_if_expression_return pre_if_expression() throws RecognitionException {
         ScriptParser.pre_if_expression_return retval = new ScriptParser.pre_if_expression_return();
         retval.start = input.LT(1);
@@ -1036,8 +1036,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:278:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:278:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:278:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:278:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1062,12 +1062,12 @@ public class ScriptParser extends Parser {
             RIGHT_P28_tree = (Object)adaptor.create(RIGHT_P28);
             adaptor.addChild(root_0, RIGHT_P28_tree);
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:278:38: ( NEWLINE )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:278:38: ( NEWLINE )?
             int alt6=2;
             alt6 = dfa6.predict(input);
             switch (alt6) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                     {
                     NEWLINE29=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression368); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1093,7 +1093,7 @@ public class ScriptParser extends Parser {
                       retval.exprs.add( (s!=null?s.expr:null) );
                   
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:7: ( NEWLINE )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:7: ( NEWLINE )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1106,7 +1106,7 @@ public class ScriptParser extends Parser {
             }
             switch (alt7) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                     {
                     NEWLINE30=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression377); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1119,7 +1119,7 @@ public class ScriptParser extends Parser {
 
             }
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:16: ( ELSE ( NEWLINE )? s= stat )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:16: ( ELSE ( NEWLINE )? s= stat )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1132,19 +1132,19 @@ public class ScriptParser extends Parser {
             }
             switch (alt9) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:17: ELSE ( NEWLINE )? s= stat
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:17: ELSE ( NEWLINE )? s= stat
                     {
                     ELSE31=(Token)match(input,ELSE,FOLLOW_ELSE_in_pre_if_expression381); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     ELSE31_tree = (Object)adaptor.create(ELSE31);
                     adaptor.addChild(root_0, ELSE31_tree);
                     }
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:22: ( NEWLINE )?
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:22: ( NEWLINE )?
                     int alt8=2;
                     alt8 = dfa8.predict(input);
                     switch (alt8) {
                         case 1 :
-                            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                             {
                             NEWLINE32=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression383); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -1203,7 +1203,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "while_expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:286:1: while_expression returns [LoopExpression expr] : p= pre_while_expression ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:286:1: while_expression returns [LoopExpression expr] : p= pre_while_expression ;
     public final ScriptParser.while_expression_return while_expression() throws RecognitionException {
         ScriptParser.while_expression_return retval = new ScriptParser.while_expression_return();
         retval.start = input.LT(1);
@@ -1216,8 +1216,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:287:5: (p= pre_while_expression )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:287:7: p= pre_while_expression
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:287:5: (p= pre_while_expression )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:287:7: p= pre_while_expression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1269,7 +1269,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_while_expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:299:1: pre_while_expression returns [LinkedList<Expression> exprs] : WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:299:1: pre_while_expression returns [LinkedList<Expression> exprs] : WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ;
     public final ScriptParser.pre_while_expression_return pre_while_expression() throws RecognitionException {
         ScriptParser.pre_while_expression_return retval = new ScriptParser.pre_while_expression_return();
         retval.start = input.LT(1);
@@ -1292,8 +1292,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:300:5: ( WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:300:7: WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:300:5: ( WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:300:7: WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1318,12 +1318,12 @@ public class ScriptParser extends Parser {
             RIGHT_P35_tree = (Object)adaptor.create(RIGHT_P35);
             adaptor.addChild(root_0, RIGHT_P35_tree);
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:300:41: ( NEWLINE )?
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:300:41: ( NEWLINE )?
             int alt10=2;
             alt10 = dfa10.predict(input);
             switch (alt10) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                     {
                     NEWLINE36=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_while_expression438); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1378,7 +1378,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "for_expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:306:1: for_expression returns [LoopExpression expr] : p= pre_for_expression ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:306:1: for_expression returns [LoopExpression expr] : p= pre_for_expression ;
     public final ScriptParser.for_expression_return for_expression() throws RecognitionException {
         ScriptParser.for_expression_return retval = new ScriptParser.for_expression_return();
         retval.start = input.LT(1);
@@ -1391,8 +1391,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:307:5: (p= pre_for_expression )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:307:7: p= pre_for_expression
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:307:5: (p= pre_for_expression )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:307:7: p= pre_for_expression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1444,7 +1444,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_for_expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:319:1: pre_for_expression returns [LinkedList<Expression> exprs] : ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat );
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:319:1: pre_for_expression returns [LinkedList<Expression> exprs] : ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat );
     public final ScriptParser.pre_for_expression_return pre_for_expression() throws RecognitionException {
         ScriptParser.pre_for_expression_return retval = new ScriptParser.pre_for_expression_return();
         retval.start = input.LT(1);
@@ -1489,7 +1489,7 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:5: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:5: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -1519,7 +1519,7 @@ public class ScriptParser extends Parser {
             }
             switch (alt13) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1566,12 +1566,12 @@ public class ScriptParser extends Parser {
                     RIGHT_P41_tree = (Object)adaptor.create(RIGHT_P41);
                     adaptor.addChild(root_0, RIGHT_P41_tree);
                     }
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:81: ( NEWLINE )?
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:81: ( NEWLINE )?
                     int alt11=2;
                     alt11 = dfa11.predict(input);
                     switch (alt11) {
                         case 1 :
-                            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                             {
                             NEWLINE42=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_for_expression503); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -1603,7 +1603,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:327:7: FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:327:7: FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1638,12 +1638,12 @@ public class ScriptParser extends Parser {
                     RIGHT_P48_tree = (Object)adaptor.create(RIGHT_P48);
                     adaptor.addChild(root_0, RIGHT_P48_tree);
                     }
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:327:41: ( NEWLINE )?
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:327:41: ( NEWLINE )?
                     int alt12=2;
                     alt12 = dfa12.predict(input);
                     switch (alt12) {
                         case 1 :
-                            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                             {
                             NEWLINE49=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_for_expression530); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -1737,7 +1737,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "range"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:370:1: range returns [LinkedList<Calculable> range_ele] : a= expression ( ARROW b= range )* ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:370:1: range returns [LinkedList<Calculable> range_ele] : a= expression ( ARROW b= range )* ;
     public final ScriptParser.range_return range() throws RecognitionException {
         ScriptParser.range_return retval = new ScriptParser.range_return();
         retval.start = input.LT(1);
@@ -1754,8 +1754,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:371:5: (a= expression ( ARROW b= range )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:371:7: a= expression ( ARROW b= range )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:371:5: (a= expression ( ARROW b= range )* )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:371:7: a= expression ( ARROW b= range )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1771,7 +1771,7 @@ public class ScriptParser extends Parser {
                       retval.range_ele.add((a!=null?a.expr:null));
                   
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:374:7: ( ARROW b= range )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:374:7: ( ARROW b= range )*
             loop14:
             do {
                 int alt14=2;
@@ -1790,7 +1790,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt14) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:374:8: ARROW b= range
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:374:8: ARROW b= range
             	    {
             	    ARROW50=(Token)match(input,ARROW,FOLLOW_ARROW_in_range560); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1849,7 +1849,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:381:1: expression returns [Expression expr] : ( terms | function_call );
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:381:1: expression returns [Expression expr] : ( terms | function_call );
     public final ScriptParser.expression_return expression() throws RecognitionException {
         ScriptParser.expression_return retval = new ScriptParser.expression_return();
         retval.start = input.LT(1);
@@ -1864,7 +1864,7 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:382:5: ( terms | function_call )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:382:5: ( terms | function_call )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -1897,7 +1897,7 @@ public class ScriptParser extends Parser {
             }
             switch (alt15) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:382:7: terms
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:382:7: terms
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1916,7 +1916,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:385:7: function_call
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:385:7: function_call
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1962,7 +1962,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "terms"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:389:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:389:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* ;
     public final ScriptParser.terms_return terms() throws RecognitionException {
         ScriptParser.terms_return retval = new ScriptParser.terms_return();
         retval.start = input.LT(1);
@@ -1983,8 +1983,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:390:5: (t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:390:7: t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:390:5: (t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:390:7: t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2000,7 +2000,7 @@ public class ScriptParser extends Parser {
                       retval.terms.add( new Term(this, (t!=null?t.atoms:null)) );
                   
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:393:7: ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:393:7: ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
             loop16:
             do {
                 int alt16=5;
@@ -2030,7 +2030,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt16) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:393:9: PLUS t= term
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:393:9: PLUS t= term
             	    {
             	    PLUS53=(Token)match(input,PLUS,FOLLOW_PLUS_in_terms621); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2053,7 +2053,7 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:397:9: MINUS t= term
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:397:9: MINUS t= term
             	    {
             	    MINUS54=(Token)match(input,MINUS,FOLLOW_MINUS_in_terms637); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2076,7 +2076,7 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:401:9: AND t= term
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:401:9: AND t= term
             	    {
             	    AND55=(Token)match(input,AND,FOLLOW_AND_in_terms653); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2099,7 +2099,7 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 4 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:405:9: OR t= term
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:405:9: OR t= term
             	    {
             	    OR56=(Token)match(input,OR,FOLLOW_OR_in_terms669); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2156,7 +2156,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "term"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:411:1: term returns [LinkedList<Object> atoms] : (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:411:1: term returns [LinkedList<Object> atoms] : (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
     public final ScriptParser.term_return term() throws RecognitionException {
         ScriptParser.term_return retval = new ScriptParser.term_return();
         retval.start = input.LT(1);
@@ -2201,7 +2201,7 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:412:5: (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:412:5: (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
             int alt18=5;
             switch ( input.LA(1) ) {
             case LEFT_CB:
@@ -2281,7 +2281,7 @@ public class ScriptParser extends Parser {
 
             switch (alt18) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:412:7: a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:412:7: a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2297,7 +2297,7 @@ public class ScriptParser extends Parser {
                               retval.atoms.add((a!=null?a.value:null));
                           
                     }
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:415:7: ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:415:7: ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
                     loop17:
                     do {
                         int alt17=9;
@@ -2347,7 +2347,7 @@ public class ScriptParser extends Parser {
 
                         switch (alt17) {
                     	case 1 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:415:9: MULT a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:415:9: MULT a= atom
                     	    {
                     	    MULT57=(Token)match(input,MULT,FOLLOW_MULT_in_term703); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2370,7 +2370,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:419:9: DIV a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:419:9: DIV a= atom
                     	    {
                     	    DIV58=(Token)match(input,DIV,FOLLOW_DIV_in_term719); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2393,7 +2393,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 3 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:423:9: CMP_LT a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:423:9: CMP_LT a= atom
                     	    {
                     	    CMP_LT59=(Token)match(input,CMP_LT,FOLLOW_CMP_LT_in_term735); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2416,7 +2416,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 4 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:427:9: CMP_LT_EQ a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:427:9: CMP_LT_EQ a= atom
                     	    {
                     	    CMP_LT_EQ60=(Token)match(input,CMP_LT_EQ,FOLLOW_CMP_LT_EQ_in_term752); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2439,7 +2439,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 5 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:431:9: CMP_GT a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:431:9: CMP_GT a= atom
                     	    {
                     	    CMP_GT61=(Token)match(input,CMP_GT,FOLLOW_CMP_GT_in_term769); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2462,7 +2462,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 6 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:435:9: CMP_GT_EQ a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:435:9: CMP_GT_EQ a= atom
                     	    {
                     	    CMP_GT_EQ62=(Token)match(input,CMP_GT_EQ,FOLLOW_CMP_GT_EQ_in_term785); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2485,7 +2485,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 7 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:439:9: CMP_EQ a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:439:9: CMP_EQ a= atom
                     	    {
                     	    CMP_EQ63=(Token)match(input,CMP_EQ,FOLLOW_CMP_EQ_in_term802); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2508,7 +2508,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 8 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:443:9: CMP_NEQ a= atom
+                    	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:443:9: CMP_NEQ a= atom
                     	    {
                     	    CMP_NEQ64=(Token)match(input,CMP_NEQ,FOLLOW_CMP_NEQ_in_term818); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2540,7 +2540,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:448:7: ID PLUS_PLUS
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:448:7: ID PLUS_PLUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2565,7 +2565,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:453:7: PLUS_PLUS ID
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:453:7: PLUS_PLUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2590,7 +2590,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:458:7: ID MINUS_MINUS
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:458:7: ID MINUS_MINUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2615,7 +2615,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:463:7: MINUS_MINUS ID
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:463:7: MINUS_MINUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2667,7 +2667,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "function_call"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:470:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P args RIGHT_P ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:470:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P args RIGHT_P ;
     public final ScriptParser.function_call_return function_call() throws RecognitionException {
         ScriptParser.function_call_return retval = new ScriptParser.function_call_return();
         retval.start = input.LT(1);
@@ -2686,8 +2686,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:470:55: ( ID LEFT_P args RIGHT_P )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:471:5: ID LEFT_P args RIGHT_P
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:470:55: ( ID LEFT_P args RIGHT_P )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:471:5: ID LEFT_P args RIGHT_P
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2747,7 +2747,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "args"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:477:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:477:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
     public final ScriptParser.args_return args() throws RecognitionException {
         ScriptParser.args_return retval = new ScriptParser.args_return();
         retval.start = input.LT(1);
@@ -2764,8 +2764,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:477:41: (a= expression ( COMMA b= args )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:478:5: a= expression ( COMMA b= args )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:477:41: (a= expression ( COMMA b= args )* )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:478:5: a= expression ( COMMA b= args )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2781,7 +2781,7 @@ public class ScriptParser extends Parser {
                       retval.params.add((a!=null?a.expr:null));
                   
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:481:7: ( COMMA b= args )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:481:7: ( COMMA b= args )*
             loop19:
             do {
                 int alt19=2;
@@ -2800,7 +2800,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt19) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:481:8: COMMA b= args
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:481:8: COMMA b= args
             	    {
             	    COMMA77=(Token)match(input,COMMA,FOLLOW_COMMA_in_args926); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2859,7 +2859,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:490:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary );
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:490:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary );
     public final ScriptParser.atom_return atom() throws RecognitionException {
         ScriptParser.atom_return retval = new ScriptParser.atom_return();
         retval.start = input.LT(1);
@@ -2890,7 +2890,7 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:491:5: ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:491:5: ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | string_literal | dictionary )
             int alt20=7;
             switch ( input.LA(1) ) {
             case NUM:
@@ -2938,7 +2938,7 @@ public class ScriptParser extends Parser {
 
             switch (alt20) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:491:7: NUM
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:491:7: NUM
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2956,7 +2956,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:494:7: MINUS NUM
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:494:7: MINUS NUM
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2979,7 +2979,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:497:7: BOOL
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:497:7: BOOL
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3001,7 +3001,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:504:7: LEFT_P expression RIGHT_P
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:504:7: LEFT_P expression RIGHT_P
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3030,7 +3030,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:507:7: ID
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:507:7: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3048,7 +3048,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:510:7: string_literal
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:510:7: string_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3067,7 +3067,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:513:7: dictionary
+                    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:513:7: dictionary
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3113,7 +3113,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "string_literal"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:525:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:525:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
     public final ScriptParser.string_literal_return string_literal() throws RecognitionException {
         ScriptParser.string_literal_return retval = new ScriptParser.string_literal_return();
         retval.start = input.LT(1);
@@ -3126,8 +3126,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:525:43: (s= STRING_LITERAL )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:525:45: s= STRING_LITERAL
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:525:43: (s= STRING_LITERAL )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:525:45: s= STRING_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3170,7 +3170,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "dictionary"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:530:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:530:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
     public final ScriptParser.dictionary_return dictionary() throws RecognitionException {
         ScriptParser.dictionary_return retval = new ScriptParser.dictionary_return();
         retval.start = input.LT(1);
@@ -3187,8 +3187,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 20) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:530:39: ( LEFT_CB dictionary_elements RIGHT_CB )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:531:5: LEFT_CB dictionary_elements RIGHT_CB
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:530:39: ( LEFT_CB dictionary_elements RIGHT_CB )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:531:5: LEFT_CB dictionary_elements RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3247,7 +3247,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "dictionary_elements"
-    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:540:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
+    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:540:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
     public final ScriptParser.dictionary_elements_return dictionary_elements() throws RecognitionException {
         ScriptParser.dictionary_elements_return retval = new ScriptParser.dictionary_elements_return();
         retval.start = input.LT(1);
@@ -3272,13 +3272,13 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 21) ) { return retval; }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:540:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:541:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:540:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:541:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
             {
             root_0 = (Object)adaptor.nil();
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:541:5: (e1= expression TP e2= expression )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:541:6: e1= expression TP e2= expression
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:541:5: (e1= expression TP e2= expression )
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:541:6: e1= expression TP e2= expression
             {
             pushFollow(FOLLOW_expression_in_dictionary_elements1091);
             e1=expression();
@@ -3307,7 +3307,7 @@ public class ScriptParser extends Parser {
                       retval.keys_values.add((e2!=null?e2.expr:null));
                   
             }
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
             loop23:
             do {
                 int alt23=2;
@@ -3335,9 +3335,9 @@ public class ScriptParser extends Parser {
 
                 switch (alt23) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
             	    {
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:8: ( NEWLINE )?
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:8: ( NEWLINE )?
             	    int alt21=2;
             	    int LA21_0 = input.LA(1);
 
@@ -3346,7 +3346,7 @@ public class ScriptParser extends Parser {
             	    }
             	    switch (alt21) {
             	        case 1 :
-            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+            	            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
             	            {
             	            NEWLINE92=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements1103); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -3364,7 +3364,7 @@ public class ScriptParser extends Parser {
             	    COMMA93_tree = (Object)adaptor.create(COMMA93);
             	    adaptor.addChild(root_0, COMMA93_tree);
             	    }
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:23: ( NEWLINE )?
+            	    // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:23: ( NEWLINE )?
             	    int alt22=2;
             	    int LA22_0 = input.LA(1);
 
@@ -3373,7 +3373,7 @@ public class ScriptParser extends Parser {
             	    }
             	    switch (alt22) {
             	        case 1 :
-            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+            	            // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
             	            {
             	            NEWLINE94=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements1108); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -3432,8 +3432,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred1_Script
     public final void synpred1_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:198:13: ( NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:198:13: NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:198:13: ( NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:198:13: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred1_Script109); if (state.failed) return ;
 
@@ -3446,8 +3446,8 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:208:8: (s= stat )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:208:8: s= stat
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:208:8: (s= stat )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:208:8: s= stat
         {
         pushFollow(FOLLOW_stat_in_synpred3_Script143);
         s=stat();
@@ -3461,8 +3461,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred4_Script
     public final void synpred4_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:216:7: ( pre_stat NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:216:7: pre_stat NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:216:7: ( pre_stat NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:216:7: pre_stat NEWLINE
         {
         pushFollow(FOLLOW_pre_stat_in_synpred4_Script168);
         pre_stat();
@@ -3477,8 +3477,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred6_Script
     public final void synpred6_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:223:7: ( block )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:223:7: block
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:223:7: ( block )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:223:7: block
         {
         pushFollow(FOLLOW_block_in_synpred6_Script190);
         block();
@@ -3492,8 +3492,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred9_Script
     public final void synpred9_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:236:7: ( expression )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:236:7: expression
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:236:7: ( expression )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:236:7: expression
         {
         pushFollow(FOLLOW_expression_in_synpred9_Script237);
         expression();
@@ -3507,8 +3507,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred12_Script
     public final void synpred12_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:245:7: ( ID PLUS_PLUS )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:245:7: ID PLUS_PLUS
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:245:7: ( ID PLUS_PLUS )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:245:7: ID PLUS_PLUS
         {
         match(input,ID,FOLLOW_ID_in_synpred12_Script271); if (state.failed) return ;
         match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_synpred12_Script273); if (state.failed) return ;
@@ -3519,8 +3519,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred13_Script
     public final void synpred13_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:248:7: ( PLUS_PLUS ID )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:248:7: PLUS_PLUS ID
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:248:7: ( PLUS_PLUS ID )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:248:7: PLUS_PLUS ID
         {
         match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_synpred13_Script283); if (state.failed) return ;
         match(input,ID,FOLLOW_ID_in_synpred13_Script285); if (state.failed) return ;
@@ -3531,8 +3531,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred14_Script
     public final void synpred14_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:251:7: ( ID MINUS_MINUS )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:251:7: ID MINUS_MINUS
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:251:7: ( ID MINUS_MINUS )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:251:7: ID MINUS_MINUS
         {
         match(input,ID,FOLLOW_ID_in_synpred14_Script295); if (state.failed) return ;
         match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_synpred14_Script297); if (state.failed) return ;
@@ -3543,8 +3543,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred15_Script
     public final void synpred15_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:278:38: ( NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:278:38: NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:278:38: ( NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:278:38: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred15_Script368); if (state.failed) return ;
 
@@ -3554,8 +3554,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred16_Script
     public final void synpred16_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:7: ( NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:7: NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:7: ( NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:7: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred16_Script377); if (state.failed) return ;
 
@@ -3565,8 +3565,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred17_Script
     public final void synpred17_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:22: ( NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:22: NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:22: ( NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:22: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred17_Script383); if (state.failed) return ;
 
@@ -3579,11 +3579,11 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:17: ( ELSE ( NEWLINE )? s= stat )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:17: ELSE ( NEWLINE )? s= stat
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:17: ( ELSE ( NEWLINE )? s= stat )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:17: ELSE ( NEWLINE )? s= stat
         {
         match(input,ELSE,FOLLOW_ELSE_in_synpred18_Script381); if (state.failed) return ;
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:282:22: ( NEWLINE )?
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:282:22: ( NEWLINE )?
         int alt24=2;
         int LA24_0 = input.LA(1);
 
@@ -3596,7 +3596,7 @@ public class ScriptParser extends Parser {
         }
         switch (alt24) {
             case 1 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                 {
                 match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred18_Script383); if (state.failed) return ;
 
@@ -3617,8 +3617,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred19_Script
     public final void synpred19_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:300:41: ( NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:300:41: NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:300:41: ( NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:300:41: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred19_Script438); if (state.failed) return ;
 
@@ -3628,8 +3628,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred20_Script
     public final void synpred20_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:81: ( NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:81: NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:81: ( NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:81: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred20_Script503); if (state.failed) return ;
 
@@ -3648,8 +3648,8 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:7: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:7: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
         {
         match(input,FOR,FOLLOW_FOR_in_synpred21_Script481); if (state.failed) return ;
         match(input,LEFT_P,FOLLOW_LEFT_P_in_synpred21_Script483); if (state.failed) return ;
@@ -3671,7 +3671,7 @@ public class ScriptParser extends Parser {
         state._fsp--;
         if (state.failed) return ;
         match(input,RIGHT_P,FOLLOW_RIGHT_P_in_synpred21_Script501); if (state.failed) return ;
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:320:81: ( NEWLINE )?
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:320:81: ( NEWLINE )?
         int alt25=2;
         int LA25_0 = input.LA(1);
 
@@ -3684,7 +3684,7 @@ public class ScriptParser extends Parser {
         }
         switch (alt25) {
             case 1 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                 {
                 match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred21_Script503); if (state.failed) return ;
 
@@ -3705,8 +3705,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred22_Script
     public final void synpred22_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:327:41: ( NEWLINE )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:327:41: NEWLINE
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:327:41: ( NEWLINE )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:327:41: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred22_Script530); if (state.failed) return ;
 
@@ -3719,8 +3719,8 @@ public class ScriptParser extends Parser {
         ScriptParser.range_return b = null;
 
 
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:374:8: ( ARROW b= range )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:374:8: ARROW b= range
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:374:8: ( ARROW b= range )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:374:8: ARROW b= range
         {
         match(input,ARROW,FOLLOW_ARROW_in_synpred23_Script560); if (state.failed) return ;
         pushFollow(FOLLOW_range_in_synpred23_Script564);
@@ -3738,8 +3738,8 @@ public class ScriptParser extends Parser {
         ScriptParser.args_return b = null;
 
 
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:481:8: ( COMMA b= args )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:481:8: COMMA b= args
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:481:8: ( COMMA b= args )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:481:8: COMMA b= args
         {
         match(input,COMMA,FOLLOW_COMMA_in_synpred41_Script926); if (state.failed) return ;
         pushFollow(FOLLOW_args_in_synpred41_Script930);
@@ -3757,10 +3757,10 @@ public class ScriptParser extends Parser {
         ScriptParser.dictionary_elements_return d = null;
 
 
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
         {
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:8: ( NEWLINE )?
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:8: ( NEWLINE )?
         int alt27=2;
         int LA27_0 = input.LA(1);
 
@@ -3769,7 +3769,7 @@ public class ScriptParser extends Parser {
         }
         switch (alt27) {
             case 1 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                 {
                 match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred50_Script1103); if (state.failed) return ;
 
@@ -3779,7 +3779,7 @@ public class ScriptParser extends Parser {
         }
 
         match(input,COMMA,FOLLOW_COMMA_in_synpred50_Script1106); if (state.failed) return ;
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:545:23: ( NEWLINE )?
+        // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:545:23: ( NEWLINE )?
         int alt28=2;
         int LA28_0 = input.LA(1);
 
@@ -3788,7 +3788,7 @@ public class ScriptParser extends Parser {
         }
         switch (alt28) {
             case 1 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:0:0: NEWLINE
+                // D:\\PA-WPA-View\\GUI\\WPAScript\\working_copy\\src\\language\\Script.g:0:0: NEWLINE
                 {
                 match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred50_Script1108); if (state.failed) return ;
 
@@ -4280,11 +4280,11 @@ public class ScriptParser extends Parser {
     static final String DFA5_specialS =
         "\6\uffff\1\0\1\2\1\uffff\1\1\1\3\4\uffff}>";
     static final String[] DFA5_transitionS = {
-            "\1\1\2\uffff\1\5\1\2\1\uffff\1\3\1\4\1\uffff\1\1\7\uffff\1\1"+
-            "\13\uffff\3\1",
+            "\1\1\2\uffff\1\5\1\2\1\uffff\1\3\1\4\1\uffff\1\1\7\uffff\1"+
+            "\1\13\uffff\3\1",
             "",
-            "\1\1\3\uffff\1\10\1\6\1\7\1\uffff\2\1\3\uffff\1\1\1\uffff\14"+
-            "\1",
+            "\1\1\3\uffff\1\10\1\6\1\7\1\uffff\2\1\3\uffff\1\1\1\uffff"+
+            "\14\1",
             "\1\11",
             "\1\12",
             "",

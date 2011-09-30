@@ -5,9 +5,10 @@
 
 package proginterface;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import proginterface.types.MeasurementSet;
-import language.executable.builtintypes.CharString;
-import language.executable.builtintypes.Numeric;
+import language.executable.builtintypes.*;
 
 /**
  *
@@ -25,5 +26,24 @@ public class NativeFunctionsInterface {
     }
     public static void print(CharString number) {
         _print(number.getNativeValue());
+    }
+    public static void print(CharString _format, Object... args) {
+        String format_str = (String) _format.getNativeValue();
+        String str = format_str;
+        if (args!=null && args.length>=1 && Pattern.matches(".*[{]#[0-9]+[}].*", format_str)){
+            String pattern_str = "[{]#[0-9]+[}]";
+            Pattern pattern = Pattern.compile(pattern_str);
+            Matcher matcher = pattern.matcher(format_str);
+            while (matcher.find()) {
+                String f = matcher.group();
+                f = f.replaceAll("[{]|[}]|#", "");
+                int index_arg = Integer.parseInt(f);
+                if (index_arg <= args.length) {
+                    String ptn = "[{]#" + index_arg + "[}]";
+                    str =str.replaceAll(ptn, args[index_arg-1].toString());
+                }
+            }
+        }
+        _print(str);
     }
 }

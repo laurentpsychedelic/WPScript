@@ -7,6 +7,7 @@ package language.executable;
 
 import language.exceptions.CompilationErrorException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 /**
  *
  * @author laurent
@@ -33,7 +34,7 @@ public class Variable extends Calculable {
     }
 
     @Override
-    public Object eval() {
+    public Object eval() throws RuntimeErrorException {
         Object val = interpreter.memory.get(this.name);
         if (val == null) {
             interpreter.runtimeError("Variable unknown [" + name + "]", line_number);

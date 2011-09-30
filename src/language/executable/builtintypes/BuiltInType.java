@@ -5,6 +5,7 @@
 package language.executable.builtintypes;
 
 import language.exceptions.PanicException;
+import language.exceptions.RuntimeErrorException;
 import language.executable.Calculable;
 
 /**
@@ -14,7 +15,7 @@ import language.executable.Calculable;
 public abstract class BuiltInType extends Calculable {
     abstract public Object getNativeValue();
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         return this;
     }
     @Override

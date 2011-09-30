@@ -30,6 +30,7 @@ import language.exceptions.CompilationErrorException;
 import language.executable.ExecutableScript;
 import language.ScriptLexer;
 import language.exceptions.PanicException;
+import language.exceptions.RuntimeErrorException;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.Token;
@@ -165,7 +166,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     
     //String prog = "a=1\nb=a++\n";
     //String prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
-    String prog = "for (a=10->-2->-10) {\n    print(a)\n    if (a==0) {\n        print(\"YO\")\n    }\n}\n";
+    String prog = "for (a=10->-2->-10) {\n    print(a)\n    if (a==0) {\n        print(\"YO\")\n        break\n    }\n}\n";
    
     //String prog = "a=0\nprint(a)\n";
     
@@ -243,6 +244,10 @@ public class ScriptWindow extends javax.swing.JFrame {
             case ScriptLexer.FOR :
                 style = "if_else_loop";
                 break;
+            case ScriptLexer.BREAK ://FALL-THROUGH
+            case ScriptLexer.CONTINUE :
+                style = "break_continue";
+                break;
             case ScriptLexer.PLUS ://FALL-THROUGH
             case ScriptLexer.PLUS_PLUS:
             case ScriptLexer.MINUS :
@@ -309,6 +314,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         
         Style if_else = doc.addStyle("if_else_loop", regular);
         StyleConstants.setForeground(if_else, Color.blue);
+        
+        Style break_continue = doc.addStyle("break_continue", if_else);
+        StyleConstants.setForeground(break_continue, Color.red);
         
         Style operator = doc.addStyle("operator", regular);
         StyleConstants.setForeground(operator, new Color(0, 0, 128));
@@ -431,6 +439,8 @@ public class ScriptWindow extends javax.swing.JFrame {
             try {
                 script.execute();
             } catch (PanicException pe) {
+                //NOTHING
+            } catch (RuntimeErrorException re) {
                 //NOTHING
             }
             script.dumpGlobalMemory();

@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.Numeric;
 
 /**
@@ -50,7 +51,7 @@ public class VariableAssignment extends Calculable {
     }
 
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         Object ret_val = expression.eval();
         interpreter.memory.put(var_name, ret_val);
         return ret_val;

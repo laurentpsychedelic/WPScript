@@ -8,6 +8,7 @@ import java.util.HashMap;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 import language.executable.Calculable;
 
 /**
@@ -38,12 +39,12 @@ public class Dictionary extends BuiltInType {
     }
     
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         _doEval();
         return this;
     }
     
-    private void _doEval() throws PanicException {
+    private void _doEval() throws PanicException, RuntimeErrorException {
         HashMap new_dictionary = new HashMap();
         for (Object _key : dictionary.keySet()) {
             Object new_key = null;

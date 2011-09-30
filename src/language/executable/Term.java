@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 
 /**
  *
@@ -34,7 +35,7 @@ public class Term extends Calculable {
         interpreter = _interpreter;
     }
 
-    private BuiltInType _doOperation(Object ele1, Operator operator, Object ele2) throws PanicException {
+    private BuiltInType _doOperation(Object ele1, Operator operator, Object ele2) throws PanicException, RuntimeErrorException {
         BuiltInType return_val = null;
         try {
             if (ele1 instanceof Numeric && ele2 instanceof Numeric) {
@@ -153,7 +154,7 @@ public class Term extends Calculable {
      * @return
      */
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         if (elements.size()%2!=1) {
             interpreter.scriptPanic("Wrong number of elements in TERM list.", line_number);
         }
@@ -269,7 +270,12 @@ public class Term extends Calculable {
             }
             Operator operator = (Operator) (elements.get(k));
             if (ele instanceof BuiltInType && ele2 instanceof BuiltInType) {
-                BuiltInType new_ele = _doOperation(ele, operator, ele2);
+                BuiltInType new_ele = null;
+                try {
+                    new_ele = _doOperation(ele, operator, ele2);
+                } catch (RuntimeErrorException re) {
+                    throw new PanicException(re.getMessage(), re.getLineNumber());
+                }
                 new_elements.set(new_elements.size()-1, new_ele);
                 ele = new_ele;
             } else {

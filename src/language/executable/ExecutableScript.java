@@ -8,6 +8,7 @@ import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptLexer;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
@@ -44,17 +45,10 @@ public class ExecutableScript {
         compilation_ok = parser.compilationCheck();
         if (!compilation_ok) {
             parser.compilationError("Compilation failed! Semantic error]", parser.getLineNumber());
-            throw new CompilationErrorException("Compilation failed! Semantic error]", parser.getLineNumber());
         }
     }
-    public Object execute() throws PanicException {
-        Object result = null;
-        if (compilation_ok) {
-            result = parser.execute();
-        } else {
-            parser.runtimeError("Cannot execute! [compilation failed]", 0);
-        }
-        return result;
+    public Object execute() throws PanicException, RuntimeErrorException {
+        return parser.execute();
     }
     public void dumpGlobalMemory() {
         parser.dumpGlobalMemory(System.out);

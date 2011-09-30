@@ -8,6 +8,7 @@ package language.executable;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 
 /**
  *
@@ -18,7 +19,7 @@ public abstract class Calculable {
     public abstract void compilationCheck() throws CompilationErrorException, PanicException;
     @Override
     public abstract String toString();
-    public abstract Object eval() throws PanicException;
+    public abstract Object eval() throws PanicException, RuntimeErrorException;
     public abstract Calculable getSimplifiedCalculable() throws PanicException;
     protected int line_number = -1;
 }

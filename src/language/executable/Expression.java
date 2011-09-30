@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 
 /**
  *
@@ -47,10 +48,13 @@ public class Expression extends Calculable {
     }
 
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         Object ret_val = null;
         for (Calculable c : calculation) {
             ret_val = c.eval();
+            if (ret_val == ReturnValue.RETURN_BREAK || ret_val == ReturnValue.RETURN_CONTINUE) {
+                return ret_val;
+            }
         }
         return ret_val;
     }

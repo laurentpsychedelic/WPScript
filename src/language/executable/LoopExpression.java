@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.Bool;
-import language.executable.builtintypes.ReturnValue;
 
 /**
  *
@@ -68,7 +68,7 @@ public class LoopExpression extends Calculable {
     public static final int _INFINITE_LOOP_NUMBER_ = 20;
 
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         if (pre_calculation != null) {
             pre_calculation.eval();
         }
@@ -79,10 +79,12 @@ public class LoopExpression extends Calculable {
                 interpreter.runtimeError("Condition must be an instance of BOOL [" + cond.getClass() + "]", line_number);
                 return null;
             }
+            Object ret_val = ReturnValue.RETURN_NULL;
             if ((Boolean)((Bool)cond).getNativeValue()) {
                 if (calculation!=null) {
-                    Object ret_val = calculation.eval();
+                    ret_val = calculation.eval();
                     if (ret_val == ReturnValue.RETURN_BREAK) {
+                        System.err.println("BREAK!");
                         return ReturnValue.RETURN_BREAK;
                     }
                 }
@@ -90,15 +92,15 @@ public class LoopExpression extends Calculable {
                     increment_calculation.eval();
                 }
             } else {
-                return null;
+                return ret_val;
             }
             cnt++;
             if (cnt >= _INFINITE_LOOP_NUMBER_) {
                 cnt = 0;
                 int answer = JOptionPane.showConfirmDialog(null, "May be inside infinite loop! Continue?", "Warning", JOptionPane.WARNING_MESSAGE);
                 if (answer != JOptionPane.OK_OPTION) {
-                    //throw new RuntimeExceptionError()://TODO !!
-                    return null;
+                    interpreter.runtimeError("Infinite loop: execution aborted!", line_number);
+                    return ReturnValue.RETURN_NULL;
                 }
             }
         }

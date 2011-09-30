@@ -92,7 +92,7 @@ import language.exceptions.*;
         System.out.println("\nTREE REFACTORING OVER");
     }
 
-    public boolean compilationCheck() throws PanicException {
+    public boolean compilationCheck() throws PanicException, CompilationErrorException {
         try {
             compilation_memory.clear();
             System.out.println("\nCOMPILATION CHECK");
@@ -111,7 +111,7 @@ import language.exceptions.*;
         }
     }
 
-    public Object execute() throws PanicException {
+    public Object execute() throws PanicException, RuntimeErrorException {
         Object ret_val = null;
         for (Object c : commands) {
             if (!(c instanceof Expression)) {
@@ -131,16 +131,17 @@ import language.exceptions.*;
         System.err.println("ERROR (l" + line_num + "):: " + message);
 
         dumpGlobalMemory(System.err);
-        throw new PanicException(message, line_num);
+        throw new PanicException("Panic: " + "ERROR (l" + line_num + "):: " + message, line_num);
     }
 
 
-    public void compilationError(String message, int line_num) {
+    public void compilationError(String message, int line_num) throws CompilationErrorException {
         if (!_COMPILATION_ERROR_STATE_) {
             _COMPILATION_ERROR_STATE_ = true;
             System.err.println("COMPILATION");
         }
         System.err.println("ERROR (l" + line_num + "):: " + message);
+        throw new CompilationErrorException("Compilation error: " + "ERROR (l" + line_num + "):: " + message, line_number);
     }
 
 
@@ -152,14 +153,14 @@ import language.exceptions.*;
         System.err.println("WARNING (l" + line_num + "):: " + message);
     }
 
-    public void runtimeError(String message, int line_num) {
+    public void runtimeError(String message, int line_num) throws RuntimeErrorException {
         if (!_RUNTIME_ERROR_STATE_) {
             _RUNTIME_ERROR_STATE_ = true;
             System.err.println("RUNTIME");
         }
-        System.err.println("ERROR (l" + line_num + "):: " + message);
-        
         dumpGlobalMemory(System.err);
+        System.err.println("ERROR (l" + line_num + "):: " + message);
+        throw new RuntimeErrorException("Runtime error: " + "ERROR (l" + line_num + "):: " + message, line_num);
     }
 
     public void runtimeWarning(String message, int line_num) {
@@ -235,11 +236,14 @@ pre_stat returns [Expression expr]
     : expression {
         $expr = new Expression(true, $expression.expr);
     }
+    | BREAK {
+        $expr = new Expression(true, this, ReturnValue.RETURN_BREAK);
+    }
     | ID EQUAL expression {
-        $expr = new Expression(true, this,  new VariableAssignment(this, $ID.text, $expression.expr) );
+        $expr = new Expression(true, this, new VariableAssignment(this, $ID.text, $expression.expr) );
     }
     | ID PLUS_PLUS {
-        $expr = new Expression(true, this,  new VariableAssignment(this, $ID.text, Operator.OPERATOR_PLUS_PLUS));
+        $expr = new Expression(true, this, new VariableAssignment(this, $ID.text, Operator.OPERATOR_PLUS_PLUS));
     }
     | PLUS_PLUS ID {
         $expr = new Expression(true, this,  new VariableAssignment(this, $ID.text, Operator.OPERATOR_PLUS_PLUS));
@@ -552,6 +556,8 @@ IF  : ('I'|'i') ('F'|'f');
 ELSE: ('E'|'e') ('L'|'l') ('S'|'s') ('E'|'e');
 WHILE: ('W'|'w') ('H'|'h') ('I'|'i') ('L'|'l') ('E'|'e');
 FOR : ('F'|'f') ('O'|'o') ('R'|'r');
+BREAK: ('B'|'b') ('R'|'r') ('E'|'e') ('A'|'a') ('K'|'k');
+CONTINUE: ('C'|'c') ('O'|'o') ('N'|'n') ('T'|'t') ('I'|'i') ('N'|'n') ('U'|'u') ('E'|'e');
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 EQUAL: '=';
 COMMA: ',';

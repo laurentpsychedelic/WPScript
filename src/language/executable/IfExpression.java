@@ -8,6 +8,7 @@ package language.executable;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.Bool;
 
 /**
@@ -54,7 +55,7 @@ public class IfExpression extends Calculable {
     }
 
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         Object cond = condition.eval();
         if (!(cond instanceof Bool)) {
             interpreter.runtimeError("Condition must be an instance of BOOL [" + cond.getClass() + "]", line_number);

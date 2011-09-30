@@ -11,6 +11,7 @@ import proginterface.NativeFunctionsInterface;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
+import language.exceptions.RuntimeErrorException;
 
 /**
  *
@@ -26,7 +27,7 @@ public class FunctionCall extends Calculable {
     }
 
     @Override
-    public Object eval() throws PanicException {
+    public Object eval() throws PanicException, RuntimeErrorException {
         boolean failed = false;
         try {
             String name = (String) (name_params.get(0));

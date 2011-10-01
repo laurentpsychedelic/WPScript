@@ -166,7 +166,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     
     //String prog = "a=1\nb=a++\n";
     //String prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
-    String prog = "for (a=10->-2->-10) {\n    print(a)\n    if (a==0) {\n        print(\"YO\")\n        break\n    }\n}\n";
+    String prog = "for (a=10->-2->-10) {\n    print(\"Number a = \" + a)\n    if (a==0) {\n        a=-5\n    } else if (a == -7) {\n        print(\"7\")\n        continue\n    }\n    print(\"loop\")\n\n}\n";
    
     //String prog = "a=0\nprint(a)\n";
     
@@ -504,7 +504,7 @@ public class ScriptWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+          
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

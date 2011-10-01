@@ -57,19 +57,20 @@ public class IfExpression extends Calculable {
     @Override
     public Object eval() throws PanicException, RuntimeErrorException {
         Object cond = condition.eval();
+        Object ret_val = null;
         if (!(cond instanceof Bool)) {
             interpreter.runtimeError("Condition must be an instance of BOOL [" + cond.getClass() + "]", line_number);
         }
         if ((Boolean)((Bool)cond).getNativeValue()) {
             if (calculation_if!=null) {
-                calculation_if.eval();
+                ret_val = calculation_if.eval();
             }
         } else {
             if (calculation_else!=null) {
-                calculation_else.eval();
+                ret_val = calculation_else.eval();
             }
         }
-        return null;
+        return ret_val;
     }
 
     @Override

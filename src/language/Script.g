@@ -239,6 +239,9 @@ pre_stat returns [Expression expr]
     | BREAK {
         $expr = new Expression(true, this, ReturnValue.RETURN_BREAK);
     }
+    | CONTINUE {
+        $expr = new Expression(true, this, ReturnValue.RETURN_CONTINUE);
+    }
     | ID EQUAL expression {
         $expr = new Expression(true, this, new VariableAssignment(this, $ID.text, $expression.expr) );
     }
@@ -578,7 +581,7 @@ CMP_EQ: '=' '=';
 CMP_NEQ:'!' '=';
 AND: '&';
 OR : '|';
-STRING_LITERAL: '"' ((' '?) ID (' ')?)+ '"';
+STRING_LITERAL: '"' ((' '?) ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'{'|'}'|'#'|'=') (' ')?)+ '"';
 LEFT_CB : '{'; // left curved bracket
 RIGHT_CB : '}'; // right curved bracket
 LEFT_B : '[';

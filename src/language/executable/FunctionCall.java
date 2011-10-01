@@ -28,44 +28,63 @@ public class FunctionCall extends Calculable {
 
     @Override
     public Object eval() throws PanicException, RuntimeErrorException {
-        boolean failed = false;
         try {
             String name = (String) (name_params.get(0));
             Class [] types = new Class[name_params.size()-1];
             for (int k=1; k<name_params.size(); k++) {
-                Object par_val = ((Calculable) name_params.get(k)).eval();
-                Class cl = par_val.getClass();
-                types[k-1] = cl;
+                types[k-1] = Object.class;
             }
             LinkedList<Object> params_values = new LinkedList();
             for (int k=1; k<name_params.size(); k++) {
-                Object par_val = ((Calculable) name_params.get(k)).eval();
+                Object par_val = (Object) ((Calculable) name_params.get(k)).eval();
                 params_values.add( par_val );
             }
 
-            //java.lang.String
-            Method method = NativeFunctionsInterface.class.getMethod(name, types);
-            return method.invoke(null, params_values.toArray());
+            Method method = null;
+            
+            boolean failed = false;
+            try {
+                method = NativeFunctionsInterface.class.getMethod(name, types);
+            } catch (NoSuchMethodException nsme) {
+                failed = true;
+            }
+            
+            if (failed) {
+                failed = false;
+                if (runtime_functions_class != null) {
+                    try {
+                        method = runtime_functions_class.getMethod(name, types);
+                    } catch (NoSuchMethodException nsme) {
+                        failed = true;
+                    }
+                }
+            }
+                
+            if (failed) {
+                StringBuilder args_str = new StringBuilder();
+                int size = params_values.size();
+                for (int k=0; k<size; k++) {
+                    args_str.append(language.Utilities.getSimplifiedClassName(params_values.get(k).getClass().toString()));
+                    if (k != size-1) {
+                        args_str.append(", ");
+                    }
+                }
+                throw new NoSuchMethodException(name + "(" + args_str.toString() + ")");
+            } else {
+                return method.invoke(null, params_values.toArray());
+            }
         } catch (NoSuchMethodException ex) {
-            failed = true;
+            interpreter.runtimeError("FUNC_CALL>> No such method: " + ex.getMessage(), line_number);
         } catch (SecurityException ex) {
             interpreter.scriptPanic("FUNC_CALL>> Security Exception!", line_number);
-            failed = true;
         }
         catch (IllegalAccessException ex) {
             interpreter.runtimeError("FUNC_CALL>> Illegal access Exception!", line_number);
-            failed = true;
         } catch (IllegalArgumentException ex) {
             interpreter.runtimeError("FUNC_CALL>> Illegal argument Exception!", line_number);
-            failed = true;
         } catch (InvocationTargetException ex) {
             interpreter.runtimeError("FUNC_CALL>> Invocation target Exception!\n" + ex.getCause(), line_number);
-            failed = true;
         }
-        if (failed) {
-            interpreter.runtimeError("FUNC_CALL>> No such function [" + name_params.get(0) + "]", line_number);
-        }
-
         return null;
     }
 
@@ -86,8 +105,23 @@ public class FunctionCall extends Calculable {
         //return "Function call [" + name_params.get(0) + "] " + ((Object) this).hashCode();
     }
     
-    private Method [] methods = NativeFunctionsInterface.class.getMethods();
-
+    private static Method [] native_methods;
+    private static Method [] runtime_methods;
+    private static Class runtime_functions_class = null;
+    public static final String runtime_functions_class_name = "proginterface.RuntimeFunctionsInterface"; 
+    static {
+        native_methods = NativeFunctionsInterface.class.getMethods();
+        try {
+            runtime_functions_class = Class.forName(runtime_functions_class_name);
+        } catch (ClassNotFoundException cnfe) {
+            //NOTHING
+            System.err.println("Warning: no runtime functions class found");
+        }
+        if (runtime_functions_class != null) {
+            runtime_methods = runtime_functions_class.getMethods();
+        }
+    }
+    
     @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {
         boolean not_found = true;
@@ -96,8 +130,8 @@ public class FunctionCall extends Calculable {
         }
         String name = "";
         name = ((String)name_params.get(0));
-        if (methods != null) {
-            for (Method method : methods) {
+        if (native_methods != null) {
+            for (Method method : native_methods) {
                 if (method == null) {
                     continue;
                 }
@@ -106,6 +140,19 @@ public class FunctionCall extends Calculable {
                     break;
                 }
             }        
+        }
+        if (not_found) {
+            if (runtime_methods != null) {
+                for (Method method : runtime_methods) {
+                    if (method == null) {
+                        continue;
+                    }
+                    if (name.equals(method.getName())) {
+                        not_found = false;
+                        break;
+                    }
+                }        
+            }   
         }
         if (not_found) {
             interpreter.compilationError("Function [" + name + "] not found!", line_number);

@@ -5,8 +5,6 @@
 
 package proginterface;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import proginterface.types.MeasurementSet;
 import language.executable.builtintypes.*;
 
@@ -15,35 +13,25 @@ import language.executable.builtintypes.*;
  * @author laurent
  */
 public class NativeFunctionsInterface {
-    public static MeasurementSet newMeasurementSet(Numeric W, Numeric H) {
-      return new MeasurementSet( (int) Math.round((Double)W.getNativeValue()),  (int) Math.round((Double)H.getNativeValue()));
+    public static MeasurementSet newMeasurementSet(Object W, Object H) throws NoSuchMethodException {
+        if (W instanceof Numeric && H instanceof Numeric) {
+            return new MeasurementSet( (int) Math.round((Double)((Numeric)W).getNativeValue()),  (int) Math.round((Double)((Numeric)H).getNativeValue()));
+        } else {
+            throw new NoSuchMethodException("newMeasurementSet(" + language.Utilities.getSimplifiedClassName(W.getClass().toString()) + ", " + language.Utilities.getSimplifiedClassName(H.getClass().toString()) + ")");
+        }
     }
     private static void _print(Object object) {
-        System.out.println(object.toString());
+        System.out.println(_getPrintString(object));   
     }
-    public static void print(Numeric number) {
-        _print(number.getNativeValue());
-    }
-    public static void print(CharString number) {
-        _print(number.getNativeValue());
-    }
-    public static void print(CharString _format, Object... args) {
-        String format_str = (String) _format.getNativeValue();
-        String str = format_str;
-        if (args!=null && args.length>=1 && Pattern.matches(".*[{]#[0-9]+[}].*", format_str)){
-            String pattern_str = "[{]#[0-9]+[}]";
-            Pattern pattern = Pattern.compile(pattern_str);
-            Matcher matcher = pattern.matcher(format_str);
-            while (matcher.find()) {
-                String f = matcher.group();
-                f = f.replaceAll("[{]|[}]|#", "");
-                int index_arg = Integer.parseInt(f);
-                if (index_arg <= args.length) {
-                    String ptn = "[{]#" + index_arg + "[}]";
-                    str =str.replaceAll(ptn, args[index_arg-1].toString());
-                }
-            }
+    private static String _getPrintString(Object object) {
+        if (object instanceof BuiltInType) {
+            return ((BuiltInType)object).getNativeValue().toString();
+        } else {
+            return object.toString();
         }
-        _print(str);
     }
+    public static void print(Object object) {
+        _print(object);
+    }
+    
 }

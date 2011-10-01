@@ -80,7 +80,7 @@ public class Term extends Calculable {
                 } else {
                     interpreter.scriptPanic("Wrong operator! [" + operator + "]", line_number);
                 }
-            } else if (ele1 instanceof Bool || ele2 instanceof Bool) { 
+            } else if (ele1 instanceof Bool && ele2 instanceof Bool) { 
                 boolean val = false;
                 boolean val1 = (Boolean) ((Bool) ele1).getNativeValue();
                 boolean val2 = (Boolean) ((Bool) ele2).getNativeValue();                
@@ -101,13 +101,23 @@ public class Term extends Calculable {
                         String str2 = (String) ((CharString) ele2).getNativeValue();
                         return_val = new CharString(str1 + str2);
                     } else {
-                        if (ele1 instanceof Numeric) {
-                            String str1 = Double.toString((Double) ((Numeric) ele1).getNativeValue());
+                        if (ele2 instanceof CharString) {
+                            String str1 = null;
+                            if (ele1 instanceof BuiltInType) {
+                                str1 = ((Numeric) ele1).getNativeValue().toString();
+                            } else {
+                                str1 = ele1.toString();
+                            }
                             String str2 = (String) ((CharString) ele2).getNativeValue();
                             return_val = new CharString(str1 + str2);
-                        } else if (ele2 instanceof Numeric) {
+                        } else if (ele1 instanceof CharString) {
                             String str1 = (String) ((CharString) ele1).getNativeValue();
-                            String str2 = Double.toString((Double) ((Numeric) ele2).getNativeValue());
+                            String str2 = null;
+                            if (ele2 instanceof BuiltInType) {
+                                str2 = ((BuiltInType) ele2).getNativeValue().toString();
+                            } else {
+                                str2 = ele2.toString();
+                            }
                             return_val = new CharString(str1 + str2);
                         } else {
                             interpreter.scriptPanic("String concatenation undefined for given types [" + ele1 + " " + operator + " " + ele2 + "]" , line_number);

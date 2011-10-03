@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -61,40 +62,51 @@ public class ScriptWindow extends javax.swing.JFrame {
     private static final int W = 690;
     private static final int H = 380;
     
+    private PrintStream default_out = System.out;
+    private PrintStream default_err = System.err;
+    
     /** Creates new form TestFrame */
-    public ScriptWindow() {
+    public ScriptWindow(final String _prog) {
+        prog = _prog;
+        
         initComponents();
+	setIconImage(new ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
         
         setTitle(LanguageInformation.getString(0));
         getContentPane().setBackground(new Color(51, 51, 51));    
         setSize(W, H);
         
-        PipedInputStream pIn_out = null;
-        PipedInputStream pIn_err = null;
-        PipedOutputStream pOut_out = new PipedOutputStream();
-        PipedOutputStream pOut_err = new PipedOutputStream();
-        PrintStream my_stream_out = new PrintStream(pOut_out);
-        PrintStream my_stream_err = new PrintStream(pOut_err);
-        System.setOut(my_stream_out);
-        System.setErr(my_stream_err);
-        try {
-            pIn_out = new PipedInputStream(pOut_out);
-            pIn_err = new PipedInputStream(pOut_err);
-        } catch (IOException ex) {
-            Logger.getLogger(ScriptWindow.class.getName()).log(Level.SEVERE, null, ex);
+        boolean REDIRECT_STREAMS = true;
+        if (REDIRECT_STREAMS) {
+            PipedInputStream pIn_out = null;
+            PipedInputStream pIn_err = null;
+            PipedOutputStream pOut_out = new PipedOutputStream();
+            PipedOutputStream pOut_err = new PipedOutputStream();
+            PrintStream my_stream_out = new PrintStream(pOut_out);
+            PrintStream my_stream_err = new PrintStream(pOut_err);
+            System.setOut(my_stream_out);
+            System.setErr(my_stream_err);
+            try {
+                pIn_out = new PipedInputStream(pOut_out);
+                pIn_err = new PipedInputStream(pOut_err);
+            } catch (IOException ex) {
+                Logger.getLogger(ScriptWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            reader_out = new BufferedReader(new InputStreamReader(pIn_out));
+            reader_err = new BufferedReader(new InputStreamReader(pIn_err));
+            // Write to standard output and error and the log files
+
+            StyledDocument doc = jScriptPane.getStyledDocument();
+            _addStylesToScriptPaneDocument(doc);
+            doc = jMessagesPane.getStyledDocument();
+            _addStylesToMessagesPaneDocument(doc);
+
+            _start_deamon();
+            
+            
         }
-        reader_out = new BufferedReader(new InputStreamReader(pIn_out));
-        reader_err = new BufferedReader(new InputStreamReader(pIn_err));
-        // Write to standard output and error and the log files
-         
-        StyledDocument doc = jScriptPane.getStyledDocument();
-        _addStylesToScriptPaneDocument(doc);
-        doc = jMessagesPane.getStyledDocument();
-        _addStylesToMessagesPaneDocument(doc);
         
         _updateScriptPane();
-        
-        _start_deamon();
     }
     
     private void _start_deamon() {
@@ -156,33 +168,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
     };
     
-    //String prog = "a = 2 + 1\n";
-    
-    //String prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
-    
-    //String prog = "a = 2 * \"string\" + \"yo\" * 3\n";
-    
-    //String prog = "a=0\nwhile (a<2) {\n    print(a)\n    a = a + 1\n}\n";
-    
-    //String prog = "a=1\nb=a++\n";
-    //String prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
-    String prog = "for (a=10->-2->-10) {\n    print(\"Number a = \" + a)\n    if (a==0) {\n        a=-5\n    } else if (a == -7) {\n        print(\"7\")\n        continue\n    }\n    print(\"loop\")\n\n}\n";
-   
-    //String prog = "a=0\nprint(a)\n";
-    
-    //String prog = "a = 0\nb = a==0\nc= b & false\n";
-    
-    /*String prog = "a = 1 + 3.4\n"
-                       //+ "b=a / 1.9+3\n"
-                       + "b = newMeasurementSet(a, a)\n"
-                       //+ "b=a\n"
-                       + "c = true\n"
-                       + "c = false\n"
-                       + "if (c) {\n"
-                       + "    if_var = 1\n"
-                       + "} else {\n"
-                       + "    else_var = \"my_string\"\n"
-                       + "}\n";*/
+    String prog = "\n";
     
     private void _updateScriptPane() {
         int cp = jScriptPane.getCaretPosition();
@@ -458,6 +444,8 @@ public class ScriptWindow extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         CLOSING = true;
+        System.setOut(default_out);
+        System.setErr(default_err);
     }//GEN-LAST:event_formWindowClosing
 
     private void jButtonCompilationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilationActionPerformed
@@ -504,12 +492,40 @@ public class ScriptWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+    //final String _prog = "a = 2 + 1\n";
+    
+    //final String _prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
+    
+    //final String _prog = "a = 2 * \"string\" + \"yo\" * 3\n";
+    
+    //final String _prog = "a=0\nwhile (a<2) {\n    print(a)\n    a = a + 1\n}\n";
+    
+    //final String _prog = "a=1\nb=a++\n";
+    //final String _prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
+    //final String _prog = "for (a=10->-2->-10) {\n    print(\"Number a = \" + a)\n    if (a==0) {\n        a=-5\n    } else if (a == -7) {\n        print(\"7\")\n        continue\n    }\n    print(\"loop\")\n\n}\n";
+   
+    final String _prog = "a=0\nprint()\n";
+    
+    //final String _prog = "a = 0\nb = a==0\nc= b & false\n";
+    
+    /*final String _prog = "a = 1 + 3.4\n"
+                       //+ "b=a / 1.9+3\n"
+                       + "b = newMeasurementSet(a, a)\n"
+                       //+ "b=a\n"
+                       + "c = true\n"
+                       + "c = false\n"
+                       + "if (c) {\n"
+                       + "    if_var = 1\n"
+                       + "} else {\n"
+                       + "    else_var = \"my_string\"\n"
+                       + "}\n";*/
           
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ScriptWindow().setVisible(true);
+                new ScriptWindow(_prog).setVisible(true);
             }
         });
     }

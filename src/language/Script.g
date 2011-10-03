@@ -471,9 +471,14 @@ term returns [LinkedList<Object> atoms]
 //term : atom ( MULT atom | DIV atom )*;
 
 function_call returns [LinkedList<Object> name_params]:
-    ID LEFT_P args RIGHT_P {  
-        $name_params = $args.params;
-        $name_params.add(0, $ID.text);
+    ID LEFT_P args? RIGHT_P {
+        if ($args.params != null) {
+            $name_params = $args.params;
+            $name_params.add(0, $ID.text);
+        } else {
+            $name_params = new LinkedList();
+            $name_params.add($ID.text);
+        }
     };
 //function_call : ID LEFT_P args RIGHT_P;
 

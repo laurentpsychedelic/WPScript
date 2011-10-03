@@ -33,5 +33,8 @@ public class NativeFunctionsInterface {
     public static void print(Object object) {
         _print(object);
     }
+    public static void print() {
+        print("\n");
+    }
     
 }

@@ -50,8 +50,8 @@ public class FunctionCall extends Calculable {
             }
             
             if (failed) {
-                failed = false;
                 if (runtime_functions_class != null) {
+                    failed = false;
                     try {
                         method = runtime_functions_class.getMethod(name, types);
                     } catch (NoSuchMethodException nsme) {
@@ -71,7 +71,11 @@ public class FunctionCall extends Calculable {
                 }
                 throw new NoSuchMethodException(name + "(" + args_str.toString() + ")");
             } else {
-                return method.invoke(null, params_values.toArray());
+                //if (params_values.size() > 0) {
+                    return method.invoke(null, params_values.toArray());
+                /*} else {
+                    return method.invoke(null);
+                }*/
             }
         } catch (NoSuchMethodException ex) {
             interpreter.runtimeError("FUNC_CALL>> No such method: " + ex.getMessage(), line_number);
@@ -104,7 +108,8 @@ public class FunctionCall extends Calculable {
         return str.toString();
         //return "Function call [" + name_params.get(0) + "] " + ((Object) this).hashCode();
     }
-    
+
+    static final boolean _DEBUG_ = true;
     private static Method [] native_methods;
     private static Method [] runtime_methods;
     private static Class runtime_functions_class = null;

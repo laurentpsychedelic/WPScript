@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/language/Script.g 2011-10-01 20:50:05
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g 2011-10-03 10:56:39
 
 package language;
 
@@ -63,17 +63,17 @@ public class ScriptLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "/home/laurent/dev/WPAScript/working_copy/src/language/Script.g"; }
+    public String getGrammarFileName() { return "C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g"; }
 
     // $ANTLR start "NUM"
     public final void mNUM() throws RecognitionException {
         try {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:5: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:5: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:9: ( '0' .. '9' )+
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:9: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -87,7 +87,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:9: '0' .. '9'
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -103,7 +103,7 @@ public class ScriptLexer extends Lexer {
                 cnt1++;
             } while (true);
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:19: ( '.' ( '0' .. '9' )+ )?
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:19: ( '.' ( '0' .. '9' )+ )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -112,10 +112,10 @@ public class ScriptLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:20: '.' ( '0' .. '9' )+
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:20: '.' ( '0' .. '9' )+
                     {
                     match('.'); 
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:24: ( '0' .. '9' )+
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:24: ( '0' .. '9' )+
                     int cnt2=0;
                     loop2:
                     do {
@@ -129,7 +129,7 @@ public class ScriptLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:556:24: '0' .. '9'
+                    	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:561:24: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -167,7 +167,7 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BOOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:562:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -185,10 +185,10 @@ public class ScriptLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:562:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
                     {
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:562:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:562:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                         input.consume();
@@ -233,10 +233,10 @@ public class ScriptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:562:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
                     {
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:557:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:562:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:562:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                         input.consume();
@@ -304,8 +304,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:558:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:558:7: ( 'I' | 'i' ) ( 'F' | 'f' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:563:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:563:7: ( 'I' | 'i' ) ( 'F' | 'f' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -341,8 +341,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:559:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:559:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:564:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:564:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -396,8 +396,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:560:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:560:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:565:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:565:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -460,8 +460,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = FOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:561:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:561:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:566:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:566:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -506,8 +506,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:562:6: ( ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:562:8: ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:567:6: ( ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' ) )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:567:8: ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -570,8 +570,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CONTINUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:563:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:563:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:568:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:568:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -661,8 +661,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:569:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:569:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -673,7 +673,7 @@ public class ScriptLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:569:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -686,7 +686,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -722,8 +722,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:6: ( '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:8: '='
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:570:6: ( '=' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:570:8: '='
             {
             match('='); 
 
@@ -742,8 +742,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:6: ( ',' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:8: ','
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:571:6: ( ',' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:571:8: ','
             {
             match(','); 
 
@@ -762,8 +762,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DQUOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:7: ( '\"' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:9: '\"'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:572:7: ( '\"' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:572:9: '\"'
             {
             match('\"'); 
 
@@ -782,8 +782,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:7: ( '(' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:9: '('
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:573:7: ( '(' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:573:9: '('
             {
             match('('); 
 
@@ -802,8 +802,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:8: ( ')' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:10: ')'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:574:8: ( ')' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:574:10: ')'
             {
             match(')'); 
 
@@ -822,8 +822,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:5: ( '*' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:7: '*'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:575:5: ( '*' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:575:7: '*'
             {
             match('*'); 
 
@@ -842,8 +842,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:4: ( '/' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:6: '/'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:576:4: ( '/' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:576:6: '/'
             {
             match('/'); 
 
@@ -862,8 +862,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:5: ( '+' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:7: '+'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:577:5: ( '+' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:577:7: '+'
             {
             match('+'); 
 
@@ -882,8 +882,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS_PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:10: ( '+' '+' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:12: '+' '+'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:578:10: ( '+' '+' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:578:12: '+' '+'
             {
             match('+'); 
             match('+'); 
@@ -903,8 +903,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:574:6: ( '-' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:574:8: '-'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:579:6: ( '-' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:579:8: '-'
             {
             match('-'); 
 
@@ -923,8 +923,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS_MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:575:12: ( '-' '-' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:575:14: '-' '-'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:580:12: ( '-' '-' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:580:14: '-' '-'
             {
             match('-'); 
             match('-'); 
@@ -944,8 +944,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:576:7: ( '<' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:576:9: '<'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:581:7: ( '<' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:581:9: '<'
             {
             match('<'); 
 
@@ -964,8 +964,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:577:10: ( '<' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:577:12: '<' '='
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:582:10: ( '<' '=' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:582:12: '<' '='
             {
             match('<'); 
             match('='); 
@@ -985,8 +985,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:578:7: ( '>' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:578:9: '>'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:583:7: ( '>' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:583:9: '>'
             {
             match('>'); 
 
@@ -1005,8 +1005,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:579:10: ( '>' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:579:12: '>' '='
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:584:10: ( '>' '=' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:584:12: '>' '='
             {
             match('>'); 
             match('='); 
@@ -1026,8 +1026,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:580:7: ( '=' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:580:9: '=' '='
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:585:7: ( '=' '=' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:585:9: '=' '='
             {
             match('='); 
             match('='); 
@@ -1047,8 +1047,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_NEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:581:8: ( '!' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:581:9: '!' '='
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:586:8: ( '!' '=' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:586:9: '!' '='
             {
             match('!'); 
             match('='); 
@@ -1068,8 +1068,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:582:4: ( '&' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:582:6: '&'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:587:4: ( '&' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:587:6: '&'
             {
             match('&'); 
 
@@ -1088,8 +1088,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:4: ( '|' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:6: '|'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:588:4: ( '|' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:588:6: '|'
             {
             match('|'); 
 
@@ -1108,11 +1108,11 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )? )+ '\"' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )? )+ '\"'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )? )+ '\"' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )? )+ '\"'
             {
             match('\"'); 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )? )+
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )? )+
             int cnt8=0;
             loop8:
             do {
@@ -1126,12 +1126,12 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )?
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' ) ( ' ' )?
             	    {
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:22: ( ( ' ' )? )
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:23: ( ' ' )?
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:22: ( ( ' ' )? )
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:23: ( ' ' )?
             	    {
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:23: ( ' ' )?
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:23: ( ' ' )?
             	    int alt6=2;
             	    int LA6_0 = input.LA(1);
 
@@ -1140,7 +1140,7 @@ public class ScriptLexer extends Lexer {
             	    }
             	    switch (alt6) {
             	        case 1 :
-            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:23: ' '
+            	            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:23: ' '
             	            {
             	            match(' '); 
 
@@ -1161,7 +1161,7 @@ public class ScriptLexer extends Lexer {
             	        recover(mse);
             	        throw mse;}
 
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:78: ( ' ' )?
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:78: ( ' ' )?
             	    int alt7=2;
             	    int LA7_0 = input.LA(1);
 
@@ -1170,7 +1170,7 @@ public class ScriptLexer extends Lexer {
             	    }
             	    switch (alt7) {
             	        case 1 :
-            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:79: ' '
+            	            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:589:79: ' '
             	            {
             	            match(' '); 
 
@@ -1209,8 +1209,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:9: ( '{' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:11: '{'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:590:9: ( '{' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:590:11: '{'
             {
             match('{'); 
 
@@ -1229,8 +1229,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:586:10: ( '}' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:586:12: '}'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:591:10: ( '}' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:591:12: '}'
             {
             match('}'); 
 
@@ -1249,8 +1249,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:587:8: ( '[' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:587:10: '['
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:592:8: ( '[' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:592:10: '['
             {
             match('['); 
 
@@ -1269,8 +1269,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:588:8: ( ']' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:588:10: ']'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:593:8: ( ']' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:593:10: ']'
             {
             match(']'); 
 
@@ -1289,8 +1289,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:589:6: ( '-' '>' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:589:8: '-' '>'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:594:6: ( '-' '>' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:594:8: '-' '>'
             {
             match('-'); 
             match('>'); 
@@ -1310,8 +1310,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:590:8: ( '\\n' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:590:9: '\\n'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:595:8: ( '\\n' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:595:9: '\\n'
             {
             match('\n'); 
 
@@ -1330,8 +1330,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = TP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:591:3: ( ':' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:591:5: ':'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:596:3: ( ':' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:596:5: ':'
             {
             match(':'); 
 
@@ -1350,8 +1350,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:3: ( ';' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:5: ';'
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:597:3: ( ';' )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:597:5: ';'
             {
             match(';'); 
 
@@ -1370,10 +1370,10 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:593:4: ( ( ' ' | '\\t' | '\\r' )+ )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:593:8: ( ' ' | '\\t' | '\\r' )+
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:598:4: ( ( ' ' | '\\t' | '\\r' )+ )
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:598:8: ( ' ' | '\\t' | '\\r' )+
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:593:8: ( ' ' | '\\t' | '\\r' )+
+            // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:598:8: ( ' ' | '\\t' | '\\r' )+
             int cnt9=0;
             loop9:
             do {
@@ -1387,7 +1387,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:
+            	    // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:
             	    {
             	    if ( input.LA(1)=='\t'||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1428,271 +1428,271 @@ public class ScriptLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:8: ( NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | TP | PV | WS )
+        // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:8: ( NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | TP | PV | WS )
         int alt10=38;
         alt10 = dfa10.predict(input);
         switch (alt10) {
             case 1 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:10: NUM
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:10: NUM
                 {
                 mNUM(); 
 
                 }
                 break;
             case 2 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:14: BOOL
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:14: BOOL
                 {
                 mBOOL(); 
 
                 }
                 break;
             case 3 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:19: IF
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:19: IF
                 {
                 mIF(); 
 
                 }
                 break;
             case 4 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:22: ELSE
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:22: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
             case 5 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:27: WHILE
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:27: WHILE
                 {
                 mWHILE(); 
 
                 }
                 break;
             case 6 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:33: FOR
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:33: FOR
                 {
                 mFOR(); 
 
                 }
                 break;
             case 7 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:37: BREAK
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:37: BREAK
                 {
                 mBREAK(); 
 
                 }
                 break;
             case 8 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:43: CONTINUE
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:43: CONTINUE
                 {
                 mCONTINUE(); 
 
                 }
                 break;
             case 9 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:52: ID
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:52: ID
                 {
                 mID(); 
 
                 }
                 break;
             case 10 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:55: EQUAL
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:55: EQUAL
                 {
                 mEQUAL(); 
 
                 }
                 break;
             case 11 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:61: COMMA
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:61: COMMA
                 {
                 mCOMMA(); 
 
                 }
                 break;
             case 12 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:67: DQUOTE
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:67: DQUOTE
                 {
                 mDQUOTE(); 
 
                 }
                 break;
             case 13 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:74: LEFT_P
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:74: LEFT_P
                 {
                 mLEFT_P(); 
 
                 }
                 break;
             case 14 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:81: RIGHT_P
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:81: RIGHT_P
                 {
                 mRIGHT_P(); 
 
                 }
                 break;
             case 15 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:89: MULT
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:89: MULT
                 {
                 mMULT(); 
 
                 }
                 break;
             case 16 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:94: DIV
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:94: DIV
                 {
                 mDIV(); 
 
                 }
                 break;
             case 17 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:98: PLUS
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:98: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
             case 18 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:103: PLUS_PLUS
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:103: PLUS_PLUS
                 {
                 mPLUS_PLUS(); 
 
                 }
                 break;
             case 19 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:113: MINUS
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:113: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
             case 20 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:119: MINUS_MINUS
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:119: MINUS_MINUS
                 {
                 mMINUS_MINUS(); 
 
                 }
                 break;
             case 21 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:131: CMP_LT
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:131: CMP_LT
                 {
                 mCMP_LT(); 
 
                 }
                 break;
             case 22 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:138: CMP_LT_EQ
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:138: CMP_LT_EQ
                 {
                 mCMP_LT_EQ(); 
 
                 }
                 break;
             case 23 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:148: CMP_GT
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:148: CMP_GT
                 {
                 mCMP_GT(); 
 
                 }
                 break;
             case 24 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:155: CMP_GT_EQ
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:155: CMP_GT_EQ
                 {
                 mCMP_GT_EQ(); 
 
                 }
                 break;
             case 25 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:165: CMP_EQ
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:165: CMP_EQ
                 {
                 mCMP_EQ(); 
 
                 }
                 break;
             case 26 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:172: CMP_NEQ
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:172: CMP_NEQ
                 {
                 mCMP_NEQ(); 
 
                 }
                 break;
             case 27 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:180: AND
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:180: AND
                 {
                 mAND(); 
 
                 }
                 break;
             case 28 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:184: OR
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:184: OR
                 {
                 mOR(); 
 
                 }
                 break;
             case 29 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:187: STRING_LITERAL
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:187: STRING_LITERAL
                 {
                 mSTRING_LITERAL(); 
 
                 }
                 break;
             case 30 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:202: LEFT_CB
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:202: LEFT_CB
                 {
                 mLEFT_CB(); 
 
                 }
                 break;
             case 31 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:210: RIGHT_CB
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:210: RIGHT_CB
                 {
                 mRIGHT_CB(); 
 
                 }
                 break;
             case 32 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:219: LEFT_B
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:219: LEFT_B
                 {
                 mLEFT_B(); 
 
                 }
                 break;
             case 33 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:226: RIGHT_B
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:226: RIGHT_B
                 {
                 mRIGHT_B(); 
 
                 }
                 break;
             case 34 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:234: ARROW
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:234: ARROW
                 {
                 mARROW(); 
 
                 }
                 break;
             case 35 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:240: NEWLINE
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:240: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
             case 36 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:248: TP
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:248: TP
                 {
                 mTP(); 
 
                 }
                 break;
             case 37 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:251: PV
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:251: PV
                 {
                 mPV(); 
 
                 }
                 break;
             case 38 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:254: WS
+                // C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\WPAScript\\working_copy\\src\\language\\Script.g:1:254: WS
                 {
                 mWS(); 
 
@@ -1706,10 +1706,10 @@ public class ScriptLexer extends Lexer {
 
     protected DFA10 dfa10 = new DFA10(this);
     static final String DFA10_eotS =
-        "\2\uffff\7\11\1\uffff\1\51\1\uffff\1\53\4\uffff\1\55\1\60\1\62\1"+
-        "\64\13\uffff\3\11\1\70\4\11\15\uffff\2\11\1\77\1\uffff\4\11\1\104"+
-        "\1\11\1\uffff\1\106\3\11\1\uffff\1\104\1\uffff\1\112\1\113\1\11"+
-        "\2\uffff\2\11\1\117\1\uffff";
+        "\2\uffff\7\11\1\uffff\1\51\1\uffff\1\53\4\uffff\1\55\1\60\1\62"+
+        "\1\64\13\uffff\3\11\1\70\4\11\15\uffff\2\11\1\77\1\uffff\4\11\1"+
+        "\104\1\11\1\uffff\1\106\3\11\1\uffff\1\104\1\uffff\1\112\1\113\1"+
+        "\11\2\uffff\2\11\1\117\1\uffff";
     static final String DFA10_eofS =
         "\120\uffff";
     static final String DFA10_minS =
@@ -1751,8 +1751,8 @@ public class ScriptLexer extends Lexer {
             "",
             "\1\50",
             "",
-            "\1\52\2\uffff\1\52\14\uffff\12\52\3\uffff\1\52\3\uffff\32\52"+
-            "\4\uffff\1\52\1\uffff\33\52\1\uffff\1\52",
+            "\1\52\2\uffff\1\52\14\uffff\12\52\3\uffff\1\52\3\uffff\32"+
+            "\52\4\uffff\1\52\1\uffff\33\52\1\uffff\1\52",
             "",
             "",
             "",

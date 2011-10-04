@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g 2011-10-04 18:06:02
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g 2011-10-04 18:11:04
 
 package language;
 
@@ -1108,25 +1108,25 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' ) ( ' ' )? )+ '\"' )
-            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' ) ( ' ' )? )+ '\"'
+            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"' )
+            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"'
             {
             match('\"'); 
-            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' ) ( ' ' )? )+
+            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+
             int cnt8=0;
             loop8:
             do {
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
-                if ( (LA8_0==' '||LA8_0=='#'||LA8_0=='.'||(LA8_0>='0' && LA8_0<='9')||LA8_0=='='||(LA8_0>='A' && LA8_0<='Z')||LA8_0=='_'||(LA8_0>='a' && LA8_0<='{')||LA8_0=='}') ) {
+                if ( (LA8_0==' '||LA8_0=='#'||(LA8_0>='.' && LA8_0<=':')||LA8_0=='='||(LA8_0>='A' && LA8_0<='Z')||LA8_0=='_'||(LA8_0>='a' && LA8_0<='{')||LA8_0=='}') ) {
                     alt8=1;
                 }
 
 
                 switch (alt8) {
             	case 1 :
-            	    // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' ) ( ' ' )?
+            	    // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )?
             	    {
             	    // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:22: ( ( ' ' )? )
             	    // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:23: ( ' ' )?
@@ -1152,7 +1152,7 @@ public class ScriptLexer extends Lexer {
 
             	    }
 
-            	    if ( input.LA(1)=='#'||input.LA(1)=='.'||(input.LA(1)>='0' && input.LA(1)<='9')||input.LA(1)=='='||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='{')||input.LA(1)=='}' ) {
+            	    if ( input.LA(1)=='#'||(input.LA(1)>='.' && input.LA(1)<=':')||input.LA(1)=='='||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='{')||input.LA(1)=='}' ) {
             	        input.consume();
 
             	    }
@@ -1161,7 +1161,7 @@ public class ScriptLexer extends Lexer {
             	        recover(mse);
             	        throw mse;}
 
-            	    // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:82: ( ' ' )?
+            	    // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:90: ( ' ' )?
             	    int alt7=2;
             	    int LA7_0 = input.LA(1);
 
@@ -1170,7 +1170,7 @@ public class ScriptLexer extends Lexer {
             	    }
             	    switch (alt7) {
             	        case 1 :
-            	            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:83: ' '
+            	            // D:\\PA-WPA-View\\GUI\\SCRIPTING\\WPAScript\\working_copy\\src\\language\\Script.g:589:91: ' '
             	            {
             	            match(' '); 
 
@@ -1751,8 +1751,8 @@ public class ScriptLexer extends Lexer {
             "",
             "\1\50",
             "",
-            "\1\52\2\uffff\1\52\12\uffff\1\52\1\uffff\12\52\3\uffff\1\52"+
-            "\3\uffff\32\52\4\uffff\1\52\1\uffff\33\52\1\uffff\1\52",
+            "\1\52\2\uffff\1\52\12\uffff\15\52\2\uffff\1\52\3\uffff\32"+
+            "\52\4\uffff\1\52\1\uffff\33\52\1\uffff\1\52",
             "",
             "",
             "",

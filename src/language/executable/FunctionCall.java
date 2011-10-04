@@ -113,9 +113,18 @@ public class FunctionCall extends Calculable {
     private static Method [] native_methods;
     private static Method [] runtime_methods;
     private static Class runtime_functions_class = null;
-    public static final String runtime_functions_class_name = "proginterface.RuntimeFunctionsInterface"; 
+    private static String runtime_functions_class_name = "proginterface.RuntimeFunctionsInterface"; 
     static {
         native_methods = NativeFunctionsInterface.class.getMethods();
+        _updateRuntimeEnvironment();
+    }
+    
+    public static void setRuntimeClassLocation(String location) {
+        runtime_functions_class_name = location;
+        _updateRuntimeEnvironment();
+    }
+    
+    private static void _updateRuntimeEnvironment() {
         try {
             runtime_functions_class = Class.forName(runtime_functions_class_name);
         } catch (ClassNotFoundException cnfe) {

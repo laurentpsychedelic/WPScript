@@ -11,6 +11,7 @@
 package editor;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -176,7 +178,6 @@ public class ScriptWindow extends javax.swing.JFrame {
         jScriptPane.setText("");
         
         ScriptLexer lex = new ScriptLexer(new ANTLRStringStream(prog));
-        lex.skip_ws = false;
         CommonTokenStream tokens = new CommonTokenStream(lex);
         
         LinkedList<String> initStyles = new LinkedList();
@@ -264,6 +265,10 @@ public class ScriptWindow extends javax.swing.JFrame {
             case ScriptLexer.DQUOTE :
                 style = "punctuation";
                 break;
+            case ScriptLexer.LINE_COMMENT ://FALL-THROUGH
+            case ScriptLexer.BLOCK_COMMENT :
+                style = "comment";
+                break;
             case ScriptLexer.NEWLINE ://FALL-THROUGH
             case ScriptLexer.EOF :
             case ScriptLexer.WS :
@@ -286,6 +291,10 @@ public class ScriptWindow extends javax.swing.JFrame {
         Style regular = doc.addStyle("regular", def);
         StyleConstants.setFontFamily(def, "SansSerif");
         StyleConstants.setFontSize(def, font_size_script);
+        
+        Style comment = doc.addStyle("comment", def);
+        StyleConstants.setItalic(comment, true);
+        StyleConstants.setForeground(comment, Color.gray);
         
         Style bool = doc.addStyle("bool", regular);
         StyleConstants.setForeground(bool, Color.blue);
@@ -374,9 +383,12 @@ public class ScriptWindow extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jScrollPaneScript.setBackground(new java.awt.Color(202, 223, 210));
-
-        jScriptPane.setBackground(new java.awt.Color(202, 223, 210));
+        jScriptPane.setBackground(java.awt.Color.white);
+        jScriptPane.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jScriptPaneFocusLost(evt);
+            }
+        });
         jScriptPane.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jScriptPaneKeyTyped(evt);
@@ -435,13 +447,30 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonExecuteActionPerformed
 
-    private void jScriptPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jScriptPaneKeyTyped
-        if (true){//evt.getKeyCode() == KeyEvent.VK_SPACE || evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            prog = jScriptPane.getText(); 
+    private void _updateScriptPaneLater() {
+        SwingUtilities.invokeLater(update_script_pane);
+    }
+    
+    private Runnable update_script_pane = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                //NOTHING
+            }
+            prog = jScriptPane.getText();
             _updateScriptPane();
+        }
+    };
+    
+    private void jScriptPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jScriptPaneKeyTyped
+        if (evt.getKeyChar()=='\n') {
+            _updateScriptPaneLater();
         }
     }//GEN-LAST:event_jScriptPaneKeyTyped
 
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         CLOSING = true;
         System.setOut(default_out);
@@ -465,6 +494,10 @@ public class ScriptWindow extends javax.swing.JFrame {
             //NOTHING
         }
     }//GEN-LAST:event_jButtonCompilationActionPerformed
+
+    private void jScriptPaneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jScriptPaneFocusLost
+        _updateScriptPaneLater();
+    }//GEN-LAST:event_jScriptPaneFocusLost
 
     /**
      * @param args the command line arguments
@@ -493,7 +526,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-    //final String _prog = "a = 2 + 1\n";
+    final String _prog = "a = 2 + 1\n";
     
     //final String _prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
     
@@ -505,7 +538,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     //final String _prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
     //final String _prog = "for (a=10->-2->-10) {\n    print(\"Number a = \" + a)\n    if (a==0) {\n        a=-5\n    } else if (a == -7) {\n        print(\"7\")\n        continue\n    }\n    print(\"loop\")\n\n}\n";
    
-    final String _prog = "a=0\nprint()\n";
+    //final String _prog = "a=0 //initialization\nprint() /*This is\na function\nto print */\n";
     
     //final String _prog = "a = 0\nb = a==0\nc= b & false\n";
     

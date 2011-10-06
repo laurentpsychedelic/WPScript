@@ -21,10 +21,6 @@ import language.executable.builtintypes.*;
 import language.exceptions.*;
 }
 
-@lexer::members {
-    public boolean skip_ws = true;
-}
-
 @rulecatch {
     catch (RecognitionException rec_exc) {
         throw rec_exc;
@@ -32,7 +28,7 @@ import language.exceptions.*;
 }
 
 @members {
-
+    
     /*@Override
     protected void mismatch(IntStream input, int ttype, BitSet follow)
         throws RecognitionException
@@ -558,7 +554,7 @@ dictionary_elements returns [LinkedList<Object> keys_values] :
         )* 
     ;
 
-NUM :   '0'..'9'+ ('.' '0'..'9'+)?;
+NUM :   '0'..'9'+ ('.' ('0'..'9'+)?)?;
 BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));
 IF  : ('I'|'i') ('F'|'f');
 ELSE: ('E'|'e') ('L'|'l') ('S'|'s') ('E'|'e');
@@ -593,10 +589,14 @@ LEFT_B : '[';
 RIGHT_B: ']';
 ARROW: '-' '>';
 NEWLINE:'\n';
+LINE_COMMENT: '//' ~('\n')* {
+    $channel = HIDDEN;
+};
+BLOCK_COMMENT: '/*' .* '*/' {
+    $channel = HIDDEN;
+};
 TP: ':';
 PV: ';';
 WS :   (' '|'\t'|'\r')+ { 
-if (skip_ws) {
-    skip();
-}  
+    $channel = HIDDEN;
 };

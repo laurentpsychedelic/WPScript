@@ -5,6 +5,7 @@
 package language.executable.builtintypes;
 
 import java.util.HashMap;
+import java.util.Set;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
@@ -35,7 +36,12 @@ public class Dictionary extends BuiltInType {
     @Override
     public Object getNativeValue() 
     {
-        return dictionary;
+        Set keys = dictionary.keySet();
+        HashMap dictionary2 = new HashMap();
+        for (Object o : keys) {
+            dictionary2.put(((BuiltInType)o).getNativeValue(), ((BuiltInType) (dictionary.get(o))).getNativeValue());
+        }
+        return dictionary2;
     }
     
     @Override

@@ -12,6 +12,7 @@ import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
+import language.executable.builtintypes.BuiltInType;
 
 /**
  *
@@ -37,6 +38,9 @@ public class FunctionCall extends Calculable {
             LinkedList<Object> params_values = new LinkedList();
             for (int k=1; k<name_params.size(); k++) {
                 Object par_val = (Object) ((Calculable) name_params.get(k)).eval();
+                if (par_val instanceof BuiltInType) {
+                    par_val = ((BuiltInType) par_val).getNativeValue();
+                }
                 params_values.add( par_val );
             }
 
@@ -71,11 +75,7 @@ public class FunctionCall extends Calculable {
                 }
                 throw new NoSuchMethodException(name + "(" + args_str.toString() + ")");
             } else {
-                //if (params_values.size() > 0) {
-                    return method.invoke(null, params_values.toArray());
-                /*} else {
-                    return method.invoke(null);
-                }*/
+                return method.invoke(null, params_values.toArray());
             }
         } catch (NoSuchMethodException ex) {
             interpreter.runtimeError("FUNC_CALL>> No such method: " + ex.getMessage(), line_number);

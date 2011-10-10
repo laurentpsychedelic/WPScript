@@ -28,5 +28,11 @@ public class NativeFunctionsInterface {
     public static void print() {
         print("\n");
     }
-    
+    public static Numeric sin(Object in) throws NoSuchMethodException {
+        if (in instanceof Numeric) {
+            return new Numeric( Math.sin((Double)((Numeric) in).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
 }

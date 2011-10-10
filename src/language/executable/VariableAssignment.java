@@ -53,13 +53,13 @@ public class VariableAssignment extends Calculable {
     @Override
     public Object eval() throws PanicException, RuntimeErrorException {
         Object ret_val = expression.eval();
-        interpreter.memory.put(var_name, ret_val);
+        interpreter.env.addEntry(var_name, ret_val);
         return ret_val;
     }
 
     @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {
-        interpreter.compilation_memory.put(var_name, null);
+        interpreter.env.addEntry(var_name, null);
         expression.compilationCheck();
     }
 

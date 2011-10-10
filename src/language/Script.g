@@ -15,7 +15,7 @@ package language;
 
 import java.io.PrintStream;
 import java.util.LinkedList;
-import java.util.HashMap;
+import language.memory.*;
 import language.executable.*;
 import language.executable.builtintypes.*;
 import language.exceptions.*;
@@ -43,8 +43,8 @@ import language.exceptions.*;
     }
 
     /** Map variable name to Integer object holding value */
-    public HashMap memory = new HashMap();
-    public HashMap compilation_memory =  new HashMap();
+    public Environment env = new Environment(null);
+    public Environment compilation_env =  new Environment(null);
     private LinkedList <Expression> commands = new LinkedList();
     private int line_number = 1;
     public int getLineNumber() {
@@ -56,9 +56,9 @@ import language.exceptions.*;
     private boolean _RUNTIME_ERROR_STATE_ = false;
 
     public void dumpGlobalMemory(PrintStream ps) {
-        ps.println("\nGLOBAL MEMORY DUMP");
-        for (Object o : memory.keySet()) {
-            Object val = memory.get(o);
+        ps.println("\nGLOBAL env DUMP");
+        for (Object o : env.getEntries()) {
+            Object val = env.getValue(o.toString());
             ps.println("VAR [" + o + "]->" + val);
         }
     }
@@ -90,7 +90,7 @@ import language.exceptions.*;
 
     public boolean compilationCheck() throws PanicException, CompilationErrorException {
         try {
-            compilation_memory.clear();
+            compilation_env.clear();
             System.out.println("\nCOMPILATION CHECK");
             for (Object o : commands) {
                 if (!(o instanceof Expression)) {
@@ -98,7 +98,7 @@ import language.exceptions.*;
                 }
                 ((Expression) o).compilationCheck();
             }
-            compilation_memory.clear();
+            compilation_env.clear();
             System.out.println("\nCOMPILATION OK");
             return true;
         } catch (CompilationErrorException e) {
@@ -380,9 +380,6 @@ range returns [LinkedList<Calculable> range_ele]
 expression returns [Expression expr]
     : terms {
         $expr = new Expression( this, new Term(this, $terms.terms) );
-    }
-    | function_call {
-        $expr = new Expression( this, new FunctionCall( this, $function_call.name_params ) );
     };
 
 terms returns [LinkedList<Object> terms]
@@ -517,7 +514,9 @@ atom returns [Object value]
     | dictionary {
         $value = $dictionary.value;
     }
-    ;
+    | function_call {
+        $value = new Expression( this, new FunctionCall( this, $function_call.name_params ) );
+    };
 //atom returns [Object value]
 //    : NUM
 //    | BOOL

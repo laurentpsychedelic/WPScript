@@ -525,7 +525,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-    final String _prog = "a = 2 + 1\n";
+    final String _prog = "a = 2 + sin(1)\n";
     
     //final String _prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
     

@@ -28,14 +28,14 @@ public class Variable extends Calculable {
 
     @Override
     public void compilationCheck() throws CompilationErrorException {
-        if (!interpreter.compilation_memory.containsKey(name)) {
+        if (!interpreter.compilation_env.containsEntry(name)) {
             throw new CompilationErrorException("Variable used before being defined [" + name + "]", line_number);
         }
     }
 
     @Override
     public Object eval() throws RuntimeErrorException {
-        Object val = interpreter.memory.get(this.name);
+        Object val = interpreter.env.getValue(this.name);
         if (val == null) {
             interpreter.runtimeError("Variable unknown [" + name + "]", line_number);
         }

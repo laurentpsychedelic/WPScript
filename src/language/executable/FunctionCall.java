@@ -35,21 +35,15 @@ public class FunctionCall extends Calculable {
             for (int k=1; k<name_params.size(); k++) {
                 types[k-1] = Object.class;
             }
-            LinkedList<Object> params_values = new LinkedList();
-            for (int k=1; k<name_params.size(); k++) {
-                Object par_val = (Object) ((Calculable) name_params.get(k)).eval();
-                if (par_val instanceof BuiltInType) {
-                    par_val = ((BuiltInType) par_val).getNativeValue();
-                }
-                params_values.add( par_val );
-            }
-
+            
             Method method = null;
             
+            boolean runtime_method = false;
             boolean failed = false;
             try {
                 method = NativeFunctionsInterface.class.getMethod(name, types);
             } catch (NoSuchMethodException nsme) {
+                runtime_method = true;
                 failed = true;
             }
             
@@ -63,7 +57,14 @@ public class FunctionCall extends Calculable {
                     }
                 }
             }
-                
+            LinkedList<Object> params_values = new LinkedList();
+            for (int k=1; k<name_params.size(); k++) {
+                Object par_val = (Object) ((Calculable) name_params.get(k)).eval();
+                if (par_val instanceof BuiltInType && runtime_method) {
+                    par_val = ((BuiltInType) par_val).getNativeValue();
+                }
+                params_values.add( par_val );
+            }
             if (failed) {
                 StringBuilder args_str = new StringBuilder();
                 int size = params_values.size();

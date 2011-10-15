@@ -10,8 +10,11 @@
  */
 package editor;
 
+import editor.filefilters.WpsFileFilter;
+import editor.scriptio.ScriptIO;
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PipedInputStream;
@@ -22,6 +25,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -44,16 +48,28 @@ import org.antlr.runtime.Token;
 public class ScriptWindow extends javax.swing.JFrame {
     BufferedReader reader_out;
     BufferedReader reader_err;
-    
+    public static int getLanguage() {
+        return LanguageInformation.LANGUAGE;
+    }
+    public static String getString(int i) {
+        return LanguageInformation.getString(i);
+    }
     private static class LanguageInformation {
         static final int JAPANESE = 0;
         static final int ENGLISH = 1;
-        static int LANGUAGE = JAPANESE;
+        private static int LANGUAGE = JAPANESE;
         static String [][] StrLst = {
-        /*0*/ { "WPAScript Ver. 0.1 :: エディターウィンドウ", "WPAScript Ver. 0.1 :: Editor Window" },
-        /*1*/ { "コンパイル", "Compile" },
-        /*2*/ { "実行", "Run" },
-        /*3*/ { "", "" },
+        /* 0*/ { "WPAScript Ver. 0.1 :: エディターウィンドウ", "WPAScript Ver. 0.1 :: Editor Window" },
+        /* 1*/ { "コンパイル", "Compile" },
+        /* 2*/ { "実行", "Run" },
+        /* 3*/ { "", "" },
+        /* 4*/ { "スクリプトを開く", "Open script file" },
+        /* 5*/ { "開く", "Open" },
+        /* 6*/ { "", "" },
+        /* 7*/ { "", "" },
+        /* 8*/ { "", "" },
+        /* 9*/ { "", "" },
+        /*10*/ { "", "" }
         };
         static String getString(int i) {
             return StrLst[i][LANGUAGE];
@@ -372,6 +388,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jScrollPaneMessages = new javax.swing.JScrollPane();
         jMessagesPane = new javax.swing.JTextPane();
         jButtonCompilation = new javax.swing.JButton();
+        jButtonOpen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -382,7 +399,6 @@ public class ScriptWindow extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jScriptPane.setBackground(java.awt.Color.white);
         jScriptPane.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jScriptPaneFocusLost(evt);
@@ -398,14 +414,15 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPaneScript);
         jScrollPaneScript.setBounds(12, 12, 505, 189);
 
-        jButtonExecute.setText(LanguageInformation.getString(2));
+        jButtonExecute.setText(getString(2));
+        jButtonExecute.setToolTipText(getString(2));
         jButtonExecute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExecuteActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonExecute);
-        jButtonExecute.setBounds(520, 170, 147, 34);
+        jButtonExecute.setBounds(520, 181, 147, 20);
 
         jScrollPaneMessages.setBackground(java.awt.Color.lightGray);
 
@@ -416,14 +433,41 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPaneMessages);
         jScrollPaneMessages.setBounds(12, 207, 660, 130);
 
-        jButtonCompilation.setText(LanguageInformation.getString(1));
+        jButtonCompilation.setText(getString(1));
+        jButtonCompilation.setToolTipText(getString(1));
         jButtonCompilation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompilationActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonCompilation);
-        jButtonCompilation.setBounds(520, 140, 147, 34);
+        jButtonCompilation.setBounds(520, 161, 147, 20);
+
+        jButtonOpen.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/open_file.png"))); // NOI18N
+        jButtonOpen.setToolTipText(getString(4));
+        jButtonOpen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonOpen.setFocusable(false);
+        jButtonOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonOpen.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonOpen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonOpenMouseExited(evt);
+            }
+        });
+        jButtonOpen.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButtonOpenMouseMoved(evt);
+            }
+        });
+        jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOpenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonOpen);
+        jButtonOpen.setBounds(530, 12, 26, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -498,6 +542,48 @@ public class ScriptWindow extends javax.swing.JFrame {
         _updateScriptPaneLater();
     }//GEN-LAST:event_jScriptPaneFocusLost
 
+    public static String DEFAULT_SCRIPT_FOLDER = "C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING";
+    
+    private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
+        
+        final JFileChooser fc = new JFileChooser();
+        fc.setCurrentDirectory(new File(DEFAULT_SCRIPT_FOLDER));
+        fc.setAcceptAllFileFilterUsed(false);
+
+        WpsFileFilter filter = new WpsFileFilter();
+        fc.addChoosableFileFilter(filter);
+        fc.setFileFilter(filter);
+
+
+        fc.setMultiSelectionEnabled(true);
+        fc.setApproveButtonText(getString(5));
+        fc.setDialogTitle(getString(4));
+        int returnVal = fc.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            if (!file.exists()) {
+                return;
+            }
+            String filepath = file.getAbsolutePath();
+            if (filter.isWps(file)) {
+                prog = ScriptIO.readScript(filepath);
+                if (!prog.endsWith("\n")) {
+                    prog += "\n";
+                }
+                _updateScriptPane();
+            }
+        }
+    }//GEN-LAST:event_jButtonOpenActionPerformed
+
+    private void jButtonOpenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOpenMouseExited
+        jButtonOpen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    }//GEN-LAST:event_jButtonOpenMouseExited
+
+    private void jButtonOpenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOpenMouseMoved
+        jButtonOpen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+    }//GEN-LAST:event_jButtonOpenMouseMoved
+
     /**
      * @param args the command line arguments
      */
@@ -564,6 +650,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCompilation;
     private javax.swing.JButton jButtonExecute;
+    private javax.swing.JButton jButtonOpen;
     private javax.swing.JTextPane jMessagesPane;
     private javax.swing.JTextPane jScriptPane;
     private javax.swing.JScrollPane jScrollPaneMessages;

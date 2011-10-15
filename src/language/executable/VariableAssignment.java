@@ -59,7 +59,7 @@ public class VariableAssignment extends Calculable {
 
     @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {
-        interpreter.env.addEntry(var_name, null);
+        interpreter.compilation_env.addEntry(var_name, null);
         expression.compilationCheck();
     }
 

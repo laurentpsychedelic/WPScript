@@ -488,6 +488,11 @@ args returns [LinkedList<Object> params]:
 //args :
 //    atom (COMMA atom)*;
 
+array returns [ObjectArray array]:
+    LEFT_CB a=args RIGHT_CB {
+        $array = new ObjectArray(this, $a.params);
+    };
+
 atom returns [Object value]
     : NUM {
         $value = new Numeric( Float.parseFloat($NUM.text) );
@@ -513,6 +518,9 @@ atom returns [Object value]
     }
     | dictionary {
         $value = $dictionary.value;
+    }
+    | array {
+        $value = $array.array;
     }
     | function_call {
         $value = new Expression( this, new FunctionCall( this, $function_call.name_params ) );

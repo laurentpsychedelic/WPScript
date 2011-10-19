@@ -4,7 +4,7 @@
  */
 
 /*
- * TestFrame.java
+ * This is the window for opening, editing, compiling and executing WPScript programs.
  * @author Laurent FABRE
  * Created on 2011/09/16, 16:14:08
  */

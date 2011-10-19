@@ -5,7 +5,7 @@
 
 /*
  * TestFrame.java
- *
+ * @author Laurent FABRE
  * Created on 2011/09/16, 16:14:08
  */
 package editor;

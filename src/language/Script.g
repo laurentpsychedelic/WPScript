@@ -108,6 +108,7 @@ import language.exceptions.*;
     }
 
     public Object execute() throws PanicException, RuntimeErrorException {
+        env.clear();
         Object ret_val = null;
         for (Object c : commands) {
             if (!(c instanceof Expression)) {
@@ -489,9 +490,25 @@ args returns [LinkedList<Object> params]:
 //    atom (COMMA atom)*;
 
 array returns [ObjectArray array]:
-    LEFT_CB a=args RIGHT_CB {
+    LEFT_B a=args RIGHT_B {
         $array = new ObjectArray(this, $a.params);
     };
+
+/*pre_array returns [LinkedList<Object> elements]:
+    a=expression {
+        $elements = new LinkedList();
+        $elements.add($a.expr);
+    } (COMMA b=pre_array {
+        for (int k=0; k<$elements.size(); k++) {
+            $b.elements.add(0, $elements.get(k));
+        }
+        $elements = $b.elements;
+    } )*;
+
+array returns [ObjectArray array]:
+    LEFT_B p=pre_array RIGHT_B {
+        $array = new ObjectArray(this, $p.elements);
+    };*/
 
 atom returns [Object value]
     : NUM {
@@ -512,6 +529,9 @@ atom returns [Object value]
     }
     | ID {
         $value = new Variable(this, $ID.text);
+    }
+    | CONSTANT {
+        $value = new Variable(this, $CONSTANT.text);
     }
     | string_literal {
         $value = $string_literal.value;
@@ -560,7 +580,7 @@ dictionary_elements returns [LinkedList<Object> keys_values] :
         }
         )* 
     ;
-
+CONSTANT: ('P' 'I') | ('e');
 NUM :   '0'..'9'+ ('.' ('0'..'9'+)?)?;
 BOOL: (('T'|'t') ('R'|'r') ('U'|'u') ('E'|'e')) | (('F'|'f') ('A'|'a') ('L'|'l') ('S'|'s') ('E'|'e'));
 IF  : ('I'|'i') ('F'|'f');

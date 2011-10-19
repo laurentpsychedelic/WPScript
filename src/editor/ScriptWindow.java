@@ -229,6 +229,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         String style = "regular";
         switch (token_type) {
             case ScriptLexer.ID :
+	    case ScriptLexer.CONSTANT :
                 style = "word";
                 break;            
             case ScriptLexer.NUM :

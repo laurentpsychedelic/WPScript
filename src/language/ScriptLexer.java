@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/language/Script.g 2011-10-18 12:25:19
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPAScript/working_copy/src/language/Script.g 2011-10-19 09:01:56
 
 package language;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ScriptLexer extends Lexer {
     public static final int WHILE=17;
     public static final int FOR=18;
-    public static final int DQUOTE=38;
+    public static final int DQUOTE=41;
     public static final int CMP_EQ=31;
     public static final int AND=23;
     public static final int ID=9;
@@ -22,31 +22,32 @@ public class ScriptLexer extends Lexer {
     public static final int IF=13;
     public static final int CMP_GT_EQ=30;
     public static final int CMP_LT=27;
-    public static final int RIGHT_B=40;
-    public static final int STRING_LITERAL=36;
+    public static final int STRING_LITERAL=39;
+    public static final int RIGHT_B=35;
     public static final int PLUS_PLUS=11;
     public static final int CONTINUE=8;
     public static final int COMMA=33;
     public static final int CMP_LT_EQ=28;
     public static final int EQUAL=10;
-    public static final int LEFT_B=39;
-    public static final int BLOCK_COMMENT=42;
+    public static final int LEFT_B=34;
+    public static final int BLOCK_COMMENT=43;
     public static final int PV=19;
     public static final int PLUS=21;
     public static final int LEFT_P=14;
     public static final int CMP_NEQ=32;
-    public static final int LINE_COMMENT=41;
+    public static final int LINE_COMMENT=42;
     public static final int ELSE=16;
-    public static final int BOOL=35;
-    public static final int TP=37;
+    public static final int BOOL=37;
+    public static final int TP=40;
     public static final int RIGHT_P=15;
     public static final int MINUS=22;
     public static final int MULT=25;
     public static final int CMP_GT=29;
-    public static final int NUM=34;
-    public static final int WS=43;
+    public static final int NUM=36;
+    public static final int WS=44;
     public static final int NEWLINE=5;
     public static final int OR=24;
+    public static final int CONSTANT=38;
     public static final int ARROW=20;
     public static final int DIV=26;
     public static final int MINUS_MINUS=12;
@@ -64,29 +65,88 @@ public class ScriptLexer extends Lexer {
     }
     public String getGrammarFileName() { return "/home/laurent/dev/WPAScript/working_copy/src/language/Script.g"; }
 
+    // $ANTLR start "CONSTANT"
+    public final void mCONSTANT() throws RecognitionException {
+        try {
+            int _type = CONSTANT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:9: ( ( 'P' 'I' ) | ( 'e' ) )
+            int alt1=2;
+            int LA1_0 = input.LA(1);
+
+            if ( (LA1_0=='P') ) {
+                alt1=1;
+            }
+            else if ( (LA1_0=='e') ) {
+                alt1=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 1, 0, input);
+
+                throw nvae;
+            }
+            switch (alt1) {
+                case 1 :
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:11: ( 'P' 'I' )
+                    {
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:11: ( 'P' 'I' )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:12: 'P' 'I'
+                    {
+                    match('P'); 
+                    match('I'); 
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:23: ( 'e' )
+                    {
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:23: ( 'e' )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:24: 'e'
+                    {
+                    match('e'); 
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "CONSTANT"
+
     // $ANTLR start "NUM"
     public final void mNUM() throws RecognitionException {
         try {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:5: ( ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )? )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:9: ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )?
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:5: ( ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )? )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:9: ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )?
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:9: ( '0' .. '9' )+
-            int cnt1=0;
-            loop1:
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:9: ( '0' .. '9' )+
+            int cnt2=0;
+            loop2:
             do {
-                int alt1=2;
-                int LA1_0 = input.LA(1);
+                int alt2=2;
+                int LA2_0 = input.LA(1);
 
-                if ( ((LA1_0>='0' && LA1_0<='9')) ) {
-                    alt1=1;
+                if ( ((LA2_0>='0' && LA2_0<='9')) ) {
+                    alt2=1;
                 }
 
 
-                switch (alt1) {
+                switch (alt2) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:9: '0' .. '9'
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -94,52 +154,52 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt1 >= 1 ) break loop1;
+            	    if ( cnt2 >= 1 ) break loop2;
                         EarlyExitException eee =
-                            new EarlyExitException(1, input);
+                            new EarlyExitException(2, input);
                         throw eee;
                 }
-                cnt1++;
+                cnt2++;
             } while (true);
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:19: ( '.' ( ( '0' .. '9' )+ )? )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:19: ( '.' ( ( '0' .. '9' )+ )? )?
+            int alt5=2;
+            int LA5_0 = input.LA(1);
 
-            if ( (LA4_0=='.') ) {
-                alt4=1;
+            if ( (LA5_0=='.') ) {
+                alt5=1;
             }
-            switch (alt4) {
+            switch (alt5) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:20: '.' ( ( '0' .. '9' )+ )?
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:20: '.' ( ( '0' .. '9' )+ )?
                     {
                     match('.'); 
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:24: ( ( '0' .. '9' )+ )?
-                    int alt3=2;
-                    int LA3_0 = input.LA(1);
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:24: ( ( '0' .. '9' )+ )?
+                    int alt4=2;
+                    int LA4_0 = input.LA(1);
 
-                    if ( ((LA3_0>='0' && LA3_0<='9')) ) {
-                        alt3=1;
+                    if ( ((LA4_0>='0' && LA4_0<='9')) ) {
+                        alt4=1;
                     }
-                    switch (alt3) {
+                    switch (alt4) {
                         case 1 :
-                            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:25: ( '0' .. '9' )+
+                            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:25: ( '0' .. '9' )+
                             {
-                            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:25: ( '0' .. '9' )+
-                            int cnt2=0;
-                            loop2:
+                            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:25: ( '0' .. '9' )+
+                            int cnt3=0;
+                            loop3:
                             do {
-                                int alt2=2;
-                                int LA2_0 = input.LA(1);
+                                int alt3=2;
+                                int LA3_0 = input.LA(1);
 
-                                if ( ((LA2_0>='0' && LA2_0<='9')) ) {
-                                    alt2=1;
+                                if ( ((LA3_0>='0' && LA3_0<='9')) ) {
+                                    alt3=1;
                                 }
 
 
-                                switch (alt2) {
+                                switch (alt3) {
                             	case 1 :
-                            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:564:25: '0' .. '9'
+                            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:25: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -147,12 +207,12 @@ public class ScriptLexer extends Lexer {
                             	    break;
 
                             	default :
-                            	    if ( cnt2 >= 1 ) break loop2;
+                            	    if ( cnt3 >= 1 ) break loop3;
                                         EarlyExitException eee =
-                                            new EarlyExitException(2, input);
+                                            new EarlyExitException(3, input);
                                         throw eee;
                                 }
-                                cnt2++;
+                                cnt3++;
                             } while (true);
 
 
@@ -183,28 +243,28 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BOOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA5_0=='T'||LA5_0=='t') ) {
-                alt5=1;
+            if ( (LA6_0=='T'||LA6_0=='t') ) {
+                alt6=1;
             }
-            else if ( (LA5_0=='F'||LA5_0=='f') ) {
-                alt5=2;
+            else if ( (LA6_0=='F'||LA6_0=='f') ) {
+                alt6=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
-            switch (alt5) {
+            switch (alt6) {
                 case 1 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
                     {
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                         input.consume();
@@ -249,10 +309,10 @@ public class ScriptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
                     {
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:565:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                         input.consume();
@@ -320,8 +380,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:566:7: ( 'I' | 'i' ) ( 'F' | 'f' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:586:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:586:7: ( 'I' | 'i' ) ( 'F' | 'f' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -357,8 +417,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:567:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:587:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:587:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -412,8 +472,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:568:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:588:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:588:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -476,8 +536,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = FOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:569:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:589:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:589:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -522,8 +582,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:6: ( ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:570:8: ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:590:6: ( ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:590:8: ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -586,8 +646,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CONTINUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:571:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:591:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:591:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -677,8 +737,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -689,18 +749,18 @@ public class ScriptLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:572:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
-            loop6:
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            loop7:
             do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                if ( ((LA6_0>='0' && LA6_0<='9')||(LA6_0>='A' && LA6_0<='Z')||LA6_0=='_'||(LA6_0>='a' && LA6_0<='z')) ) {
-                    alt6=1;
+                if ( ((LA7_0>='0' && LA7_0<='9')||(LA7_0>='A' && LA7_0<='Z')||LA7_0=='_'||(LA7_0>='a' && LA7_0<='z')) ) {
+                    alt7=1;
                 }
 
 
-                switch (alt6) {
+                switch (alt7) {
             	case 1 :
             	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:
             	    {
@@ -718,7 +778,7 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop6;
+            	    break loop7;
                 }
             } while (true);
 
@@ -738,8 +798,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:6: ( '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:573:8: '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:593:6: ( '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:593:8: '='
             {
             match('='); 
 
@@ -758,8 +818,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:574:6: ( ',' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:574:8: ','
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:594:6: ( ',' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:594:8: ','
             {
             match(','); 
 
@@ -778,8 +838,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DQUOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:575:7: ( '\"' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:575:9: '\"'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:595:7: ( '\"' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:595:9: '\"'
             {
             match('\"'); 
 
@@ -798,8 +858,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:576:7: ( '(' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:576:9: '('
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:596:7: ( '(' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:596:9: '('
             {
             match('('); 
 
@@ -818,8 +878,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:577:8: ( ')' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:577:10: ')'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:597:8: ( ')' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:597:10: ')'
             {
             match(')'); 
 
@@ -838,8 +898,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:578:5: ( '*' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:578:7: '*'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:598:5: ( '*' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:598:7: '*'
             {
             match('*'); 
 
@@ -858,8 +918,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:579:4: ( '/' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:579:6: '/'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:599:4: ( '/' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:599:6: '/'
             {
             match('/'); 
 
@@ -878,8 +938,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:580:5: ( '+' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:580:7: '+'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:600:5: ( '+' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:600:7: '+'
             {
             match('+'); 
 
@@ -898,8 +958,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS_PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:581:10: ( '+' '+' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:581:12: '+' '+'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:601:10: ( '+' '+' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:601:12: '+' '+'
             {
             match('+'); 
             match('+'); 
@@ -919,8 +979,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:582:6: ( '-' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:582:8: '-'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:602:6: ( '-' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:602:8: '-'
             {
             match('-'); 
 
@@ -939,8 +999,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS_MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:12: ( '-' '-' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:583:14: '-' '-'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:603:12: ( '-' '-' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:603:14: '-' '-'
             {
             match('-'); 
             match('-'); 
@@ -960,8 +1020,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:7: ( '<' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:584:9: '<'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:604:7: ( '<' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:604:9: '<'
             {
             match('<'); 
 
@@ -980,8 +1040,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:10: ( '<' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:585:12: '<' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:605:10: ( '<' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:605:12: '<' '='
             {
             match('<'); 
             match('='); 
@@ -1001,8 +1061,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:586:7: ( '>' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:586:9: '>'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:606:7: ( '>' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:606:9: '>'
             {
             match('>'); 
 
@@ -1021,8 +1081,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:587:10: ( '>' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:587:12: '>' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:607:10: ( '>' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:607:12: '>' '='
             {
             match('>'); 
             match('='); 
@@ -1042,8 +1102,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:588:7: ( '=' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:588:9: '=' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:608:7: ( '=' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:608:9: '=' '='
             {
             match('='); 
             match('='); 
@@ -1063,8 +1123,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_NEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:589:8: ( '!' '=' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:589:9: '!' '='
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:609:8: ( '!' '=' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:609:9: '!' '='
             {
             match('!'); 
             match('='); 
@@ -1084,8 +1144,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:590:4: ( '&' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:590:6: '&'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:610:4: ( '&' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:610:6: '&'
             {
             match('&'); 
 
@@ -1104,8 +1164,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:591:4: ( '|' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:591:6: '|'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:611:4: ( '|' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:611:6: '|'
             {
             match('|'); 
 
@@ -1124,39 +1184,39 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"'
             {
             match('\"'); 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+
-            int cnt9=0;
-            loop9:
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+
+            int cnt10=0;
+            loop10:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( (LA9_0==' '||LA9_0=='#'||(LA9_0>='.' && LA9_0<=':')||LA9_0=='='||(LA9_0>='A' && LA9_0<='Z')||LA9_0=='_'||(LA9_0>='a' && LA9_0<='{')||LA9_0=='}') ) {
-                    alt9=1;
+                if ( (LA10_0==' '||LA10_0=='#'||(LA10_0>='.' && LA10_0<=':')||LA10_0=='='||(LA10_0>='A' && LA10_0<='Z')||LA10_0=='_'||(LA10_0>='a' && LA10_0<='{')||LA10_0=='}') ) {
+                    alt10=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt10) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )?
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )?
             	    {
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:22: ( ( ' ' )? )
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:23: ( ' ' )?
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:22: ( ( ' ' )? )
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:23: ( ' ' )?
             	    {
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:23: ( ' ' )?
-            	    int alt7=2;
-            	    int LA7_0 = input.LA(1);
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:23: ( ' ' )?
+            	    int alt8=2;
+            	    int LA8_0 = input.LA(1);
 
-            	    if ( (LA7_0==' ') ) {
-            	        alt7=1;
+            	    if ( (LA8_0==' ') ) {
+            	        alt8=1;
             	    }
-            	    switch (alt7) {
+            	    switch (alt8) {
             	        case 1 :
-            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:23: ' '
+            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:23: ' '
             	            {
             	            match(' '); 
 
@@ -1177,16 +1237,16 @@ public class ScriptLexer extends Lexer {
             	        recover(mse);
             	        throw mse;}
 
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:90: ( ' ' )?
-            	    int alt8=2;
-            	    int LA8_0 = input.LA(1);
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:90: ( ' ' )?
+            	    int alt9=2;
+            	    int LA9_0 = input.LA(1);
 
-            	    if ( (LA8_0==' ') ) {
-            	        alt8=1;
+            	    if ( (LA9_0==' ') ) {
+            	        alt9=1;
             	    }
-            	    switch (alt8) {
+            	    switch (alt9) {
             	        case 1 :
-            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:592:91: ' '
+            	            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:612:91: ' '
             	            {
             	            match(' '); 
 
@@ -1200,12 +1260,12 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt9 >= 1 ) break loop9;
+            	    if ( cnt10 >= 1 ) break loop10;
                         EarlyExitException eee =
-                            new EarlyExitException(9, input);
+                            new EarlyExitException(10, input);
                         throw eee;
                 }
-                cnt9++;
+                cnt10++;
             } while (true);
 
             match('\"'); 
@@ -1225,8 +1285,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:593:9: ( '{' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:593:11: '{'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:613:9: ( '{' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:613:11: '{'
             {
             match('{'); 
 
@@ -1245,8 +1305,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:594:10: ( '}' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:594:12: '}'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:614:10: ( '}' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:614:12: '}'
             {
             match('}'); 
 
@@ -1265,8 +1325,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:595:8: ( '[' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:595:10: '['
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:615:8: ( '[' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:615:10: '['
             {
             match('['); 
 
@@ -1285,8 +1345,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:596:8: ( ']' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:596:10: ']'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:616:8: ( ']' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:616:10: ']'
             {
             match(']'); 
 
@@ -1305,8 +1365,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:597:6: ( '-' '>' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:597:8: '-' '>'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:617:6: ( '-' '>' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:617:8: '-' '>'
             {
             match('-'); 
             match('>'); 
@@ -1326,8 +1386,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:598:8: ( '\\n' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:598:9: '\\n'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:618:8: ( '\\n' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:618:9: '\\n'
             {
             match('\n'); 
 
@@ -1346,25 +1406,25 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LINE_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:599:13: ( '//' (~ ( '\\n' ) )* )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:599:15: '//' (~ ( '\\n' ) )*
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:619:13: ( '//' (~ ( '\\n' ) )* )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:619:15: '//' (~ ( '\\n' ) )*
             {
             match("//"); 
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:599:20: (~ ( '\\n' ) )*
-            loop10:
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:619:20: (~ ( '\\n' ) )*
+            loop11:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( ((LA10_0>='\u0000' && LA10_0<='\t')||(LA10_0>='\u000B' && LA10_0<='\uFFFF')) ) {
-                    alt10=1;
+                if ( ((LA11_0>='\u0000' && LA11_0<='\t')||(LA11_0>='\u000B' && LA11_0<='\uFFFF')) ) {
+                    alt11=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt11) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:599:20: ~ ( '\\n' )
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:619:20: ~ ( '\\n' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1380,7 +1440,7 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop11;
                 }
             } while (true);
 
@@ -1403,37 +1463,37 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BLOCK_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:602:14: ( '/*' ( . )* '*/' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:602:16: '/*' ( . )* '*/'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:622:14: ( '/*' ( . )* '*/' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:622:16: '/*' ( . )* '*/'
             {
             match("/*"); 
 
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:602:21: ( . )*
-            loop11:
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:622:21: ( . )*
+            loop12:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA11_0=='*') ) {
-                    int LA11_1 = input.LA(2);
+                if ( (LA12_0=='*') ) {
+                    int LA12_1 = input.LA(2);
 
-                    if ( (LA11_1=='/') ) {
-                        alt11=2;
+                    if ( (LA12_1=='/') ) {
+                        alt12=2;
                     }
-                    else if ( ((LA11_1>='\u0000' && LA11_1<='.')||(LA11_1>='0' && LA11_1<='\uFFFF')) ) {
-                        alt11=1;
+                    else if ( ((LA12_1>='\u0000' && LA12_1<='.')||(LA12_1>='0' && LA12_1<='\uFFFF')) ) {
+                        alt12=1;
                     }
 
 
                 }
-                else if ( ((LA11_0>='\u0000' && LA11_0<=')')||(LA11_0>='+' && LA11_0<='\uFFFF')) ) {
-                    alt11=1;
+                else if ( ((LA12_0>='\u0000' && LA12_0<=')')||(LA12_0>='+' && LA12_0<='\uFFFF')) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt12) {
             	case 1 :
-            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:602:21: .
+            	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:622:21: .
             	    {
             	    matchAny(); 
 
@@ -1441,7 +1501,7 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop12;
                 }
             } while (true);
 
@@ -1466,8 +1526,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = TP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:605:3: ( ':' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:605:5: ':'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:625:3: ( ':' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:625:5: ':'
             {
             match(':'); 
 
@@ -1486,8 +1546,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:606:3: ( ';' )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:606:5: ';'
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:626:3: ( ';' )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:626:5: ';'
             {
             match(';'); 
 
@@ -1506,22 +1566,22 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:607:4: ( ( ' ' | '\\t' | '\\r' )+ )
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:607:8: ( ' ' | '\\t' | '\\r' )+
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:627:4: ( ( ' ' | '\\t' | '\\r' )+ )
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:627:8: ( ' ' | '\\t' | '\\r' )+
             {
-            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:607:8: ( ' ' | '\\t' | '\\r' )+
-            int cnt12=0;
-            loop12:
+            // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:627:8: ( ' ' | '\\t' | '\\r' )+
+            int cnt13=0;
+            loop13:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA12_0=='\t'||LA12_0=='\r'||LA12_0==' ') ) {
-                    alt12=1;
+                if ( (LA13_0=='\t'||LA13_0=='\r'||LA13_0==' ') ) {
+                    alt13=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt13) {
             	case 1 :
             	    // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:
             	    {
@@ -1539,12 +1599,12 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt12 >= 1 ) break loop12;
+            	    if ( cnt13 >= 1 ) break loop13;
                         EarlyExitException eee =
-                            new EarlyExitException(12, input);
+                            new EarlyExitException(13, input);
                         throw eee;
                 }
-                cnt12++;
+                cnt13++;
             } while (true);
 
              
@@ -1562,285 +1622,292 @@ public class ScriptLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:8: ( NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS )
-        int alt13=40;
-        alt13 = dfa13.predict(input);
-        switch (alt13) {
+        // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:8: ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS )
+        int alt14=41;
+        alt14 = dfa14.predict(input);
+        switch (alt14) {
             case 1 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:10: NUM
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:10: CONSTANT
+                {
+                mCONSTANT(); 
+
+                }
+                break;
+            case 2 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:19: NUM
                 {
                 mNUM(); 
 
                 }
                 break;
-            case 2 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:14: BOOL
+            case 3 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:23: BOOL
                 {
                 mBOOL(); 
 
                 }
                 break;
-            case 3 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:19: IF
+            case 4 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:28: IF
                 {
                 mIF(); 
 
                 }
                 break;
-            case 4 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:22: ELSE
+            case 5 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:31: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
-            case 5 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:27: WHILE
+            case 6 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:36: WHILE
                 {
                 mWHILE(); 
 
                 }
                 break;
-            case 6 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:33: FOR
+            case 7 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:42: FOR
                 {
                 mFOR(); 
 
                 }
                 break;
-            case 7 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:37: BREAK
+            case 8 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:46: BREAK
                 {
                 mBREAK(); 
 
                 }
                 break;
-            case 8 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:43: CONTINUE
+            case 9 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:52: CONTINUE
                 {
                 mCONTINUE(); 
 
                 }
                 break;
-            case 9 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:52: ID
+            case 10 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:61: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 10 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:55: EQUAL
+            case 11 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:64: EQUAL
                 {
                 mEQUAL(); 
 
                 }
                 break;
-            case 11 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:61: COMMA
+            case 12 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:70: COMMA
                 {
                 mCOMMA(); 
 
                 }
                 break;
-            case 12 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:67: DQUOTE
+            case 13 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:76: DQUOTE
                 {
                 mDQUOTE(); 
 
                 }
                 break;
-            case 13 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:74: LEFT_P
+            case 14 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:83: LEFT_P
                 {
                 mLEFT_P(); 
 
                 }
                 break;
-            case 14 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:81: RIGHT_P
+            case 15 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:90: RIGHT_P
                 {
                 mRIGHT_P(); 
 
                 }
                 break;
-            case 15 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:89: MULT
+            case 16 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:98: MULT
                 {
                 mMULT(); 
 
                 }
                 break;
-            case 16 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:94: DIV
+            case 17 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:103: DIV
                 {
                 mDIV(); 
 
                 }
                 break;
-            case 17 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:98: PLUS
+            case 18 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:107: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
-            case 18 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:103: PLUS_PLUS
+            case 19 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:112: PLUS_PLUS
                 {
                 mPLUS_PLUS(); 
 
                 }
                 break;
-            case 19 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:113: MINUS
+            case 20 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:122: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
-            case 20 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:119: MINUS_MINUS
+            case 21 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:128: MINUS_MINUS
                 {
                 mMINUS_MINUS(); 
 
                 }
                 break;
-            case 21 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:131: CMP_LT
+            case 22 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:140: CMP_LT
                 {
                 mCMP_LT(); 
 
                 }
                 break;
-            case 22 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:138: CMP_LT_EQ
+            case 23 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:147: CMP_LT_EQ
                 {
                 mCMP_LT_EQ(); 
 
                 }
                 break;
-            case 23 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:148: CMP_GT
+            case 24 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:157: CMP_GT
                 {
                 mCMP_GT(); 
 
                 }
                 break;
-            case 24 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:155: CMP_GT_EQ
+            case 25 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:164: CMP_GT_EQ
                 {
                 mCMP_GT_EQ(); 
 
                 }
                 break;
-            case 25 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:165: CMP_EQ
+            case 26 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:174: CMP_EQ
                 {
                 mCMP_EQ(); 
 
                 }
                 break;
-            case 26 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:172: CMP_NEQ
+            case 27 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:181: CMP_NEQ
                 {
                 mCMP_NEQ(); 
 
                 }
                 break;
-            case 27 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:180: AND
+            case 28 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:189: AND
                 {
                 mAND(); 
 
                 }
                 break;
-            case 28 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:184: OR
+            case 29 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:193: OR
                 {
                 mOR(); 
 
                 }
                 break;
-            case 29 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:187: STRING_LITERAL
+            case 30 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:196: STRING_LITERAL
                 {
                 mSTRING_LITERAL(); 
 
                 }
                 break;
-            case 30 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:202: LEFT_CB
+            case 31 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:211: LEFT_CB
                 {
                 mLEFT_CB(); 
 
                 }
                 break;
-            case 31 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:210: RIGHT_CB
+            case 32 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:219: RIGHT_CB
                 {
                 mRIGHT_CB(); 
 
                 }
                 break;
-            case 32 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:219: LEFT_B
+            case 33 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:228: LEFT_B
                 {
                 mLEFT_B(); 
 
                 }
                 break;
-            case 33 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:226: RIGHT_B
+            case 34 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:235: RIGHT_B
                 {
                 mRIGHT_B(); 
 
                 }
                 break;
-            case 34 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:234: ARROW
+            case 35 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:243: ARROW
                 {
                 mARROW(); 
 
                 }
                 break;
-            case 35 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:240: NEWLINE
+            case 36 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:249: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
-            case 36 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:248: LINE_COMMENT
+            case 37 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:257: LINE_COMMENT
                 {
                 mLINE_COMMENT(); 
 
                 }
                 break;
-            case 37 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:261: BLOCK_COMMENT
+            case 38 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:270: BLOCK_COMMENT
                 {
                 mBLOCK_COMMENT(); 
 
                 }
                 break;
-            case 38 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:275: TP
+            case 39 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:284: TP
                 {
                 mTP(); 
 
                 }
                 break;
-            case 39 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:278: PV
+            case 40 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:287: PV
                 {
                 mPV(); 
 
                 }
                 break;
-            case 40 :
-                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:281: WS
+            case 41 :
+                // /home/laurent/dev/WPAScript/working_copy/src/language/Script.g:1:290: WS
                 {
                 mWS(); 
 
@@ -1852,159 +1919,164 @@ public class ScriptLexer extends Lexer {
     }
 
 
-    protected DFA13 dfa13 = new DFA13(this);
-    static final String DFA13_eotS =
-        "\2\uffff\7\11\1\uffff\1\51\1\uffff\1\52\3\uffff\1\56\1\60\1\63\1"+
-        "\65\1\67\13\uffff\3\11\1\73\4\11\20\uffff\2\11\1\102\1\uffff\4\11"+
-        "\1\107\1\11\1\uffff\1\111\3\11\1\uffff\1\107\1\uffff\1\115\1\116"+
-        "\1\11\2\uffff\2\11\1\122\1\uffff";
-    static final String DFA13_eofS =
-        "\123\uffff";
-    static final String DFA13_minS =
-        "\1\11\1\uffff\1\122\1\101\1\106\1\114\1\110\1\122\1\117\1\uffff"+
-        "\1\75\1\uffff\1\40\3\uffff\1\52\1\53\1\55\2\75\13\uffff\1\125\1"+
-        "\114\1\122\1\60\1\123\1\111\1\105\1\116\20\uffff\1\105\1\123\1\60"+
-        "\1\uffff\1\105\1\114\1\101\1\124\1\60\1\105\1\uffff\1\60\1\105\1"+
-        "\113\1\111\1\uffff\1\60\1\uffff\2\60\1\116\2\uffff\1\125\1\105\1"+
-        "\60\1\uffff";
-    static final String DFA13_maxS =
-        "\1\175\1\uffff\1\162\1\157\1\146\1\154\1\150\1\162\1\157\1\uffff"+
-        "\1\75\1\uffff\1\175\3\uffff\1\57\1\53\1\76\2\75\13\uffff\1\165\1"+
-        "\154\1\162\1\172\1\163\1\151\1\145\1\156\20\uffff\1\145\1\163\1"+
-        "\172\1\uffff\1\145\1\154\1\141\1\164\1\172\1\145\1\uffff\1\172\1"+
-        "\145\1\153\1\151\1\uffff\1\172\1\uffff\2\172\1\156\2\uffff\1\165"+
-        "\1\145\1\172\1\uffff";
-    static final String DFA13_acceptS =
-        "\1\uffff\1\1\7\uffff\1\11\1\uffff\1\13\1\uffff\1\15\1\16\1\17\5"+
-        "\uffff\1\32\1\33\1\34\1\36\1\37\1\40\1\41\1\43\1\46\1\47\1\50\10"+
-        "\uffff\1\31\1\12\1\14\1\35\1\44\1\45\1\20\1\22\1\21\1\24\1\42\1"+
-        "\23\1\26\1\25\1\30\1\27\3\uffff\1\3\6\uffff\1\6\4\uffff\1\2\1\uffff"+
-        "\1\4\3\uffff\1\5\1\7\3\uffff\1\10";
-    static final String DFA13_specialS =
-        "\123\uffff}>";
-    static final String[] DFA13_transitionS = {
-            "\1\37\1\34\2\uffff\1\37\22\uffff\1\37\1\25\1\14\3\uffff\1\26"+
-            "\1\uffff\1\15\1\16\1\17\1\21\1\13\1\22\1\uffff\1\20\12\1\1\35"+
-            "\1\36\1\23\1\12\1\24\2\uffff\1\11\1\7\1\10\1\11\1\5\1\3\2\11"+
-            "\1\4\12\11\1\2\2\11\1\6\3\11\1\32\1\uffff\1\33\1\uffff\1\11"+
-            "\1\uffff\1\11\1\7\1\10\1\11\1\5\1\3\2\11\1\4\12\11\1\2\2\11"+
-            "\1\6\3\11\1\30\1\27\1\31",
+    protected DFA14 dfa14 = new DFA14(this);
+    static final String DFA14_eotS =
+        "\1\uffff\1\13\1\44\1\uffff\7\13\1\uffff\1\55\1\uffff\1\56\3\uffff"+
+        "\1\62\1\64\1\67\1\71\1\73\13\uffff\1\44\1\13\1\uffff\3\13\1\100"+
+        "\3\13\20\uffff\3\13\1\107\1\uffff\3\13\1\113\1\114\1\13\1\uffff"+
+        "\3\13\2\uffff\1\114\1\121\1\122\1\13\2\uffff\2\13\1\126\1\uffff";
+    static final String DFA14_eofS =
+        "\127\uffff";
+    static final String DFA14_minS =
+        "\1\11\1\111\1\60\1\uffff\1\122\1\101\1\106\1\114\1\110\1\122\1\117"+
+        "\1\uffff\1\75\1\uffff\1\40\3\uffff\1\52\1\53\1\55\2\75\13\uffff"+
+        "\1\60\1\123\1\uffff\1\125\1\114\1\122\1\60\1\111\1\105\1\116\20"+
+        "\uffff\2\105\1\123\1\60\1\uffff\1\114\1\101\1\124\2\60\1\105\1\uffff"+
+        "\1\105\1\113\1\111\2\uffff\3\60\1\116\2\uffff\1\125\1\105\1\60\1"+
+        "\uffff";
+    static final String DFA14_maxS =
+        "\1\175\1\111\1\172\1\uffff\1\162\1\157\1\146\1\154\1\150\1\162\1"+
+        "\157\1\uffff\1\75\1\uffff\1\175\3\uffff\1\57\1\53\1\76\2\75\13\uffff"+
+        "\1\172\1\163\1\uffff\1\165\1\154\1\162\1\172\1\151\1\145\1\156\20"+
+        "\uffff\2\145\1\163\1\172\1\uffff\1\154\1\141\1\164\2\172\1\145\1"+
+        "\uffff\1\145\1\153\1\151\2\uffff\3\172\1\156\2\uffff\1\165\1\145"+
+        "\1\172\1\uffff";
+    static final String DFA14_acceptS =
+        "\3\uffff\1\2\7\uffff\1\12\1\uffff\1\14\1\uffff\1\16\1\17\1\20\5"+
+        "\uffff\1\33\1\34\1\35\1\37\1\40\1\41\1\42\1\44\1\47\1\50\1\51\2"+
+        "\uffff\1\1\7\uffff\1\32\1\13\1\15\1\36\1\45\1\46\1\21\1\23\1\22"+
+        "\1\25\1\43\1\24\1\27\1\26\1\31\1\30\4\uffff\1\4\6\uffff\1\7\3\uffff"+
+        "\1\5\1\3\4\uffff\1\6\1\10\3\uffff\1\11";
+    static final String DFA14_specialS =
+        "\127\uffff}>";
+    static final String[] DFA14_transitionS = {
+            "\1\41\1\36\2\uffff\1\41\22\uffff\1\41\1\27\1\16\3\uffff\1\30"+
+            "\1\uffff\1\17\1\20\1\21\1\23\1\15\1\24\1\uffff\1\22\12\3\1\37"+
+            "\1\40\1\25\1\14\1\26\2\uffff\1\13\1\11\1\12\1\13\1\7\1\5\2\13"+
+            "\1\6\6\13\1\1\3\13\1\4\2\13\1\10\3\13\1\34\1\uffff\1\35\1\uffff"+
+            "\1\13\1\uffff\1\13\1\11\1\12\1\13\1\2\1\5\2\13\1\6\12\13\1\4"+
+            "\2\13\1\10\3\13\1\32\1\31\1\33",
+            "\1\42",
+            "\12\13\7\uffff\13\13\1\43\16\13\4\uffff\1\13\1\uffff\13\13"+
+            "\1\43\16\13",
             "",
-            "\1\40\37\uffff\1\40",
-            "\1\41\15\uffff\1\42\21\uffff\1\41\15\uffff\1\42",
-            "\1\43\37\uffff\1\43",
-            "\1\44\37\uffff\1\44",
             "\1\45\37\uffff\1\45",
-            "\1\46\37\uffff\1\46",
-            "\1\47\37\uffff\1\47",
+            "\1\46\15\uffff\1\47\21\uffff\1\46\15\uffff\1\47",
+            "\1\50\37\uffff\1\50",
+            "\1\43\37\uffff\1\43",
+            "\1\51\37\uffff\1\51",
+            "\1\52\37\uffff\1\52",
+            "\1\53\37\uffff\1\53",
             "",
-            "\1\50",
+            "\1\54",
             "",
-            "\1\53\2\uffff\1\53\12\uffff\15\53\2\uffff\1\53\3\uffff\32\53"+
-            "\4\uffff\1\53\1\uffff\33\53\1\uffff\1\53",
-            "",
-            "",
-            "",
-            "\1\55\4\uffff\1\54",
-            "\1\57",
-            "\1\61\20\uffff\1\62",
-            "\1\64",
-            "\1\66",
+            "\1\57\2\uffff\1\57\12\uffff\15\57\2\uffff\1\57\3\uffff\32\57"+
+            "\4\uffff\1\57\1\uffff\33\57\1\uffff\1\57",
             "",
             "",
             "",
-            "",
-            "",
-            "",
+            "\1\61\4\uffff\1\60",
+            "\1\63",
+            "\1\65\20\uffff\1\66",
+            "\1\70",
+            "\1\72",
             "",
             "",
             "",
             "",
             "",
-            "\1\70\37\uffff\1\70",
-            "\1\71\37\uffff\1\71",
-            "\1\72\37\uffff\1\72",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\1\74\37\uffff\1\74",
+            "",
             "\1\75\37\uffff\1\75",
             "\1\76\37\uffff\1\76",
             "\1\77\37\uffff\1\77",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\100\37\uffff\1\100",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\1\101\37\uffff\1\101",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
-            "",
+            "\1\102\37\uffff\1\102",
             "\1\103\37\uffff\1\103",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\104\37\uffff\1\104",
             "\1\105\37\uffff\1\105",
             "\1\106\37\uffff\1\106",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "",
             "\1\110\37\uffff\1\110",
-            "",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
+            "\1\111\37\uffff\1\111",
             "\1\112\37\uffff\1\112",
-            "\1\113\37\uffff\1\113",
-            "\1\114\37\uffff\1\114",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\1\115\37\uffff\1\115",
             "",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
-            "",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
+            "\1\116\37\uffff\1\116",
             "\1\117\37\uffff\1\117",
-            "",
-            "",
             "\1\120\37\uffff\1\120",
-            "\1\121\37\uffff\1\121",
-            "\12\11\7\uffff\32\11\4\uffff\1\11\1\uffff\32\11",
+            "",
+            "",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\1\123\37\uffff\1\123",
+            "",
+            "",
+            "\1\124\37\uffff\1\124",
+            "\1\125\37\uffff\1\125",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             ""
     };
 
-    static final short[] DFA13_eot = DFA.unpackEncodedString(DFA13_eotS);
-    static final short[] DFA13_eof = DFA.unpackEncodedString(DFA13_eofS);
-    static final char[] DFA13_min = DFA.unpackEncodedStringToUnsignedChars(DFA13_minS);
-    static final char[] DFA13_max = DFA.unpackEncodedStringToUnsignedChars(DFA13_maxS);
-    static final short[] DFA13_accept = DFA.unpackEncodedString(DFA13_acceptS);
-    static final short[] DFA13_special = DFA.unpackEncodedString(DFA13_specialS);
-    static final short[][] DFA13_transition;
+    static final short[] DFA14_eot = DFA.unpackEncodedString(DFA14_eotS);
+    static final short[] DFA14_eof = DFA.unpackEncodedString(DFA14_eofS);
+    static final char[] DFA14_min = DFA.unpackEncodedStringToUnsignedChars(DFA14_minS);
+    static final char[] DFA14_max = DFA.unpackEncodedStringToUnsignedChars(DFA14_maxS);
+    static final short[] DFA14_accept = DFA.unpackEncodedString(DFA14_acceptS);
+    static final short[] DFA14_special = DFA.unpackEncodedString(DFA14_specialS);
+    static final short[][] DFA14_transition;
 
     static {
-        int numStates = DFA13_transitionS.length;
-        DFA13_transition = new short[numStates][];
+        int numStates = DFA14_transitionS.length;
+        DFA14_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA13_transition[i] = DFA.unpackEncodedString(DFA13_transitionS[i]);
+            DFA14_transition[i] = DFA.unpackEncodedString(DFA14_transitionS[i]);
         }
     }
 
-    class DFA13 extends DFA {
+    class DFA14 extends DFA {
 
-        public DFA13(BaseRecognizer recognizer) {
+        public DFA14(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 13;
-            this.eot = DFA13_eot;
-            this.eof = DFA13_eof;
-            this.min = DFA13_min;
-            this.max = DFA13_max;
-            this.accept = DFA13_accept;
-            this.special = DFA13_special;
-            this.transition = DFA13_transition;
+            this.decisionNumber = 14;
+            this.eot = DFA14_eot;
+            this.eof = DFA14_eof;
+            this.min = DFA14_min;
+            this.max = DFA14_max;
+            this.accept = DFA14_accept;
+            this.special = DFA14_special;
+            this.transition = DFA14_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS );";
+            return "1:1: Tokens : ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS );";
         }
     }
  

@@ -445,30 +445,17 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonCompilation.setBounds(520, 161, 147, 20);
 
         jButtonOpen.setBackground(new java.awt.Color(51, 51, 51));
-        jButtonOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/open_file.png"))); // NOI18N
+        jButtonOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/open_file_small.png"))); // NOI18N
+        jButtonOpen.setText(getString(5));
         jButtonOpen.setToolTipText(getString(4));
-        jButtonOpen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonOpen.setFocusable(false);
-        jButtonOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonOpen.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButtonOpen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonOpenMouseExited(evt);
-            }
-        });
-        jButtonOpen.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jButtonOpenMouseMoved(evt);
-            }
-        });
         jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOpenActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonOpen);
-        jButtonOpen.setBounds(530, 12, 26, 26);
+        jButtonOpen.setBounds(530, 12, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -576,14 +563,6 @@ public class ScriptWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonOpenActionPerformed
-
-    private void jButtonOpenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOpenMouseExited
-        jButtonOpen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    }//GEN-LAST:event_jButtonOpenMouseExited
-
-    private void jButtonOpenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOpenMouseMoved
-        jButtonOpen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-    }//GEN-LAST:event_jButtonOpenMouseMoved
 
     /**
      * @param args the command line arguments

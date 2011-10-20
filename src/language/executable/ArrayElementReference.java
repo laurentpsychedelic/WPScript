@@ -45,25 +45,14 @@ public class ArrayElementReference extends Calculable {
         }
         if (val instanceof ObjectArray) {
             ObjectArray array = (ObjectArray) val;
-            Object ind = expression_index.eval();
+            Object index = expression_index.eval();
             if (val == null) {
                 interpreter.scriptPanic("ARRAY ELEMENT REFERENCE>> array index expression returned null", line_number);
             }
-            if (ind instanceof Numeric) {
-                int index = (int) Math.round((Double) ((Numeric) ind).getNativeValue());
-                Object _native_array = array.getNativeValue();
-                try {
-                    Object [] native_array = (Object []) _native_array;
-                    if (index>=0 && index<native_array.length) {
-                        return native_array[index];
-                    } else {
-                        interpreter.runtimeError("ARRAY ELEMENT REFERENCE>> Index out of range [" + index + "]", line_number);
-                    }
-                } catch (ClassCastException cce) {
-                    interpreter.scriptPanic("ARRAY ELEMENT REFERENCE>> Array internal storage must be Object[] [" + _native_array.getClass() + "]", line_number);
-                }
+            if (index instanceof Numeric) {
+                return array.get(index);
             } else {
-                interpreter.runtimeError("ARRAY ELEMENT REFERENCE>> Index must be of numeric type", line_number);
+                interpreter.runtimeError("ARRAY ELEMENT REFERENCE>> Index must be of type Numeric", line_number);
             }
         } else {
             interpreter.runtimeError("ARRAY ELEMENT REFERENCE>> Only Array types can be referenced [" + val.getClass() + "]", line_number);

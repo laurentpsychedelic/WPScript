@@ -543,7 +543,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         _updateScriptPaneLater();
     }//GEN-LAST:event_jScriptPaneFocusLost
 
-    public static String DEFAULT_SCRIPT_FOLDER = "C:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING";
+    public static String DEFAULT_SCRIPT_FOLDER = "/home/laurent/dev/WPA/WPScript/";
     
     private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
         

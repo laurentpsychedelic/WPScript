@@ -242,6 +242,9 @@ pre_stat returns [Expression expr]
     | ID EQUAL expression {
         $expr = new Expression(true, this, new VariableAssignment(this, $ID.text, $expression.expr) );
     }
+    | array_element_reference EQUAL expression {
+        $expr = new Expression(true, this, new StorageAccessor(this, StorageAccessor.ASSIGNMENT, $array_element_reference.accessor, $expression.expr));
+    }
     | ID PLUS_PLUS {
         $expr = new Expression(true, this, new VariableAssignment(this, $ID.text, Operator.OPERATOR_PLUS_PLUS));
     }
@@ -496,19 +499,20 @@ array returns [ObjectArray array]:
 //array :
 //  LEFT_B args RIGTH_B
 
-array_element_reference returns [ArrayElementReference value]
-    : a=ID LEFT_B b=expression RIGHT_B {
-        $value = new ArrayElementReference(this, new Variable(this, $a.text), $b.expr);
+array_element_reference returns [StorageAccessor accessor]
+    : a=ID LEFT_B b=ID RIGHT_B {
+        $accessor = new StorageAccessor(this, StorageAccessor.REFERENCE, new Variable(this, $a.text), new Variable(this, $b.text), null);
+    }
+    | a=ID LEFT_B b=NUM RIGHT_B {
+        $accessor = new StorageAccessor(this, StorageAccessor.REFERENCE, new Variable(this, $a.text), new Numeric(Double.parseDouble($b.text)), null);
     };
-//array_element_reference
-//  ID LEFT_B expression LEFT_B
 
 atom returns [Object value]
     : NUM {
-        $value = new Numeric( Float.parseFloat($NUM.text) );
+        $value = new Numeric( Double.parseDouble($NUM.text) );
     }
     | MINUS NUM {
-        $value = new Numeric( -1.0 * Float.parseFloat($NUM.text) );
+        $value = new Numeric( -1.0 * Double.parseDouble($NUM.text) );
     }
     | BOOL {
         if ($BOOL.text.equalsIgnoreCase("true")) {
@@ -539,7 +543,7 @@ atom returns [Object value]
         $value = new Expression( this, new FunctionCall( this, $function_call.name_params ) );
     }
     | array_element_reference {
-        $value = new Expression( this, $array_element_reference.value);
+        $value = new Expression( this, $array_element_reference.accessor);
     };
 //atom returns [Object value]
 //    : NUM

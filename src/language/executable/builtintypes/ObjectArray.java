@@ -110,4 +110,19 @@ public class ObjectArray extends BuiltInType {
         }
         return null;
     }
+
+    public Object set(Object _index, Object _value) throws RuntimeErrorException {
+        int index = -1;
+        if (_index instanceof Numeric) {
+            index = (int) Math.round((Double) ((Numeric) _index).getNativeValue());
+        } else {
+            interpreter.runtimeError("OBJECT ARRAY::get>> Index must be type Numeric [" + _index.getClass() + "]", line_number);
+        }
+        if (index>=0 && index<value.size()) {
+            return value.set(index, _value);
+        } else {
+            interpreter.runtimeError("OBJECT ARRAY::get>> Index out of range [" + index + "]", line_number);
+        }
+        return null;
+    }
 }

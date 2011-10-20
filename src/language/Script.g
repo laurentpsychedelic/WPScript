@@ -493,22 +493,15 @@ array returns [ObjectArray array]:
     LEFT_B a=args RIGHT_B {
         $array = new ObjectArray(this, $a.params);
     };
+//array :
+//  LEFT_B args RIGTH_B
 
-/*pre_array returns [LinkedList<Object> elements]:
-    a=expression {
-        $elements = new LinkedList();
-        $elements.add($a.expr);
-    } (COMMA b=pre_array {
-        for (int k=0; k<$elements.size(); k++) {
-            $b.elements.add(0, $elements.get(k));
-        }
-        $elements = $b.elements;
-    } )*;
-
-array returns [ObjectArray array]:
-    LEFT_B p=pre_array RIGHT_B {
-        $array = new ObjectArray(this, $p.elements);
-    };*/
+array_element_reference returns [ArrayElementReference value]
+    : a=ID LEFT_B b=expression RIGHT_B {
+        $value = new ArrayElementReference(this, new Variable(this, $a.text), $b.expr);
+    };
+//array_element_reference
+//  ID LEFT_B expression LEFT_B
 
 atom returns [Object value]
     : NUM {
@@ -544,6 +537,9 @@ atom returns [Object value]
     }
     | function_call {
         $value = new Expression( this, new FunctionCall( this, $function_call.name_params ) );
+    }
+    | array_element_reference {
+        $value = new Expression( this, $array_element_reference.value);
     };
 //atom returns [Object value]
 //    : NUM

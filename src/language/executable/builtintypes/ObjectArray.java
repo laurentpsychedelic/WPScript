@@ -39,7 +39,7 @@ public class ObjectArray extends BuiltInType {
         for (int k=0; k<value.size(); k++) {
             value2.add(((BuiltInType)value.get(k)).getNativeValue());
         }
-        return value2;
+        return value2.toArray();
     }
     
     @Override

@@ -451,17 +451,19 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonCompilation.setBounds(550, 153, 117, 24);
 
         jButtonOpen.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonOpen.setForeground(java.awt.Color.white);
         jButtonOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/open_file_small.png"))); // NOI18N
         jButtonOpen.setText(getString(5));
         jButtonOpen.setToolTipText(getString(4));
         jButtonOpen.setFocusable(false);
+        jButtonOpen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOpenActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonOpen);
-        jButtonOpen.setBounds(550, 130, 80, 20);
+        jButtonOpen.setBounds(550, 130, 70, 20);
 
         jButtonIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png"))); // NOI18N
         jButtonIcon.setBorder(null);
@@ -469,7 +471,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jButtonIcon);
         jButtonIcon.setBounds(640, 30, 0, 0);
 
-        jLabelIcon.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jLabelIcon.setFont(new java.awt.Font("SansSerif", 3, 18));
         jLabelIcon.setForeground(new java.awt.Color(216, 197, 255));
         jLabelIcon.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelIcon.setText("WPScript");

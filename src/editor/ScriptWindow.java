@@ -60,7 +60,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         private static int LANGUAGE = JAPANESE;
         static String [][] StrLst = {
         /* 0*/ { "WPAScript Ver. 0.1 :: エディターウィンドウ", "WPAScript Ver. 0.1 :: Editor Window" },
-        /* 1*/ { "コンパイル", "Compile" },
+        /* 1*/ { "ビルド", "Build" },
         /* 2*/ { "実行", "Run" },
         /* 3*/ { "", "" },
         /* 4*/ { "スクリプトを開く", "Open script file" },
@@ -390,6 +390,8 @@ public class ScriptWindow extends javax.swing.JFrame {
         jMessagesPane = new javax.swing.JTextPane();
         jButtonCompilation = new javax.swing.JButton();
         jButtonOpen = new javax.swing.JButton();
+        jButtonIcon = new javax.swing.JButton();
+        jLabelIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -413,17 +415,19 @@ public class ScriptWindow extends javax.swing.JFrame {
         jScrollPaneScript.setViewportView(jScriptPane);
 
         getContentPane().add(jScrollPaneScript);
-        jScrollPaneScript.setBounds(12, 12, 505, 189);
+        jScrollPaneScript.setBounds(12, 12, 535, 189);
 
+        jButtonExecute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/run.png"))); // NOI18N
         jButtonExecute.setText(getString(2));
         jButtonExecute.setToolTipText(getString(2));
+        jButtonExecute.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonExecute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExecuteActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonExecute);
-        jButtonExecute.setBounds(520, 181, 147, 20);
+        jButtonExecute.setBounds(550, 177, 117, 24);
 
         jScrollPaneMessages.setBackground(java.awt.Color.lightGray);
 
@@ -434,15 +438,17 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPaneMessages);
         jScrollPaneMessages.setBounds(12, 207, 660, 130);
 
+        jButtonCompilation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/compile.png"))); // NOI18N
         jButtonCompilation.setText(getString(1));
         jButtonCompilation.setToolTipText(getString(1));
+        jButtonCompilation.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonCompilation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompilationActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonCompilation);
-        jButtonCompilation.setBounds(520, 161, 147, 20);
+        jButtonCompilation.setBounds(550, 153, 117, 24);
 
         jButtonOpen.setBackground(new java.awt.Color(51, 51, 51));
         jButtonOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/open_file_small.png"))); // NOI18N
@@ -455,7 +461,21 @@ public class ScriptWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonOpen);
-        jButtonOpen.setBounds(530, 12, 80, 20);
+        jButtonOpen.setBounds(550, 130, 80, 20);
+
+        jButtonIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png"))); // NOI18N
+        jButtonIcon.setBorder(null);
+        jButtonIcon.setEnabled(false);
+        getContentPane().add(jButtonIcon);
+        jButtonIcon.setBounds(640, 30, 0, 0);
+
+        jLabelIcon.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jLabelIcon.setForeground(new java.awt.Color(216, 197, 255));
+        jLabelIcon.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelIcon.setText("WPScript");
+        jLabelIcon.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabelIcon);
+        jLabelIcon.setBounds(560, 10, 110, 50);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -630,7 +650,9 @@ public class ScriptWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCompilation;
     private javax.swing.JButton jButtonExecute;
+    private javax.swing.JButton jButtonIcon;
     private javax.swing.JButton jButtonOpen;
+    private javax.swing.JLabel jLabelIcon;
     private javax.swing.JTextPane jMessagesPane;
     private javax.swing.JTextPane jScriptPane;
     private javax.swing.JScrollPane jScrollPaneMessages;

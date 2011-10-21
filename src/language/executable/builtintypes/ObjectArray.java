@@ -116,12 +116,12 @@ public class ObjectArray extends BuiltInType {
         if (_index instanceof Numeric) {
             index = (int) Math.round((Double) ((Numeric) _index).getNativeValue());
         } else {
-            interpreter.runtimeError("OBJECT ARRAY::get>> Index must be type Numeric [" + _index.getClass() + "]", line_number);
+            interpreter.runtimeError("OBJECT ARRAY::set>> Index must be type Numeric [" + _index.getClass() + "]", line_number);
         }
         if (index>=0 && index<value.size()) {
             return value.set(index, _value);
         } else {
-            interpreter.runtimeError("OBJECT ARRAY::get>> Index out of range [" + index + "]", line_number);
+            interpreter.runtimeError("OBJECT ARRAY::set>> Index out of range [" + index + "]", line_number);
         }
         return null;
     }

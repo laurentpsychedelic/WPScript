@@ -505,6 +505,9 @@ array_element_reference returns [StorageAccessor accessor]
     }
     | a=ID LEFT_B b=NUM RIGHT_B {
         $accessor = new StorageAccessor(this, StorageAccessor.REFERENCE, new Variable(this, $a.text), new Numeric(Double.parseDouble($b.text)), null);
+    }
+    | a=ID LEFT_B s=string_literal RIGHT_B {
+        $accessor = new StorageAccessor(this, StorageAccessor.REFERENCE, new Variable(this, $a.text), $s.value, null);
     };
 
 atom returns [Object value]

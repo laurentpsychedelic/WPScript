@@ -57,6 +57,9 @@ public class Dictionary extends BuiltInType {
             Object new_value = null;
             if (_key instanceof Calculable) {
                 new_key = ((Calculable) _key).eval();
+		if (new_key instanceof BuiltInType) {
+		    new_key = ((BuiltInType) new_key).getNativeValue();
+		}
             } else {
                 interpreter.scriptPanic("Dictionary key must be calculable! [" + _key.getClass() + "]", line_number);
             }
@@ -114,4 +117,23 @@ public class Dictionary extends BuiltInType {
         }
         return new Dictionary(interpreter, line_number, new_dictionary);
     }
+    public Object get(Object _index) throws RuntimeErrorException {
+        Object index = null;
+        if (_index instanceof BuiltInType) {
+            index = ((BuiltInType) _index).getNativeValue();
+	}
+	Object dict_value = dictionary.get(index);
+	if (dict_value==null) {
+	    interpreter.runtimeError("DICTIONARY::get>> No such entry [" + _index + "]", line_number);
+	}
+	return dict_value;
+    }
+    public Object set(Object _index, Object _value) throws RuntimeErrorException {
+	Object index = null;
+        if (_index instanceof BuiltInType) {
+            index = ((BuiltInType) _index).getNativeValue();
+        }
+	return dictionary.put(index, _value);
+    }
+
 }

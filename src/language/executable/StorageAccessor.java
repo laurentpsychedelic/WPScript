@@ -11,6 +11,8 @@ import language.exceptions.PanicException;
 import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.Numeric;
 import language.executable.builtintypes.ObjectArray;
+import language.executable.builtintypes.Dictionary;
+import language.executable.builtintypes.CharString;
 /**
  *
  * @author laurent
@@ -66,26 +68,46 @@ public class StorageAccessor extends Calculable {
         if (val == null) {
             interpreter.scriptPanic("ARRAY ELEMENT REFERENCE>> array name expression returned null", line_number);
         }
-        if (val instanceof ObjectArray) {
-            ObjectArray array = (ObjectArray) val;
-            Object index = expression_index.eval();
-            if (val == null) {
-                interpreter.scriptPanic("ARRAY ELEMENT REFERENCE>> array index expression returned null", line_number);
-            }
-            if (index instanceof Numeric) {
-		if (accessor_type==ASSIGNMENT) {
-		    if (expression_content==null) {
-			interpreter.scriptPanic("ARRAY ELEMENT REFERENCE>> expression for array element assignment returned null", line_number);
-		    }
-		    Object new_value = expression_content.eval();
-		    array.set(index, new_value);
+        if (val instanceof ObjectArray || val instanceof Dictionary) {
+	    if (val instanceof ObjectArray) {
+		ObjectArray array = (ObjectArray) val;
+		Object index = expression_index.eval();
+		if (val == null) {
+		    interpreter.scriptPanic("STORAGE ACCESSOR>> array index expression returned null", line_number);
 		}
-                return array.get(index);
-            } else {
-                interpreter.runtimeError("ARRAY ELEMENT REFERENCE>> Index must be of type Numeric", line_number);
-            }
+		if (index instanceof Numeric) {
+		    if (accessor_type==ASSIGNMENT) {
+			if (expression_content==null) {
+			    interpreter.scriptPanic("STORAGE ACCESSOR>> expression for array element assignment returned null", line_number);
+			}
+			Object new_value = expression_content.eval();
+			array.set(index, new_value);
+		    }
+		    return array.get(index);
+		} else {
+		    interpreter.runtimeError("STORAGE ACCESSOR>> Index must be of type Numeric", line_number);
+		}
+	    } else { //Dictionary
+		Dictionary dict = (Dictionary) val;
+		Object index = expression_index.eval();
+		if (val == null) {
+		    interpreter.scriptPanic("STORAGE ACCESSOR>> dictionary index expression returned null", line_number);
+		}
+		if (index instanceof CharString) {
+		    if (accessor_type==ASSIGNMENT) {
+			if (expression_content==null) {
+			    interpreter.scriptPanic("STORAGE ACCESSOR>> expression for dict element assignment returned null", line_number);
+			}
+			Object new_value = expression_content.eval();
+			dict.set(index, new_value);
+		    }
+		    return dict.get(index);
+		} else {
+		    interpreter.runtimeError("STORAGE ACCESSOR>> Index must be of type CharString", line_number);
+		}
+	    }
         } else {
-            interpreter.runtimeError("ARRAY ELEMENT REFERENCE>> Only Array types can be referenced [" + val.getClass() + "]", line_number);
+            interpreter.runtimeError("STORAGE ACCESSOR>> Only types ObjectArray or Dictionary can be referenced [" + val.getClass() + "]", line_number);
         }
         return val;
     }

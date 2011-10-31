@@ -23,6 +23,11 @@ public class ExecutableScript {
     private ScriptParser.prog_return tree;
     private boolean compilation_ok = false;
     public ExecutableScript(String program) throws CompilationErrorException, PanicException {
+
+	if (!program.endsWith("\n")) {
+            program = program + "\n";
+        }
+
         ScriptLexer lex = new ScriptLexer(new ANTLRStringStream(program));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 

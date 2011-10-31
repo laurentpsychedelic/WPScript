@@ -537,9 +537,6 @@ public class ScriptWindow extends javax.swing.JFrame {
 
     private void jButtonCompilationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilationActionPerformed
         prog = jScriptPane.getText();
-        if (!prog.endsWith("\n")) {
-            prog = prog + "\n";
-        }
         jMessagesPane.setText("");
         script = null;
         try {

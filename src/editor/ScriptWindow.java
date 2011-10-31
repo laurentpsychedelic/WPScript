@@ -229,12 +229,14 @@ public class ScriptWindow extends javax.swing.JFrame {
         String style = "regular";
         switch (token_type) {
             case ScriptLexer.ID :
-	    case ScriptLexer.CONSTANT :
                 style = "word";
                 break;            
             case ScriptLexer.NUM :
                 style = "number";
                 break;
+	    case ScriptLexer.CONSTANT :
+		style = "constant";
+		break;
             case ScriptLexer.STRING_LITERAL:
                 style = "string_literal";
                 break;
@@ -318,7 +320,10 @@ public class ScriptWindow extends javax.swing.JFrame {
         Style word = doc.addStyle("word", regular);
         StyleConstants.setBold(word, true);
         StyleConstants.setItalic(word, true);
-        
+
+	Style constant = doc.addStyle("constant", word);
+	StyleConstants.setForeground(constant, Color.red);
+
         Style number = doc.addStyle("number", regular);
         StyleConstants.setItalic(number, true);
         StyleConstants.setForeground(number, Color.magenta);

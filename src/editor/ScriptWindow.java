@@ -615,33 +615,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-    final String _prog = "a = 2 + sin(1)\n";
-    
-    //final String _prog = "a = { \"mode\" : \"triple\",\n\"accuracy\" : \"standard\",\n \"object\" : newMeasurementSet(1,2),\n\"number\" : 1+2 }\n";
-    
-    //final String _prog = "a = 2 * \"string\" + \"yo\" * 3\n";
-    
-    //final String _prog = "a=0\nwhile (a<2) {\n    print(a)\n    a = a + 1\n}\n";
-    
-    //final String _prog = "a=1\nb=a++\n";
-    //final String _prog = "for (a = 0; a <= 2; a++) {\n    print(a)\n}\n";
-    //final String _prog = "for (a=10->-2->-10) {\n    print(\"Number a = \" + a)\n    if (a==0) {\n        a=-5\n    } else if (a == -7) {\n        print(\"7\")\n        continue\n    }\n    print(\"loop\")\n\n}\n";
-   
-    //final String _prog = "a=0 //initialization\nprint() /*This is\na function\nto print */\n";
-    
-    //final String _prog = "a = 0\nb = a==0\nc= b & false\n";
-    
-    /*final String _prog = "a = 1 + 3.4\n"
-                       //+ "b=a / 1.9+3\n"
-                       + "b = newMeasurementSet(a, a)\n"
-                       //+ "b=a\n"
-                       + "c = true\n"
-                       + "c = false\n"
-                       + "if (c) {\n"
-                       + "    if_var = 1\n"
-                       + "} else {\n"
-                       + "    else_var = \"my_string\"\n"
-                       + "}\n";*/
+    final String _prog = "";
           
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

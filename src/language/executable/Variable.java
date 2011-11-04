@@ -28,7 +28,8 @@ public class Variable extends Calculable {
 
     @Override
     public void compilationCheck() throws CompilationErrorException {
-        if (!interpreter.compilation_env.containsEntry(name)) {
+        if (!interpreter.compilation_env.containsEntry(name)
+	    && !ScriptParser.env_const.containsEntry(name)) {
             throw new CompilationErrorException("Variable used before being defined [" + name + "]", line_number);
         }
     }
@@ -37,7 +38,10 @@ public class Variable extends Calculable {
     public Object eval() throws RuntimeErrorException {
         Object val = interpreter.env.getValue(this.name);
         if (val == null) {
-            interpreter.runtimeError("Variable unknown [" + name + "]", line_number);
+	    val = ScriptParser.env_const.getValue(this.name);
+	    if (val==null) {
+		interpreter.runtimeError("Variable unknown [" + name + "]", line_number);
+	    }
         }
         return val;
     }

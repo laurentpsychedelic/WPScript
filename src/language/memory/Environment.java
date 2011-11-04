@@ -17,7 +17,6 @@ public class Environment {
     public Environment parent = null;
     public Environment(Environment _parent) {
         parent = _parent;
-        _addConstants();
     }
     public boolean containsEntry(String entry) {
         return memory.containsKey(entry);
@@ -33,9 +32,8 @@ public class Environment {
     }
     public void clear() {
         memory.clear();
-	_addConstants();
     }
-    private void _addConstants() {
+    public void addConstants() {
 	memory.put("PI", new Numeric(Math.PI));
 	memory.put("e", new Numeric(Math.E));
     }

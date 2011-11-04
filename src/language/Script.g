@@ -44,6 +44,10 @@ import language.exceptions.*;
 
     /** Map variable name to Integer object holding value */
     public Environment env = new Environment(null);
+    public static final Environment env_const = new Environment(null);
+    static {
+        env_const.addConstants();
+    }
     public Environment compilation_env =  new Environment(null);
     private LinkedList <Expression> commands = new LinkedList();
     private int line_number = 1;

@@ -13,6 +13,9 @@ package editor;
 import editor.filefilters.WpsFileFilter;
 import editor.scriptio.ScriptIO;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -24,8 +27,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -60,11 +67,11 @@ public class ScriptWindow extends javax.swing.JFrame {
         private static int LANGUAGE = JAPANESE;
         static String [][] StrLst = {
         /* 0*/ { "WPAScript Ver. 0.1 :: エディターウィンドウ", "WPAScript Ver. 0.1 :: Editor Window" },
-        /* 1*/ { "ビルド", "Build" },
-        /* 2*/ { "実行", "Run" },
-        /* 3*/ { "デバッグ出力", "Debug output" },
+        /* 1*/ { "ビルド（B）", "Build (B)" },
+        /* 2*/ { "実行（R）", "Run (R)" },
+        /* 3*/ { "デバッグ出力（D）", "Debug output (D)" },
         /* 4*/ { "スクリプトを開く", "Open script file" },
-        /* 5*/ { "開く", "Open" },
+        /* 5*/ { "開く（O）", "Open (O)" },
         /* 6*/ { "", "" },
         /* 7*/ { "", "" },
         /* 8*/ { "", "" },
@@ -95,7 +102,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().setBackground(new Color(51, 51, 51));    
         setSize(W, H);
         
-        jCheckDebug.setSelected(__DEBUG__);
+        jCheckBoxDebug.setSelected(__DEBUG__);
         
         boolean REDIRECT_STREAMS = true;
         if (REDIRECT_STREAMS) {
@@ -128,6 +135,50 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
         
         _updateScriptPane();
+        
+        _addKeyboardShortcuts();
+    }
+    
+    private void _addKeyboardShortcuts() {
+        AbstractAction act_compile = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jButtonCompilation.doClick();
+            }
+        };
+        jScrollPaneScript.getActionMap().put("name_compile", act_compile);
+        InputMap im = jScrollPaneScript.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK), "name_compile");
+        
+        AbstractAction act_run = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jButtonExecute.doClick();
+            }
+        };
+        jScrollPaneScript.getActionMap().put("name_run", act_run);
+        im = jScrollPaneScript.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK), "name_run");
+
+        AbstractAction act_read = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jButtonOpen.doClick();
+            }
+        };
+        jScrollPaneScript.getActionMap().put("name_open", act_read);
+        im = jScrollPaneScript.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK), "name_open");
+        
+        AbstractAction act_debug_on_off = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jCheckBoxDebug.doClick();
+            }
+        };
+        jScrollPaneScript.getActionMap().put("name_debug_on_off", act_debug_on_off);
+        im = jScrollPaneScript.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK), "name_debug_on_off");
     }
     
     private void _start_deamon() {
@@ -401,7 +452,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonOpen = new javax.swing.JButton();
         jButtonIcon = new javax.swing.JButton();
         jLabelIcon = new javax.swing.JLabel();
-        jCheckDebug = new javax.swing.JCheckBox();
+        jCheckBoxDebug = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -473,7 +524,7 @@ public class ScriptWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonOpen);
-        jButtonOpen.setBounds(550, 130, 70, 20);
+        jButtonOpen.setBounds(550, 130, 100, 20);
 
         jButtonIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png"))); // NOI18N
         jButtonIcon.setBorder(null);
@@ -489,15 +540,15 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jLabelIcon);
         jLabelIcon.setBounds(560, 10, 110, 50);
 
-        jCheckDebug.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckDebug.setText(getString(3));
-        jCheckDebug.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxDebug.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBoxDebug.setText(getString(3));
+        jCheckBoxDebug.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckDebugActionPerformed(evt);
+                jCheckBoxDebugActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckDebug);
-        jCheckDebug.setBounds(550, 100, 120, 24);
+        getContentPane().add(jCheckBoxDebug);
+        jCheckBoxDebug.setBounds(550, 100, 120, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -600,9 +651,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonOpenActionPerformed
 
-    private void jCheckDebugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckDebugActionPerformed
-        __DEBUG__ = jCheckDebug.isSelected();
-    }//GEN-LAST:event_jCheckDebugActionPerformed
+    private void jCheckBoxDebugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDebugActionPerformed
+        __DEBUG__ = jCheckBoxDebug.isSelected();
+    }//GEN-LAST:event_jCheckBoxDebugActionPerformed
 
     /**
      * @param args the command line arguments
@@ -646,7 +697,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExecute;
     private javax.swing.JButton jButtonIcon;
     private javax.swing.JButton jButtonOpen;
-    private javax.swing.JCheckBox jCheckDebug;
+    private javax.swing.JCheckBox jCheckBoxDebug;
     private javax.swing.JLabel jLabelIcon;
     private javax.swing.JTextPane jMessagesPane;
     private javax.swing.JTextPane jScriptPane;

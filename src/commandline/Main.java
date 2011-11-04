@@ -17,7 +17,8 @@ public class Main {
 	System.err.println("TODO write manual...");
     }
     public static void printVersion() {
-	System.err.println("TODO write version...");
+	System.err.println("WPScript version " + VERSION  + "\n"
+                         + "(c) 2011, FABRE Laurent, Photonic Lattice, Inc.");
     }
     public static void executeScript(String prog, boolean DEBUG) {
 	try {

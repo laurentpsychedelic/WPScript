@@ -62,7 +62,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         /* 0*/ { "WPAScript Ver. 0.1 :: エディターウィンドウ", "WPAScript Ver. 0.1 :: Editor Window" },
         /* 1*/ { "ビルド", "Build" },
         /* 2*/ { "実行", "Run" },
-        /* 3*/ { "", "" },
+        /* 3*/ { "デバッグ出力", "Debug output" },
         /* 4*/ { "スクリプトを開く", "Open script file" },
         /* 5*/ { "開く", "Open" },
         /* 6*/ { "", "" },
@@ -79,6 +79,8 @@ public class ScriptWindow extends javax.swing.JFrame {
     private static final int W = 690;
     private static final int H = 380;
     
+    private boolean __DEBUG__ = true;
+    
     private PrintStream default_out = System.out;
     private PrintStream default_err = System.err;
     
@@ -92,6 +94,8 @@ public class ScriptWindow extends javax.swing.JFrame {
         setTitle(LanguageInformation.getString(0));
         getContentPane().setBackground(new Color(51, 51, 51));    
         setSize(W, H);
+        
+        jCheckDebug.setSelected(__DEBUG__);
         
         boolean REDIRECT_STREAMS = true;
         if (REDIRECT_STREAMS) {
@@ -397,6 +401,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonOpen = new javax.swing.JButton();
         jButtonIcon = new javax.swing.JButton();
         jLabelIcon = new javax.swing.JLabel();
+        jCheckDebug = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -484,6 +489,16 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jLabelIcon);
         jLabelIcon.setBounds(560, 10, 110, 50);
 
+        jCheckDebug.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckDebug.setText(getString(3));
+        jCheckDebug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckDebugActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckDebug);
+        jCheckDebug.setBounds(550, 100, 120, 24);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -499,7 +514,6 @@ public class ScriptWindow extends javax.swing.JFrame {
             } catch (RuntimeErrorException re) {
                 //NOTHING
             }
-            script.dumpGlobalMemory();
         } else {
             System.err.println("No valid script to execute!");
         }
@@ -540,9 +554,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jMessagesPane.setText("");
         script = null;
         try {
-            script = new ExecutableScript(prog);
-            script.printTree();
-            script.dumpCommands();
+            script = new ExecutableScript(prog, __DEBUG__);
         } catch (CompilationErrorException cee) {
             //NOTHING
         } catch (PanicException pe) {
@@ -588,6 +600,10 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonOpenActionPerformed
 
+    private void jCheckDebugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckDebugActionPerformed
+        __DEBUG__ = jCheckDebug.isSelected();
+    }//GEN-LAST:event_jCheckDebugActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -630,6 +646,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExecute;
     private javax.swing.JButton jButtonIcon;
     private javax.swing.JButton jButtonOpen;
+    private javax.swing.JCheckBox jCheckDebug;
     private javax.swing.JLabel jLabelIcon;
     private javax.swing.JTextPane jMessagesPane;
     private javax.swing.JTextPane jScriptPane;

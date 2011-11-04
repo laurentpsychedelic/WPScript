@@ -19,8 +19,6 @@ public class Main {
     public static void executeScript(String prog) {
 	try {
 	    ExecutableScript script = new ExecutableScript(prog);
-            script.printTree();
-            script.dumpCommands();
 	    try {
                 script.execute();
             } catch (PanicException pe) {
@@ -28,8 +26,7 @@ public class Main {
             } catch (RuntimeErrorException re) {
                 re.printStackTrace();
             }
-            script.dumpGlobalMemory();
-        } catch (CompilationErrorException cee) {
+	} catch (CompilationErrorException cee) {
             cee.printStackTrace();
         } catch (PanicException pe) {
             pe.printStackTrace();

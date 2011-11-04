@@ -59,6 +59,8 @@ import language.exceptions.*;
     private boolean _COMPILATION_ERROR_STATE_ = false;
     private boolean _RUNTIME_ERROR_STATE_ = false;
 
+    public boolean __DEBUG__ = false;
+
     public void dumpGlobalMemory(PrintStream ps) {
         ps.println("\nGLOBAL env DUMP");
         for (Object o : env.getEntries()) {
@@ -76,7 +78,9 @@ import language.exceptions.*;
 
     public void treeRefactoring() throws PanicException {
         LinkedList <Expression> new_commands = new LinkedList();
-        System.out.println("\nTREE REFACTORING");
+        if (__DEBUG__) {
+            System.out.println("\nTREE REFACTORING...");
+        }
         for (Object o : commands) {
             if (!(o instanceof Expression)) {
                 scriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
@@ -89,13 +93,17 @@ import language.exceptions.*;
             }
         }
         commands = new_commands;
-        System.out.println("\nTREE REFACTORING OVER");
+        if (__DEBUG__) {
+            System.out.println(" OVER");
+        }
     }
 
     public boolean compilationCheck() throws PanicException, CompilationErrorException {
         try {
             compilation_env.clear();
-            System.out.println("\nCOMPILATION CHECK");
+            if (__DEBUG__) {
+                System.out.println("\nCOMPILATION CHECK...");
+            }
             for (Object o : commands) {
                 if (!(o instanceof Expression)) {
                     scriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
@@ -103,7 +111,9 @@ import language.exceptions.*;
                 ((Expression) o).compilationCheck();
             }
             compilation_env.clear();
-            System.out.println("\nCOMPILATION OK");
+            if (__DEBUG__) {
+                System.out.println(" OK");
+            }
             return true;
         } catch (CompilationErrorException e) {
             compilationError(e.getMessage(), e.getLineNumber());
@@ -130,8 +140,9 @@ import language.exceptions.*;
             System.err.println("PANIC OCCURED!");
         }
         System.err.println("ERROR (l" + line_num + "):: " + message);
-
-        dumpGlobalMemory(System.err);
+        if (__DEBUG__) {
+            dumpGlobalMemory(System.err);
+        }
         throw new PanicException("Panic: " + "ERROR (l" + line_num + "):: " + message, line_num);
     }
 
@@ -159,7 +170,9 @@ import language.exceptions.*;
             _RUNTIME_ERROR_STATE_ = true;
             System.err.println("RUNTIME");
         }
-        dumpGlobalMemory(System.err);
+        if (__DEBUG__) {
+            dumpGlobalMemory(System.err);
+        }
         System.err.println("ERROR (l" + line_num + "):: " + message);
         throw new RuntimeErrorException("Runtime error: " + "ERROR (l" + line_num + "):: " + message, line_num);
     }

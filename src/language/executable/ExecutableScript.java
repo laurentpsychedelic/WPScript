@@ -34,26 +34,36 @@ public class ExecutableScript {
         parser = new ScriptParser(tokens);
 
         try {
-            tree = parser.prog();            
+	    if (parser.__DEBUG__) {
+		System.out.println("COMPILATION...");
+            }
+	    tree = parser.prog();
+	    if (parser.__DEBUG__) {
+		System.out.println(" OVER");
+	    }
         } catch (RecognitionException e)  {
             e.printStackTrace();//TODO remove
             parser.compilationError("Compilation failed! Wrong syntax", e.line);
             throw new CompilationErrorException("Compilation failed! Wrong syntax", e.line);
         }
         
-        //System.out.println("COMMANDS BEFORE SIMPILIFICATION");
-        //parser.dumpScriptCommands();
         parser.treeRefactoring();
-        //System.out.println("COMMANDS AFTER SIMPILIFICATION");
-        //parser.dumpScriptCommands();
         
+        if (parser.__DEBUG__) {
+	    parser.dumpScriptCommands();
+        }
+
         compilation_ok = parser.compilationCheck();
         if (!compilation_ok) {
             parser.compilationError("Compilation failed! Semantic error]", parser.getLineNumber());
         }
     }
     public Object execute() throws PanicException, RuntimeErrorException {
-        return parser.execute();
+        Object res =  parser.execute();
+	if (parser.__DEBUG__) {
+	    parser.dumpGlobalMemory(System.out);
+	}
+	return res;
     }
     public void dumpGlobalMemory() {
         parser.dumpGlobalMemory(System.out);

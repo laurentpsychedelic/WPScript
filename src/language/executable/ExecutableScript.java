@@ -23,6 +23,9 @@ public class ExecutableScript {
     private ScriptParser.prog_return tree;
     private boolean compilation_ok = false;
     public ExecutableScript(String program) throws CompilationErrorException, PanicException {
+	this(program, false);
+    }
+    public ExecutableScript(String program, boolean __DEBUG__) throws CompilationErrorException, PanicException {
 
 	if (!program.endsWith("\n")) {
             program = program + "\n";
@@ -32,6 +35,7 @@ public class ExecutableScript {
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
         parser = new ScriptParser(tokens);
+	parser.__DEBUG__ = __DEBUG__;
 
         try {
 	    if (parser.__DEBUG__) {

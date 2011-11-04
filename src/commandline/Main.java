@@ -16,9 +16,12 @@ public class Main {
     public static void printMan() {
 	System.err.println("TODO write manual...");
     }
-    public static void executeScript(String prog) {
+    public static void printVersion() {
+	System.err.println("TODO write version...");
+    }
+    public static void executeScript(String prog, boolean DEBUG) {
 	try {
-	    ExecutableScript script = new ExecutableScript(prog);
+	    ExecutableScript script = new ExecutableScript(prog, DEBUG);
 	    try {
                 script.execute();
             } catch (PanicException pe) {
@@ -36,21 +39,50 @@ public class Main {
 	if (args.length==0) { //SHOW SCRIPT WINDOW
 	    ScriptWindow.main(new String [] {});
 	} else {
-	    if (args.length==1) { //EXECUTE SCRIPT FROM FILE
-		String filepath = args[0];
-		String script = FileIO.readScript(filepath);
-		executeScript(script);
-	    } else if (args.length==2) { //EXECUTE COMMAND
-		if (args[0].equals("-c")) {
-		    String script = args[1];
-		    executeScript(script);
-		} else {
-		    System.err.println("Unknown option " + args[0] + "...");
+	    boolean __DEBUG__ = false;
+	    boolean __PRINT_COMMAND__ = false;
+	    for (String arg : args) {
+		if (arg.equals("--debug")) {
+		    __DEBUG__ = true;
+		} else if (arg.equals("--version")) {
+		    __PRINT_COMMAND__ = true;
+		    printVersion();
+		} else if (arg.equals("--help") || arg.equals("--man")) {
+		    __PRINT_COMMAND__ = true;
 		    printMan();
 		}
-	    } else {
-		System.err.println("Wrong number of arguments....");
-		printMan();
+	    }
+	    if (!__PRINT_COMMAND__) {
+		if (__DEBUG__) {
+		    if (args.length<2) {
+			System.err.println("Not enough arguments...");
+			printMan();
+			return;
+		    }
+		}
+		for (int i=0; i<args.length; i++) {
+		    String arg = args[i];
+		    if (arg.equals("-c")) {
+			if (i+1<args.length) {
+			    String script = args[i+1];
+			    executeScript(script, __DEBUG__);
+			    break;
+			} else {
+			    System.err.println("No command specified after -c...");
+			    printMan();
+			    break;
+			}
+		    } else if (!arg.startsWith("-")) {
+			String filepath = arg;
+			String script = FileIO.readScript(filepath);
+			executeScript(script, __DEBUG__);
+			break;
+		    } else {
+			System.err.println("Unknown option " + args[0] + "...");
+			printMan();
+			break;
+		    }
+		}
 	    }
 	}
     }

@@ -115,13 +115,13 @@ public class Main {
 "              Enable debug information output on the console (or on the  redi-\n"+
 "              rected console output for script editor window).\n"+
 "\n"+
-"n"+
+"\n"+
 "       ----hheellpp,,_-_-_m_a_n\n"+
 "              Displays this manual page\n"+
 "\n"+
 "\n"+
 "       ----vveerrssiioonn\n"+
-"\n              Displays version information"+
+"              Displays version information"+
 "\n"+
 "\n"+
 "CCOOPPYYRRIIGGHHTT\n"+

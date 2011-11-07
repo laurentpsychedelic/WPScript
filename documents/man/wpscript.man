@@ -1,0 +1,48 @@
+WPSCRIPT(1)                                                        WPSCRIPT(1)
+
+
+
+NNAAMMEE WWPPSSccrriipptt :: aa ssccrriippttiinngg llaanngguuaaggee ccrreeaatteedd ffoorr eedduuccaattiioonnaall ppuurrppoossee..
+SSYYNNOOPPSSIISS
+       wwppssccrriipptt  ffiilleeppaatthh  ::  EExxeeccuuttee  tthhee  ssccrriipptt  iinn  tthhee  ffiillee ssppeecciiffiieedd bbyy
+       ffiilleeppaatthh..
+
+       wwppssccrriipptt --cc ccoommmmaannddss :: EExxeeccuuttee tthhee ccoommmmaannddss ssppeecciiffiieedd bbyy ccoommmmaannddss..
+
+
+DDEESSCCRRIIPPTTIIOONN
+       _W_P_S_c_r_i_p_t is an interpreter engine for the WPScript language.
+
+
+OOPPTTIIOONNSS
+       When no option is provided, the first argument is used as a script file
+       path to be read and executed.
+
+
+       --cc     The argument provided after -c is direct WPScript commands to be
+              executed.
+
+
+       ----ddeebbuugg
+              Enable debug information output on the console (or on the  redi‐
+              rected console output for script editor window).
+
+
+       ----hheellpp,,_-_-_m_a_n
+              Displays this manual page
+
+
+       ----vveerrssiioonn
+              Displays version information
+
+
+CCOOPPYYRRIIGGHHTT
+        (c) 2011, FABRE Laurent.
+
+
+AAUUTTHHOORRSS
+       Laurent FABRE, E-mail: laurent_psychedelic[at]hotmail.com
+
+
+
+                                                                   WPSCRIPT(1)

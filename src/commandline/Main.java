@@ -14,7 +14,7 @@ import utilities.FileIO;
 public class Main {
     public static final String VERSION = "1.0";
     public static void printMan() {
-	System.err.println("TODO write manual...");
+	System.err.print(manual);
     }
     public static void printVersion() {
 	System.err.println("WPScript version " + VERSION  + "\n"
@@ -87,4 +87,47 @@ public class Main {
 	    }
 	}
     }
+
+    public static final String manual = "NNAAMMEE  WWPPSSccrriipptt  :: aa ssccrriippttiinngg llaanngguuaaggee ddeessiiggnneedd ffoorr PPAA//WWPPAA//MMEE sseerriieess ssooffttwwaarree,,\n"+
+"       PPhhoottoonniicc LLaattttiiccee,, IInncc..\n"+
+"SSYYNNOOPPSSIISS\n"+
+"       wwppssccrriipptt ffiilleeppaatthh ::  EExxeeccuuttee  tthhee  ssccrriipptt  iinn  tthhee  ffiillee  ssppeecciiffiieedd  bbyy\n"+
+"       ffiilleeppaatthh..\n"+
+"\n"+
+"       wwppssccrriipptt --cc ccoommmmaannddss :: EExxeeccuuttee tthhee ccoommmmaannddss ssppeecciiffiieedd bbyy ccoommmmaannddss..\n"+
+"\n"+
+"\n"+
+"DDEESSCCRRIIPPTTIIOONN\n"+
+"       _W_P_S_c_r_i_p_t  is  an  interpreter engine to operate calculation and manipu-\n"+
+"       lates data sets available in Photonic Lattice, Inc. software.\n"+
+"\n"+
+"\n"+
+"OOPPTTIIOONNSS\n"+
+"       When no option is provided, the first argument is used as a script file\n"+
+"       path to be read and executed.\n"+
+"\n"+
+"\n"+
+"       --cc     The argument provided after -c is direct WPScript commands to be\n"+
+"              executed.\n"+
+"\n"+
+"\n"+
+"       ----ddeebbuugg\n"+
+"              Enable debug information output on the console (or on the  redi-\n"+
+"              rected console output for script editor window).\n"+
+"\n"+
+"n"+
+"       ----hheellpp,,_-_-_m_a_n\n"+
+"              Displays this manual page\n"+
+"\n"+
+"\n"+
+"       ----vveerrssiioonn\n"+
+"\n              Displays version information"+
+"\n"+
+"\n"+
+"CCOOPPYYRRIIGGHHTT\n"+
+"        (c) 2011, FABRE Laurent, Photonic Lattice, Inc.\n"+
+"\n"+
+"\n"+
+"AAUUTTHHOORRSS\n"+
+"       Laurent FABRE, E-mail: fabre@photonic-lattice.com\n";
 }

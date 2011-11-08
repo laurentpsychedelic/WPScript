@@ -65,13 +65,13 @@ public class Dictionary extends BuiltInType {
 		    new_key = ((BuiltInType) new_key).getNativeValue();
 		}
             } else {
-                interpreter.scriptPanic("Dictionary key must be calculable! [" + _key.getClass() + "]", line_number);
+		new_key = _key;
             }
             Object _value = dictionary.get(_key);
             if (_value instanceof Calculable) {
                 new_value = ((Calculable) _value).eval();
             } else {
-                interpreter.scriptPanic("Dictionary value must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
+		new_value = _value;
             }
             new_dictionary.put(new_key, new_value);
         }
@@ -83,14 +83,10 @@ public class Dictionary extends BuiltInType {
 	for (Object _key : dictionary.keySet()) {
             if (_key instanceof Calculable) {
                 ((Calculable) _key).compilationCheck();
-            } else {
-                interpreter.scriptPanic("Dictionary key must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
             }
             Object _value = dictionary.get(_key);
             if (_value instanceof Calculable) {
                 ((Calculable) _value).compilationCheck();
-            } else {
-                interpreter.scriptPanic("Dictionary value must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
             }
         }
     }
@@ -109,13 +105,13 @@ public class Dictionary extends BuiltInType {
             if (_key instanceof Calculable) {
                 new_key = ((Calculable) _key).getSimplifiedCalculable();
             } else {
-                interpreter.scriptPanic("Dictionary key must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
+		new_key = _key;
             }
             Object _value = dictionary.get(_key);
             if (_value instanceof Calculable) {
                 new_value = ((Calculable) _value).getSimplifiedCalculable();
             } else {
-                interpreter.scriptPanic("Dictionary value must be an instance of Calculable! [" + _key.getClass() + "]", line_number);
+		new_value = _value;
             }
             new_dictionary.put(new_key, new_value);
         }

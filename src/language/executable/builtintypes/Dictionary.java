@@ -39,7 +39,11 @@ public class Dictionary extends BuiltInType {
         Set keys = dictionary.keySet();
         HashMap dictionary2 = new HashMap();
         for (Object o : keys) {
-            dictionary2.put(((BuiltInType)o).getNativeValue(), ((BuiltInType) (dictionary.get(o))).getNativeValue());
+	    Object new_key = o;
+	    if (o instanceof BuiltInType) {
+		new_key = ((BuiltInType)o).getNativeValue();
+	    }
+            dictionary2.put(new_key, ((BuiltInType) (dictionary.get(o))).getNativeValue());
         }
         return dictionary2;
     }

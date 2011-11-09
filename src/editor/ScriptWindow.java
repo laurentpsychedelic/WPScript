@@ -478,10 +478,12 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPaneScript);
         jScrollPaneScript.setBounds(12, 12, 535, 189);
 
+        jButtonExecute.setFont(new java.awt.Font("MS UI Gothic", 0, 10)); // NOI18N
         jButtonExecute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/run.png"))); // NOI18N
         jButtonExecute.setText(getString(2));
         jButtonExecute.setToolTipText(getString(2));
         jButtonExecute.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButtonExecute.setMargin(new java.awt.Insets(0, 4, 0, 0));
         jButtonExecute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExecuteActionPerformed(evt);
@@ -499,10 +501,12 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPaneMessages);
         jScrollPaneMessages.setBounds(12, 207, 660, 130);
 
+        jButtonCompilation.setFont(new java.awt.Font("MS UI Gothic", 0, 10)); // NOI18N
         jButtonCompilation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/compile.png"))); // NOI18N
         jButtonCompilation.setText(getString(1));
         jButtonCompilation.setToolTipText(getString(1));
         jButtonCompilation.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButtonCompilation.setMargin(new java.awt.Insets(0, 4, 0, 0));
         jButtonCompilation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompilationActionPerformed(evt);
@@ -511,20 +515,19 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jButtonCompilation);
         jButtonCompilation.setBounds(550, 153, 117, 24);
 
-        jButtonOpen.setBackground(new java.awt.Color(51, 51, 51));
-        jButtonOpen.setForeground(java.awt.Color.white);
+        jButtonOpen.setFont(new java.awt.Font("MS UI Gothic", 0, 10)); // NOI18N
         jButtonOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/open_file_small.png"))); // NOI18N
         jButtonOpen.setText(getString(5));
         jButtonOpen.setToolTipText(getString(4));
         jButtonOpen.setFocusable(false);
-        jButtonOpen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButtonOpen.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOpenActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonOpen);
-        jButtonOpen.setBounds(550, 130, 100, 20);
+        jButtonOpen.setBounds(550, 130, 100, 22);
 
         jButtonIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon.png"))); // NOI18N
         jButtonIcon.setBorder(null);
@@ -540,15 +543,17 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jLabelIcon);
         jLabelIcon.setBounds(560, 10, 110, 50);
 
+        jCheckBoxDebug.setFont(new java.awt.Font("MS UI Gothic", 0, 10)); // NOI18N
         jCheckBoxDebug.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBoxDebug.setText(getString(3));
+        jCheckBoxDebug.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBoxDebug.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxDebugActionPerformed(evt);
             }
         });
         getContentPane().add(jCheckBoxDebug);
-        jCheckBoxDebug.setBounds(550, 100, 120, 24);
+        jCheckBoxDebug.setBounds(550, 100, 120, 17);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -14,7 +14,9 @@ import language.exceptions.RuntimeErrorException;
  */
 public class Variable extends Calculable {
     private String name;
-
+    public String getName() {
+	return name;
+    }
     public Variable(ScriptParser _interpreter, String _name) {
         name = _name;
         interpreter = _interpreter;

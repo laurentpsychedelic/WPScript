@@ -1,10 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * TestFrame.java
+ * <b>スクリプトエディターウィンドウ</b>です。
+ * このウィンドウからスクリプトの読み出し、実行ができます。
  * @author Laurent FABRE
  * Created on 2011/09/16, 16:14:08
  */
@@ -53,6 +49,41 @@ import org.antlr.runtime.Token;
  * @author LFabre
  */
 public class ScriptWindow extends javax.swing.JFrame {
+
+    private static final String path;
+    static {
+	//Persistence
+        String _path = ScriptWindow.class.getResource("").getPath();
+	if (_path.contains("!")) {
+	    _path = _path.split("!")[0];
+	}
+	File file = new File(_path);
+	if (!file.isDirectory()) {
+	    _path = file.getParent();
+	}
+	path = _path;
+	String ini_file_path = path + "/editor.ini";
+	if (path!=null && (new File(ini_file_path)).exists()) {
+	    readIniFile(ini_file_path);
+	}    
+    }
+
+    public static String DEFAULT_SCRIPT_FOLDER = "";
+
+    public static void readIniFile(String filepath) {
+	String str;
+        try {
+            java.util.Properties prop = new java.util.Properties();
+            prop.load(new java.io.FileInputStream(filepath));
+
+            str = prop.getProperty("DEFAULT_SCRIPT_FOLDER","");
+	    DEFAULT_SCRIPT_FOLDER = str;
+
+        } catch (java.io.IOException e) {
+	    System.err.println("Error file reading editor window persistence file at [" + filepath + "]");
+        }
+    }
+
     BufferedReader reader_out;
     BufferedReader reader_err;
     public static int getLanguage() {
@@ -93,6 +124,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     
     /** Creates new form TestFrame */
     public ScriptWindow(final String _prog) {
+             
         prog = _prog;
         
         initComponents();
@@ -457,6 +489,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
         addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -464,11 +497,13 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jScriptPane.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jScriptPaneFocusLost(evt);
             }
         });
         jScriptPane.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jScriptPaneKeyTyped(evt);
             }
@@ -485,6 +520,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonExecute.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonExecute.setMargin(new java.awt.Insets(0, 4, 0, 0));
         jButtonExecute.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExecuteActionPerformed(evt);
             }
@@ -508,6 +544,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonCompilation.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonCompilation.setMargin(new java.awt.Insets(0, 4, 0, 0));
         jButtonCompilation.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompilationActionPerformed(evt);
             }
@@ -522,6 +559,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonOpen.setFocusable(false);
         jButtonOpen.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOpenActionPerformed(evt);
             }
@@ -548,6 +586,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jCheckBoxDebug.setText(getString(3));
         jCheckBoxDebug.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBoxDebug.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxDebugActionPerformed(evt);
             }
@@ -622,8 +661,6 @@ public class ScriptWindow extends javax.swing.JFrame {
         _updateScriptPaneLater();
     }//GEN-LAST:event_jScriptPaneFocusLost
 
-    public static String DEFAULT_SCRIPT_FOLDER = "/home/laurent/dev/WPA/SCRIPTING/WPScript/";
-    
     private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
         
         final JFileChooser fc = new JFileChooser();

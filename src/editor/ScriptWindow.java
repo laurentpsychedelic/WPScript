@@ -49,13 +49,16 @@ import org.antlr.runtime.Token;
  * @author LFabre
  */
 public class ScriptWindow extends javax.swing.JFrame {
-
+    public static String DEFAULT_SCRIPT_FOLDER;
     private static final String path;
     static {
 	//Persistence
         String _path = ScriptWindow.class.getResource("").getPath();
 	if (_path.contains("!")) {
 	    _path = _path.split("!")[0];
+	}
+	if (_path.contains("/build/classes")) {
+	    _path = _path.split("/build/classes")[0];
 	}
 	File file = new File(_path);
 	if (!file.isDirectory()) {
@@ -67,20 +70,24 @@ public class ScriptWindow extends javax.swing.JFrame {
 	    readIniFile(ini_file_path);
 	}    
     }
-
-    public static String DEFAULT_SCRIPT_FOLDER = "";
+    public static void writeIniFile(String filepath) {
+	try {
+            java.util.Properties prop2 = new java.util.Properties();
+            prop2.setProperty("DEFAULT_SCRIPT_FOLDER", DEFAULT_SCRIPT_FOLDER);
+	    prop2.store(new java.io.FileOutputStream(filepath),"Editor Window persistence data");
+        } catch (java.io.IOException e) {
+	    System.err.println("Error while writing editor window persistence file at [" + filepath + "]");
+        }
+    }
 
     public static void readIniFile(String filepath) {
-	String str;
         try {
             java.util.Properties prop = new java.util.Properties();
             prop.load(new java.io.FileInputStream(filepath));
 
-            str = prop.getProperty("DEFAULT_SCRIPT_FOLDER","");
-	    DEFAULT_SCRIPT_FOLDER = str;
-
+            DEFAULT_SCRIPT_FOLDER = prop.getProperty("DEFAULT_SCRIPT_FOLDER","");
         } catch (java.io.IOException e) {
-	    System.err.println("Error file reading editor window persistence file at [" + filepath + "]");
+	    System.err.println("Error while reading editor window persistence file at [" + filepath + "]");
         }
     }
 
@@ -640,8 +647,13 @@ public class ScriptWindow extends javax.swing.JFrame {
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         CLOSING = true;
-        System.setOut(default_out);
+        //Reset streams
+	System.setOut(default_out);
         System.setErr(default_err);
+	//Save INI file
+	String ini_file_path = path + "/editor.ini";
+	writeIniFile(ini_file_path);
+
     }//GEN-LAST:event_formWindowClosing
 
     private void jButtonCompilationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilationActionPerformed
@@ -682,6 +694,8 @@ public class ScriptWindow extends javax.swing.JFrame {
             if (!file.exists()) {
                 return;
             }
+	    DEFAULT_SCRIPT_FOLDER = file.getParent();
+
             String filepath = file.getAbsolutePath();
             if (filter.isWps(file)) {
                 prog = ScriptIO.readScript(filepath);

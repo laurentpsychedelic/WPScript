@@ -81,7 +81,6 @@ public class Dictionary extends BuiltInType {
 
     @Override
     public void setEnv(Environment _env) {
-	System.err.println("Dictionary#setEnv("+_env+")");
 	env = _env;
 	for (Object _key : dictionary.keySet()) {
             if (_key instanceof Calculable) {

@@ -245,6 +245,9 @@ stat returns [Expression expr]
     }
     | for_expression {
         $expr = new Expression(true, this, $for_expression.expr);
+    }
+    | function_declaration {
+        $expr = new Expression(true, this, $function_declaration.expr);
     };
 pre_stat returns [Expression expr]
     : expression {
@@ -484,6 +487,11 @@ term returns [LinkedList<Object> atoms]
     };
 //term : atom ( MULT atom | DIV atom )*;
 
+function_declaration returns [FunctionDeclaration expr] :
+    FUNCTION ID LEFT_P args? RIGHT_P NEWLINE? s=stat {
+        $expr = new FunctionDeclaration(this, $ID.text, $args.params, $s.expr);
+    };
+
 function_call returns [LinkedList<Object> name_params]:
     ID LEFT_P args? RIGHT_P {
         if ($args.params != null) {
@@ -609,6 +617,7 @@ WHILE: ('W'|'w') ('H'|'h') ('I'|'i') ('L'|'l') ('E'|'e');
 FOR : ('F'|'f') ('O'|'o') ('R'|'r');
 BREAK: ('B'|'b') ('R'|'r') ('E'|'e') ('A'|'a') ('K'|'k');
 CONTINUE: ('C'|'c') ('O'|'o') ('N'|'n') ('T'|'t') ('I'|'i') ('N'|'n') ('U'|'u') ('E'|'e');
+FUNCTION: ('F'|'f') ('U'|'u') ('N'|'n') ('C'|'c') ('T'|'t') ('I'|'i') ('O'|'o') ('N'|'n');
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* ;
 EQUAL: '=';
 COMMA: ',';

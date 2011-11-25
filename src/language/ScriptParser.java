@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g 2011-11-08 08:47:01
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g 2011-11-17 19:13:41
 
 package language;
 
@@ -21,11 +21,12 @@ import org.antlr.runtime.tree.*;
 
 public class ScriptParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "LEFT_CB", "NEWLINE", "RIGHT_CB", "BREAK", "CONTINUE", "ID", "EQUAL", "PLUS_PLUS", "MINUS_MINUS", "IF", "LEFT_P", "RIGHT_P", "ELSE", "WHILE", "FOR", "PV", "ARROW", "PLUS", "MINUS", "AND", "OR", "MULT", "DIV", "CMP_LT", "CMP_LT_EQ", "CMP_GT", "CMP_GT_EQ", "CMP_EQ", "CMP_NEQ", "COMMA", "LEFT_B", "RIGHT_B", "NUM", "BOOL", "CONSTANT", "STRING_LITERAL", "TP", "DQUOTE", "LINE_COMMENT", "BLOCK_COMMENT", "WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "LEFT_CB", "NEWLINE", "RIGHT_CB", "BREAK", "CONTINUE", "ID", "EQUAL", "PLUS_PLUS", "MINUS_MINUS", "IF", "LEFT_P", "RIGHT_P", "ELSE", "WHILE", "FOR", "PV", "ARROW", "PLUS", "MINUS", "AND", "OR", "MULT", "DIV", "CMP_LT", "CMP_LT_EQ", "CMP_GT", "CMP_GT_EQ", "CMP_EQ", "CMP_NEQ", "FUNCTION", "COMMA", "LEFT_B", "RIGHT_B", "NUM", "BOOL", "CONSTANT", "STRING_LITERAL", "TP", "DQUOTE", "LINE_COMMENT", "BLOCK_COMMENT", "WS"
     };
+    public static final int FUNCTION=33;
     public static final int WHILE=17;
     public static final int FOR=18;
-    public static final int DQUOTE=41;
+    public static final int DQUOTE=42;
     public static final int CMP_EQ=31;
     public static final int ID=9;
     public static final int AND=23;
@@ -36,32 +37,32 @@ public class ScriptParser extends Parser {
     public static final int RIGHT_CB=6;
     public static final int CMP_GT_EQ=30;
     public static final int CMP_LT=27;
-    public static final int RIGHT_B=35;
-    public static final int STRING_LITERAL=39;
+    public static final int RIGHT_B=36;
+    public static final int STRING_LITERAL=40;
     public static final int PLUS_PLUS=11;
     public static final int CONTINUE=8;
-    public static final int COMMA=33;
+    public static final int COMMA=34;
     public static final int CMP_LT_EQ=28;
     public static final int EQUAL=10;
-    public static final int LEFT_B=34;
-    public static final int BLOCK_COMMENT=43;
+    public static final int LEFT_B=35;
+    public static final int BLOCK_COMMENT=44;
     public static final int PV=19;
     public static final int PLUS=21;
     public static final int LEFT_P=14;
     public static final int CMP_NEQ=32;
-    public static final int LINE_COMMENT=42;
+    public static final int LINE_COMMENT=43;
     public static final int ELSE=16;
-    public static final int BOOL=37;
-    public static final int TP=40;
+    public static final int BOOL=38;
+    public static final int TP=41;
     public static final int RIGHT_P=15;
     public static final int MINUS=22;
     public static final int MULT=25;
     public static final int CMP_GT=29;
-    public static final int NUM=36;
-    public static final int WS=44;
+    public static final int NUM=37;
+    public static final int WS=45;
     public static final int NEWLINE=5;
     public static final int OR=24;
-    public static final int CONSTANT=38;
+    public static final int CONSTANT=39;
     public static final int ARROW=20;
     public static final int DIV=26;
     public static final int MINUS_MINUS=12;
@@ -75,7 +76,7 @@ public class ScriptParser extends Parser {
         }
         public ScriptParser(TokenStream input, RecognizerSharedState state) {
             super(input, state);
-            this.state.ruleMemo = new HashMap[81+1];
+            this.state.ruleMemo = new HashMap[85+1];
              
              
         }
@@ -90,7 +91,7 @@ public class ScriptParser extends Parser {
     }
 
     public String[] getTokenNames() { return ScriptParser.tokenNames; }
-    public String getGrammarFileName() { return "c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g"; }
+    public String getGrammarFileName() { return "/home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g"; }
 
 
         
@@ -271,7 +272,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "prog"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:203:1: prog : s= stats ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:203:1: prog : s= stats ;
     public final ScriptParser.prog_return prog() throws RecognitionException {
         ScriptParser.prog_return retval = new ScriptParser.prog_return();
         retval.start = input.LT(1);
@@ -284,8 +285,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:203:6: (s= stats )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:204:5: s= stats
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:203:6: (s= stats )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:204:5: s= stats
             {
             root_0 = (Object)adaptor.nil();
 
@@ -332,7 +333,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "block"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:211:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:211:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
     public final ScriptParser.block_return block() throws RecognitionException {
         ScriptParser.block_return retval = new ScriptParser.block_return();
         retval.start = input.LT(1);
@@ -353,8 +354,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:211:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:212:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:211:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:212:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
@@ -363,12 +364,12 @@ public class ScriptParser extends Parser {
             LEFT_CB1_tree = (Object)adaptor.create(LEFT_CB1);
             adaptor.addChild(root_0, LEFT_CB1_tree);
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:212:13: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:212:13: ( NEWLINE )?
             int alt1=2;
             alt1 = dfa1.predict(input);
             switch (alt1) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                     {
                     NEWLINE2=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_block100); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -387,7 +388,7 @@ public class ScriptParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, stats3.getTree());
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:212:28: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:212:28: ( NEWLINE )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -396,7 +397,7 @@ public class ScriptParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                     {
                     NEWLINE4=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_block105); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -448,7 +449,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "stats"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:216:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:216:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
     public final ScriptParser.stats_return stats() throws RecognitionException {
         ScriptParser.stats_return retval = new ScriptParser.stats_return();
         retval.start = input.LT(1);
@@ -461,8 +462,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:216:51: (s= stat (s= stat )* )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:217:5: s= stat (s= stat )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:216:51: (s= stat (s= stat )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:217:5: s= stat (s= stat )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -480,7 +481,7 @@ public class ScriptParser extends Parser {
                       }
                   
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:222:7: (s= stat )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:222:7: (s= stat )*
             loop3:
             do {
                 int alt3=2;
@@ -495,14 +496,14 @@ public class ScriptParser extends Parser {
 
 
                 }
-                else if ( (LA3_0==LEFT_CB||(LA3_0>=BREAK && LA3_0<=ID)||(LA3_0>=PLUS_PLUS && LA3_0<=LEFT_P)||(LA3_0>=WHILE && LA3_0<=FOR)||LA3_0==MINUS||LA3_0==LEFT_B||(LA3_0>=NUM && LA3_0<=STRING_LITERAL)) ) {
+                else if ( (LA3_0==LEFT_CB||(LA3_0>=BREAK && LA3_0<=ID)||(LA3_0>=PLUS_PLUS && LA3_0<=LEFT_P)||(LA3_0>=WHILE && LA3_0<=FOR)||LA3_0==MINUS||LA3_0==FUNCTION||LA3_0==LEFT_B||(LA3_0>=NUM && LA3_0<=STRING_LITERAL)) ) {
                     alt3=1;
                 }
 
 
                 switch (alt3) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:222:8: s= stat
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:222:8: s= stat
             	    {
             	    pushFollow(FOLLOW_stat_in_stats134);
             	    s=stat();
@@ -555,7 +556,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "stat"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:229:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:229:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration );
     public final ScriptParser.stat_return stat() throws RecognitionException {
         ScriptParser.stat_return retval = new ScriptParser.stat_return();
         retval.start = input.LT(1);
@@ -574,18 +575,20 @@ public class ScriptParser extends Parser {
 
         ScriptParser.for_expression_return for_expression12 = null;
 
+        ScriptParser.function_declaration_return function_declaration13 = null;
+
 
         Object NEWLINE7_tree=null;
         Object NEWLINE8_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:230:5: ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression )
-            int alt4=6;
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:230:5: ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration )
+            int alt4=7;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:230:7: pre_stat NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:230:7: pre_stat NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -610,7 +613,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:234:7: NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:234:7: NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -628,7 +631,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:237:7: block
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:237:7: block
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -647,7 +650,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:240:7: if_expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:240:7: if_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -666,7 +669,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:243:7: while_expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:243:7: while_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -685,7 +688,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:246:7: for_expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:246:7: for_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -698,6 +701,25 @@ public class ScriptParser extends Parser {
                     if ( state.backtracking==0 ) {
 
                               retval.expr = new Expression(true, this, (for_expression12!=null?for_expression12.expr:null));
+                          
+                    }
+
+                    }
+                    break;
+                case 7 :
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:249:7: function_declaration
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+                    pushFollow(FOLLOW_function_declaration_in_stat221);
+                    function_declaration13=function_declaration();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, function_declaration13.getTree());
+                    if ( state.backtracking==0 ) {
+
+                              retval.expr = new Expression(true, this, (function_declaration13!=null?function_declaration13.expr:null));
                           
                     }
 
@@ -731,83 +753,83 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_stat"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:249:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:252:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
     public final ScriptParser.pre_stat_return pre_stat() throws RecognitionException {
         ScriptParser.pre_stat_return retval = new ScriptParser.pre_stat_return();
         retval.start = input.LT(1);
         int pre_stat_StartIndex = input.index();
         Object root_0 = null;
 
-        Token BREAK14=null;
-        Token CONTINUE15=null;
-        Token ID16=null;
-        Token EQUAL17=null;
-        Token EQUAL20=null;
-        Token ID22=null;
-        Token PLUS_PLUS23=null;
+        Token BREAK15=null;
+        Token CONTINUE16=null;
+        Token ID17=null;
+        Token EQUAL18=null;
+        Token EQUAL21=null;
+        Token ID23=null;
         Token PLUS_PLUS24=null;
-        Token ID25=null;
+        Token PLUS_PLUS25=null;
         Token ID26=null;
-        Token MINUS_MINUS27=null;
+        Token ID27=null;
         Token MINUS_MINUS28=null;
-        Token ID29=null;
-        ScriptParser.expression_return expression13 = null;
+        Token MINUS_MINUS29=null;
+        Token ID30=null;
+        ScriptParser.expression_return expression14 = null;
 
-        ScriptParser.expression_return expression18 = null;
+        ScriptParser.expression_return expression19 = null;
 
-        ScriptParser.array_element_reference_return array_element_reference19 = null;
+        ScriptParser.array_element_reference_return array_element_reference20 = null;
 
-        ScriptParser.expression_return expression21 = null;
+        ScriptParser.expression_return expression22 = null;
 
 
-        Object BREAK14_tree=null;
-        Object CONTINUE15_tree=null;
-        Object ID16_tree=null;
-        Object EQUAL17_tree=null;
-        Object EQUAL20_tree=null;
-        Object ID22_tree=null;
-        Object PLUS_PLUS23_tree=null;
+        Object BREAK15_tree=null;
+        Object CONTINUE16_tree=null;
+        Object ID17_tree=null;
+        Object EQUAL18_tree=null;
+        Object EQUAL21_tree=null;
+        Object ID23_tree=null;
         Object PLUS_PLUS24_tree=null;
-        Object ID25_tree=null;
+        Object PLUS_PLUS25_tree=null;
         Object ID26_tree=null;
-        Object MINUS_MINUS27_tree=null;
+        Object ID27_tree=null;
         Object MINUS_MINUS28_tree=null;
-        Object ID29_tree=null;
+        Object MINUS_MINUS29_tree=null;
+        Object ID30_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:250:5: ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:253:5: ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
             int alt5=9;
             alt5 = dfa5.predict(input);
             switch (alt5) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:250:7: expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:253:7: expression
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_expression_in_pre_stat228);
-                    expression13=expression();
+                    pushFollow(FOLLOW_expression_in_pre_stat238);
+                    expression14=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression13.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression14.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(true, (expression13!=null?expression13.expr:null));
+                              retval.expr = new Expression(true, (expression14!=null?expression14.expr:null));
                           
                     }
 
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:253:7: BREAK
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:256:7: BREAK
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    BREAK14=(Token)match(input,BREAK,FOLLOW_BREAK_in_pre_stat238); if (state.failed) return retval;
+                    BREAK15=(Token)match(input,BREAK,FOLLOW_BREAK_in_pre_stat248); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    BREAK14_tree = (Object)adaptor.create(BREAK14);
-                    adaptor.addChild(root_0, BREAK14_tree);
+                    BREAK15_tree = (Object)adaptor.create(BREAK15);
+                    adaptor.addChild(root_0, BREAK15_tree);
                     }
                     if ( state.backtracking==0 ) {
 
@@ -818,14 +840,14 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:256:7: CONTINUE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:259:7: CONTINUE
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    CONTINUE15=(Token)match(input,CONTINUE,FOLLOW_CONTINUE_in_pre_stat248); if (state.failed) return retval;
+                    CONTINUE16=(Token)match(input,CONTINUE,FOLLOW_CONTINUE_in_pre_stat258); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    CONTINUE15_tree = (Object)adaptor.create(CONTINUE15);
-                    adaptor.addChild(root_0, CONTINUE15_tree);
+                    CONTINUE16_tree = (Object)adaptor.create(CONTINUE16);
+                    adaptor.addChild(root_0, CONTINUE16_tree);
                     }
                     if ( state.backtracking==0 ) {
 
@@ -836,151 +858,151 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:259:7: ID EQUAL expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:262:7: ID EQUAL expression
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID16=(Token)match(input,ID,FOLLOW_ID_in_pre_stat258); if (state.failed) return retval;
+                    ID17=(Token)match(input,ID,FOLLOW_ID_in_pre_stat268); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID16_tree = (Object)adaptor.create(ID16);
-                    adaptor.addChild(root_0, ID16_tree);
+                    ID17_tree = (Object)adaptor.create(ID17);
+                    adaptor.addChild(root_0, ID17_tree);
                     }
-                    EQUAL17=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_pre_stat260); if (state.failed) return retval;
+                    EQUAL18=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_pre_stat270); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQUAL17_tree = (Object)adaptor.create(EQUAL17);
-                    adaptor.addChild(root_0, EQUAL17_tree);
+                    EQUAL18_tree = (Object)adaptor.create(EQUAL18);
+                    adaptor.addChild(root_0, EQUAL18_tree);
                     }
-                    pushFollow(FOLLOW_expression_in_pre_stat262);
-                    expression18=expression();
+                    pushFollow(FOLLOW_expression_in_pre_stat272);
+                    expression19=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression18.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression19.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(true, this, new VariableAssignment(this, (ID16!=null?ID16.getText():null), (expression18!=null?expression18.expr:null)) );
+                              retval.expr = new Expression(true, this, new VariableAssignment(this, (ID17!=null?ID17.getText():null), (expression19!=null?expression19.expr:null)) );
                           
                     }
 
                     }
                     break;
                 case 5 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:262:7: array_element_reference EQUAL expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:265:7: array_element_reference EQUAL expression
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_array_element_reference_in_pre_stat272);
-                    array_element_reference19=array_element_reference();
+                    pushFollow(FOLLOW_array_element_reference_in_pre_stat282);
+                    array_element_reference20=array_element_reference();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, array_element_reference19.getTree());
-                    EQUAL20=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_pre_stat274); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, array_element_reference20.getTree());
+                    EQUAL21=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_pre_stat284); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQUAL20_tree = (Object)adaptor.create(EQUAL20);
-                    adaptor.addChild(root_0, EQUAL20_tree);
+                    EQUAL21_tree = (Object)adaptor.create(EQUAL21);
+                    adaptor.addChild(root_0, EQUAL21_tree);
                     }
-                    pushFollow(FOLLOW_expression_in_pre_stat276);
-                    expression21=expression();
+                    pushFollow(FOLLOW_expression_in_pre_stat286);
+                    expression22=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression21.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression22.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(true, this, new StorageAccessor(this, StorageAccessor.ASSIGNMENT, (array_element_reference19!=null?array_element_reference19.accessor:null), (expression21!=null?expression21.expr:null)));
+                              retval.expr = new Expression(true, this, new StorageAccessor(this, StorageAccessor.ASSIGNMENT, (array_element_reference20!=null?array_element_reference20.accessor:null), (expression22!=null?expression22.expr:null)));
                           
                     }
 
                     }
                     break;
                 case 6 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:265:7: ID PLUS_PLUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:268:7: ID PLUS_PLUS
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID22=(Token)match(input,ID,FOLLOW_ID_in_pre_stat286); if (state.failed) return retval;
+                    ID23=(Token)match(input,ID,FOLLOW_ID_in_pre_stat296); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID22_tree = (Object)adaptor.create(ID22);
-                    adaptor.addChild(root_0, ID22_tree);
+                    ID23_tree = (Object)adaptor.create(ID23);
+                    adaptor.addChild(root_0, ID23_tree);
                     }
-                    PLUS_PLUS23=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_pre_stat288); if (state.failed) return retval;
+                    PLUS_PLUS24=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_pre_stat298); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    PLUS_PLUS23_tree = (Object)adaptor.create(PLUS_PLUS23);
-                    adaptor.addChild(root_0, PLUS_PLUS23_tree);
+                    PLUS_PLUS24_tree = (Object)adaptor.create(PLUS_PLUS24);
+                    adaptor.addChild(root_0, PLUS_PLUS24_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(true, this, new VariableAssignment(this, (ID22!=null?ID22.getText():null), Operator.OPERATOR_PLUS_PLUS));
+                              retval.expr = new Expression(true, this, new VariableAssignment(this, (ID23!=null?ID23.getText():null), Operator.OPERATOR_PLUS_PLUS));
                           
                     }
 
                     }
                     break;
                 case 7 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:268:7: PLUS_PLUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:271:7: PLUS_PLUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    PLUS_PLUS24=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_pre_stat298); if (state.failed) return retval;
+                    PLUS_PLUS25=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_pre_stat308); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    PLUS_PLUS24_tree = (Object)adaptor.create(PLUS_PLUS24);
-                    adaptor.addChild(root_0, PLUS_PLUS24_tree);
+                    PLUS_PLUS25_tree = (Object)adaptor.create(PLUS_PLUS25);
+                    adaptor.addChild(root_0, PLUS_PLUS25_tree);
                     }
-                    ID25=(Token)match(input,ID,FOLLOW_ID_in_pre_stat300); if (state.failed) return retval;
+                    ID26=(Token)match(input,ID,FOLLOW_ID_in_pre_stat310); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID25_tree = (Object)adaptor.create(ID25);
-                    adaptor.addChild(root_0, ID25_tree);
+                    ID26_tree = (Object)adaptor.create(ID26);
+                    adaptor.addChild(root_0, ID26_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(true, this,  new VariableAssignment(this, (ID25!=null?ID25.getText():null), Operator.OPERATOR_PLUS_PLUS));
+                              retval.expr = new Expression(true, this,  new VariableAssignment(this, (ID26!=null?ID26.getText():null), Operator.OPERATOR_PLUS_PLUS));
                           
                     }
 
                     }
                     break;
                 case 8 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:271:7: ID MINUS_MINUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:274:7: ID MINUS_MINUS
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID26=(Token)match(input,ID,FOLLOW_ID_in_pre_stat310); if (state.failed) return retval;
+                    ID27=(Token)match(input,ID,FOLLOW_ID_in_pre_stat320); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID26_tree = (Object)adaptor.create(ID26);
-                    adaptor.addChild(root_0, ID26_tree);
+                    ID27_tree = (Object)adaptor.create(ID27);
+                    adaptor.addChild(root_0, ID27_tree);
                     }
-                    MINUS_MINUS27=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_pre_stat312); if (state.failed) return retval;
+                    MINUS_MINUS28=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_pre_stat322); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MINUS_MINUS27_tree = (Object)adaptor.create(MINUS_MINUS27);
-                    adaptor.addChild(root_0, MINUS_MINUS27_tree);
+                    MINUS_MINUS28_tree = (Object)adaptor.create(MINUS_MINUS28);
+                    adaptor.addChild(root_0, MINUS_MINUS28_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(true, this,  new VariableAssignment(this, (ID26!=null?ID26.getText():null), Operator.OPERATOR_MINUS_MINUS));
+                              retval.expr = new Expression(true, this,  new VariableAssignment(this, (ID27!=null?ID27.getText():null), Operator.OPERATOR_MINUS_MINUS));
                           
                     }
 
                     }
                     break;
                 case 9 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:274:7: MINUS_MINUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:277:7: MINUS_MINUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    MINUS_MINUS28=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_pre_stat322); if (state.failed) return retval;
+                    MINUS_MINUS29=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_pre_stat332); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MINUS_MINUS28_tree = (Object)adaptor.create(MINUS_MINUS28);
-                    adaptor.addChild(root_0, MINUS_MINUS28_tree);
+                    MINUS_MINUS29_tree = (Object)adaptor.create(MINUS_MINUS29);
+                    adaptor.addChild(root_0, MINUS_MINUS29_tree);
                     }
-                    ID29=(Token)match(input,ID,FOLLOW_ID_in_pre_stat324); if (state.failed) return retval;
+                    ID30=(Token)match(input,ID,FOLLOW_ID_in_pre_stat334); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID29_tree = (Object)adaptor.create(ID29);
-                    adaptor.addChild(root_0, ID29_tree);
+                    ID30_tree = (Object)adaptor.create(ID30);
+                    adaptor.addChild(root_0, ID30_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.expr = new Expression(true, this,  new VariableAssignment(this, (ID29!=null?ID29.getText():null), Operator.OPERATOR_MINUS_MINUS));
+                              retval.expr = new Expression(true, this,  new VariableAssignment(this, (ID30!=null?ID30.getText():null), Operator.OPERATOR_MINUS_MINUS));
                           
                     }
 
@@ -1014,7 +1036,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "if_expression"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:280:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:283:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
     public final ScriptParser.if_expression_return if_expression() throws RecognitionException {
         ScriptParser.if_expression_return retval = new ScriptParser.if_expression_return();
         retval.start = input.LT(1);
@@ -1027,12 +1049,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:281:5: (p= pre_if_expression )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:281:7: p= pre_if_expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:284:5: (p= pre_if_expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:284:7: p= pre_if_expression
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_pre_if_expression_in_if_expression354);
+            pushFollow(FOLLOW_pre_if_expression_in_if_expression364);
             p=pre_if_expression();
 
             state._fsp--;
@@ -1084,72 +1106,72 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_if_expression"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:297:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:300:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
     public final ScriptParser.pre_if_expression_return pre_if_expression() throws RecognitionException {
         ScriptParser.pre_if_expression_return retval = new ScriptParser.pre_if_expression_return();
         retval.start = input.LT(1);
         int pre_if_expression_StartIndex = input.index();
         Object root_0 = null;
 
-        Token IF30=null;
-        Token LEFT_P31=null;
-        Token RIGHT_P32=null;
-        Token NEWLINE33=null;
+        Token IF31=null;
+        Token LEFT_P32=null;
+        Token RIGHT_P33=null;
         Token NEWLINE34=null;
-        Token ELSE35=null;
-        Token NEWLINE36=null;
+        Token NEWLINE35=null;
+        Token ELSE36=null;
+        Token NEWLINE37=null;
         ScriptParser.expression_return e = null;
 
         ScriptParser.stat_return s = null;
 
 
-        Object IF30_tree=null;
-        Object LEFT_P31_tree=null;
-        Object RIGHT_P32_tree=null;
-        Object NEWLINE33_tree=null;
+        Object IF31_tree=null;
+        Object LEFT_P32_tree=null;
+        Object RIGHT_P33_tree=null;
         Object NEWLINE34_tree=null;
-        Object ELSE35_tree=null;
-        Object NEWLINE36_tree=null;
+        Object NEWLINE35_tree=null;
+        Object ELSE36_tree=null;
+        Object NEWLINE37_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:298:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:298:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:301:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:301:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
             {
             root_0 = (Object)adaptor.nil();
 
-            IF30=(Token)match(input,IF,FOLLOW_IF_in_pre_if_expression373); if (state.failed) return retval;
+            IF31=(Token)match(input,IF,FOLLOW_IF_in_pre_if_expression383); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            IF30_tree = (Object)adaptor.create(IF30);
-            adaptor.addChild(root_0, IF30_tree);
+            IF31_tree = (Object)adaptor.create(IF31);
+            adaptor.addChild(root_0, IF31_tree);
             }
-            LEFT_P31=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_if_expression375); if (state.failed) return retval;
+            LEFT_P32=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_if_expression385); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            LEFT_P31_tree = (Object)adaptor.create(LEFT_P31);
-            adaptor.addChild(root_0, LEFT_P31_tree);
+            LEFT_P32_tree = (Object)adaptor.create(LEFT_P32);
+            adaptor.addChild(root_0, LEFT_P32_tree);
             }
-            pushFollow(FOLLOW_expression_in_pre_if_expression379);
+            pushFollow(FOLLOW_expression_in_pre_if_expression389);
             e=expression();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, e.getTree());
-            RIGHT_P32=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_if_expression381); if (state.failed) return retval;
+            RIGHT_P33=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_if_expression391); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            RIGHT_P32_tree = (Object)adaptor.create(RIGHT_P32);
-            adaptor.addChild(root_0, RIGHT_P32_tree);
+            RIGHT_P33_tree = (Object)adaptor.create(RIGHT_P33);
+            adaptor.addChild(root_0, RIGHT_P33_tree);
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:298:38: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:301:38: ( NEWLINE )?
             int alt6=2;
             alt6 = dfa6.predict(input);
             switch (alt6) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                     {
-                    NEWLINE33=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression383); if (state.failed) return retval;
+                    NEWLINE34=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression393); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    NEWLINE33_tree = (Object)adaptor.create(NEWLINE33);
-                    adaptor.addChild(root_0, NEWLINE33_tree);
+                    NEWLINE34_tree = (Object)adaptor.create(NEWLINE34);
+                    adaptor.addChild(root_0, NEWLINE34_tree);
                     }
 
                     }
@@ -1157,7 +1179,7 @@ public class ScriptParser extends Parser {
 
             }
 
-            pushFollow(FOLLOW_stat_in_pre_if_expression388);
+            pushFollow(FOLLOW_stat_in_pre_if_expression398);
             s=stat();
 
             state._fsp--;
@@ -1170,25 +1192,25 @@ public class ScriptParser extends Parser {
                       retval.exprs.add( (s!=null?s.expr:null) );
                   
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:7: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:7: ( NEWLINE )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
             if ( (LA7_0==NEWLINE) ) {
                 int LA7_1 = input.LA(2);
 
-                if ( (synpred18_Script()) ) {
+                if ( (synpred19_Script()) ) {
                     alt7=1;
                 }
             }
             switch (alt7) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                     {
-                    NEWLINE34=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression392); if (state.failed) return retval;
+                    NEWLINE35=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression402); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    NEWLINE34_tree = (Object)adaptor.create(NEWLINE34);
-                    adaptor.addChild(root_0, NEWLINE34_tree);
+                    NEWLINE35_tree = (Object)adaptor.create(NEWLINE35);
+                    adaptor.addChild(root_0, NEWLINE35_tree);
                     }
 
                     }
@@ -1196,37 +1218,37 @@ public class ScriptParser extends Parser {
 
             }
 
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:16: ( ELSE ( NEWLINE )? s= stat )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:16: ( ELSE ( NEWLINE )? s= stat )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
             if ( (LA9_0==ELSE) ) {
                 int LA9_1 = input.LA(2);
 
-                if ( (synpred20_Script()) ) {
+                if ( (synpred21_Script()) ) {
                     alt9=1;
                 }
             }
             switch (alt9) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:17: ELSE ( NEWLINE )? s= stat
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:17: ELSE ( NEWLINE )? s= stat
                     {
-                    ELSE35=(Token)match(input,ELSE,FOLLOW_ELSE_in_pre_if_expression396); if (state.failed) return retval;
+                    ELSE36=(Token)match(input,ELSE,FOLLOW_ELSE_in_pre_if_expression406); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ELSE35_tree = (Object)adaptor.create(ELSE35);
-                    adaptor.addChild(root_0, ELSE35_tree);
+                    ELSE36_tree = (Object)adaptor.create(ELSE36);
+                    adaptor.addChild(root_0, ELSE36_tree);
                     }
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:22: ( NEWLINE )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:22: ( NEWLINE )?
                     int alt8=2;
                     alt8 = dfa8.predict(input);
                     switch (alt8) {
                         case 1 :
-                            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                             {
-                            NEWLINE36=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression398); if (state.failed) return retval;
+                            NEWLINE37=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_if_expression408); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            NEWLINE36_tree = (Object)adaptor.create(NEWLINE36);
-                            adaptor.addChild(root_0, NEWLINE36_tree);
+                            NEWLINE37_tree = (Object)adaptor.create(NEWLINE37);
+                            adaptor.addChild(root_0, NEWLINE37_tree);
                             }
 
                             }
@@ -1234,7 +1256,7 @@ public class ScriptParser extends Parser {
 
                     }
 
-                    pushFollow(FOLLOW_stat_in_pre_if_expression403);
+                    pushFollow(FOLLOW_stat_in_pre_if_expression413);
                     s=stat();
 
                     state._fsp--;
@@ -1280,7 +1302,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "while_expression"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:306:1: while_expression returns [LoopExpression expr] : p= pre_while_expression ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:309:1: while_expression returns [LoopExpression expr] : p= pre_while_expression ;
     public final ScriptParser.while_expression_return while_expression() throws RecognitionException {
         ScriptParser.while_expression_return retval = new ScriptParser.while_expression_return();
         retval.start = input.LT(1);
@@ -1293,12 +1315,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:307:5: (p= pre_while_expression )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:307:7: p= pre_while_expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:310:5: (p= pre_while_expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:310:7: p= pre_while_expression
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_pre_while_expression_in_while_expression425);
+            pushFollow(FOLLOW_pre_while_expression_in_while_expression435);
             p=pre_while_expression();
 
             state._fsp--;
@@ -1346,66 +1368,66 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_while_expression"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:319:1: pre_while_expression returns [LinkedList<Expression> exprs] : WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:322:1: pre_while_expression returns [LinkedList<Expression> exprs] : WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ;
     public final ScriptParser.pre_while_expression_return pre_while_expression() throws RecognitionException {
         ScriptParser.pre_while_expression_return retval = new ScriptParser.pre_while_expression_return();
         retval.start = input.LT(1);
         int pre_while_expression_StartIndex = input.index();
         Object root_0 = null;
 
-        Token WHILE37=null;
-        Token LEFT_P38=null;
-        Token RIGHT_P39=null;
-        Token NEWLINE40=null;
+        Token WHILE38=null;
+        Token LEFT_P39=null;
+        Token RIGHT_P40=null;
+        Token NEWLINE41=null;
         ScriptParser.expression_return e = null;
 
         ScriptParser.stat_return s = null;
 
 
-        Object WHILE37_tree=null;
-        Object LEFT_P38_tree=null;
-        Object RIGHT_P39_tree=null;
-        Object NEWLINE40_tree=null;
+        Object WHILE38_tree=null;
+        Object LEFT_P39_tree=null;
+        Object RIGHT_P40_tree=null;
+        Object NEWLINE41_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:320:5: ( WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:320:7: WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:323:5: ( WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:323:7: WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat
             {
             root_0 = (Object)adaptor.nil();
 
-            WHILE37=(Token)match(input,WHILE,FOLLOW_WHILE_in_pre_while_expression443); if (state.failed) return retval;
+            WHILE38=(Token)match(input,WHILE,FOLLOW_WHILE_in_pre_while_expression453); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            WHILE37_tree = (Object)adaptor.create(WHILE37);
-            adaptor.addChild(root_0, WHILE37_tree);
+            WHILE38_tree = (Object)adaptor.create(WHILE38);
+            adaptor.addChild(root_0, WHILE38_tree);
             }
-            LEFT_P38=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_while_expression445); if (state.failed) return retval;
+            LEFT_P39=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_while_expression455); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            LEFT_P38_tree = (Object)adaptor.create(LEFT_P38);
-            adaptor.addChild(root_0, LEFT_P38_tree);
+            LEFT_P39_tree = (Object)adaptor.create(LEFT_P39);
+            adaptor.addChild(root_0, LEFT_P39_tree);
             }
-            pushFollow(FOLLOW_expression_in_pre_while_expression449);
+            pushFollow(FOLLOW_expression_in_pre_while_expression459);
             e=expression();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, e.getTree());
-            RIGHT_P39=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_while_expression451); if (state.failed) return retval;
+            RIGHT_P40=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_while_expression461); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            RIGHT_P39_tree = (Object)adaptor.create(RIGHT_P39);
-            adaptor.addChild(root_0, RIGHT_P39_tree);
+            RIGHT_P40_tree = (Object)adaptor.create(RIGHT_P40);
+            adaptor.addChild(root_0, RIGHT_P40_tree);
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:320:41: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:323:41: ( NEWLINE )?
             int alt10=2;
             alt10 = dfa10.predict(input);
             switch (alt10) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                     {
-                    NEWLINE40=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_while_expression453); if (state.failed) return retval;
+                    NEWLINE41=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_while_expression463); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    NEWLINE40_tree = (Object)adaptor.create(NEWLINE40);
-                    adaptor.addChild(root_0, NEWLINE40_tree);
+                    NEWLINE41_tree = (Object)adaptor.create(NEWLINE41);
+                    adaptor.addChild(root_0, NEWLINE41_tree);
                     }
 
                     }
@@ -1413,7 +1435,7 @@ public class ScriptParser extends Parser {
 
             }
 
-            pushFollow(FOLLOW_stat_in_pre_while_expression458);
+            pushFollow(FOLLOW_stat_in_pre_while_expression468);
             s=stat();
 
             state._fsp--;
@@ -1455,7 +1477,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "for_expression"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:326:1: for_expression returns [LoopExpression expr] : p= pre_for_expression ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:329:1: for_expression returns [LoopExpression expr] : p= pre_for_expression ;
     public final ScriptParser.for_expression_return for_expression() throws RecognitionException {
         ScriptParser.for_expression_return retval = new ScriptParser.for_expression_return();
         retval.start = input.LT(1);
@@ -1468,12 +1490,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:327:5: (p= pre_for_expression )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:327:7: p= pre_for_expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:330:5: (p= pre_for_expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:330:7: p= pre_for_expression
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_pre_for_expression_in_for_expression478);
+            pushFollow(FOLLOW_pre_for_expression_in_for_expression488);
             p=pre_for_expression();
 
             state._fsp--;
@@ -1521,25 +1543,25 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_for_expression"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:339:1: pre_for_expression returns [LinkedList<Expression> exprs] : ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:342:1: pre_for_expression returns [LinkedList<Expression> exprs] : ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat );
     public final ScriptParser.pre_for_expression_return pre_for_expression() throws RecognitionException {
         ScriptParser.pre_for_expression_return retval = new ScriptParser.pre_for_expression_return();
         retval.start = input.LT(1);
         int pre_for_expression_StartIndex = input.index();
         Object root_0 = null;
 
-        Token FOR41=null;
-        Token LEFT_P42=null;
-        Token PV43=null;
+        Token FOR42=null;
+        Token LEFT_P43=null;
         Token PV44=null;
-        Token RIGHT_P45=null;
-        Token NEWLINE46=null;
-        Token FOR47=null;
-        Token LEFT_P48=null;
-        Token ID49=null;
-        Token EQUAL50=null;
-        Token RIGHT_P52=null;
-        Token NEWLINE53=null;
+        Token PV45=null;
+        Token RIGHT_P46=null;
+        Token NEWLINE47=null;
+        Token FOR48=null;
+        Token LEFT_P49=null;
+        Token ID50=null;
+        Token EQUAL51=null;
+        Token RIGHT_P53=null;
+        Token NEWLINE54=null;
         ScriptParser.pre_stat_return e_init = null;
 
         ScriptParser.expression_return e_cond = null;
@@ -1548,32 +1570,32 @@ public class ScriptParser extends Parser {
 
         ScriptParser.stat_return s = null;
 
-        ScriptParser.range_return range51 = null;
+        ScriptParser.range_return range52 = null;
 
 
-        Object FOR41_tree=null;
-        Object LEFT_P42_tree=null;
-        Object PV43_tree=null;
+        Object FOR42_tree=null;
+        Object LEFT_P43_tree=null;
         Object PV44_tree=null;
-        Object RIGHT_P45_tree=null;
-        Object NEWLINE46_tree=null;
-        Object FOR47_tree=null;
-        Object LEFT_P48_tree=null;
-        Object ID49_tree=null;
-        Object EQUAL50_tree=null;
-        Object RIGHT_P52_tree=null;
-        Object NEWLINE53_tree=null;
+        Object PV45_tree=null;
+        Object RIGHT_P46_tree=null;
+        Object NEWLINE47_tree=null;
+        Object FOR48_tree=null;
+        Object LEFT_P49_tree=null;
+        Object ID50_tree=null;
+        Object EQUAL51_tree=null;
+        Object RIGHT_P53_tree=null;
+        Object NEWLINE54_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:5: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:5: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
             if ( (LA13_0==FOR) ) {
                 int LA13_1 = input.LA(2);
 
-                if ( (synpred23_Script()) ) {
+                if ( (synpred24_Script()) ) {
                     alt13=1;
                 }
                 else if ( (true) ) {
@@ -1596,64 +1618,64 @@ public class ScriptParser extends Parser {
             }
             switch (alt13) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    FOR41=(Token)match(input,FOR,FOLLOW_FOR_in_pre_for_expression496); if (state.failed) return retval;
+                    FOR42=(Token)match(input,FOR,FOLLOW_FOR_in_pre_for_expression506); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    FOR41_tree = (Object)adaptor.create(FOR41);
-                    adaptor.addChild(root_0, FOR41_tree);
+                    FOR42_tree = (Object)adaptor.create(FOR42);
+                    adaptor.addChild(root_0, FOR42_tree);
                     }
-                    LEFT_P42=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_for_expression498); if (state.failed) return retval;
+                    LEFT_P43=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_for_expression508); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LEFT_P42_tree = (Object)adaptor.create(LEFT_P42);
-                    adaptor.addChild(root_0, LEFT_P42_tree);
+                    LEFT_P43_tree = (Object)adaptor.create(LEFT_P43);
+                    adaptor.addChild(root_0, LEFT_P43_tree);
                     }
-                    pushFollow(FOLLOW_pre_stat_in_pre_for_expression502);
+                    pushFollow(FOLLOW_pre_stat_in_pre_for_expression512);
                     e_init=pre_stat();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e_init.getTree());
-                    PV43=(Token)match(input,PV,FOLLOW_PV_in_pre_for_expression504); if (state.failed) return retval;
+                    PV44=(Token)match(input,PV,FOLLOW_PV_in_pre_for_expression514); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    PV43_tree = (Object)adaptor.create(PV43);
-                    adaptor.addChild(root_0, PV43_tree);
+                    PV44_tree = (Object)adaptor.create(PV44);
+                    adaptor.addChild(root_0, PV44_tree);
                     }
-                    pushFollow(FOLLOW_expression_in_pre_for_expression508);
+                    pushFollow(FOLLOW_expression_in_pre_for_expression518);
                     e_cond=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e_cond.getTree());
-                    PV44=(Token)match(input,PV,FOLLOW_PV_in_pre_for_expression510); if (state.failed) return retval;
+                    PV45=(Token)match(input,PV,FOLLOW_PV_in_pre_for_expression520); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    PV44_tree = (Object)adaptor.create(PV44);
-                    adaptor.addChild(root_0, PV44_tree);
+                    PV45_tree = (Object)adaptor.create(PV45);
+                    adaptor.addChild(root_0, PV45_tree);
                     }
-                    pushFollow(FOLLOW_pre_stat_in_pre_for_expression514);
+                    pushFollow(FOLLOW_pre_stat_in_pre_for_expression524);
                     e_inc=pre_stat();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, e_inc.getTree());
-                    RIGHT_P45=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_for_expression516); if (state.failed) return retval;
+                    RIGHT_P46=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_for_expression526); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    RIGHT_P45_tree = (Object)adaptor.create(RIGHT_P45);
-                    adaptor.addChild(root_0, RIGHT_P45_tree);
+                    RIGHT_P46_tree = (Object)adaptor.create(RIGHT_P46);
+                    adaptor.addChild(root_0, RIGHT_P46_tree);
                     }
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:81: ( NEWLINE )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:81: ( NEWLINE )?
                     int alt11=2;
                     alt11 = dfa11.predict(input);
                     switch (alt11) {
                         case 1 :
-                            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                             {
-                            NEWLINE46=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_for_expression518); if (state.failed) return retval;
+                            NEWLINE47=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_for_expression528); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            NEWLINE46_tree = (Object)adaptor.create(NEWLINE46);
-                            adaptor.addChild(root_0, NEWLINE46_tree);
+                            NEWLINE47_tree = (Object)adaptor.create(NEWLINE47);
+                            adaptor.addChild(root_0, NEWLINE47_tree);
                             }
 
                             }
@@ -1661,7 +1683,7 @@ public class ScriptParser extends Parser {
 
                     }
 
-                    pushFollow(FOLLOW_stat_in_pre_for_expression523);
+                    pushFollow(FOLLOW_stat_in_pre_for_expression533);
                     s=stat();
 
                     state._fsp--;
@@ -1680,52 +1702,52 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:347:7: FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:350:7: FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    FOR47=(Token)match(input,FOR,FOLLOW_FOR_in_pre_for_expression533); if (state.failed) return retval;
+                    FOR48=(Token)match(input,FOR,FOLLOW_FOR_in_pre_for_expression543); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    FOR47_tree = (Object)adaptor.create(FOR47);
-                    adaptor.addChild(root_0, FOR47_tree);
+                    FOR48_tree = (Object)adaptor.create(FOR48);
+                    adaptor.addChild(root_0, FOR48_tree);
                     }
-                    LEFT_P48=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_for_expression535); if (state.failed) return retval;
+                    LEFT_P49=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_pre_for_expression545); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LEFT_P48_tree = (Object)adaptor.create(LEFT_P48);
-                    adaptor.addChild(root_0, LEFT_P48_tree);
+                    LEFT_P49_tree = (Object)adaptor.create(LEFT_P49);
+                    adaptor.addChild(root_0, LEFT_P49_tree);
                     }
-                    ID49=(Token)match(input,ID,FOLLOW_ID_in_pre_for_expression537); if (state.failed) return retval;
+                    ID50=(Token)match(input,ID,FOLLOW_ID_in_pre_for_expression547); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID49_tree = (Object)adaptor.create(ID49);
-                    adaptor.addChild(root_0, ID49_tree);
+                    ID50_tree = (Object)adaptor.create(ID50);
+                    adaptor.addChild(root_0, ID50_tree);
                     }
-                    EQUAL50=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_pre_for_expression539); if (state.failed) return retval;
+                    EQUAL51=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_pre_for_expression549); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    EQUAL50_tree = (Object)adaptor.create(EQUAL50);
-                    adaptor.addChild(root_0, EQUAL50_tree);
+                    EQUAL51_tree = (Object)adaptor.create(EQUAL51);
+                    adaptor.addChild(root_0, EQUAL51_tree);
                     }
-                    pushFollow(FOLLOW_range_in_pre_for_expression541);
-                    range51=range();
+                    pushFollow(FOLLOW_range_in_pre_for_expression551);
+                    range52=range();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, range51.getTree());
-                    RIGHT_P52=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_for_expression543); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, range52.getTree());
+                    RIGHT_P53=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_pre_for_expression553); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    RIGHT_P52_tree = (Object)adaptor.create(RIGHT_P52);
-                    adaptor.addChild(root_0, RIGHT_P52_tree);
+                    RIGHT_P53_tree = (Object)adaptor.create(RIGHT_P53);
+                    adaptor.addChild(root_0, RIGHT_P53_tree);
                     }
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:347:41: ( NEWLINE )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:350:41: ( NEWLINE )?
                     int alt12=2;
                     alt12 = dfa12.predict(input);
                     switch (alt12) {
                         case 1 :
-                            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                             {
-                            NEWLINE53=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_for_expression545); if (state.failed) return retval;
+                            NEWLINE54=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_pre_for_expression555); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
-                            NEWLINE53_tree = (Object)adaptor.create(NEWLINE53);
-                            adaptor.addChild(root_0, NEWLINE53_tree);
+                            NEWLINE54_tree = (Object)adaptor.create(NEWLINE54);
+                            adaptor.addChild(root_0, NEWLINE54_tree);
                             }
 
                             }
@@ -1733,7 +1755,7 @@ public class ScriptParser extends Parser {
 
                     }
 
-                    pushFollow(FOLLOW_stat_in_pre_for_expression550);
+                    pushFollow(FOLLOW_stat_in_pre_for_expression560);
                     s=stat();
 
                     state._fsp--;
@@ -1745,9 +1767,9 @@ public class ScriptParser extends Parser {
 
                               boolean plus_minus = true;
 
-                              Calculable init = (range51!=null?range51.range_ele:null).get(0);
-                              Calculable increment = (range51!=null?range51.range_ele:null).size()==3 ? (range51!=null?range51.range_ele:null).get(1) : new Numeric(1.0f);
-                              Calculable condition = (range51!=null?range51.range_ele:null).get((range51!=null?range51.range_ele:null).size()-1);
+                              Calculable init = (range52!=null?range52.range_ele:null).get(0);
+                              Calculable increment = (range52!=null?range52.range_ele:null).size()==3 ? (range52!=null?range52.range_ele:null).get(1) : new Numeric(1.0f);
+                              Calculable condition = (range52!=null?range52.range_ele:null).get((range52!=null?range52.range_ele:null).size()-1);
 
                               try {
                                   if (increment.getSimplifiedCalculable() instanceof Numeric) {
@@ -1758,19 +1780,19 @@ public class ScriptParser extends Parser {
                                   //NOTHING
                               }
 
-                              VariableAssignment va = new VariableAssignment(this, (ID49!=null?ID49.getText():null), init);
+                              VariableAssignment va = new VariableAssignment(this, (ID50!=null?ID50.getText():null), init);
                               Expression init_expr = new Expression(true, this, va);
                               
                               LinkedList<Object> term_ele = new LinkedList();
-                              term_ele.add(new Variable(this, (ID49!=null?ID49.getText():null)));
+                              term_ele.add(new Variable(this, (ID50!=null?ID50.getText():null)));
                               term_ele.add(Operator.OPERATOR_PLUS);
                               term_ele.add(increment);
                               Term t = new Term(this, term_ele);
-                              VariableAssignment vai = new VariableAssignment(this, (ID49!=null?ID49.getText():null), t);
+                              VariableAssignment vai = new VariableAssignment(this, (ID50!=null?ID50.getText():null), t);
                               Expression increment_expr = new Expression(true, this, vai);
 
                               LinkedList<Object> term_elec = new LinkedList();
-                              term_elec.add(new Variable(this, (ID49!=null?ID49.getText():null)));
+                              term_elec.add(new Variable(this, (ID50!=null?ID50.getText():null)));
                               term_elec.add(plus_minus ? Operator.OPERATOR_CMP_LT_EQ : Operator.OPERATOR_CMP_GT_EQ);
                               term_elec.add(condition);
                               Term tc = new Term(this, term_elec);
@@ -1814,29 +1836,29 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "range"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:390:1: range returns [LinkedList<Calculable> range_ele] : a= expression ( ARROW b= range )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:393:1: range returns [LinkedList<Calculable> range_ele] : a= expression ( ARROW b= range )* ;
     public final ScriptParser.range_return range() throws RecognitionException {
         ScriptParser.range_return retval = new ScriptParser.range_return();
         retval.start = input.LT(1);
         int range_StartIndex = input.index();
         Object root_0 = null;
 
-        Token ARROW54=null;
+        Token ARROW55=null;
         ScriptParser.expression_return a = null;
 
         ScriptParser.range_return b = null;
 
 
-        Object ARROW54_tree=null;
+        Object ARROW55_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:391:5: (a= expression ( ARROW b= range )* )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:391:7: a= expression ( ARROW b= range )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:394:5: (a= expression ( ARROW b= range )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:394:7: a= expression ( ARROW b= range )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_expression_in_range570);
+            pushFollow(FOLLOW_expression_in_range580);
             a=expression();
 
             state._fsp--;
@@ -1848,7 +1870,7 @@ public class ScriptParser extends Parser {
                       retval.range_ele.add((a!=null?a.expr:null));
                   
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:394:7: ( ARROW b= range )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:397:7: ( ARROW b= range )*
             loop14:
             do {
                 int alt14=2;
@@ -1857,7 +1879,7 @@ public class ScriptParser extends Parser {
                 if ( (LA14_0==ARROW) ) {
                     int LA14_2 = input.LA(2);
 
-                    if ( (synpred25_Script()) ) {
+                    if ( (synpred26_Script()) ) {
                         alt14=1;
                     }
 
@@ -1867,14 +1889,14 @@ public class ScriptParser extends Parser {
 
                 switch (alt14) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:394:8: ARROW b= range
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:397:8: ARROW b= range
             	    {
-            	    ARROW54=(Token)match(input,ARROW,FOLLOW_ARROW_in_range575); if (state.failed) return retval;
+            	    ARROW55=(Token)match(input,ARROW,FOLLOW_ARROW_in_range585); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    ARROW54_tree = (Object)adaptor.create(ARROW54);
-            	    adaptor.addChild(root_0, ARROW54_tree);
+            	    ARROW55_tree = (Object)adaptor.create(ARROW55);
+            	    adaptor.addChild(root_0, ARROW55_tree);
             	    }
-            	    pushFollow(FOLLOW_range_in_range579);
+            	    pushFollow(FOLLOW_range_in_range589);
             	    b=range();
 
             	    state._fsp--;
@@ -1926,33 +1948,33 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:401:1: expression returns [Expression expr] : terms ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:404:1: expression returns [Expression expr] : terms ;
     public final ScriptParser.expression_return expression() throws RecognitionException {
         ScriptParser.expression_return retval = new ScriptParser.expression_return();
         retval.start = input.LT(1);
         int expression_StartIndex = input.index();
         Object root_0 = null;
 
-        ScriptParser.terms_return terms55 = null;
+        ScriptParser.terms_return terms56 = null;
 
 
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:402:5: ( terms )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:402:7: terms
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:405:5: ( terms )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:405:7: terms
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_terms_in_expression600);
-            terms55=terms();
+            pushFollow(FOLLOW_terms_in_expression610);
+            terms56=terms();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, terms55.getTree());
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, terms56.getTree());
             if ( state.backtracking==0 ) {
 
-                      retval.expr = new Expression( this, new Term(this, (terms55!=null?terms55.terms:null)) );
+                      retval.expr = new Expression( this, new Term(this, (terms56!=null?terms56.terms:null)) );
                   
             }
 
@@ -1984,33 +2006,33 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "terms"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:406:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:409:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* ;
     public final ScriptParser.terms_return terms() throws RecognitionException {
         ScriptParser.terms_return retval = new ScriptParser.terms_return();
         retval.start = input.LT(1);
         int terms_StartIndex = input.index();
         Object root_0 = null;
 
-        Token PLUS56=null;
-        Token MINUS57=null;
-        Token AND58=null;
-        Token OR59=null;
+        Token PLUS57=null;
+        Token MINUS58=null;
+        Token AND59=null;
+        Token OR60=null;
         ScriptParser.term_return t = null;
 
 
-        Object PLUS56_tree=null;
-        Object MINUS57_tree=null;
-        Object AND58_tree=null;
-        Object OR59_tree=null;
+        Object PLUS57_tree=null;
+        Object MINUS58_tree=null;
+        Object AND59_tree=null;
+        Object OR60_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:407:5: (t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:407:7: t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:410:5: (t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:410:7: t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_term_in_terms620);
+            pushFollow(FOLLOW_term_in_terms630);
             t=term();
 
             state._fsp--;
@@ -2022,7 +2044,7 @@ public class ScriptParser extends Parser {
                       retval.terms.add( new Term(this, (t!=null?t.atoms:null)) );
                   
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:410:7: ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:413:7: ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
             loop15:
             do {
                 int alt15=5;
@@ -2052,14 +2074,14 @@ public class ScriptParser extends Parser {
 
                 switch (alt15) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:410:9: PLUS t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:413:9: PLUS t= term
             	    {
-            	    PLUS56=(Token)match(input,PLUS,FOLLOW_PLUS_in_terms626); if (state.failed) return retval;
+            	    PLUS57=(Token)match(input,PLUS,FOLLOW_PLUS_in_terms636); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    PLUS56_tree = (Object)adaptor.create(PLUS56);
-            	    adaptor.addChild(root_0, PLUS56_tree);
+            	    PLUS57_tree = (Object)adaptor.create(PLUS57);
+            	    adaptor.addChild(root_0, PLUS57_tree);
             	    }
-            	    pushFollow(FOLLOW_term_in_terms630);
+            	    pushFollow(FOLLOW_term_in_terms640);
             	    t=term();
 
             	    state._fsp--;
@@ -2075,14 +2097,14 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:414:9: MINUS t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:417:9: MINUS t= term
             	    {
-            	    MINUS57=(Token)match(input,MINUS,FOLLOW_MINUS_in_terms642); if (state.failed) return retval;
+            	    MINUS58=(Token)match(input,MINUS,FOLLOW_MINUS_in_terms652); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    MINUS57_tree = (Object)adaptor.create(MINUS57);
-            	    adaptor.addChild(root_0, MINUS57_tree);
+            	    MINUS58_tree = (Object)adaptor.create(MINUS58);
+            	    adaptor.addChild(root_0, MINUS58_tree);
             	    }
-            	    pushFollow(FOLLOW_term_in_terms646);
+            	    pushFollow(FOLLOW_term_in_terms656);
             	    t=term();
 
             	    state._fsp--;
@@ -2098,14 +2120,14 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:418:9: AND t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:421:9: AND t= term
             	    {
-            	    AND58=(Token)match(input,AND,FOLLOW_AND_in_terms658); if (state.failed) return retval;
+            	    AND59=(Token)match(input,AND,FOLLOW_AND_in_terms668); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    AND58_tree = (Object)adaptor.create(AND58);
-            	    adaptor.addChild(root_0, AND58_tree);
+            	    AND59_tree = (Object)adaptor.create(AND59);
+            	    adaptor.addChild(root_0, AND59_tree);
             	    }
-            	    pushFollow(FOLLOW_term_in_terms662);
+            	    pushFollow(FOLLOW_term_in_terms672);
             	    t=term();
 
             	    state._fsp--;
@@ -2121,14 +2143,14 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 4 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:422:9: OR t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:425:9: OR t= term
             	    {
-            	    OR59=(Token)match(input,OR,FOLLOW_OR_in_terms674); if (state.failed) return retval;
+            	    OR60=(Token)match(input,OR,FOLLOW_OR_in_terms684); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    OR59_tree = (Object)adaptor.create(OR59);
-            	    adaptor.addChild(root_0, OR59_tree);
+            	    OR60_tree = (Object)adaptor.create(OR60);
+            	    adaptor.addChild(root_0, OR60_tree);
             	    }
-            	    pushFollow(FOLLOW_term_in_terms678);
+            	    pushFollow(FOLLOW_term_in_terms688);
             	    t=term();
 
             	    state._fsp--;
@@ -2178,52 +2200,52 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "term"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:428:1: term returns [LinkedList<Object> atoms] : (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:431:1: term returns [LinkedList<Object> atoms] : (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
     public final ScriptParser.term_return term() throws RecognitionException {
         ScriptParser.term_return retval = new ScriptParser.term_return();
         retval.start = input.LT(1);
         int term_StartIndex = input.index();
         Object root_0 = null;
 
-        Token MULT60=null;
-        Token DIV61=null;
-        Token CMP_LT62=null;
-        Token CMP_LT_EQ63=null;
-        Token CMP_GT64=null;
-        Token CMP_GT_EQ65=null;
-        Token CMP_EQ66=null;
-        Token CMP_NEQ67=null;
-        Token ID68=null;
-        Token PLUS_PLUS69=null;
+        Token MULT61=null;
+        Token DIV62=null;
+        Token CMP_LT63=null;
+        Token CMP_LT_EQ64=null;
+        Token CMP_GT65=null;
+        Token CMP_GT_EQ66=null;
+        Token CMP_EQ67=null;
+        Token CMP_NEQ68=null;
+        Token ID69=null;
         Token PLUS_PLUS70=null;
-        Token ID71=null;
+        Token PLUS_PLUS71=null;
         Token ID72=null;
-        Token MINUS_MINUS73=null;
+        Token ID73=null;
         Token MINUS_MINUS74=null;
-        Token ID75=null;
+        Token MINUS_MINUS75=null;
+        Token ID76=null;
         ScriptParser.atom_return a = null;
 
 
-        Object MULT60_tree=null;
-        Object DIV61_tree=null;
-        Object CMP_LT62_tree=null;
-        Object CMP_LT_EQ63_tree=null;
-        Object CMP_GT64_tree=null;
-        Object CMP_GT_EQ65_tree=null;
-        Object CMP_EQ66_tree=null;
-        Object CMP_NEQ67_tree=null;
-        Object ID68_tree=null;
-        Object PLUS_PLUS69_tree=null;
+        Object MULT61_tree=null;
+        Object DIV62_tree=null;
+        Object CMP_LT63_tree=null;
+        Object CMP_LT_EQ64_tree=null;
+        Object CMP_GT65_tree=null;
+        Object CMP_GT_EQ66_tree=null;
+        Object CMP_EQ67_tree=null;
+        Object CMP_NEQ68_tree=null;
+        Object ID69_tree=null;
         Object PLUS_PLUS70_tree=null;
-        Object ID71_tree=null;
+        Object PLUS_PLUS71_tree=null;
         Object ID72_tree=null;
-        Object MINUS_MINUS73_tree=null;
+        Object ID73_tree=null;
         Object MINUS_MINUS74_tree=null;
-        Object ID75_tree=null;
+        Object MINUS_MINUS75_tree=null;
+        Object ID76_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:429:5: (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:432:5: (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
             int alt17=5;
             switch ( input.LA(1) ) {
             case LEFT_CB:
@@ -2308,11 +2330,11 @@ public class ScriptParser extends Parser {
 
             switch (alt17) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:429:7: a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:432:7: a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_atom_in_term702);
+                    pushFollow(FOLLOW_atom_in_term712);
                     a=atom();
 
                     state._fsp--;
@@ -2324,7 +2346,7 @@ public class ScriptParser extends Parser {
                               retval.atoms.add((a!=null?a.value:null));
                           
                     }
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:432:7: ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:435:7: ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
                     loop16:
                     do {
                         int alt16=9;
@@ -2374,14 +2396,14 @@ public class ScriptParser extends Parser {
 
                         switch (alt16) {
                     	case 1 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:432:9: MULT a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:435:9: MULT a= atom
                     	    {
-                    	    MULT60=(Token)match(input,MULT,FOLLOW_MULT_in_term708); if (state.failed) return retval;
+                    	    MULT61=(Token)match(input,MULT,FOLLOW_MULT_in_term718); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    MULT60_tree = (Object)adaptor.create(MULT60);
-                    	    adaptor.addChild(root_0, MULT60_tree);
+                    	    MULT61_tree = (Object)adaptor.create(MULT61);
+                    	    adaptor.addChild(root_0, MULT61_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term712);
+                    	    pushFollow(FOLLOW_atom_in_term722);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2397,14 +2419,14 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:436:9: DIV a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:439:9: DIV a= atom
                     	    {
-                    	    DIV61=(Token)match(input,DIV,FOLLOW_DIV_in_term724); if (state.failed) return retval;
+                    	    DIV62=(Token)match(input,DIV,FOLLOW_DIV_in_term734); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    DIV61_tree = (Object)adaptor.create(DIV61);
-                    	    adaptor.addChild(root_0, DIV61_tree);
+                    	    DIV62_tree = (Object)adaptor.create(DIV62);
+                    	    adaptor.addChild(root_0, DIV62_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term728);
+                    	    pushFollow(FOLLOW_atom_in_term738);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2420,14 +2442,14 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 3 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:440:9: CMP_LT a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:443:9: CMP_LT a= atom
                     	    {
-                    	    CMP_LT62=(Token)match(input,CMP_LT,FOLLOW_CMP_LT_in_term740); if (state.failed) return retval;
+                    	    CMP_LT63=(Token)match(input,CMP_LT,FOLLOW_CMP_LT_in_term750); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    CMP_LT62_tree = (Object)adaptor.create(CMP_LT62);
-                    	    adaptor.addChild(root_0, CMP_LT62_tree);
+                    	    CMP_LT63_tree = (Object)adaptor.create(CMP_LT63);
+                    	    adaptor.addChild(root_0, CMP_LT63_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term744);
+                    	    pushFollow(FOLLOW_atom_in_term754);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2443,14 +2465,14 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 4 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:444:9: CMP_LT_EQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:447:9: CMP_LT_EQ a= atom
                     	    {
-                    	    CMP_LT_EQ63=(Token)match(input,CMP_LT_EQ,FOLLOW_CMP_LT_EQ_in_term757); if (state.failed) return retval;
+                    	    CMP_LT_EQ64=(Token)match(input,CMP_LT_EQ,FOLLOW_CMP_LT_EQ_in_term767); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    CMP_LT_EQ63_tree = (Object)adaptor.create(CMP_LT_EQ63);
-                    	    adaptor.addChild(root_0, CMP_LT_EQ63_tree);
+                    	    CMP_LT_EQ64_tree = (Object)adaptor.create(CMP_LT_EQ64);
+                    	    adaptor.addChild(root_0, CMP_LT_EQ64_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term761);
+                    	    pushFollow(FOLLOW_atom_in_term771);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2466,14 +2488,14 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 5 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:448:9: CMP_GT a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:451:9: CMP_GT a= atom
                     	    {
-                    	    CMP_GT64=(Token)match(input,CMP_GT,FOLLOW_CMP_GT_in_term774); if (state.failed) return retval;
+                    	    CMP_GT65=(Token)match(input,CMP_GT,FOLLOW_CMP_GT_in_term784); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    CMP_GT64_tree = (Object)adaptor.create(CMP_GT64);
-                    	    adaptor.addChild(root_0, CMP_GT64_tree);
+                    	    CMP_GT65_tree = (Object)adaptor.create(CMP_GT65);
+                    	    adaptor.addChild(root_0, CMP_GT65_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term778);
+                    	    pushFollow(FOLLOW_atom_in_term788);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2489,14 +2511,14 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 6 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:452:9: CMP_GT_EQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:455:9: CMP_GT_EQ a= atom
                     	    {
-                    	    CMP_GT_EQ65=(Token)match(input,CMP_GT_EQ,FOLLOW_CMP_GT_EQ_in_term790); if (state.failed) return retval;
+                    	    CMP_GT_EQ66=(Token)match(input,CMP_GT_EQ,FOLLOW_CMP_GT_EQ_in_term800); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    CMP_GT_EQ65_tree = (Object)adaptor.create(CMP_GT_EQ65);
-                    	    adaptor.addChild(root_0, CMP_GT_EQ65_tree);
+                    	    CMP_GT_EQ66_tree = (Object)adaptor.create(CMP_GT_EQ66);
+                    	    adaptor.addChild(root_0, CMP_GT_EQ66_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term794);
+                    	    pushFollow(FOLLOW_atom_in_term804);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2512,14 +2534,14 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 7 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:456:9: CMP_EQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:459:9: CMP_EQ a= atom
                     	    {
-                    	    CMP_EQ66=(Token)match(input,CMP_EQ,FOLLOW_CMP_EQ_in_term807); if (state.failed) return retval;
+                    	    CMP_EQ67=(Token)match(input,CMP_EQ,FOLLOW_CMP_EQ_in_term817); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    CMP_EQ66_tree = (Object)adaptor.create(CMP_EQ66);
-                    	    adaptor.addChild(root_0, CMP_EQ66_tree);
+                    	    CMP_EQ67_tree = (Object)adaptor.create(CMP_EQ67);
+                    	    adaptor.addChild(root_0, CMP_EQ67_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term811);
+                    	    pushFollow(FOLLOW_atom_in_term821);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2535,14 +2557,14 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 8 :
-                    	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:460:9: CMP_NEQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:463:9: CMP_NEQ a= atom
                     	    {
-                    	    CMP_NEQ67=(Token)match(input,CMP_NEQ,FOLLOW_CMP_NEQ_in_term823); if (state.failed) return retval;
+                    	    CMP_NEQ68=(Token)match(input,CMP_NEQ,FOLLOW_CMP_NEQ_in_term833); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
-                    	    CMP_NEQ67_tree = (Object)adaptor.create(CMP_NEQ67);
-                    	    adaptor.addChild(root_0, CMP_NEQ67_tree);
+                    	    CMP_NEQ68_tree = (Object)adaptor.create(CMP_NEQ68);
+                    	    adaptor.addChild(root_0, CMP_NEQ68_tree);
                     	    }
-                    	    pushFollow(FOLLOW_atom_in_term827);
+                    	    pushFollow(FOLLOW_atom_in_term837);
                     	    a=atom();
 
                     	    state._fsp--;
@@ -2567,24 +2589,24 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:465:7: ID PLUS_PLUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:468:7: ID PLUS_PLUS
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID68=(Token)match(input,ID,FOLLOW_ID_in_term844); if (state.failed) return retval;
+                    ID69=(Token)match(input,ID,FOLLOW_ID_in_term854); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID68_tree = (Object)adaptor.create(ID68);
-                    adaptor.addChild(root_0, ID68_tree);
+                    ID69_tree = (Object)adaptor.create(ID69);
+                    adaptor.addChild(root_0, ID69_tree);
                     }
-                    PLUS_PLUS69=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_term846); if (state.failed) return retval;
+                    PLUS_PLUS70=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_term856); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    PLUS_PLUS69_tree = (Object)adaptor.create(PLUS_PLUS69);
-                    adaptor.addChild(root_0, PLUS_PLUS69_tree);
+                    PLUS_PLUS70_tree = (Object)adaptor.create(PLUS_PLUS70);
+                    adaptor.addChild(root_0, PLUS_PLUS70_tree);
                     }
                     if ( state.backtracking==0 ) {
 
                               retval.atoms = new LinkedList();
-                              VariableAssignment va = new VariableAssignment(this, (ID68!=null?ID68.getText():null), Operator.OPERATOR_PLUS_PLUS);
+                              VariableAssignment va = new VariableAssignment(this, (ID69!=null?ID69.getText():null), Operator.OPERATOR_PLUS_PLUS);
                               retval.atoms.add(va);
                           
                     }
@@ -2592,24 +2614,24 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:470:7: PLUS_PLUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:473:7: PLUS_PLUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    PLUS_PLUS70=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_term856); if (state.failed) return retval;
+                    PLUS_PLUS71=(Token)match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_term866); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    PLUS_PLUS70_tree = (Object)adaptor.create(PLUS_PLUS70);
-                    adaptor.addChild(root_0, PLUS_PLUS70_tree);
+                    PLUS_PLUS71_tree = (Object)adaptor.create(PLUS_PLUS71);
+                    adaptor.addChild(root_0, PLUS_PLUS71_tree);
                     }
-                    ID71=(Token)match(input,ID,FOLLOW_ID_in_term858); if (state.failed) return retval;
+                    ID72=(Token)match(input,ID,FOLLOW_ID_in_term868); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID71_tree = (Object)adaptor.create(ID71);
-                    adaptor.addChild(root_0, ID71_tree);
+                    ID72_tree = (Object)adaptor.create(ID72);
+                    adaptor.addChild(root_0, ID72_tree);
                     }
                     if ( state.backtracking==0 ) {
 
                               retval.atoms = new LinkedList();
-                              VariableAssignment va = new VariableAssignment(this, (ID71!=null?ID71.getText():null), Operator.OPERATOR_PLUS_PLUS);
+                              VariableAssignment va = new VariableAssignment(this, (ID72!=null?ID72.getText():null), Operator.OPERATOR_PLUS_PLUS);
                               retval.atoms.add(va);
                           
                     }
@@ -2617,24 +2639,24 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:475:7: ID MINUS_MINUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:478:7: ID MINUS_MINUS
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID72=(Token)match(input,ID,FOLLOW_ID_in_term868); if (state.failed) return retval;
+                    ID73=(Token)match(input,ID,FOLLOW_ID_in_term878); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID72_tree = (Object)adaptor.create(ID72);
-                    adaptor.addChild(root_0, ID72_tree);
+                    ID73_tree = (Object)adaptor.create(ID73);
+                    adaptor.addChild(root_0, ID73_tree);
                     }
-                    MINUS_MINUS73=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_term870); if (state.failed) return retval;
+                    MINUS_MINUS74=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_term880); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MINUS_MINUS73_tree = (Object)adaptor.create(MINUS_MINUS73);
-                    adaptor.addChild(root_0, MINUS_MINUS73_tree);
+                    MINUS_MINUS74_tree = (Object)adaptor.create(MINUS_MINUS74);
+                    adaptor.addChild(root_0, MINUS_MINUS74_tree);
                     }
                     if ( state.backtracking==0 ) {
 
                               retval.atoms = new LinkedList();
-                              VariableAssignment va = new VariableAssignment(this, (ID72!=null?ID72.getText():null), Operator.OPERATOR_MINUS_MINUS);
+                              VariableAssignment va = new VariableAssignment(this, (ID73!=null?ID73.getText():null), Operator.OPERATOR_MINUS_MINUS);
                               retval.atoms.add(va);
                           
                     }
@@ -2642,24 +2664,24 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:480:7: MINUS_MINUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:483:7: MINUS_MINUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    MINUS_MINUS74=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_term880); if (state.failed) return retval;
+                    MINUS_MINUS75=(Token)match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_term890); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MINUS_MINUS74_tree = (Object)adaptor.create(MINUS_MINUS74);
-                    adaptor.addChild(root_0, MINUS_MINUS74_tree);
+                    MINUS_MINUS75_tree = (Object)adaptor.create(MINUS_MINUS75);
+                    adaptor.addChild(root_0, MINUS_MINUS75_tree);
                     }
-                    ID75=(Token)match(input,ID,FOLLOW_ID_in_term882); if (state.failed) return retval;
+                    ID76=(Token)match(input,ID,FOLLOW_ID_in_term892); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID75_tree = (Object)adaptor.create(ID75);
-                    adaptor.addChild(root_0, ID75_tree);
+                    ID76_tree = (Object)adaptor.create(ID76);
+                    adaptor.addChild(root_0, ID76_tree);
                     }
                     if ( state.backtracking==0 ) {
 
                               retval.atoms = new LinkedList();
-                              VariableAssignment va = new VariableAssignment(this, (ID75!=null?ID75.getText():null), Operator.OPERATOR_MINUS_MINUS);
+                              VariableAssignment va = new VariableAssignment(this, (ID76!=null?ID76.getText():null), Operator.OPERATOR_MINUS_MINUS);
                               retval.atoms.add(va);
                           
                     }
@@ -2687,48 +2709,59 @@ public class ScriptParser extends Parser {
     }
     // $ANTLR end "term"
 
-    public static class function_call_return extends ParserRuleReturnScope {
-        public LinkedList<Object> name_params;
+    public static class function_declaration_return extends ParserRuleReturnScope {
+        public FunctionDeclaration expr;
         Object tree;
         public Object getTree() { return tree; }
     };
 
-    // $ANTLR start "function_call"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:487:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P ( args )? RIGHT_P ;
-    public final ScriptParser.function_call_return function_call() throws RecognitionException {
-        ScriptParser.function_call_return retval = new ScriptParser.function_call_return();
+    // $ANTLR start "function_declaration"
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:490:1: function_declaration returns [FunctionDeclaration expr] : FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat ;
+    public final ScriptParser.function_declaration_return function_declaration() throws RecognitionException {
+        ScriptParser.function_declaration_return retval = new ScriptParser.function_declaration_return();
         retval.start = input.LT(1);
-        int function_call_StartIndex = input.index();
+        int function_declaration_StartIndex = input.index();
         Object root_0 = null;
 
-        Token ID76=null;
-        Token LEFT_P77=null;
-        Token RIGHT_P79=null;
-        ScriptParser.args_return args78 = null;
+        Token FUNCTION77=null;
+        Token ID78=null;
+        Token LEFT_P79=null;
+        Token RIGHT_P81=null;
+        Token NEWLINE82=null;
+        ScriptParser.stat_return s = null;
+
+        ScriptParser.args_return args80 = null;
 
 
-        Object ID76_tree=null;
-        Object LEFT_P77_tree=null;
-        Object RIGHT_P79_tree=null;
+        Object FUNCTION77_tree=null;
+        Object ID78_tree=null;
+        Object LEFT_P79_tree=null;
+        Object RIGHT_P81_tree=null;
+        Object NEWLINE82_tree=null;
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:487:55: ( ID LEFT_P ( args )? RIGHT_P )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:488:5: ID LEFT_P ( args )? RIGHT_P
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:490:57: ( FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:491:5: FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat
             {
             root_0 = (Object)adaptor.nil();
 
-            ID76=(Token)match(input,ID,FOLLOW_ID_in_function_call900); if (state.failed) return retval;
+            FUNCTION77=(Token)match(input,FUNCTION,FOLLOW_FUNCTION_in_function_declaration911); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            ID76_tree = (Object)adaptor.create(ID76);
-            adaptor.addChild(root_0, ID76_tree);
+            FUNCTION77_tree = (Object)adaptor.create(FUNCTION77);
+            adaptor.addChild(root_0, FUNCTION77_tree);
             }
-            LEFT_P77=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_function_call902); if (state.failed) return retval;
+            ID78=(Token)match(input,ID,FOLLOW_ID_in_function_declaration913); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            LEFT_P77_tree = (Object)adaptor.create(LEFT_P77);
-            adaptor.addChild(root_0, LEFT_P77_tree);
+            ID78_tree = (Object)adaptor.create(ID78);
+            adaptor.addChild(root_0, ID78_tree);
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:488:15: ( args )?
+            LEFT_P79=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_function_declaration915); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            LEFT_P79_tree = (Object)adaptor.create(LEFT_P79);
+            adaptor.addChild(root_0, LEFT_P79_tree);
+            }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:491:24: ( args )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -2737,33 +2770,153 @@ public class ScriptParser extends Parser {
             }
             switch (alt18) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: args
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: args
                     {
-                    pushFollow(FOLLOW_args_in_function_call904);
-                    args78=args();
+                    pushFollow(FOLLOW_args_in_function_declaration917);
+                    args80=args();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, args78.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, args80.getTree());
 
                     }
                     break;
 
             }
 
-            RIGHT_P79=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_function_call907); if (state.failed) return retval;
+            RIGHT_P81=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_function_declaration920); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            RIGHT_P79_tree = (Object)adaptor.create(RIGHT_P79);
-            adaptor.addChild(root_0, RIGHT_P79_tree);
+            RIGHT_P81_tree = (Object)adaptor.create(RIGHT_P81);
+            adaptor.addChild(root_0, RIGHT_P81_tree);
+            }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:491:38: ( NEWLINE )?
+            int alt19=2;
+            alt19 = dfa19.predict(input);
+            switch (alt19) {
+                case 1 :
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
+                    {
+                    NEWLINE82=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_function_declaration922); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) {
+                    NEWLINE82_tree = (Object)adaptor.create(NEWLINE82);
+                    adaptor.addChild(root_0, NEWLINE82_tree);
+                    }
+
+                    }
+                    break;
+
+            }
+
+            pushFollow(FOLLOW_stat_in_function_declaration927);
+            s=stat();
+
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, s.getTree());
+            if ( state.backtracking==0 ) {
+
+                      retval.expr = new FunctionDeclaration(this, (ID78!=null?ID78.getText():null), (args80!=null?args80.params:null), (s!=null?s.expr:null));
+                  
+            }
+
+            }
+
+            retval.stop = input.LT(-1);
+
+            if ( state.backtracking==0 ) {
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+            }
+        }
+
+            catch (RecognitionException rec_exc) {
+                throw rec_exc;
+            }
+        finally {
+            if ( state.backtracking>0 ) { memoize(input, 16, function_declaration_StartIndex); }
+        }
+        return retval;
+    }
+    // $ANTLR end "function_declaration"
+
+    public static class function_call_return extends ParserRuleReturnScope {
+        public LinkedList<Object> name_params;
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+    // $ANTLR start "function_call"
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:495:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P ( args )? RIGHT_P ;
+    public final ScriptParser.function_call_return function_call() throws RecognitionException {
+        ScriptParser.function_call_return retval = new ScriptParser.function_call_return();
+        retval.start = input.LT(1);
+        int function_call_StartIndex = input.index();
+        Object root_0 = null;
+
+        Token ID83=null;
+        Token LEFT_P84=null;
+        Token RIGHT_P86=null;
+        ScriptParser.args_return args85 = null;
+
+
+        Object ID83_tree=null;
+        Object LEFT_P84_tree=null;
+        Object RIGHT_P86_tree=null;
+
+        try {
+            if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:495:55: ( ID LEFT_P ( args )? RIGHT_P )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:496:5: ID LEFT_P ( args )? RIGHT_P
+            {
+            root_0 = (Object)adaptor.nil();
+
+            ID83=(Token)match(input,ID,FOLLOW_ID_in_function_call944); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            ID83_tree = (Object)adaptor.create(ID83);
+            adaptor.addChild(root_0, ID83_tree);
+            }
+            LEFT_P84=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_function_call946); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            LEFT_P84_tree = (Object)adaptor.create(LEFT_P84);
+            adaptor.addChild(root_0, LEFT_P84_tree);
+            }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:496:15: ( args )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
+
+            if ( (LA20_0==LEFT_CB||LA20_0==ID||(LA20_0>=PLUS_PLUS && LA20_0<=MINUS_MINUS)||LA20_0==LEFT_P||LA20_0==MINUS||LA20_0==LEFT_B||(LA20_0>=NUM && LA20_0<=STRING_LITERAL)) ) {
+                alt20=1;
+            }
+            switch (alt20) {
+                case 1 :
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: args
+                    {
+                    pushFollow(FOLLOW_args_in_function_call948);
+                    args85=args();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, args85.getTree());
+
+                    }
+                    break;
+
+            }
+
+            RIGHT_P86=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_function_call951); if (state.failed) return retval;
+            if ( state.backtracking==0 ) {
+            RIGHT_P86_tree = (Object)adaptor.create(RIGHT_P86);
+            adaptor.addChild(root_0, RIGHT_P86_tree);
             }
             if ( state.backtracking==0 ) {
 
-                      if ((args78!=null?args78.params:null) != null) {
-                          retval.name_params = (args78!=null?args78.params:null);
-                          retval.name_params.add(0, (ID76!=null?ID76.getText():null));
+                      if ((args85!=null?args85.params:null) != null) {
+                          retval.name_params = (args85!=null?args85.params:null);
+                          retval.name_params.add(0, (ID83!=null?ID83.getText():null));
                       } else {
                           retval.name_params = new LinkedList();
-                          retval.name_params.add((ID76!=null?ID76.getText():null));
+                          retval.name_params.add((ID83!=null?ID83.getText():null));
                       }
                   
             }
@@ -2783,7 +2936,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 16, function_call_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 17, function_call_StartIndex); }
         }
         return retval;
     }
@@ -2796,29 +2949,29 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "args"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:499:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:507:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
     public final ScriptParser.args_return args() throws RecognitionException {
         ScriptParser.args_return retval = new ScriptParser.args_return();
         retval.start = input.LT(1);
         int args_StartIndex = input.index();
         Object root_0 = null;
 
-        Token COMMA80=null;
+        Token COMMA87=null;
         ScriptParser.expression_return a = null;
 
         ScriptParser.args_return b = null;
 
 
-        Object COMMA80_tree=null;
+        Object COMMA87_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:499:41: (a= expression ( COMMA b= args )* )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:500:5: a= expression ( COMMA b= args )*
+            if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:507:41: (a= expression ( COMMA b= args )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:508:5: a= expression ( COMMA b= args )*
             {
             root_0 = (Object)adaptor.nil();
 
-            pushFollow(FOLLOW_expression_in_args927);
+            pushFollow(FOLLOW_expression_in_args971);
             a=expression();
 
             state._fsp--;
@@ -2830,33 +2983,33 @@ public class ScriptParser extends Parser {
                       retval.params.add((a!=null?a.expr:null));
                   
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:503:7: ( COMMA b= args )*
-            loop19:
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:511:7: ( COMMA b= args )*
+            loop21:
             do {
-                int alt19=2;
-                int LA19_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA19_0==COMMA) ) {
-                    int LA19_2 = input.LA(2);
+                if ( (LA21_0==COMMA) ) {
+                    int LA21_2 = input.LA(2);
 
-                    if ( (synpred43_Script()) ) {
-                        alt19=1;
+                    if ( (synpred46_Script()) ) {
+                        alt21=1;
                     }
 
 
                 }
 
 
-                switch (alt19) {
+                switch (alt21) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:503:8: COMMA b= args
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:511:8: COMMA b= args
             	    {
-            	    COMMA80=(Token)match(input,COMMA,FOLLOW_COMMA_in_args932); if (state.failed) return retval;
+            	    COMMA87=(Token)match(input,COMMA,FOLLOW_COMMA_in_args976); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    COMMA80_tree = (Object)adaptor.create(COMMA80);
-            	    adaptor.addChild(root_0, COMMA80_tree);
+            	    COMMA87_tree = (Object)adaptor.create(COMMA87);
+            	    adaptor.addChild(root_0, COMMA87_tree);
             	    }
-            	    pushFollow(FOLLOW_args_in_args936);
+            	    pushFollow(FOLLOW_args_in_args980);
             	    b=args();
 
             	    state._fsp--;
@@ -2875,7 +3028,7 @@ public class ScriptParser extends Parser {
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop21;
                 }
             } while (true);
 
@@ -2895,7 +3048,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 17, args_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 18, args_StartIndex); }
         }
         return retval;
     }
@@ -2908,43 +3061,43 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "array"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:512:1: array returns [ObjectArray array] : LEFT_B a= args RIGHT_B ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:520:1: array returns [ObjectArray array] : LEFT_B a= args RIGHT_B ;
     public final ScriptParser.array_return array() throws RecognitionException {
         ScriptParser.array_return retval = new ScriptParser.array_return();
         retval.start = input.LT(1);
         int array_StartIndex = input.index();
         Object root_0 = null;
 
-        Token LEFT_B81=null;
-        Token RIGHT_B82=null;
+        Token LEFT_B88=null;
+        Token RIGHT_B89=null;
         ScriptParser.args_return a = null;
 
 
-        Object LEFT_B81_tree=null;
-        Object RIGHT_B82_tree=null;
+        Object LEFT_B88_tree=null;
+        Object RIGHT_B89_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:512:34: ( LEFT_B a= args RIGHT_B )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:513:5: LEFT_B a= args RIGHT_B
+            if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:520:34: ( LEFT_B a= args RIGHT_B )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:521:5: LEFT_B a= args RIGHT_B
             {
             root_0 = (Object)adaptor.nil();
 
-            LEFT_B81=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array958); if (state.failed) return retval;
+            LEFT_B88=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array1002); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            LEFT_B81_tree = (Object)adaptor.create(LEFT_B81);
-            adaptor.addChild(root_0, LEFT_B81_tree);
+            LEFT_B88_tree = (Object)adaptor.create(LEFT_B88);
+            adaptor.addChild(root_0, LEFT_B88_tree);
             }
-            pushFollow(FOLLOW_args_in_array962);
+            pushFollow(FOLLOW_args_in_array1006);
             a=args();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, a.getTree());
-            RIGHT_B82=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array964); if (state.failed) return retval;
+            RIGHT_B89=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array1008); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            RIGHT_B82_tree = (Object)adaptor.create(RIGHT_B82);
-            adaptor.addChild(root_0, RIGHT_B82_tree);
+            RIGHT_B89_tree = (Object)adaptor.create(RIGHT_B89);
+            adaptor.addChild(root_0, RIGHT_B89_tree);
             }
             if ( state.backtracking==0 ) {
 
@@ -2967,7 +3120,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 18, array_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 19, array_StartIndex); }
         }
         return retval;
     }
@@ -2980,7 +3133,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "array_element_reference"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:519:1: array_element_reference returns [StorageAccessor accessor] : (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:527:1: array_element_reference returns [StorageAccessor accessor] : (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B );
     public final ScriptParser.array_element_reference_return array_element_reference() throws RecognitionException {
         ScriptParser.array_element_reference_return retval = new ScriptParser.array_element_reference_return();
         retval.start = input.LT(1);
@@ -2989,54 +3142,54 @@ public class ScriptParser extends Parser {
 
         Token a=null;
         Token b=null;
-        Token LEFT_B83=null;
-        Token RIGHT_B84=null;
-        Token LEFT_B85=null;
-        Token RIGHT_B86=null;
-        Token LEFT_B87=null;
-        Token RIGHT_B88=null;
+        Token LEFT_B90=null;
+        Token RIGHT_B91=null;
+        Token LEFT_B92=null;
+        Token RIGHT_B93=null;
+        Token LEFT_B94=null;
+        Token RIGHT_B95=null;
         ScriptParser.string_literal_return s = null;
 
 
         Object a_tree=null;
         Object b_tree=null;
-        Object LEFT_B83_tree=null;
-        Object RIGHT_B84_tree=null;
-        Object LEFT_B85_tree=null;
-        Object RIGHT_B86_tree=null;
-        Object LEFT_B87_tree=null;
-        Object RIGHT_B88_tree=null;
+        Object LEFT_B90_tree=null;
+        Object RIGHT_B91_tree=null;
+        Object LEFT_B92_tree=null;
+        Object RIGHT_B93_tree=null;
+        Object LEFT_B94_tree=null;
+        Object RIGHT_B95_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:520:5: (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B )
-            int alt20=3;
-            int LA20_0 = input.LA(1);
+            if ( state.backtracking>0 && alreadyParsedRule(input, 20) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:528:5: (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B )
+            int alt22=3;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA20_0==ID) ) {
-                int LA20_1 = input.LA(2);
+            if ( (LA22_0==ID) ) {
+                int LA22_1 = input.LA(2);
 
-                if ( (LA20_1==LEFT_B) ) {
+                if ( (LA22_1==LEFT_B) ) {
                     switch ( input.LA(3) ) {
                     case ID:
                         {
-                        alt20=1;
+                        alt22=1;
                         }
                         break;
                     case NUM:
                         {
-                        alt20=2;
+                        alt22=2;
                         }
                         break;
                     case STRING_LITERAL:
                         {
-                        alt20=3;
+                        alt22=3;
                         }
                         break;
                     default:
                         if (state.backtracking>0) {state.failed=true; return retval;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 20, 2, input);
+                            new NoViableAltException("", 22, 2, input);
 
                         throw nvae;
                     }
@@ -3045,7 +3198,7 @@ public class ScriptParser extends Parser {
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 20, 1, input);
+                        new NoViableAltException("", 22, 1, input);
 
                     throw nvae;
                 }
@@ -3053,35 +3206,35 @@ public class ScriptParser extends Parser {
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
-            switch (alt20) {
+            switch (alt22) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:520:7: a= ID LEFT_B b= ID RIGHT_B
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:528:7: a= ID LEFT_B b= ID RIGHT_B
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    a=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference986); if (state.failed) return retval;
+                    a=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference1030); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     a_tree = (Object)adaptor.create(a);
                     adaptor.addChild(root_0, a_tree);
                     }
-                    LEFT_B83=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array_element_reference988); if (state.failed) return retval;
+                    LEFT_B90=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array_element_reference1032); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LEFT_B83_tree = (Object)adaptor.create(LEFT_B83);
-                    adaptor.addChild(root_0, LEFT_B83_tree);
+                    LEFT_B90_tree = (Object)adaptor.create(LEFT_B90);
+                    adaptor.addChild(root_0, LEFT_B90_tree);
                     }
-                    b=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference992); if (state.failed) return retval;
+                    b=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference1036); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     b_tree = (Object)adaptor.create(b);
                     adaptor.addChild(root_0, b_tree);
                     }
-                    RIGHT_B84=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array_element_reference994); if (state.failed) return retval;
+                    RIGHT_B91=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array_element_reference1038); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    RIGHT_B84_tree = (Object)adaptor.create(RIGHT_B84);
-                    adaptor.addChild(root_0, RIGHT_B84_tree);
+                    RIGHT_B91_tree = (Object)adaptor.create(RIGHT_B91);
+                    adaptor.addChild(root_0, RIGHT_B91_tree);
                     }
                     if ( state.backtracking==0 ) {
 
@@ -3092,29 +3245,29 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:523:7: a= ID LEFT_B b= NUM RIGHT_B
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:531:7: a= ID LEFT_B b= NUM RIGHT_B
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    a=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference1006); if (state.failed) return retval;
+                    a=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference1050); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     a_tree = (Object)adaptor.create(a);
                     adaptor.addChild(root_0, a_tree);
                     }
-                    LEFT_B85=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array_element_reference1008); if (state.failed) return retval;
+                    LEFT_B92=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array_element_reference1052); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LEFT_B85_tree = (Object)adaptor.create(LEFT_B85);
-                    adaptor.addChild(root_0, LEFT_B85_tree);
+                    LEFT_B92_tree = (Object)adaptor.create(LEFT_B92);
+                    adaptor.addChild(root_0, LEFT_B92_tree);
                     }
-                    b=(Token)match(input,NUM,FOLLOW_NUM_in_array_element_reference1012); if (state.failed) return retval;
+                    b=(Token)match(input,NUM,FOLLOW_NUM_in_array_element_reference1056); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     b_tree = (Object)adaptor.create(b);
                     adaptor.addChild(root_0, b_tree);
                     }
-                    RIGHT_B86=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array_element_reference1014); if (state.failed) return retval;
+                    RIGHT_B93=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array_element_reference1058); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    RIGHT_B86_tree = (Object)adaptor.create(RIGHT_B86);
-                    adaptor.addChild(root_0, RIGHT_B86_tree);
+                    RIGHT_B93_tree = (Object)adaptor.create(RIGHT_B93);
+                    adaptor.addChild(root_0, RIGHT_B93_tree);
                     }
                     if ( state.backtracking==0 ) {
 
@@ -3125,30 +3278,30 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:526:7: a= ID LEFT_B s= string_literal RIGHT_B
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:534:7: a= ID LEFT_B s= string_literal RIGHT_B
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    a=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference1026); if (state.failed) return retval;
+                    a=(Token)match(input,ID,FOLLOW_ID_in_array_element_reference1070); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     a_tree = (Object)adaptor.create(a);
                     adaptor.addChild(root_0, a_tree);
                     }
-                    LEFT_B87=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array_element_reference1028); if (state.failed) return retval;
+                    LEFT_B94=(Token)match(input,LEFT_B,FOLLOW_LEFT_B_in_array_element_reference1072); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LEFT_B87_tree = (Object)adaptor.create(LEFT_B87);
-                    adaptor.addChild(root_0, LEFT_B87_tree);
+                    LEFT_B94_tree = (Object)adaptor.create(LEFT_B94);
+                    adaptor.addChild(root_0, LEFT_B94_tree);
                     }
-                    pushFollow(FOLLOW_string_literal_in_array_element_reference1032);
+                    pushFollow(FOLLOW_string_literal_in_array_element_reference1076);
                     s=string_literal();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, s.getTree());
-                    RIGHT_B88=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array_element_reference1034); if (state.failed) return retval;
+                    RIGHT_B95=(Token)match(input,RIGHT_B,FOLLOW_RIGHT_B_in_array_element_reference1078); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    RIGHT_B88_tree = (Object)adaptor.create(RIGHT_B88);
-                    adaptor.addChild(root_0, RIGHT_B88_tree);
+                    RIGHT_B95_tree = (Object)adaptor.create(RIGHT_B95);
+                    adaptor.addChild(root_0, RIGHT_B95_tree);
                     }
                     if ( state.backtracking==0 ) {
 
@@ -3173,7 +3326,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 19, array_element_reference_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 20, array_element_reference_StartIndex); }
         }
         return retval;
     }
@@ -3186,105 +3339,105 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:530:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:538:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );
     public final ScriptParser.atom_return atom() throws RecognitionException {
         ScriptParser.atom_return retval = new ScriptParser.atom_return();
         retval.start = input.LT(1);
         int atom_StartIndex = input.index();
         Object root_0 = null;
 
-        Token NUM89=null;
-        Token MINUS90=null;
-        Token NUM91=null;
-        Token BOOL92=null;
-        Token LEFT_P93=null;
-        Token RIGHT_P95=null;
-        Token ID96=null;
-        Token CONSTANT97=null;
-        ScriptParser.expression_return expression94 = null;
+        Token NUM96=null;
+        Token MINUS97=null;
+        Token NUM98=null;
+        Token BOOL99=null;
+        Token LEFT_P100=null;
+        Token RIGHT_P102=null;
+        Token ID103=null;
+        Token CONSTANT104=null;
+        ScriptParser.expression_return expression101 = null;
 
-        ScriptParser.string_literal_return string_literal98 = null;
+        ScriptParser.string_literal_return string_literal105 = null;
 
-        ScriptParser.dictionary_return dictionary99 = null;
+        ScriptParser.dictionary_return dictionary106 = null;
 
-        ScriptParser.array_return array100 = null;
+        ScriptParser.array_return array107 = null;
 
-        ScriptParser.function_call_return function_call101 = null;
+        ScriptParser.function_call_return function_call108 = null;
 
-        ScriptParser.array_element_reference_return array_element_reference102 = null;
+        ScriptParser.array_element_reference_return array_element_reference109 = null;
 
 
-        Object NUM89_tree=null;
-        Object MINUS90_tree=null;
-        Object NUM91_tree=null;
-        Object BOOL92_tree=null;
-        Object LEFT_P93_tree=null;
-        Object RIGHT_P95_tree=null;
-        Object ID96_tree=null;
-        Object CONSTANT97_tree=null;
+        Object NUM96_tree=null;
+        Object MINUS97_tree=null;
+        Object NUM98_tree=null;
+        Object BOOL99_tree=null;
+        Object LEFT_P100_tree=null;
+        Object RIGHT_P102_tree=null;
+        Object ID103_tree=null;
+        Object CONSTANT104_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 20) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:531:5: ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference )
-            int alt21=11;
-            alt21 = dfa21.predict(input);
-            switch (alt21) {
+            if ( state.backtracking>0 && alreadyParsedRule(input, 21) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:539:5: ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference )
+            int alt23=11;
+            alt23 = dfa23.predict(input);
+            switch (alt23) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:531:7: NUM
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:539:7: NUM
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    NUM89=(Token)match(input,NUM,FOLLOW_NUM_in_atom1052); if (state.failed) return retval;
+                    NUM96=(Token)match(input,NUM,FOLLOW_NUM_in_atom1096); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    NUM89_tree = (Object)adaptor.create(NUM89);
-                    adaptor.addChild(root_0, NUM89_tree);
+                    NUM96_tree = (Object)adaptor.create(NUM96);
+                    adaptor.addChild(root_0, NUM96_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.value = new Numeric( Double.parseDouble((NUM89!=null?NUM89.getText():null)) );
+                              retval.value = new Numeric( Double.parseDouble((NUM96!=null?NUM96.getText():null)) );
                           
                     }
 
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:534:7: MINUS NUM
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:542:7: MINUS NUM
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    MINUS90=(Token)match(input,MINUS,FOLLOW_MINUS_in_atom1062); if (state.failed) return retval;
+                    MINUS97=(Token)match(input,MINUS,FOLLOW_MINUS_in_atom1106); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    MINUS90_tree = (Object)adaptor.create(MINUS90);
-                    adaptor.addChild(root_0, MINUS90_tree);
+                    MINUS97_tree = (Object)adaptor.create(MINUS97);
+                    adaptor.addChild(root_0, MINUS97_tree);
                     }
-                    NUM91=(Token)match(input,NUM,FOLLOW_NUM_in_atom1064); if (state.failed) return retval;
+                    NUM98=(Token)match(input,NUM,FOLLOW_NUM_in_atom1108); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    NUM91_tree = (Object)adaptor.create(NUM91);
-                    adaptor.addChild(root_0, NUM91_tree);
+                    NUM98_tree = (Object)adaptor.create(NUM98);
+                    adaptor.addChild(root_0, NUM98_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.value = new Numeric( -1.0 * Double.parseDouble((NUM91!=null?NUM91.getText():null)) );
+                              retval.value = new Numeric( -1.0 * Double.parseDouble((NUM98!=null?NUM98.getText():null)) );
                           
                     }
 
                     }
                     break;
                 case 3 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:537:7: BOOL
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:545:7: BOOL
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    BOOL92=(Token)match(input,BOOL,FOLLOW_BOOL_in_atom1074); if (state.failed) return retval;
+                    BOOL99=(Token)match(input,BOOL,FOLLOW_BOOL_in_atom1118); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    BOOL92_tree = (Object)adaptor.create(BOOL92);
-                    adaptor.addChild(root_0, BOOL92_tree);
+                    BOOL99_tree = (Object)adaptor.create(BOOL99);
+                    adaptor.addChild(root_0, BOOL99_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              if ((BOOL92!=null?BOOL92.getText():null).equalsIgnoreCase("true")) {
+                              if ((BOOL99!=null?BOOL99.getText():null).equalsIgnoreCase("true")) {
                                   retval.value = new Bool(true);
-                              } else if ((BOOL92!=null?BOOL92.getText():null).equalsIgnoreCase("false")) {
+                              } else if ((BOOL99!=null?BOOL99.getText():null).equalsIgnoreCase("false")) {
                                   retval.value = new Bool(false);
                               }
                           
@@ -3293,160 +3446,160 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:544:7: LEFT_P expression RIGHT_P
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:552:7: LEFT_P expression RIGHT_P
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    LEFT_P93=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_atom1084); if (state.failed) return retval;
+                    LEFT_P100=(Token)match(input,LEFT_P,FOLLOW_LEFT_P_in_atom1128); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    LEFT_P93_tree = (Object)adaptor.create(LEFT_P93);
-                    adaptor.addChild(root_0, LEFT_P93_tree);
+                    LEFT_P100_tree = (Object)adaptor.create(LEFT_P100);
+                    adaptor.addChild(root_0, LEFT_P100_tree);
                     }
-                    pushFollow(FOLLOW_expression_in_atom1086);
-                    expression94=expression();
+                    pushFollow(FOLLOW_expression_in_atom1130);
+                    expression101=expression();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression94.getTree());
-                    RIGHT_P95=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_atom1088); if (state.failed) return retval;
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, expression101.getTree());
+                    RIGHT_P102=(Token)match(input,RIGHT_P,FOLLOW_RIGHT_P_in_atom1132); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    RIGHT_P95_tree = (Object)adaptor.create(RIGHT_P95);
-                    adaptor.addChild(root_0, RIGHT_P95_tree);
+                    RIGHT_P102_tree = (Object)adaptor.create(RIGHT_P102);
+                    adaptor.addChild(root_0, RIGHT_P102_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.value = (expression94!=null?expression94.expr:null);
+                              retval.value = (expression101!=null?expression101.expr:null);
                           
                     }
 
                     }
                     break;
                 case 5 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:547:7: ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:555:7: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    ID96=(Token)match(input,ID,FOLLOW_ID_in_atom1098); if (state.failed) return retval;
+                    ID103=(Token)match(input,ID,FOLLOW_ID_in_atom1142); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    ID96_tree = (Object)adaptor.create(ID96);
-                    adaptor.addChild(root_0, ID96_tree);
+                    ID103_tree = (Object)adaptor.create(ID103);
+                    adaptor.addChild(root_0, ID103_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.value = new Variable(this, (ID96!=null?ID96.getText():null));
+                              retval.value = new Variable(this, (ID103!=null?ID103.getText():null));
                           
                     }
 
                     }
                     break;
                 case 6 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:550:7: CONSTANT
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:558:7: CONSTANT
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    CONSTANT97=(Token)match(input,CONSTANT,FOLLOW_CONSTANT_in_atom1108); if (state.failed) return retval;
+                    CONSTANT104=(Token)match(input,CONSTANT,FOLLOW_CONSTANT_in_atom1152); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
-                    CONSTANT97_tree = (Object)adaptor.create(CONSTANT97);
-                    adaptor.addChild(root_0, CONSTANT97_tree);
+                    CONSTANT104_tree = (Object)adaptor.create(CONSTANT104);
+                    adaptor.addChild(root_0, CONSTANT104_tree);
                     }
                     if ( state.backtracking==0 ) {
 
-                              retval.value = new Variable(this, (CONSTANT97!=null?CONSTANT97.getText():null));
+                              retval.value = new Variable(this, (CONSTANT104!=null?CONSTANT104.getText():null));
                           
                     }
 
                     }
                     break;
                 case 7 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:553:7: string_literal
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:561:7: string_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_string_literal_in_atom1118);
-                    string_literal98=string_literal();
+                    pushFollow(FOLLOW_string_literal_in_atom1162);
+                    string_literal105=string_literal();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, string_literal98.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, string_literal105.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.value = (string_literal98!=null?string_literal98.value:null);
+                              retval.value = (string_literal105!=null?string_literal105.value:null);
                           
                     }
 
                     }
                     break;
                 case 8 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:556:7: dictionary
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:564:7: dictionary
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_dictionary_in_atom1128);
-                    dictionary99=dictionary();
+                    pushFollow(FOLLOW_dictionary_in_atom1172);
+                    dictionary106=dictionary();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, dictionary99.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, dictionary106.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.value = (dictionary99!=null?dictionary99.value:null);
+                              retval.value = (dictionary106!=null?dictionary106.value:null);
                           
                     }
 
                     }
                     break;
                 case 9 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:559:7: array
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:567:7: array
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_array_in_atom1138);
-                    array100=array();
+                    pushFollow(FOLLOW_array_in_atom1182);
+                    array107=array();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, array100.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, array107.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.value = (array100!=null?array100.array:null);
+                              retval.value = (array107!=null?array107.array:null);
                           
                     }
 
                     }
                     break;
                 case 10 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:562:7: function_call
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:570:7: function_call
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_function_call_in_atom1148);
-                    function_call101=function_call();
+                    pushFollow(FOLLOW_function_call_in_atom1192);
+                    function_call108=function_call();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, function_call101.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, function_call108.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.value = new Expression( this, new FunctionCall( this, (function_call101!=null?function_call101.name_params:null) ) );
+                              retval.value = new Expression( this, new FunctionCall( this, (function_call108!=null?function_call108.name_params:null) ) );
                           
                     }
 
                     }
                     break;
                 case 11 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:565:7: array_element_reference
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:573:7: array_element_reference
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    pushFollow(FOLLOW_array_element_reference_in_atom1158);
-                    array_element_reference102=array_element_reference();
+                    pushFollow(FOLLOW_array_element_reference_in_atom1202);
+                    array_element_reference109=array_element_reference();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    if ( state.backtracking==0 ) adaptor.addChild(root_0, array_element_reference102.getTree());
+                    if ( state.backtracking==0 ) adaptor.addChild(root_0, array_element_reference109.getTree());
                     if ( state.backtracking==0 ) {
 
-                              retval.value = new Expression( this, (array_element_reference102!=null?array_element_reference102.accessor:null));
+                              retval.value = new Expression( this, (array_element_reference109!=null?array_element_reference109.accessor:null));
                           
                     }
 
@@ -3467,7 +3620,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 20, atom_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 21, atom_StartIndex); }
         }
         return retval;
     }
@@ -3480,7 +3633,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "string_literal"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:576:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:584:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
     public final ScriptParser.string_literal_return string_literal() throws RecognitionException {
         ScriptParser.string_literal_return retval = new ScriptParser.string_literal_return();
         retval.start = input.LT(1);
@@ -3492,13 +3645,13 @@ public class ScriptParser extends Parser {
         Object s_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 21) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:576:43: (s= STRING_LITERAL )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:576:45: s= STRING_LITERAL
+            if ( state.backtracking>0 && alreadyParsedRule(input, 22) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:584:43: (s= STRING_LITERAL )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:584:45: s= STRING_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
-            s=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_string_literal1181); if (state.failed) return retval;
+            s=(Token)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_string_literal1225); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             s_tree = (Object)adaptor.create(s);
             adaptor.addChild(root_0, s_tree);
@@ -3524,7 +3677,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 21, string_literal_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 22, string_literal_StartIndex); }
         }
         return retval;
     }
@@ -3537,50 +3690,50 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "dictionary"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:581:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:589:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
     public final ScriptParser.dictionary_return dictionary() throws RecognitionException {
         ScriptParser.dictionary_return retval = new ScriptParser.dictionary_return();
         retval.start = input.LT(1);
         int dictionary_StartIndex = input.index();
         Object root_0 = null;
 
-        Token LEFT_CB103=null;
-        Token RIGHT_CB105=null;
-        ScriptParser.dictionary_elements_return dictionary_elements104 = null;
+        Token LEFT_CB110=null;
+        Token RIGHT_CB112=null;
+        ScriptParser.dictionary_elements_return dictionary_elements111 = null;
 
 
-        Object LEFT_CB103_tree=null;
-        Object RIGHT_CB105_tree=null;
+        Object LEFT_CB110_tree=null;
+        Object RIGHT_CB112_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 22) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:581:39: ( LEFT_CB dictionary_elements RIGHT_CB )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:582:5: LEFT_CB dictionary_elements RIGHT_CB
+            if ( state.backtracking>0 && alreadyParsedRule(input, 23) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:589:39: ( LEFT_CB dictionary_elements RIGHT_CB )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:590:5: LEFT_CB dictionary_elements RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
-            LEFT_CB103=(Token)match(input,LEFT_CB,FOLLOW_LEFT_CB_in_dictionary1200); if (state.failed) return retval;
+            LEFT_CB110=(Token)match(input,LEFT_CB,FOLLOW_LEFT_CB_in_dictionary1244); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            LEFT_CB103_tree = (Object)adaptor.create(LEFT_CB103);
-            adaptor.addChild(root_0, LEFT_CB103_tree);
+            LEFT_CB110_tree = (Object)adaptor.create(LEFT_CB110);
+            adaptor.addChild(root_0, LEFT_CB110_tree);
             }
-            pushFollow(FOLLOW_dictionary_elements_in_dictionary1202);
-            dictionary_elements104=dictionary_elements();
+            pushFollow(FOLLOW_dictionary_elements_in_dictionary1246);
+            dictionary_elements111=dictionary_elements();
 
             state._fsp--;
             if (state.failed) return retval;
-            if ( state.backtracking==0 ) adaptor.addChild(root_0, dictionary_elements104.getTree());
-            RIGHT_CB105=(Token)match(input,RIGHT_CB,FOLLOW_RIGHT_CB_in_dictionary1204); if (state.failed) return retval;
+            if ( state.backtracking==0 ) adaptor.addChild(root_0, dictionary_elements111.getTree());
+            RIGHT_CB112=(Token)match(input,RIGHT_CB,FOLLOW_RIGHT_CB_in_dictionary1248); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            RIGHT_CB105_tree = (Object)adaptor.create(RIGHT_CB105);
-            adaptor.addChild(root_0, RIGHT_CB105_tree);
+            RIGHT_CB112_tree = (Object)adaptor.create(RIGHT_CB112);
+            adaptor.addChild(root_0, RIGHT_CB112_tree);
             }
             if ( state.backtracking==0 ) {
 
                       HashMap vs = new HashMap();
-                      int size = (dictionary_elements104!=null?dictionary_elements104.keys_values:null).size();
+                      int size = (dictionary_elements111!=null?dictionary_elements111.keys_values:null).size();
                       for (int k=0; k<size; k+=2) {
-                          vs.put((dictionary_elements104!=null?dictionary_elements104.keys_values:null).get(k), (dictionary_elements104!=null?dictionary_elements104.keys_values:null).get(k+1));
+                          vs.put((dictionary_elements111!=null?dictionary_elements111.keys_values:null).get(k), (dictionary_elements111!=null?dictionary_elements111.keys_values:null).get(k+1));
                       }
                       retval.value = new Dictionary(this, vs);
                   
@@ -3601,7 +3754,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 22, dictionary_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 23, dictionary_StartIndex); }
         }
         return retval;
     }
@@ -3614,17 +3767,17 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "dictionary_elements"
-    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:591:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:599:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
     public final ScriptParser.dictionary_elements_return dictionary_elements() throws RecognitionException {
         ScriptParser.dictionary_elements_return retval = new ScriptParser.dictionary_elements_return();
         retval.start = input.LT(1);
         int dictionary_elements_StartIndex = input.index();
         Object root_0 = null;
 
-        Token TP106=null;
-        Token NEWLINE107=null;
-        Token COMMA108=null;
-        Token NEWLINE109=null;
+        Token TP113=null;
+        Token NEWLINE114=null;
+        Token COMMA115=null;
+        Token NEWLINE116=null;
         ScriptParser.expression_return e1 = null;
 
         ScriptParser.expression_return e2 = null;
@@ -3632,33 +3785,33 @@ public class ScriptParser extends Parser {
         ScriptParser.dictionary_elements_return d = null;
 
 
-        Object TP106_tree=null;
-        Object NEWLINE107_tree=null;
-        Object COMMA108_tree=null;
-        Object NEWLINE109_tree=null;
+        Object TP113_tree=null;
+        Object NEWLINE114_tree=null;
+        Object COMMA115_tree=null;
+        Object NEWLINE116_tree=null;
 
         try {
-            if ( state.backtracking>0 && alreadyParsedRule(input, 23) ) { return retval; }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:591:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:592:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            if ( state.backtracking>0 && alreadyParsedRule(input, 24) ) { return retval; }
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:599:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:600:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
             {
             root_0 = (Object)adaptor.nil();
 
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:592:5: (e1= expression TP e2= expression )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:592:6: e1= expression TP e2= expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:600:5: (e1= expression TP e2= expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:600:6: e1= expression TP e2= expression
             {
-            pushFollow(FOLLOW_expression_in_dictionary_elements1225);
+            pushFollow(FOLLOW_expression_in_dictionary_elements1269);
             e1=expression();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, e1.getTree());
-            TP106=(Token)match(input,TP,FOLLOW_TP_in_dictionary_elements1227); if (state.failed) return retval;
+            TP113=(Token)match(input,TP,FOLLOW_TP_in_dictionary_elements1271); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
-            TP106_tree = (Object)adaptor.create(TP106);
-            adaptor.addChild(root_0, TP106_tree);
+            TP113_tree = (Object)adaptor.create(TP113);
+            adaptor.addChild(root_0, TP113_tree);
             }
-            pushFollow(FOLLOW_expression_in_dictionary_elements1231);
+            pushFollow(FOLLOW_expression_in_dictionary_elements1275);
             e2=expression();
 
             state._fsp--;
@@ -3674,51 +3827,51 @@ public class ScriptParser extends Parser {
                       retval.keys_values.add((e2!=null?e2.expr:null));
                   
             }
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
-            loop24:
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            loop26:
             do {
-                int alt24=2;
-                int LA24_0 = input.LA(1);
+                int alt26=2;
+                int LA26_0 = input.LA(1);
 
-                if ( (LA24_0==NEWLINE) ) {
-                    int LA24_2 = input.LA(2);
+                if ( (LA26_0==NEWLINE) ) {
+                    int LA26_2 = input.LA(2);
 
-                    if ( (synpred58_Script()) ) {
-                        alt24=1;
+                    if ( (synpred61_Script()) ) {
+                        alt26=1;
                     }
 
 
                 }
-                else if ( (LA24_0==COMMA) ) {
-                    int LA24_3 = input.LA(2);
+                else if ( (LA26_0==COMMA) ) {
+                    int LA26_3 = input.LA(2);
 
-                    if ( (synpred58_Script()) ) {
-                        alt24=1;
+                    if ( (synpred61_Script()) ) {
+                        alt26=1;
                     }
 
 
                 }
 
 
-                switch (alt24) {
+                switch (alt26) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
             	    {
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:8: ( NEWLINE )?
-            	    int alt22=2;
-            	    int LA22_0 = input.LA(1);
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:8: ( NEWLINE )?
+            	    int alt24=2;
+            	    int LA24_0 = input.LA(1);
 
-            	    if ( (LA22_0==NEWLINE) ) {
-            	        alt22=1;
+            	    if ( (LA24_0==NEWLINE) ) {
+            	        alt24=1;
             	    }
-            	    switch (alt22) {
+            	    switch (alt24) {
             	        case 1 :
-            	            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+            	            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
             	            {
-            	            NEWLINE107=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements1237); if (state.failed) return retval;
+            	            NEWLINE114=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements1281); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
-            	            NEWLINE107_tree = (Object)adaptor.create(NEWLINE107);
-            	            adaptor.addChild(root_0, NEWLINE107_tree);
+            	            NEWLINE114_tree = (Object)adaptor.create(NEWLINE114);
+            	            adaptor.addChild(root_0, NEWLINE114_tree);
             	            }
 
             	            }
@@ -3726,26 +3879,26 @@ public class ScriptParser extends Parser {
 
             	    }
 
-            	    COMMA108=(Token)match(input,COMMA,FOLLOW_COMMA_in_dictionary_elements1240); if (state.failed) return retval;
+            	    COMMA115=(Token)match(input,COMMA,FOLLOW_COMMA_in_dictionary_elements1284); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
-            	    COMMA108_tree = (Object)adaptor.create(COMMA108);
-            	    adaptor.addChild(root_0, COMMA108_tree);
+            	    COMMA115_tree = (Object)adaptor.create(COMMA115);
+            	    adaptor.addChild(root_0, COMMA115_tree);
             	    }
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:23: ( NEWLINE )?
-            	    int alt23=2;
-            	    int LA23_0 = input.LA(1);
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:23: ( NEWLINE )?
+            	    int alt25=2;
+            	    int LA25_0 = input.LA(1);
 
-            	    if ( (LA23_0==NEWLINE) ) {
-            	        alt23=1;
+            	    if ( (LA25_0==NEWLINE) ) {
+            	        alt25=1;
             	    }
-            	    switch (alt23) {
+            	    switch (alt25) {
             	        case 1 :
-            	            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+            	            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
             	            {
-            	            NEWLINE109=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements1242); if (state.failed) return retval;
+            	            NEWLINE116=(Token)match(input,NEWLINE,FOLLOW_NEWLINE_in_dictionary_elements1286); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
-            	            NEWLINE109_tree = (Object)adaptor.create(NEWLINE109);
-            	            adaptor.addChild(root_0, NEWLINE109_tree);
+            	            NEWLINE116_tree = (Object)adaptor.create(NEWLINE116);
+            	            adaptor.addChild(root_0, NEWLINE116_tree);
             	            }
 
             	            }
@@ -3753,7 +3906,7 @@ public class ScriptParser extends Parser {
 
             	    }
 
-            	    pushFollow(FOLLOW_dictionary_elements_in_dictionary_elements1247);
+            	    pushFollow(FOLLOW_dictionary_elements_in_dictionary_elements1291);
             	    d=dictionary_elements();
 
             	    state._fsp--;
@@ -3771,7 +3924,7 @@ public class ScriptParser extends Parser {
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop26;
                 }
             } while (true);
 
@@ -3791,7 +3944,7 @@ public class ScriptParser extends Parser {
                 throw rec_exc;
             }
         finally {
-            if ( state.backtracking>0 ) { memoize(input, 23, dictionary_elements_StartIndex); }
+            if ( state.backtracking>0 ) { memoize(input, 24, dictionary_elements_StartIndex); }
         }
         return retval;
     }
@@ -3799,8 +3952,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred1_Script
     public final void synpred1_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:212:13: ( NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:212:13: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:212:13: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:212:13: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred1_Script100); if (state.failed) return ;
 
@@ -3813,8 +3966,8 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:222:8: (s= stat )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:222:8: s= stat
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:222:8: (s= stat )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:222:8: s= stat
         {
         pushFollow(FOLLOW_stat_in_synpred3_Script134);
         s=stat();
@@ -3828,8 +3981,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred4_Script
     public final void synpred4_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:230:7: ( pre_stat NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:230:7: pre_stat NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:230:7: ( pre_stat NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:230:7: pre_stat NEWLINE
         {
         pushFollow(FOLLOW_pre_stat_in_synpred4_Script159);
         pre_stat();
@@ -3844,8 +3997,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred6_Script
     public final void synpred6_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:237:7: ( block )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:237:7: block
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:237:7: ( block )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:237:7: block
         {
         pushFollow(FOLLOW_block_in_synpred6_Script181);
         block();
@@ -3857,12 +4010,12 @@ public class ScriptParser extends Parser {
     }
     // $ANTLR end synpred6_Script
 
-    // $ANTLR start synpred9_Script
-    public final void synpred9_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:250:7: ( expression )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:250:7: expression
+    // $ANTLR start synpred10_Script
+    public final void synpred10_Script_fragment() throws RecognitionException {   
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:253:7: ( expression )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:253:7: expression
         {
-        pushFollow(FOLLOW_expression_in_synpred9_Script228);
+        pushFollow(FOLLOW_expression_in_synpred10_Script238);
         expression();
 
         state._fsp--;
@@ -3870,27 +4023,15 @@ public class ScriptParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred9_Script
-
-    // $ANTLR start synpred14_Script
-    public final void synpred14_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:265:7: ( ID PLUS_PLUS )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:265:7: ID PLUS_PLUS
-        {
-        match(input,ID,FOLLOW_ID_in_synpred14_Script286); if (state.failed) return ;
-        match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_synpred14_Script288); if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred14_Script
+    // $ANTLR end synpred10_Script
 
     // $ANTLR start synpred15_Script
     public final void synpred15_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:268:7: ( PLUS_PLUS ID )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:268:7: PLUS_PLUS ID
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:268:7: ( ID PLUS_PLUS )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:268:7: ID PLUS_PLUS
         {
+        match(input,ID,FOLLOW_ID_in_synpred15_Script296); if (state.failed) return ;
         match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_synpred15_Script298); if (state.failed) return ;
-        match(input,ID,FOLLOW_ID_in_synpred15_Script300); if (state.failed) return ;
 
         }
     }
@@ -3898,11 +4039,11 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred16_Script
     public final void synpred16_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:271:7: ( ID MINUS_MINUS )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:271:7: ID MINUS_MINUS
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:271:7: ( PLUS_PLUS ID )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:271:7: PLUS_PLUS ID
         {
+        match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_synpred16_Script308); if (state.failed) return ;
         match(input,ID,FOLLOW_ID_in_synpred16_Script310); if (state.failed) return ;
-        match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_synpred16_Script312); if (state.failed) return ;
 
         }
     }
@@ -3910,10 +4051,11 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred17_Script
     public final void synpred17_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:298:38: ( NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:298:38: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:274:7: ( ID MINUS_MINUS )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:274:7: ID MINUS_MINUS
         {
-        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred17_Script383); if (state.failed) return ;
+        match(input,ID,FOLLOW_ID_in_synpred17_Script320); if (state.failed) return ;
+        match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_synpred17_Script322); if (state.failed) return ;
 
         }
     }
@@ -3921,10 +4063,10 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred18_Script
     public final void synpred18_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:7: ( NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:7: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:301:38: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:301:38: NEWLINE
         {
-        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred18_Script392); if (state.failed) return ;
+        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred18_Script393); if (state.failed) return ;
 
         }
     }
@@ -3932,10 +4074,10 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred19_Script
     public final void synpred19_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:22: ( NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:22: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:7: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:7: NEWLINE
         {
-        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred19_Script398); if (state.failed) return ;
+        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred19_Script402); if (state.failed) return ;
 
         }
     }
@@ -3943,40 +4085,10 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred20_Script
     public final void synpred20_Script_fragment() throws RecognitionException {   
-        ScriptParser.stat_return s = null;
-
-
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:17: ( ELSE ( NEWLINE )? s= stat )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:17: ELSE ( NEWLINE )? s= stat
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:22: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:22: NEWLINE
         {
-        match(input,ELSE,FOLLOW_ELSE_in_synpred20_Script396); if (state.failed) return ;
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:302:22: ( NEWLINE )?
-        int alt25=2;
-        int LA25_0 = input.LA(1);
-
-        if ( (LA25_0==NEWLINE) ) {
-            int LA25_1 = input.LA(2);
-
-            if ( ((LA25_1>=LEFT_CB && LA25_1<=NEWLINE)||(LA25_1>=BREAK && LA25_1<=ID)||(LA25_1>=PLUS_PLUS && LA25_1<=LEFT_P)||(LA25_1>=WHILE && LA25_1<=FOR)||LA25_1==MINUS||LA25_1==LEFT_B||(LA25_1>=NUM && LA25_1<=STRING_LITERAL)) ) {
-                alt25=1;
-            }
-        }
-        switch (alt25) {
-            case 1 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
-                {
-                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred20_Script398); if (state.failed) return ;
-
-                }
-                break;
-
-        }
-
-        pushFollow(FOLLOW_stat_in_synpred20_Script403);
-        s=stat();
-
-        state._fsp--;
-        if (state.failed) return ;
+        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred20_Script408); if (state.failed) return ;
 
         }
     }
@@ -3984,10 +4096,40 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred21_Script
     public final void synpred21_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:320:41: ( NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:320:41: NEWLINE
+        ScriptParser.stat_return s = null;
+
+
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:17: ( ELSE ( NEWLINE )? s= stat )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:17: ELSE ( NEWLINE )? s= stat
         {
-        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred21_Script453); if (state.failed) return ;
+        match(input,ELSE,FOLLOW_ELSE_in_synpred21_Script406); if (state.failed) return ;
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:305:22: ( NEWLINE )?
+        int alt27=2;
+        int LA27_0 = input.LA(1);
+
+        if ( (LA27_0==NEWLINE) ) {
+            int LA27_1 = input.LA(2);
+
+            if ( ((LA27_1>=LEFT_CB && LA27_1<=NEWLINE)||(LA27_1>=BREAK && LA27_1<=ID)||(LA27_1>=PLUS_PLUS && LA27_1<=LEFT_P)||(LA27_1>=WHILE && LA27_1<=FOR)||LA27_1==MINUS||LA27_1==FUNCTION||LA27_1==LEFT_B||(LA27_1>=NUM && LA27_1<=STRING_LITERAL)) ) {
+                alt27=1;
+            }
+        }
+        switch (alt27) {
+            case 1 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
+                {
+                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred21_Script408); if (state.failed) return ;
+
+                }
+                break;
+
+        }
+
+        pushFollow(FOLLOW_stat_in_synpred21_Script413);
+        s=stat();
+
+        state._fsp--;
+        if (state.failed) return ;
 
         }
     }
@@ -3995,10 +4137,10 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred22_Script
     public final void synpred22_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:81: ( NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:81: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:323:41: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:323:41: NEWLINE
         {
-        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred22_Script518); if (state.failed) return ;
+        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred22_Script463); if (state.failed) return ;
 
         }
     }
@@ -4006,6 +4148,17 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred23_Script
     public final void synpred23_Script_fragment() throws RecognitionException {   
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:81: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:81: NEWLINE
+        {
+        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred23_Script528); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred23_Script
+
+    // $ANTLR start synpred24_Script
+    public final void synpred24_Script_fragment() throws RecognitionException {   
         ScriptParser.pre_stat_return e_init = null;
 
         ScriptParser.expression_return e_cond = null;
@@ -4015,52 +4168,52 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:7: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:7: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
         {
-        match(input,FOR,FOLLOW_FOR_in_synpred23_Script496); if (state.failed) return ;
-        match(input,LEFT_P,FOLLOW_LEFT_P_in_synpred23_Script498); if (state.failed) return ;
-        pushFollow(FOLLOW_pre_stat_in_synpred23_Script502);
+        match(input,FOR,FOLLOW_FOR_in_synpred24_Script506); if (state.failed) return ;
+        match(input,LEFT_P,FOLLOW_LEFT_P_in_synpred24_Script508); if (state.failed) return ;
+        pushFollow(FOLLOW_pre_stat_in_synpred24_Script512);
         e_init=pre_stat();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,PV,FOLLOW_PV_in_synpred23_Script504); if (state.failed) return ;
-        pushFollow(FOLLOW_expression_in_synpred23_Script508);
+        match(input,PV,FOLLOW_PV_in_synpred24_Script514); if (state.failed) return ;
+        pushFollow(FOLLOW_expression_in_synpred24_Script518);
         e_cond=expression();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,PV,FOLLOW_PV_in_synpred23_Script510); if (state.failed) return ;
-        pushFollow(FOLLOW_pre_stat_in_synpred23_Script514);
+        match(input,PV,FOLLOW_PV_in_synpred24_Script520); if (state.failed) return ;
+        pushFollow(FOLLOW_pre_stat_in_synpred24_Script524);
         e_inc=pre_stat();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,RIGHT_P,FOLLOW_RIGHT_P_in_synpred23_Script516); if (state.failed) return ;
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:340:81: ( NEWLINE )?
-        int alt26=2;
-        int LA26_0 = input.LA(1);
+        match(input,RIGHT_P,FOLLOW_RIGHT_P_in_synpred24_Script526); if (state.failed) return ;
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:81: ( NEWLINE )?
+        int alt28=2;
+        int LA28_0 = input.LA(1);
 
-        if ( (LA26_0==NEWLINE) ) {
-            int LA26_1 = input.LA(2);
+        if ( (LA28_0==NEWLINE) ) {
+            int LA28_1 = input.LA(2);
 
-            if ( ((LA26_1>=LEFT_CB && LA26_1<=NEWLINE)||(LA26_1>=BREAK && LA26_1<=ID)||(LA26_1>=PLUS_PLUS && LA26_1<=LEFT_P)||(LA26_1>=WHILE && LA26_1<=FOR)||LA26_1==MINUS||LA26_1==LEFT_B||(LA26_1>=NUM && LA26_1<=STRING_LITERAL)) ) {
-                alt26=1;
+            if ( ((LA28_1>=LEFT_CB && LA28_1<=NEWLINE)||(LA28_1>=BREAK && LA28_1<=ID)||(LA28_1>=PLUS_PLUS && LA28_1<=LEFT_P)||(LA28_1>=WHILE && LA28_1<=FOR)||LA28_1==MINUS||LA28_1==FUNCTION||LA28_1==LEFT_B||(LA28_1>=NUM && LA28_1<=STRING_LITERAL)) ) {
+                alt28=1;
             }
         }
-        switch (alt26) {
+        switch (alt28) {
             case 1 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                 {
-                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred23_Script518); if (state.failed) return ;
+                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred24_Script528); if (state.failed) return ;
 
                 }
                 break;
 
         }
 
-        pushFollow(FOLLOW_stat_in_synpred23_Script523);
+        pushFollow(FOLLOW_stat_in_synpred24_Script533);
         s=stat();
 
         state._fsp--;
@@ -4068,29 +4221,29 @@ public class ScriptParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred23_Script
-
-    // $ANTLR start synpred24_Script
-    public final void synpred24_Script_fragment() throws RecognitionException {   
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:347:41: ( NEWLINE )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:347:41: NEWLINE
-        {
-        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred24_Script545); if (state.failed) return ;
-
-        }
-    }
     // $ANTLR end synpred24_Script
 
     // $ANTLR start synpred25_Script
     public final void synpred25_Script_fragment() throws RecognitionException {   
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:350:41: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:350:41: NEWLINE
+        {
+        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred25_Script555); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred25_Script
+
+    // $ANTLR start synpred26_Script
+    public final void synpred26_Script_fragment() throws RecognitionException {   
         ScriptParser.range_return b = null;
 
 
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:394:8: ( ARROW b= range )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:394:8: ARROW b= range
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:397:8: ( ARROW b= range )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:397:8: ARROW b= range
         {
-        match(input,ARROW,FOLLOW_ARROW_in_synpred25_Script575); if (state.failed) return ;
-        pushFollow(FOLLOW_range_in_synpred25_Script579);
+        match(input,ARROW,FOLLOW_ARROW_in_synpred26_Script585); if (state.failed) return ;
+        pushFollow(FOLLOW_range_in_synpred26_Script589);
         b=range();
 
         state._fsp--;
@@ -4098,18 +4251,29 @@ public class ScriptParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred25_Script
+    // $ANTLR end synpred26_Script
 
-    // $ANTLR start synpred43_Script
-    public final void synpred43_Script_fragment() throws RecognitionException {   
+    // $ANTLR start synpred44_Script
+    public final void synpred44_Script_fragment() throws RecognitionException {   
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:491:38: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:491:38: NEWLINE
+        {
+        match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred44_Script922); if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred44_Script
+
+    // $ANTLR start synpred46_Script
+    public final void synpred46_Script_fragment() throws RecognitionException {   
         ScriptParser.args_return b = null;
 
 
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:503:8: ( COMMA b= args )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:503:8: COMMA b= args
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:511:8: ( COMMA b= args )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:511:8: COMMA b= args
         {
-        match(input,COMMA,FOLLOW_COMMA_in_synpred43_Script932); if (state.failed) return ;
-        pushFollow(FOLLOW_args_in_synpred43_Script936);
+        match(input,COMMA,FOLLOW_COMMA_in_synpred46_Script976); if (state.failed) return ;
+        pushFollow(FOLLOW_args_in_synpred46_Script980);
         b=args();
 
         state._fsp--;
@@ -4117,54 +4281,54 @@ public class ScriptParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred43_Script
+    // $ANTLR end synpred46_Script
 
-    // $ANTLR start synpred58_Script
-    public final void synpred58_Script_fragment() throws RecognitionException {   
+    // $ANTLR start synpred61_Script
+    public final void synpred61_Script_fragment() throws RecognitionException {   
         ScriptParser.dictionary_elements_return d = null;
 
 
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
         {
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:8: ( NEWLINE )?
-        int alt28=2;
-        int LA28_0 = input.LA(1);
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:8: ( NEWLINE )?
+        int alt30=2;
+        int LA30_0 = input.LA(1);
 
-        if ( (LA28_0==NEWLINE) ) {
-            alt28=1;
+        if ( (LA30_0==NEWLINE) ) {
+            alt30=1;
         }
-        switch (alt28) {
+        switch (alt30) {
             case 1 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                 {
-                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred58_Script1237); if (state.failed) return ;
+                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred61_Script1281); if (state.failed) return ;
 
                 }
                 break;
 
         }
 
-        match(input,COMMA,FOLLOW_COMMA_in_synpred58_Script1240); if (state.failed) return ;
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:596:23: ( NEWLINE )?
-        int alt29=2;
-        int LA29_0 = input.LA(1);
+        match(input,COMMA,FOLLOW_COMMA_in_synpred61_Script1284); if (state.failed) return ;
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:23: ( NEWLINE )?
+        int alt31=2;
+        int LA31_0 = input.LA(1);
 
-        if ( (LA29_0==NEWLINE) ) {
-            alt29=1;
+        if ( (LA31_0==NEWLINE) ) {
+            alt31=1;
         }
-        switch (alt29) {
+        switch (alt31) {
             case 1 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:0:0: NEWLINE
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:0:0: NEWLINE
                 {
-                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred58_Script1242); if (state.failed) return ;
+                match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred61_Script1286); if (state.failed) return ;
 
                 }
                 break;
 
         }
 
-        pushFollow(FOLLOW_dictionary_elements_in_synpred58_Script1247);
+        pushFollow(FOLLOW_dictionary_elements_in_synpred61_Script1291);
         d=dictionary_elements();
 
         state._fsp--;
@@ -4172,7 +4336,7 @@ public class ScriptParser extends Parser {
 
         }
     }
-    // $ANTLR end synpred58_Script
+    // $ANTLR end synpred61_Script
 
     // Delegated rules
 
@@ -4218,11 +4382,25 @@ public class ScriptParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred9_Script() {
+    public final boolean synpred61_Script() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred9_Script_fragment(); // can never throw exception
+            synpred61_Script_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred44_Script() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred44_Script_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4237,34 +4415,6 @@ public class ScriptParser extends Parser {
         int start = input.mark();
         try {
             synpred18_Script_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred58_Script() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred58_Script_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred14_Script() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred14_Script_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4316,11 +4466,11 @@ public class ScriptParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred6_Script() {
+    public final boolean synpred10_Script() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred6_Script_fragment(); // can never throw exception
+            synpred10_Script_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4330,11 +4480,25 @@ public class ScriptParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred43_Script() {
+    public final boolean synpred26_Script() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred43_Script_fragment(); // can never throw exception
+            synpred26_Script_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred6_Script() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred6_Script_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4358,11 +4522,11 @@ public class ScriptParser extends Parser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred22_Script() {
+    public final boolean synpred46_Script() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred22_Script_fragment(); // can never throw exception
+            synpred46_Script_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4377,6 +4541,20 @@ public class ScriptParser extends Parser {
         int start = input.mark();
         try {
             synpred21_Script_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred22_Script() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred22_Script_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4452,23 +4630,25 @@ public class ScriptParser extends Parser {
     protected DFA10 dfa10 = new DFA10(this);
     protected DFA11 dfa11 = new DFA11(this);
     protected DFA12 dfa12 = new DFA12(this);
-    protected DFA21 dfa21 = new DFA21(this);
+    protected DFA19 dfa19 = new DFA19(this);
+    protected DFA23 dfa23 = new DFA23(this);
     static final String DFA1_eotS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA1_eofS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA1_minS =
-        "\1\4\1\0\21\uffff";
+        "\1\4\1\0\22\uffff";
     static final String DFA1_maxS =
-        "\1\47\1\0\21\uffff";
+        "\1\50\1\0\22\uffff";
     static final String DFA1_acceptS =
-        "\2\uffff\1\2\17\uffff\1\1";
+        "\2\uffff\1\2\20\uffff\1\1";
     static final String DFA1_specialS =
-        "\1\uffff\1\0\21\uffff}>";
+        "\1\uffff\1\0\22\uffff}>";
     static final String[] DFA1_transitionS = {
-            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\13"+
-            "\uffff\1\2\1\uffff\4\2",
+            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\12"+
+            "\uffff\1\2\1\uffff\1\2\1\uffff\4\2",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -4531,7 +4711,7 @@ public class ScriptParser extends Parser {
                         int index1_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred1_Script()) ) {s = 18;}
+                        if ( (synpred1_Script()) ) {s = 19;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -4548,20 +4728,20 @@ public class ScriptParser extends Parser {
         }
     }
     static final String DFA4_eotS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA4_eofS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA4_minS =
-        "\1\4\7\uffff\1\0\12\uffff";
+        "\1\4\7\uffff\1\0\13\uffff";
     static final String DFA4_maxS =
-        "\1\47\7\uffff\1\0\12\uffff";
+        "\1\50\7\uffff\1\0\13\uffff";
     static final String DFA4_acceptS =
-        "\1\uffff\1\1\14\uffff\1\2\1\4\1\5\1\6\1\3";
+        "\1\uffff\1\1\14\uffff\1\2\1\4\1\5\1\6\1\7\1\3";
     static final String DFA4_specialS =
-        "\10\uffff\1\0\12\uffff}>";
+        "\10\uffff\1\0\13\uffff}>";
     static final String[] DFA4_transitionS = {
-            "\1\10\1\16\1\uffff\3\1\1\uffff\2\1\1\17\1\1\2\uffff\1\20\1"+
-            "\21\3\uffff\1\1\13\uffff\1\1\1\uffff\4\1",
+            "\1\10\1\16\1\uffff\3\1\1\uffff\2\1\1\17\1\1\2\uffff\1\20\1\21"+
+            "\3\uffff\1\1\12\uffff\1\22\1\uffff\1\1\1\uffff\4\1",
             "",
             "",
             "",
@@ -4570,6 +4750,7 @@ public class ScriptParser extends Parser {
             "",
             "",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -4612,7 +4793,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "229:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression );";
+            return "229:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -4627,7 +4808,7 @@ public class ScriptParser extends Parser {
                         s = -1;
                         if ( (synpred4_Script()) ) {s = 1;}
 
-                        else if ( (synpred6_Script()) ) {s = 18;}
+                        else if ( (synpred6_Script()) ) {s = 19;}
 
                          
                         input.seek(index4_8);
@@ -4646,27 +4827,27 @@ public class ScriptParser extends Parser {
     static final String DFA5_eofS =
         "\30\uffff";
     static final String DFA5_minS =
-        "\1\4\1\uffff\1\5\2\11\2\uffff\1\11\2\0\1\uffff\2\0\3\43\4\uffff"+
+        "\1\4\1\uffff\1\5\2\11\2\uffff\1\11\2\0\1\uffff\2\0\3\44\4\uffff"+
         "\3\5\1\uffff";
     static final String DFA5_maxS =
-        "\1\47\1\uffff\1\42\2\11\2\uffff\1\47\2\0\1\uffff\2\0\3\43\4\uffff"+
+        "\1\50\1\uffff\1\43\2\11\2\uffff\1\50\2\0\1\uffff\2\0\3\44\4\uffff"+
         "\3\40\1\uffff";
     static final String DFA5_acceptS =
         "\1\uffff\1\1\3\uffff\1\2\1\3\3\uffff\1\4\5\uffff\1\6\1\10\1\7\1"+
         "\11\3\uffff\1\5";
     static final String DFA5_specialS =
-        "\10\uffff\1\3\1\0\1\uffff\1\2\1\1\13\uffff}>";
+        "\10\uffff\1\0\1\3\1\uffff\1\2\1\1\13\uffff}>";
     static final String[] DFA5_transitionS = {
             "\1\1\2\uffff\1\5\1\6\1\2\1\uffff\1\3\1\4\1\uffff\1\1\7\uffff"+
-            "\1\1\13\uffff\1\1\1\uffff\4\1",
+            "\1\1\14\uffff\1\1\1\uffff\4\1",
             "",
             "\1\1\4\uffff\1\12\1\10\1\11\1\uffff\2\1\3\uffff\1\1\1\uffff"+
-            "\14\1\1\uffff\1\7",
+            "\14\1\2\uffff\1\7",
             "\1\13",
             "\1\14",
             "",
             "",
-            "\1\15\32\uffff\1\16\2\uffff\1\17",
+            "\1\15\33\uffff\1\16\2\uffff\1\17",
             "\1\uffff",
             "\1\uffff",
             "",
@@ -4715,25 +4896,25 @@ public class ScriptParser extends Parser {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "249:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );";
+            return "252:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA5_9 = input.LA(1);
+                        int LA5_8 = input.LA(1);
 
                          
-                        int index5_9 = input.index();
+                        int index5_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred9_Script()) ) {s = 1;}
+                        if ( (synpred10_Script()) ) {s = 1;}
 
-                        else if ( (synpred16_Script()) ) {s = 17;}
+                        else if ( (synpred15_Script()) ) {s = 16;}
 
                          
-                        input.seek(index5_9);
+                        input.seek(index5_8);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
@@ -4743,7 +4924,7 @@ public class ScriptParser extends Parser {
                         int index5_12 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred9_Script()) ) {s = 1;}
+                        if ( (synpred10_Script()) ) {s = 1;}
 
                         else if ( (true) ) {s = 19;}
 
@@ -4758,27 +4939,27 @@ public class ScriptParser extends Parser {
                         int index5_11 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred9_Script()) ) {s = 1;}
+                        if ( (synpred10_Script()) ) {s = 1;}
 
-                        else if ( (synpred15_Script()) ) {s = 18;}
+                        else if ( (synpred16_Script()) ) {s = 18;}
 
                          
                         input.seek(index5_11);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA5_8 = input.LA(1);
+                        int LA5_9 = input.LA(1);
 
                          
-                        int index5_8 = input.index();
+                        int index5_9 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred9_Script()) ) {s = 1;}
+                        if ( (synpred10_Script()) ) {s = 1;}
 
-                        else if ( (synpred14_Script()) ) {s = 16;}
+                        else if ( (synpred17_Script()) ) {s = 17;}
 
                          
-                        input.seek(index5_8);
+                        input.seek(index5_9);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -4790,21 +4971,22 @@ public class ScriptParser extends Parser {
         }
     }
     static final String DFA6_eotS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA6_eofS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA6_minS =
-        "\1\4\1\0\21\uffff";
+        "\1\4\1\0\22\uffff";
     static final String DFA6_maxS =
-        "\1\47\1\0\21\uffff";
+        "\1\50\1\0\22\uffff";
     static final String DFA6_acceptS =
-        "\2\uffff\1\2\17\uffff\1\1";
+        "\2\uffff\1\2\20\uffff\1\1";
     static final String DFA6_specialS =
-        "\1\uffff\1\0\21\uffff}>";
+        "\1\uffff\1\0\22\uffff}>";
     static final String[] DFA6_transitionS = {
-            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\13"+
-            "\uffff\1\2\1\uffff\4\2",
+            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\12"+
+            "\uffff\1\2\1\uffff\1\2\1\uffff\4\2",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -4854,7 +5036,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "298:38: ( NEWLINE )?";
+            return "301:38: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -4867,7 +5049,7 @@ public class ScriptParser extends Parser {
                         int index6_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred17_Script()) ) {s = 18;}
+                        if ( (synpred18_Script()) ) {s = 19;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -4884,21 +5066,22 @@ public class ScriptParser extends Parser {
         }
     }
     static final String DFA8_eotS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA8_eofS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA8_minS =
-        "\1\4\1\0\21\uffff";
+        "\1\4\1\0\22\uffff";
     static final String DFA8_maxS =
-        "\1\47\1\0\21\uffff";
+        "\1\50\1\0\22\uffff";
     static final String DFA8_acceptS =
-        "\2\uffff\1\2\17\uffff\1\1";
+        "\2\uffff\1\2\20\uffff\1\1";
     static final String DFA8_specialS =
-        "\1\uffff\1\0\21\uffff}>";
+        "\1\uffff\1\0\22\uffff}>";
     static final String[] DFA8_transitionS = {
-            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\13"+
-            "\uffff\1\2\1\uffff\4\2",
+            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\12"+
+            "\uffff\1\2\1\uffff\1\2\1\uffff\4\2",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -4948,7 +5131,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "302:22: ( NEWLINE )?";
+            return "305:22: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -4961,7 +5144,7 @@ public class ScriptParser extends Parser {
                         int index8_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred19_Script()) ) {s = 18;}
+                        if ( (synpred20_Script()) ) {s = 19;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -4978,21 +5161,22 @@ public class ScriptParser extends Parser {
         }
     }
     static final String DFA10_eotS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA10_eofS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA10_minS =
-        "\1\4\1\0\21\uffff";
+        "\1\4\1\0\22\uffff";
     static final String DFA10_maxS =
-        "\1\47\1\0\21\uffff";
+        "\1\50\1\0\22\uffff";
     static final String DFA10_acceptS =
-        "\2\uffff\1\2\17\uffff\1\1";
+        "\2\uffff\1\2\20\uffff\1\1";
     static final String DFA10_specialS =
-        "\1\uffff\1\0\21\uffff}>";
+        "\1\uffff\1\0\22\uffff}>";
     static final String[] DFA10_transitionS = {
-            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\13"+
-            "\uffff\1\2\1\uffff\4\2",
+            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\12"+
+            "\uffff\1\2\1\uffff\1\2\1\uffff\4\2",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -5042,7 +5226,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA10_transition;
         }
         public String getDescription() {
-            return "320:41: ( NEWLINE )?";
+            return "323:41: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5055,7 +5239,7 @@ public class ScriptParser extends Parser {
                         int index10_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred21_Script()) ) {s = 18;}
+                        if ( (synpred22_Script()) ) {s = 19;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -5072,21 +5256,22 @@ public class ScriptParser extends Parser {
         }
     }
     static final String DFA11_eotS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA11_eofS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA11_minS =
-        "\1\4\1\0\21\uffff";
+        "\1\4\1\0\22\uffff";
     static final String DFA11_maxS =
-        "\1\47\1\0\21\uffff";
+        "\1\50\1\0\22\uffff";
     static final String DFA11_acceptS =
-        "\2\uffff\1\2\17\uffff\1\1";
+        "\2\uffff\1\2\20\uffff\1\1";
     static final String DFA11_specialS =
-        "\1\uffff\1\0\21\uffff}>";
+        "\1\uffff\1\0\22\uffff}>";
     static final String[] DFA11_transitionS = {
-            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\13"+
-            "\uffff\1\2\1\uffff\4\2",
+            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\12"+
+            "\uffff\1\2\1\uffff\1\2\1\uffff\4\2",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -5136,7 +5321,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "340:81: ( NEWLINE )?";
+            return "343:81: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5149,7 +5334,7 @@ public class ScriptParser extends Parser {
                         int index11_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred22_Script()) ) {s = 18;}
+                        if ( (synpred23_Script()) ) {s = 19;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -5166,21 +5351,22 @@ public class ScriptParser extends Parser {
         }
     }
     static final String DFA12_eotS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA12_eofS =
-        "\23\uffff";
+        "\24\uffff";
     static final String DFA12_minS =
-        "\1\4\1\0\21\uffff";
+        "\1\4\1\0\22\uffff";
     static final String DFA12_maxS =
-        "\1\47\1\0\21\uffff";
+        "\1\50\1\0\22\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\2\17\uffff\1\1";
+        "\2\uffff\1\2\20\uffff\1\1";
     static final String DFA12_specialS =
-        "\1\uffff\1\0\21\uffff}>";
+        "\1\uffff\1\0\22\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\13"+
-            "\uffff\1\2\1\uffff\4\2",
+            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\12"+
+            "\uffff\1\2\1\uffff\1\2\1\uffff\4\2",
             "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -5230,7 +5416,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "347:41: ( NEWLINE )?";
+            return "350:41: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5243,7 +5429,7 @@ public class ScriptParser extends Parser {
                         int index12_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred24_Script()) ) {s = 18;}
+                        if ( (synpred25_Script()) ) {s = 19;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -5259,28 +5445,33 @@ public class ScriptParser extends Parser {
             throw nvae;
         }
     }
-    static final String DFA21_eotS =
-        "\15\uffff";
-    static final String DFA21_eofS =
-        "\5\uffff\1\14\7\uffff";
-    static final String DFA21_minS =
-        "\1\4\4\uffff\1\5\7\uffff";
-    static final String DFA21_maxS =
-        "\1\47\4\uffff\1\50\7\uffff";
-    static final String DFA21_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\6\1\7\1\10\1\11\1\12\1\13\1"+
-        "\5";
-    static final String DFA21_specialS =
-        "\15\uffff}>";
-    static final String[] DFA21_transitionS = {
-            "\1\10\4\uffff\1\5\4\uffff\1\4\7\uffff\1\2\13\uffff\1\11\1\uffff"+
-            "\1\1\1\3\1\6\1\7",
+    static final String DFA19_eotS =
+        "\24\uffff";
+    static final String DFA19_eofS =
+        "\24\uffff";
+    static final String DFA19_minS =
+        "\1\4\1\0\22\uffff";
+    static final String DFA19_maxS =
+        "\1\50\1\0\22\uffff";
+    static final String DFA19_acceptS =
+        "\2\uffff\1\2\20\uffff\1\1";
+    static final String DFA19_specialS =
+        "\1\uffff\1\0\22\uffff}>";
+    static final String[] DFA19_transitionS = {
+            "\1\2\1\1\1\uffff\3\2\1\uffff\4\2\2\uffff\2\2\3\uffff\1\2\12"+
+            "\uffff\1\2\1\uffff\1\2\1\uffff\4\2",
+            "\1\uffff",
             "",
             "",
             "",
             "",
-            "\2\14\7\uffff\1\12\1\14\3\uffff\17\14\1\13\1\14\4\uffff\1"+
-            "\14",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -5290,49 +5481,138 @@ public class ScriptParser extends Parser {
             ""
     };
 
-    static final short[] DFA21_eot = DFA.unpackEncodedString(DFA21_eotS);
-    static final short[] DFA21_eof = DFA.unpackEncodedString(DFA21_eofS);
-    static final char[] DFA21_min = DFA.unpackEncodedStringToUnsignedChars(DFA21_minS);
-    static final char[] DFA21_max = DFA.unpackEncodedStringToUnsignedChars(DFA21_maxS);
-    static final short[] DFA21_accept = DFA.unpackEncodedString(DFA21_acceptS);
-    static final short[] DFA21_special = DFA.unpackEncodedString(DFA21_specialS);
-    static final short[][] DFA21_transition;
+    static final short[] DFA19_eot = DFA.unpackEncodedString(DFA19_eotS);
+    static final short[] DFA19_eof = DFA.unpackEncodedString(DFA19_eofS);
+    static final char[] DFA19_min = DFA.unpackEncodedStringToUnsignedChars(DFA19_minS);
+    static final char[] DFA19_max = DFA.unpackEncodedStringToUnsignedChars(DFA19_maxS);
+    static final short[] DFA19_accept = DFA.unpackEncodedString(DFA19_acceptS);
+    static final short[] DFA19_special = DFA.unpackEncodedString(DFA19_specialS);
+    static final short[][] DFA19_transition;
 
     static {
-        int numStates = DFA21_transitionS.length;
-        DFA21_transition = new short[numStates][];
+        int numStates = DFA19_transitionS.length;
+        DFA19_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA21_transition[i] = DFA.unpackEncodedString(DFA21_transitionS[i]);
+            DFA19_transition[i] = DFA.unpackEncodedString(DFA19_transitionS[i]);
         }
     }
 
-    class DFA21 extends DFA {
+    class DFA19 extends DFA {
 
-        public DFA21(BaseRecognizer recognizer) {
+        public DFA19(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 21;
-            this.eot = DFA21_eot;
-            this.eof = DFA21_eof;
-            this.min = DFA21_min;
-            this.max = DFA21_max;
-            this.accept = DFA21_accept;
-            this.special = DFA21_special;
-            this.transition = DFA21_transition;
+            this.decisionNumber = 19;
+            this.eot = DFA19_eot;
+            this.eof = DFA19_eof;
+            this.min = DFA19_min;
+            this.max = DFA19_max;
+            this.accept = DFA19_accept;
+            this.special = DFA19_special;
+            this.transition = DFA19_transition;
         }
         public String getDescription() {
-            return "530:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );";
+            return "491:38: ( NEWLINE )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA19_1 = input.LA(1);
+
+                         
+                        int index19_1 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred44_Script()) ) {s = 19;}
+
+                        else if ( (true) ) {s = 2;}
+
+                         
+                        input.seek(index19_1);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            if (state.backtracking>0) {state.failed=true; return -1;}
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 19, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String DFA23_eotS =
+        "\15\uffff";
+    static final String DFA23_eofS =
+        "\5\uffff\1\14\7\uffff";
+    static final String DFA23_minS =
+        "\1\4\4\uffff\1\5\7\uffff";
+    static final String DFA23_maxS =
+        "\1\50\4\uffff\1\51\7\uffff";
+    static final String DFA23_acceptS =
+        "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\6\1\7\1\10\1\11\1\12\1\13\1\5";
+    static final String DFA23_specialS =
+        "\15\uffff}>";
+    static final String[] DFA23_transitionS = {
+            "\1\10\4\uffff\1\5\4\uffff\1\4\7\uffff\1\2\14\uffff\1\11\1\uffff"+
+            "\1\1\1\3\1\6\1\7",
+            "",
+            "",
+            "",
+            "",
+            "\2\14\7\uffff\1\12\1\14\3\uffff\16\14\1\uffff\1\14\1\13\1\14"+
+            "\4\uffff\1\14",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] DFA23_eot = DFA.unpackEncodedString(DFA23_eotS);
+    static final short[] DFA23_eof = DFA.unpackEncodedString(DFA23_eofS);
+    static final char[] DFA23_min = DFA.unpackEncodedStringToUnsignedChars(DFA23_minS);
+    static final char[] DFA23_max = DFA.unpackEncodedStringToUnsignedChars(DFA23_maxS);
+    static final short[] DFA23_accept = DFA.unpackEncodedString(DFA23_acceptS);
+    static final short[] DFA23_special = DFA.unpackEncodedString(DFA23_specialS);
+    static final short[][] DFA23_transition;
+
+    static {
+        int numStates = DFA23_transitionS.length;
+        DFA23_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA23_transition[i] = DFA.unpackEncodedString(DFA23_transitionS[i]);
+        }
+    }
+
+    class DFA23 extends DFA {
+
+        public DFA23(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 23;
+            this.eot = DFA23_eot;
+            this.eof = DFA23_eof;
+            this.min = DFA23_min;
+            this.max = DFA23_max;
+            this.accept = DFA23_accept;
+            this.special = DFA23_special;
+            this.transition = DFA23_transition;
+        }
+        public String getDescription() {
+            return "538:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );";
         }
     }
  
 
     public static final BitSet FOLLOW_stats_in_prog81 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LEFT_CB_in_block98 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_block100 = new BitSet(new long[]{0x000000F400467BB0L});
+    public static final BitSet FOLLOW_LEFT_CB_in_block98 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_block100 = new BitSet(new long[]{0x000001EA00467BB0L});
     public static final BitSet FOLLOW_stats_in_block103 = new BitSet(new long[]{0x0000000000000060L});
     public static final BitSet FOLLOW_NEWLINE_in_block105 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_RIGHT_CB_in_block108 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stat_in_stats127 = new BitSet(new long[]{0x000000F400467BB2L});
-    public static final BitSet FOLLOW_stat_in_stats134 = new BitSet(new long[]{0x000000F400467BB2L});
+    public static final BitSet FOLLOW_stat_in_stats127 = new BitSet(new long[]{0x000001EA00467BB2L});
+    public static final BitSet FOLLOW_stat_in_stats134 = new BitSet(new long[]{0x000001EA00467BB2L});
     public static final BitSet FOLLOW_pre_stat_in_stat159 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_NEWLINE_in_stat161 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NEWLINE_in_stat171 = new BitSet(new long[]{0x0000000000000002L});
@@ -5340,183 +5620,192 @@ public class ScriptParser extends Parser {
     public static final BitSet FOLLOW_if_expression_in_stat191 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_while_expression_in_stat201 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_for_expression_in_stat211 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_pre_stat228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BREAK_in_pre_stat238 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONTINUE_in_pre_stat248 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_pre_stat258 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_EQUAL_in_pre_stat260 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_pre_stat262 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_array_element_reference_in_pre_stat272 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_EQUAL_in_pre_stat274 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_pre_stat276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_pre_stat286 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_PLUS_PLUS_in_pre_stat288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_PLUS_in_pre_stat298 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ID_in_pre_stat300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_pre_stat310 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_MINUS_MINUS_in_pre_stat312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_MINUS_in_pre_stat322 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ID_in_pre_stat324 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pre_if_expression_in_if_expression354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_in_pre_if_expression373 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_LEFT_P_in_pre_if_expression375 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_pre_if_expression379 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_RIGHT_P_in_pre_if_expression381 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_pre_if_expression383 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_stat_in_pre_if_expression388 = new BitSet(new long[]{0x0000000000010022L});
-    public static final BitSet FOLLOW_NEWLINE_in_pre_if_expression392 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_ELSE_in_pre_if_expression396 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_pre_if_expression398 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_stat_in_pre_if_expression403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pre_while_expression_in_while_expression425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_WHILE_in_pre_while_expression443 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_LEFT_P_in_pre_while_expression445 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_pre_while_expression449 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_RIGHT_P_in_pre_while_expression451 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_pre_while_expression453 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_stat_in_pre_while_expression458 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pre_for_expression_in_for_expression478 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOR_in_pre_for_expression496 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_LEFT_P_in_pre_for_expression498 = new BitSet(new long[]{0x000000F400405B90L});
-    public static final BitSet FOLLOW_pre_stat_in_pre_for_expression502 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_PV_in_pre_for_expression504 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_pre_for_expression508 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_PV_in_pre_for_expression510 = new BitSet(new long[]{0x000000F400405B90L});
-    public static final BitSet FOLLOW_pre_stat_in_pre_for_expression514 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_RIGHT_P_in_pre_for_expression516 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_pre_for_expression518 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_stat_in_pre_for_expression523 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOR_in_pre_for_expression533 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_LEFT_P_in_pre_for_expression535 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ID_in_pre_for_expression537 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_EQUAL_in_pre_for_expression539 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_range_in_pre_for_expression541 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_RIGHT_P_in_pre_for_expression543 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_pre_for_expression545 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_stat_in_pre_for_expression550 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_range570 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_ARROW_in_range575 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_range_in_range579 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_terms_in_expression600 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_term_in_terms620 = new BitSet(new long[]{0x0000000001E00002L});
-    public static final BitSet FOLLOW_PLUS_in_terms626 = new BitSet(new long[]{0x000000F400405A10L});
+    public static final BitSet FOLLOW_function_declaration_in_stat221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_pre_stat238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BREAK_in_pre_stat248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONTINUE_in_pre_stat258 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_pre_stat268 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_EQUAL_in_pre_stat270 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_pre_stat272 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_array_element_reference_in_pre_stat282 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_EQUAL_in_pre_stat284 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_pre_stat286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_pre_stat296 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_PLUS_PLUS_in_pre_stat298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_PLUS_in_pre_stat308 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_pre_stat310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_pre_stat320 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_MINUS_MINUS_in_pre_stat322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_MINUS_in_pre_stat332 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_pre_stat334 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pre_if_expression_in_if_expression364 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_in_pre_if_expression383 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_LEFT_P_in_pre_if_expression385 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_pre_if_expression389 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_pre_if_expression391 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_pre_if_expression393 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_pre_if_expression398 = new BitSet(new long[]{0x0000000000010022L});
+    public static final BitSet FOLLOW_NEWLINE_in_pre_if_expression402 = new BitSet(new long[]{0x0000000000010002L});
+    public static final BitSet FOLLOW_ELSE_in_pre_if_expression406 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_pre_if_expression408 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_pre_if_expression413 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pre_while_expression_in_while_expression435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_WHILE_in_pre_while_expression453 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_LEFT_P_in_pre_while_expression455 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_pre_while_expression459 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_pre_while_expression461 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_pre_while_expression463 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_pre_while_expression468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pre_for_expression_in_for_expression488 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOR_in_pre_for_expression506 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_LEFT_P_in_pre_for_expression508 = new BitSet(new long[]{0x000001E800405B90L});
+    public static final BitSet FOLLOW_pre_stat_in_pre_for_expression512 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_PV_in_pre_for_expression514 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_pre_for_expression518 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_PV_in_pre_for_expression520 = new BitSet(new long[]{0x000001E800405B90L});
+    public static final BitSet FOLLOW_pre_stat_in_pre_for_expression524 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_pre_for_expression526 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_pre_for_expression528 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_pre_for_expression533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOR_in_pre_for_expression543 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_LEFT_P_in_pre_for_expression545 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_pre_for_expression547 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_EQUAL_in_pre_for_expression549 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_range_in_pre_for_expression551 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_pre_for_expression553 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_pre_for_expression555 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_pre_for_expression560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_range580 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_ARROW_in_range585 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_range_in_range589 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_terms_in_expression610 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_term_in_terms630 = new BitSet(new long[]{0x0000000001E00002L});
-    public static final BitSet FOLLOW_MINUS_in_terms642 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_term_in_terms646 = new BitSet(new long[]{0x0000000001E00002L});
-    public static final BitSet FOLLOW_AND_in_terms658 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_term_in_terms662 = new BitSet(new long[]{0x0000000001E00002L});
-    public static final BitSet FOLLOW_OR_in_terms674 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_term_in_terms678 = new BitSet(new long[]{0x0000000001E00002L});
-    public static final BitSet FOLLOW_atom_in_term702 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_MULT_in_term708 = new BitSet(new long[]{0x000000F400404210L});
+    public static final BitSet FOLLOW_PLUS_in_terms636 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_term_in_terms640 = new BitSet(new long[]{0x0000000001E00002L});
+    public static final BitSet FOLLOW_MINUS_in_terms652 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_term_in_terms656 = new BitSet(new long[]{0x0000000001E00002L});
+    public static final BitSet FOLLOW_AND_in_terms668 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_term_in_terms672 = new BitSet(new long[]{0x0000000001E00002L});
+    public static final BitSet FOLLOW_OR_in_terms684 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_term_in_terms688 = new BitSet(new long[]{0x0000000001E00002L});
     public static final BitSet FOLLOW_atom_in_term712 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_DIV_in_term724 = new BitSet(new long[]{0x000000F400404210L});
-    public static final BitSet FOLLOW_atom_in_term728 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_CMP_LT_in_term740 = new BitSet(new long[]{0x000000F400404210L});
-    public static final BitSet FOLLOW_atom_in_term744 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_CMP_LT_EQ_in_term757 = new BitSet(new long[]{0x000000F400404210L});
-    public static final BitSet FOLLOW_atom_in_term761 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_CMP_GT_in_term774 = new BitSet(new long[]{0x000000F400404210L});
-    public static final BitSet FOLLOW_atom_in_term778 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_CMP_GT_EQ_in_term790 = new BitSet(new long[]{0x000000F400404210L});
-    public static final BitSet FOLLOW_atom_in_term794 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_CMP_EQ_in_term807 = new BitSet(new long[]{0x000000F400404210L});
-    public static final BitSet FOLLOW_atom_in_term811 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_CMP_NEQ_in_term823 = new BitSet(new long[]{0x000000F400404210L});
-    public static final BitSet FOLLOW_atom_in_term827 = new BitSet(new long[]{0x00000001FE000002L});
-    public static final BitSet FOLLOW_ID_in_term844 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_PLUS_PLUS_in_term846 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_PLUS_in_term856 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ID_in_term858 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_term868 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_MINUS_MINUS_in_term870 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_MINUS_in_term880 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ID_in_term882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_function_call900 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_LEFT_P_in_function_call902 = new BitSet(new long[]{0x000000F40040DA10L});
-    public static final BitSet FOLLOW_args_in_function_call904 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_RIGHT_P_in_function_call907 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_args927 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_COMMA_in_args932 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_args_in_args936 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_LEFT_B_in_array958 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_args_in_array962 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_RIGHT_B_in_array964 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_array_element_reference986 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_LEFT_B_in_array_element_reference988 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ID_in_array_element_reference992 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_RIGHT_B_in_array_element_reference994 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_array_element_reference1006 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_LEFT_B_in_array_element_reference1008 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_NUM_in_array_element_reference1012 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_RIGHT_B_in_array_element_reference1014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_array_element_reference1026 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_LEFT_B_in_array_element_reference1028 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_string_literal_in_array_element_reference1032 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_RIGHT_B_in_array_element_reference1034 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NUM_in_atom1052 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_atom1062 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_NUM_in_atom1064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOL_in_atom1074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LEFT_P_in_atom1084 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_atom1086 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_RIGHT_P_in_atom1088 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_atom1098 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANT_in_atom1108 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_string_literal_in_atom1118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_dictionary_in_atom1128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_array_in_atom1138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_function_call_in_atom1148 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_array_element_reference_in_atom1158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_LITERAL_in_string_literal1181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LEFT_CB_in_dictionary1200 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_dictionary_elements_in_dictionary1202 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RIGHT_CB_in_dictionary1204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_dictionary_elements1225 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_TP_in_dictionary_elements1227 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_dictionary_elements1231 = new BitSet(new long[]{0x0000000200000022L});
-    public static final BitSet FOLLOW_NEWLINE_in_dictionary_elements1237 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_COMMA_in_dictionary_elements1240 = new BitSet(new long[]{0x000000F400405A30L});
-    public static final BitSet FOLLOW_NEWLINE_in_dictionary_elements1242 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_dictionary_elements_in_dictionary_elements1247 = new BitSet(new long[]{0x0000000200000022L});
+    public static final BitSet FOLLOW_MULT_in_term718 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term722 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_DIV_in_term734 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term738 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_CMP_LT_in_term750 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term754 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_CMP_LT_EQ_in_term767 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term771 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_CMP_GT_in_term784 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term788 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_CMP_GT_EQ_in_term800 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term804 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_CMP_EQ_in_term817 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term821 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_CMP_NEQ_in_term833 = new BitSet(new long[]{0x000001E800404210L});
+    public static final BitSet FOLLOW_atom_in_term837 = new BitSet(new long[]{0x00000001FE000002L});
+    public static final BitSet FOLLOW_ID_in_term854 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_PLUS_PLUS_in_term856 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_PLUS_in_term866 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_term868 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_term878 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_MINUS_MINUS_in_term880 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_MINUS_in_term890 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_term892 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FUNCTION_in_function_declaration911 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_function_declaration913 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_LEFT_P_in_function_declaration915 = new BitSet(new long[]{0x000001E80040DA10L});
+    public static final BitSet FOLLOW_args_in_function_declaration917 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_function_declaration920 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_function_declaration922 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_function_declaration927 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_function_call944 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_LEFT_P_in_function_call946 = new BitSet(new long[]{0x000001E80040DA10L});
+    public static final BitSet FOLLOW_args_in_function_call948 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_function_call951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_args971 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_COMMA_in_args976 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_args_in_args980 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_LEFT_B_in_array1002 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_args_in_array1006 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_RIGHT_B_in_array1008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_array_element_reference1030 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_LEFT_B_in_array_element_reference1032 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_array_element_reference1036 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_RIGHT_B_in_array_element_reference1038 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_array_element_reference1050 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_LEFT_B_in_array_element_reference1052 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_NUM_in_array_element_reference1056 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_RIGHT_B_in_array_element_reference1058 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_array_element_reference1070 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_LEFT_B_in_array_element_reference1072 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_string_literal_in_array_element_reference1076 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_RIGHT_B_in_array_element_reference1078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NUM_in_atom1096 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_atom1106 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_NUM_in_atom1108 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOL_in_atom1118 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LEFT_P_in_atom1128 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_atom1130 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_atom1132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_atom1142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANT_in_atom1152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_string_literal_in_atom1162 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_dictionary_in_atom1172 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_array_in_atom1182 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_function_call_in_atom1192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_array_element_reference_in_atom1202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_LITERAL_in_string_literal1225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LEFT_CB_in_dictionary1244 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_dictionary_elements_in_dictionary1246 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RIGHT_CB_in_dictionary1248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_dictionary_elements1269 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_TP_in_dictionary_elements1271 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_dictionary_elements1275 = new BitSet(new long[]{0x0000000400000022L});
+    public static final BitSet FOLLOW_NEWLINE_in_dictionary_elements1281 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_COMMA_in_dictionary_elements1284 = new BitSet(new long[]{0x000001E800405A30L});
+    public static final BitSet FOLLOW_NEWLINE_in_dictionary_elements1286 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_dictionary_elements_in_dictionary_elements1291 = new BitSet(new long[]{0x0000000400000022L});
     public static final BitSet FOLLOW_NEWLINE_in_synpred1_Script100 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_stat_in_synpred3_Script134 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_pre_stat_in_synpred4_Script159 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_NEWLINE_in_synpred4_Script161 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_block_in_synpred6_Script181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_synpred9_Script228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_synpred14_Script286 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_PLUS_PLUS_in_synpred14_Script288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_PLUS_in_synpred15_Script298 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ID_in_synpred15_Script300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_synpred16_Script310 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_MINUS_MINUS_in_synpred16_Script312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred17_Script383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred18_Script392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred19_Script398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ELSE_in_synpred20_Script396 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred20_Script398 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_stat_in_synpred20_Script403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred21_Script453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred22_Script518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOR_in_synpred23_Script496 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_LEFT_P_in_synpred23_Script498 = new BitSet(new long[]{0x000000F400405B90L});
-    public static final BitSet FOLLOW_pre_stat_in_synpred23_Script502 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_PV_in_synpred23_Script504 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_expression_in_synpred23_Script508 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_PV_in_synpred23_Script510 = new BitSet(new long[]{0x000000F400405B90L});
-    public static final BitSet FOLLOW_pre_stat_in_synpred23_Script514 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_RIGHT_P_in_synpred23_Script516 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred23_Script518 = new BitSet(new long[]{0x000000F400467BB0L});
-    public static final BitSet FOLLOW_stat_in_synpred23_Script523 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred24_Script545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ARROW_in_synpred25_Script575 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_range_in_synpred25_Script579 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COMMA_in_synpred43_Script932 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_args_in_synpred43_Script936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred58_Script1237 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_COMMA_in_synpred58_Script1240 = new BitSet(new long[]{0x000000F400405A30L});
-    public static final BitSet FOLLOW_NEWLINE_in_synpred58_Script1242 = new BitSet(new long[]{0x000000F400405A10L});
-    public static final BitSet FOLLOW_dictionary_elements_in_synpred58_Script1247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_synpred10_Script238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_synpred15_Script296 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_PLUS_PLUS_in_synpred15_Script298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_PLUS_in_synpred16_Script308 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ID_in_synpred16_Script310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_synpred17_Script320 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_MINUS_MINUS_in_synpred17_Script322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred18_Script393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred19_Script402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred20_Script408 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ELSE_in_synpred21_Script406 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred21_Script408 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_synpred21_Script413 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred22_Script463 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred23_Script528 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOR_in_synpred24_Script506 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_LEFT_P_in_synpred24_Script508 = new BitSet(new long[]{0x000001E800405B90L});
+    public static final BitSet FOLLOW_pre_stat_in_synpred24_Script512 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_PV_in_synpred24_Script514 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_expression_in_synpred24_Script518 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_PV_in_synpred24_Script520 = new BitSet(new long[]{0x000001E800405B90L});
+    public static final BitSet FOLLOW_pre_stat_in_synpred24_Script524 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_RIGHT_P_in_synpred24_Script526 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred24_Script528 = new BitSet(new long[]{0x000001EA00467BB0L});
+    public static final BitSet FOLLOW_stat_in_synpred24_Script533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred25_Script555 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ARROW_in_synpred26_Script585 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_range_in_synpred26_Script589 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred44_Script922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COMMA_in_synpred46_Script976 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_args_in_synpred46_Script980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred61_Script1281 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_COMMA_in_synpred61_Script1284 = new BitSet(new long[]{0x000001E800405A30L});
+    public static final BitSet FOLLOW_NEWLINE_in_synpred61_Script1286 = new BitSet(new long[]{0x000001E800405A10L});
+    public static final BitSet FOLLOW_dictionary_elements_in_synpred61_Script1291 = new BitSet(new long[]{0x0000000000000002L});
 
 }

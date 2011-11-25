@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g 2011-11-08 08:47:01
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g 2011-11-17 19:13:42
 
 package language;
 
@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class ScriptLexer extends Lexer {
+    public static final int FUNCTION=33;
     public static final int WHILE=17;
     public static final int FOR=18;
-    public static final int DQUOTE=41;
+    public static final int DQUOTE=42;
     public static final int CMP_EQ=31;
     public static final int AND=23;
     public static final int ID=9;
@@ -22,32 +23,32 @@ public class ScriptLexer extends Lexer {
     public static final int IF=13;
     public static final int CMP_GT_EQ=30;
     public static final int CMP_LT=27;
-    public static final int STRING_LITERAL=39;
-    public static final int RIGHT_B=35;
+    public static final int STRING_LITERAL=40;
+    public static final int RIGHT_B=36;
     public static final int PLUS_PLUS=11;
     public static final int CONTINUE=8;
-    public static final int COMMA=33;
+    public static final int COMMA=34;
     public static final int CMP_LT_EQ=28;
     public static final int EQUAL=10;
-    public static final int LEFT_B=34;
-    public static final int BLOCK_COMMENT=43;
+    public static final int LEFT_B=35;
+    public static final int BLOCK_COMMENT=44;
     public static final int PV=19;
     public static final int PLUS=21;
     public static final int LEFT_P=14;
     public static final int CMP_NEQ=32;
-    public static final int LINE_COMMENT=42;
+    public static final int LINE_COMMENT=43;
     public static final int ELSE=16;
-    public static final int BOOL=37;
-    public static final int TP=40;
+    public static final int BOOL=38;
+    public static final int TP=41;
     public static final int RIGHT_P=15;
     public static final int MINUS=22;
     public static final int MULT=25;
     public static final int CMP_GT=29;
-    public static final int NUM=36;
-    public static final int WS=44;
+    public static final int NUM=37;
+    public static final int WS=45;
     public static final int NEWLINE=5;
     public static final int OR=24;
-    public static final int CONSTANT=38;
+    public static final int CONSTANT=39;
     public static final int ARROW=20;
     public static final int DIV=26;
     public static final int MINUS_MINUS=12;
@@ -63,14 +64,14 @@ public class ScriptLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g"; }
+    public String getGrammarFileName() { return "/home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g"; }
 
     // $ANTLR start "CONSTANT"
     public final void mCONSTANT() throws RecognitionException {
         try {
             int _type = CONSTANT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:603:9: ( ( 'P' 'I' ) | ( 'e' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:611:9: ( ( 'P' 'I' ) | ( 'e' ) )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -88,10 +89,10 @@ public class ScriptLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:603:11: ( 'P' 'I' )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:611:11: ( 'P' 'I' )
                     {
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:603:11: ( 'P' 'I' )
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:603:12: 'P' 'I'
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:611:11: ( 'P' 'I' )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:611:12: 'P' 'I'
                     {
                     match('P'); 
                     match('I'); 
@@ -102,10 +103,10 @@ public class ScriptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:603:23: ( 'e' )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:611:23: ( 'e' )
                     {
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:603:23: ( 'e' )
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:603:24: 'e'
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:611:23: ( 'e' )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:611:24: 'e'
                     {
                     match('e'); 
 
@@ -129,10 +130,10 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = NUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:5: ( ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )? )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:9: ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:5: ( ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )? )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:9: ( '0' .. '9' )+ ( '.' ( ( '0' .. '9' )+ )? )?
             {
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:9: ( '0' .. '9' )+
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:9: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -146,7 +147,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:9: '0' .. '9'
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -162,7 +163,7 @@ public class ScriptLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:19: ( '.' ( ( '0' .. '9' )+ )? )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:19: ( '.' ( ( '0' .. '9' )+ )? )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -171,10 +172,10 @@ public class ScriptLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:20: '.' ( ( '0' .. '9' )+ )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:20: '.' ( ( '0' .. '9' )+ )?
                     {
                     match('.'); 
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:24: ( ( '0' .. '9' )+ )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:24: ( ( '0' .. '9' )+ )?
                     int alt4=2;
                     int LA4_0 = input.LA(1);
 
@@ -183,9 +184,9 @@ public class ScriptLexer extends Lexer {
                     }
                     switch (alt4) {
                         case 1 :
-                            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:25: ( '0' .. '9' )+
+                            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:25: ( '0' .. '9' )+
                             {
-                            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:25: ( '0' .. '9' )+
+                            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:25: ( '0' .. '9' )+
                             int cnt3=0;
                             loop3:
                             do {
@@ -199,7 +200,7 @@ public class ScriptLexer extends Lexer {
 
                                 switch (alt3) {
                             	case 1 :
-                            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:604:25: '0' .. '9'
+                            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:612:25: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -243,7 +244,7 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BOOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:605:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:5: ( ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ) | ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) ) )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -261,10 +262,10 @@ public class ScriptLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:605:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
                     {
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:605:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:605:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:7: ( ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:8: ( 'T' | 't' ) ( 'R' | 'r' ) ( 'U' | 'u' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                         input.consume();
@@ -309,10 +310,10 @@ public class ScriptLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:605:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
                     {
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:605:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-                    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:605:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:51: ( ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:52: ( 'F' | 'f' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
                     {
                     if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                         input.consume();
@@ -380,8 +381,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:606:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:606:7: ( 'I' | 'i' ) ( 'F' | 'f' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:614:5: ( ( 'I' | 'i' ) ( 'F' | 'f' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:614:7: ( 'I' | 'i' ) ( 'F' | 'f' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -417,8 +418,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:607:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:607:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:615:5: ( ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:615:7: ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'S' | 's' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -472,8 +473,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WHILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:608:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:608:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:616:6: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:616:8: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'I' | 'i' ) ( 'L' | 'l' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -536,8 +537,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = FOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:609:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:609:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:617:5: ( ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:617:7: ( 'F' | 'f' ) ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -582,8 +583,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:610:6: ( ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' ) )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:610:8: ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:6: ( ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:8: ( 'B' | 'b' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'K' | 'k' )
             {
             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                 input.consume();
@@ -646,8 +647,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CONTINUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:611:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:611:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:619:9: ( ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:619:11: ( 'C' | 'c' ) ( 'O' | 'o' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'U' | 'u' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -732,13 +733,104 @@ public class ScriptLexer extends Lexer {
     }
     // $ANTLR end "CONTINUE"
 
+    // $ANTLR start "FUNCTION"
+    public final void mFUNCTION() throws RecognitionException {
+        try {
+            int _type = FUNCTION;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:620:9: ( ( 'F' | 'f' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' ) )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:620:11: ( 'F' | 'f' ) ( 'U' | 'u' ) ( 'N' | 'n' ) ( 'C' | 'c' ) ( 'T' | 't' ) ( 'I' | 'i' ) ( 'O' | 'o' ) ( 'N' | 'n' )
+            {
+            if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+            if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
+                input.consume();
+
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "FUNCTION"
+
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:612:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:612:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:621:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:621:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -749,7 +841,7 @@ public class ScriptLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:612:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:621:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop7:
             do {
                 int alt7=2;
@@ -762,7 +854,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -798,8 +890,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:613:6: ( '=' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:613:8: '='
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:622:6: ( '=' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:622:8: '='
             {
             match('='); 
 
@@ -818,8 +910,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:614:6: ( ',' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:614:8: ','
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:623:6: ( ',' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:623:8: ','
             {
             match(','); 
 
@@ -838,8 +930,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DQUOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:615:7: ( '\"' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:615:9: '\"'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:624:7: ( '\"' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:624:9: '\"'
             {
             match('\"'); 
 
@@ -858,8 +950,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:616:7: ( '(' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:616:9: '('
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:625:7: ( '(' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:625:9: '('
             {
             match('('); 
 
@@ -878,8 +970,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_P;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:617:8: ( ')' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:617:10: ')'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:626:8: ( ')' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:626:10: ')'
             {
             match(')'); 
 
@@ -898,8 +990,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:618:5: ( '*' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:618:7: '*'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:627:5: ( '*' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:627:7: '*'
             {
             match('*'); 
 
@@ -918,8 +1010,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:619:4: ( '/' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:619:6: '/'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:628:4: ( '/' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:628:6: '/'
             {
             match('/'); 
 
@@ -938,8 +1030,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:620:5: ( '+' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:620:7: '+'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:629:5: ( '+' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:629:7: '+'
             {
             match('+'); 
 
@@ -958,8 +1050,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PLUS_PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:621:10: ( '+' '+' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:621:12: '+' '+'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:630:10: ( '+' '+' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:630:12: '+' '+'
             {
             match('+'); 
             match('+'); 
@@ -979,8 +1071,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:622:6: ( '-' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:622:8: '-'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:631:6: ( '-' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:631:8: '-'
             {
             match('-'); 
 
@@ -999,8 +1091,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = MINUS_MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:623:12: ( '-' '-' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:623:14: '-' '-'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:632:12: ( '-' '-' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:632:14: '-' '-'
             {
             match('-'); 
             match('-'); 
@@ -1020,8 +1112,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:624:7: ( '<' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:624:9: '<'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:633:7: ( '<' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:633:9: '<'
             {
             match('<'); 
 
@@ -1040,8 +1132,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_LT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:625:10: ( '<' '=' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:625:12: '<' '='
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:634:10: ( '<' '=' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:634:12: '<' '='
             {
             match('<'); 
             match('='); 
@@ -1061,8 +1153,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:626:7: ( '>' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:626:9: '>'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:635:7: ( '>' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:635:9: '>'
             {
             match('>'); 
 
@@ -1081,8 +1173,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_GT_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:627:10: ( '>' '=' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:627:12: '>' '='
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:636:10: ( '>' '=' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:636:12: '>' '='
             {
             match('>'); 
             match('='); 
@@ -1102,8 +1194,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:628:7: ( '=' '=' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:628:9: '=' '='
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:637:7: ( '=' '=' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:637:9: '=' '='
             {
             match('='); 
             match('='); 
@@ -1123,8 +1215,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = CMP_NEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:629:8: ( '!' '=' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:629:9: '!' '='
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:638:8: ( '!' '=' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:638:9: '!' '='
             {
             match('!'); 
             match('='); 
@@ -1144,8 +1236,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:630:4: ( '&' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:630:6: '&'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:639:4: ( '&' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:639:6: '&'
             {
             match('&'); 
 
@@ -1164,8 +1256,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:631:4: ( '|' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:631:6: '|'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:640:4: ( '|' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:640:6: '|'
             {
             match('|'); 
 
@@ -1184,11 +1276,11 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:15: ( '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:17: '\"' ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+ '\"'
             {
             match('\"'); 
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:21: ( ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )? )+
             int cnt10=0;
             loop10:
             do {
@@ -1202,12 +1294,12 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )?
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:22: ( ( ' ' )? ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '{' | '}' | '#' | '=' | '.' | '/' | ':' ) ( ' ' )?
             	    {
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:22: ( ( ' ' )? )
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:23: ( ' ' )?
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:22: ( ( ' ' )? )
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:23: ( ' ' )?
             	    {
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:23: ( ' ' )?
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:23: ( ' ' )?
             	    int alt8=2;
             	    int LA8_0 = input.LA(1);
 
@@ -1216,7 +1308,7 @@ public class ScriptLexer extends Lexer {
             	    }
             	    switch (alt8) {
             	        case 1 :
-            	            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:23: ' '
+            	            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:23: ' '
             	            {
             	            match(' '); 
 
@@ -1237,7 +1329,7 @@ public class ScriptLexer extends Lexer {
             	        recover(mse);
             	        throw mse;}
 
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:90: ( ' ' )?
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:90: ( ' ' )?
             	    int alt9=2;
             	    int LA9_0 = input.LA(1);
 
@@ -1246,7 +1338,7 @@ public class ScriptLexer extends Lexer {
             	    }
             	    switch (alt9) {
             	        case 1 :
-            	            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:632:91: ' '
+            	            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:641:91: ' '
             	            {
             	            match(' '); 
 
@@ -1285,8 +1377,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:633:9: ( '{' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:633:11: '{'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:642:9: ( '{' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:642:11: '{'
             {
             match('{'); 
 
@@ -1305,8 +1397,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:634:10: ( '}' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:634:12: '}'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:643:10: ( '}' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:643:12: '}'
             {
             match('}'); 
 
@@ -1325,8 +1417,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:635:8: ( '[' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:635:10: '['
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:644:8: ( '[' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:644:10: '['
             {
             match('['); 
 
@@ -1345,8 +1437,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:636:8: ( ']' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:636:10: ']'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:645:8: ( ']' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:645:10: ']'
             {
             match(']'); 
 
@@ -1365,8 +1457,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:637:6: ( '-' '>' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:637:8: '-' '>'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:646:6: ( '-' '>' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:646:8: '-' '>'
             {
             match('-'); 
             match('>'); 
@@ -1386,8 +1478,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:638:8: ( '\\n' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:638:9: '\\n'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:647:8: ( '\\n' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:647:9: '\\n'
             {
             match('\n'); 
 
@@ -1406,12 +1498,12 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LINE_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:639:13: ( '//' (~ ( '\\n' ) )* )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:639:15: '//' (~ ( '\\n' ) )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:648:13: ( '//' (~ ( '\\n' ) )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:648:15: '//' (~ ( '\\n' ) )*
             {
             match("//"); 
 
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:639:20: (~ ( '\\n' ) )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:648:20: (~ ( '\\n' ) )*
             loop11:
             do {
                 int alt11=2;
@@ -1424,7 +1516,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:639:20: ~ ( '\\n' )
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:648:20: ~ ( '\\n' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1463,12 +1555,12 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BLOCK_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:642:14: ( '/*' ( . )* '*/' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:642:16: '/*' ( . )* '*/'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:651:14: ( '/*' ( . )* '*/' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:651:16: '/*' ( . )* '*/'
             {
             match("/*"); 
 
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:642:21: ( . )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:651:21: ( . )*
             loop12:
             do {
                 int alt12=2;
@@ -1493,7 +1585,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:642:21: .
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:651:21: .
             	    {
             	    matchAny(); 
 
@@ -1526,8 +1618,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = TP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:645:3: ( ':' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:645:5: ':'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:654:3: ( ':' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:654:5: ':'
             {
             match(':'); 
 
@@ -1546,8 +1638,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:646:3: ( ';' )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:646:5: ';'
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:655:3: ( ';' )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:655:5: ';'
             {
             match(';'); 
 
@@ -1566,10 +1658,10 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:647:4: ( ( ' ' | '\\t' | '\\r' )+ )
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:647:8: ( ' ' | '\\t' | '\\r' )+
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:656:4: ( ( ' ' | '\\t' | '\\r' )+ )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:656:8: ( ' ' | '\\t' | '\\r' )+
             {
-            // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:647:8: ( ' ' | '\\t' | '\\r' )+
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:656:8: ( ' ' | '\\t' | '\\r' )+
             int cnt13=0;
             loop13:
             do {
@@ -1583,7 +1675,7 @@ public class ScriptLexer extends Lexer {
 
                 switch (alt13) {
             	case 1 :
-            	    // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:
             	    {
             	    if ( input.LA(1)=='\t'||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1622,292 +1714,299 @@ public class ScriptLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:8: ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS )
-        int alt14=41;
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:8: ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | FUNCTION | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS )
+        int alt14=42;
         alt14 = dfa14.predict(input);
         switch (alt14) {
             case 1 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:10: CONSTANT
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:10: CONSTANT
                 {
                 mCONSTANT(); 
 
                 }
                 break;
             case 2 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:19: NUM
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:19: NUM
                 {
                 mNUM(); 
 
                 }
                 break;
             case 3 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:23: BOOL
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:23: BOOL
                 {
                 mBOOL(); 
 
                 }
                 break;
             case 4 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:28: IF
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:28: IF
                 {
                 mIF(); 
 
                 }
                 break;
             case 5 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:31: ELSE
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:31: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
             case 6 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:36: WHILE
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:36: WHILE
                 {
                 mWHILE(); 
 
                 }
                 break;
             case 7 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:42: FOR
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:42: FOR
                 {
                 mFOR(); 
 
                 }
                 break;
             case 8 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:46: BREAK
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:46: BREAK
                 {
                 mBREAK(); 
 
                 }
                 break;
             case 9 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:52: CONTINUE
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:52: CONTINUE
                 {
                 mCONTINUE(); 
 
                 }
                 break;
             case 10 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:61: ID
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:61: FUNCTION
+                {
+                mFUNCTION(); 
+
+                }
+                break;
+            case 11 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:70: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 11 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:64: EQUAL
+            case 12 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:73: EQUAL
                 {
                 mEQUAL(); 
 
                 }
                 break;
-            case 12 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:70: COMMA
+            case 13 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:79: COMMA
                 {
                 mCOMMA(); 
 
                 }
                 break;
-            case 13 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:76: DQUOTE
+            case 14 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:85: DQUOTE
                 {
                 mDQUOTE(); 
 
                 }
                 break;
-            case 14 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:83: LEFT_P
+            case 15 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:92: LEFT_P
                 {
                 mLEFT_P(); 
 
                 }
                 break;
-            case 15 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:90: RIGHT_P
+            case 16 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:99: RIGHT_P
                 {
                 mRIGHT_P(); 
 
                 }
                 break;
-            case 16 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:98: MULT
+            case 17 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:107: MULT
                 {
                 mMULT(); 
 
                 }
                 break;
-            case 17 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:103: DIV
+            case 18 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:112: DIV
                 {
                 mDIV(); 
 
                 }
                 break;
-            case 18 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:107: PLUS
+            case 19 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:116: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
-            case 19 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:112: PLUS_PLUS
+            case 20 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:121: PLUS_PLUS
                 {
                 mPLUS_PLUS(); 
 
                 }
                 break;
-            case 20 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:122: MINUS
+            case 21 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:131: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
-            case 21 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:128: MINUS_MINUS
+            case 22 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:137: MINUS_MINUS
                 {
                 mMINUS_MINUS(); 
 
                 }
                 break;
-            case 22 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:140: CMP_LT
+            case 23 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:149: CMP_LT
                 {
                 mCMP_LT(); 
 
                 }
                 break;
-            case 23 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:147: CMP_LT_EQ
+            case 24 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:156: CMP_LT_EQ
                 {
                 mCMP_LT_EQ(); 
 
                 }
                 break;
-            case 24 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:157: CMP_GT
+            case 25 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:166: CMP_GT
                 {
                 mCMP_GT(); 
 
                 }
                 break;
-            case 25 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:164: CMP_GT_EQ
+            case 26 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:173: CMP_GT_EQ
                 {
                 mCMP_GT_EQ(); 
 
                 }
                 break;
-            case 26 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:174: CMP_EQ
+            case 27 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:183: CMP_EQ
                 {
                 mCMP_EQ(); 
 
                 }
                 break;
-            case 27 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:181: CMP_NEQ
+            case 28 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:190: CMP_NEQ
                 {
                 mCMP_NEQ(); 
 
                 }
                 break;
-            case 28 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:189: AND
+            case 29 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:198: AND
                 {
                 mAND(); 
 
                 }
                 break;
-            case 29 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:193: OR
+            case 30 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:202: OR
                 {
                 mOR(); 
 
                 }
                 break;
-            case 30 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:196: STRING_LITERAL
+            case 31 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:205: STRING_LITERAL
                 {
                 mSTRING_LITERAL(); 
 
                 }
                 break;
-            case 31 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:211: LEFT_CB
+            case 32 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:220: LEFT_CB
                 {
                 mLEFT_CB(); 
 
                 }
                 break;
-            case 32 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:219: RIGHT_CB
+            case 33 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:228: RIGHT_CB
                 {
                 mRIGHT_CB(); 
 
                 }
                 break;
-            case 33 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:228: LEFT_B
+            case 34 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:237: LEFT_B
                 {
                 mLEFT_B(); 
 
                 }
                 break;
-            case 34 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:235: RIGHT_B
+            case 35 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:244: RIGHT_B
                 {
                 mRIGHT_B(); 
 
                 }
                 break;
-            case 35 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:243: ARROW
+            case 36 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:252: ARROW
                 {
                 mARROW(); 
 
                 }
                 break;
-            case 36 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:249: NEWLINE
+            case 37 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:258: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
-            case 37 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:257: LINE_COMMENT
+            case 38 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:266: LINE_COMMENT
                 {
                 mLINE_COMMENT(); 
 
                 }
                 break;
-            case 38 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:270: BLOCK_COMMENT
+            case 39 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:279: BLOCK_COMMENT
                 {
                 mBLOCK_COMMENT(); 
 
                 }
                 break;
-            case 39 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:284: TP
+            case 40 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:293: TP
                 {
                 mTP(); 
 
                 }
                 break;
-            case 40 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:287: PV
+            case 41 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:296: PV
                 {
                 mPV(); 
 
                 }
                 break;
-            case 41 :
-                // c:\\cygwin\\home\\Laurent_dev\\dev\\WPA\\SCRIPTING\\WPAScript\\working_copy_git\\src\\language\\Script.g:1:290: WS
+            case 42 :
+                // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:1:299: WS
                 {
                 mWS(); 
 
@@ -1921,34 +2020,35 @@ public class ScriptLexer extends Lexer {
 
     protected DFA14 dfa14 = new DFA14(this);
     static final String DFA14_eotS =
-        "\1\uffff\1\13\1\44\1\uffff\7\13\1\uffff\1\55\1\uffff\1\56\3\uffff"+
-        "\1\62\1\64\1\67\1\71\1\73\13\uffff\1\44\1\13\1\uffff\3\13\1\100"+
-        "\3\13\20\uffff\3\13\1\107\1\uffff\3\13\1\113\1\114\1\13\1\uffff"+
-        "\3\13\2\uffff\1\114\1\121\1\122\1\13\2\uffff\2\13\1\126\1\uffff";
+        "\1\uffff\1\13\1\44\1\uffff\7\13\1\uffff\1\56\1\uffff\1\57\3\uffff"+
+        "\1\63\1\65\1\70\1\72\1\74\13\uffff\1\44\1\13\1\uffff\4\13\1\102"+
+        "\3\13\20\uffff\3\13\1\111\1\13\1\uffff\3\13\1\116\1\117\1\13\1\uffff"+
+        "\4\13\2\uffff\1\117\1\13\1\126\1\127\2\13\2\uffff\3\13\1\135\1\136"+
+        "\2\uffff";
     static final String DFA14_eofS =
-        "\127\uffff";
+        "\137\uffff";
     static final String DFA14_minS =
-        "\1\11\1\111\1\60\1\uffff\1\122\1\101\1\106\1\114\1\110\1\122\1"+
-        "\117\1\uffff\1\75\1\uffff\1\40\3\uffff\1\52\1\53\1\55\2\75\13\uffff"+
-        "\1\60\1\123\1\uffff\1\125\1\114\1\122\1\60\1\111\1\105\1\116\20"+
-        "\uffff\2\105\1\123\1\60\1\uffff\1\114\1\101\1\124\2\60\1\105\1\uffff"+
-        "\1\105\1\113\1\111\2\uffff\3\60\1\116\2\uffff\1\125\1\105\1\60\1"+
-        "\uffff";
+        "\1\11\1\111\1\60\1\uffff\1\122\1\101\1\106\1\114\1\110\1\122\1\117"+
+        "\1\uffff\1\75\1\uffff\1\40\3\uffff\1\52\1\53\1\55\2\75\13\uffff"+
+        "\1\60\1\123\1\uffff\1\125\1\114\1\122\1\116\1\60\1\111\1\105\1\116"+
+        "\20\uffff\2\105\1\123\1\60\1\103\1\uffff\1\114\1\101\1\124\2\60"+
+        "\1\105\1\uffff\1\124\1\105\1\113\1\111\2\uffff\1\60\1\111\2\60\1"+
+        "\116\1\117\2\uffff\1\125\1\116\1\105\2\60\2\uffff";
     static final String DFA14_maxS =
-        "\1\175\1\111\1\172\1\uffff\1\162\1\157\1\146\1\154\1\150\1\162"+
-        "\1\157\1\uffff\1\75\1\uffff\1\175\3\uffff\1\57\1\53\1\76\2\75\13"+
-        "\uffff\1\172\1\163\1\uffff\1\165\1\154\1\162\1\172\1\151\1\145\1"+
-        "\156\20\uffff\2\145\1\163\1\172\1\uffff\1\154\1\141\1\164\2\172"+
-        "\1\145\1\uffff\1\145\1\153\1\151\2\uffff\3\172\1\156\2\uffff\1\165"+
-        "\1\145\1\172\1\uffff";
+        "\1\175\1\111\1\172\1\uffff\1\162\1\165\1\146\1\154\1\150\1\162\1"+
+        "\157\1\uffff\1\75\1\uffff\1\175\3\uffff\1\57\1\53\1\76\2\75\13\uffff"+
+        "\1\172\1\163\1\uffff\1\165\1\154\1\162\1\156\1\172\1\151\1\145\1"+
+        "\156\20\uffff\2\145\1\163\1\172\1\143\1\uffff\1\154\1\141\1\164"+
+        "\2\172\1\145\1\uffff\1\164\1\145\1\153\1\151\2\uffff\1\172\1\151"+
+        "\2\172\1\156\1\157\2\uffff\1\165\1\156\1\145\2\172\2\uffff";
     static final String DFA14_acceptS =
-        "\3\uffff\1\2\7\uffff\1\12\1\uffff\1\14\1\uffff\1\16\1\17\1\20\5"+
-        "\uffff\1\33\1\34\1\35\1\37\1\40\1\41\1\42\1\44\1\47\1\50\1\51\2"+
-        "\uffff\1\1\7\uffff\1\32\1\13\1\15\1\36\1\45\1\46\1\21\1\23\1\22"+
-        "\1\25\1\43\1\24\1\27\1\26\1\31\1\30\4\uffff\1\4\6\uffff\1\7\3\uffff"+
-        "\1\5\1\3\4\uffff\1\6\1\10\3\uffff\1\11";
+        "\3\uffff\1\2\7\uffff\1\13\1\uffff\1\15\1\uffff\1\17\1\20\1\21\5"+
+        "\uffff\1\34\1\35\1\36\1\40\1\41\1\42\1\43\1\45\1\50\1\51\1\52\2"+
+        "\uffff\1\1\10\uffff\1\33\1\14\1\16\1\37\1\46\1\47\1\22\1\24\1\23"+
+        "\1\26\1\44\1\25\1\30\1\27\1\32\1\31\5\uffff\1\4\6\uffff\1\7\4\uffff"+
+        "\1\5\1\3\6\uffff\1\6\1\10\5\uffff\1\12\1\11";
     static final String DFA14_specialS =
-        "\127\uffff}>";
+        "\137\uffff}>";
     static final String[] DFA14_transitionS = {
             "\1\41\1\36\2\uffff\1\41\22\uffff\1\41\1\27\1\16\3\uffff\1\30"+
             "\1\uffff\1\17\1\20\1\21\1\23\1\15\1\24\1\uffff\1\22\12\3\1\37"+
@@ -1961,25 +2061,26 @@ public class ScriptLexer extends Lexer {
             "\1\43\16\13",
             "",
             "\1\45\37\uffff\1\45",
-            "\1\46\15\uffff\1\47\21\uffff\1\46\15\uffff\1\47",
-            "\1\50\37\uffff\1\50",
-            "\1\43\37\uffff\1\43",
+            "\1\46\15\uffff\1\47\5\uffff\1\50\13\uffff\1\46\15\uffff\1\47"+
+            "\5\uffff\1\50",
             "\1\51\37\uffff\1\51",
+            "\1\43\37\uffff\1\43",
             "\1\52\37\uffff\1\52",
             "\1\53\37\uffff\1\53",
+            "\1\54\37\uffff\1\54",
             "",
-            "\1\54",
+            "\1\55",
             "",
-            "\1\57\2\uffff\1\57\12\uffff\15\57\2\uffff\1\57\3\uffff\32"+
-            "\57\4\uffff\1\57\1\uffff\33\57\1\uffff\1\57",
+            "\1\60\2\uffff\1\60\12\uffff\15\60\2\uffff\1\60\3\uffff\32\60"+
+            "\4\uffff\1\60\1\uffff\33\60\1\uffff\1\60",
             "",
             "",
             "",
-            "\1\61\4\uffff\1\60",
-            "\1\63",
-            "\1\65\20\uffff\1\66",
-            "\1\70",
-            "\1\72",
+            "\1\62\4\uffff\1\61",
+            "\1\64",
+            "\1\66\20\uffff\1\67",
+            "\1\71",
+            "\1\73",
             "",
             "",
             "",
@@ -1992,57 +2093,65 @@ public class ScriptLexer extends Lexer {
             "",
             "",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\1\74\37\uffff\1\74",
-            "",
             "\1\75\37\uffff\1\75",
+            "",
             "\1\76\37\uffff\1\76",
             "\1\77\37\uffff\1\77",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\1\100\37\uffff\1\100",
             "\1\101\37\uffff\1\101",
-            "\1\102\37\uffff\1\102",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\1\103\37\uffff\1\103",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\104\37\uffff\1\104",
             "\1\105\37\uffff\1\105",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\106\37\uffff\1\106",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "",
+            "\1\107\37\uffff\1\107",
             "\1\110\37\uffff\1\110",
-            "\1\111\37\uffff\1\111",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\1\112\37\uffff\1\112",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\1\115\37\uffff\1\115",
             "",
-            "\1\116\37\uffff\1\116",
-            "\1\117\37\uffff\1\117",
+            "\1\113\37\uffff\1\113",
+            "\1\114\37\uffff\1\114",
+            "\1\115\37\uffff\1\115",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\1\120\37\uffff\1\120",
             "",
-            "",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\1\121\37\uffff\1\121",
+            "\1\122\37\uffff\1\122",
             "\1\123\37\uffff\1\123",
-            "",
-            "",
             "\1\124\37\uffff\1\124",
+            "",
+            "",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\1\125\37\uffff\1\125",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\1\130\37\uffff\1\130",
+            "\1\131\37\uffff\1\131",
+            "",
+            "",
+            "\1\132\37\uffff\1\132",
+            "\1\133\37\uffff\1\133",
+            "\1\134\37\uffff\1\134",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "",
             ""
     };
 
@@ -2076,7 +2185,7 @@ public class ScriptLexer extends Lexer {
             this.transition = DFA14_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS );";
+            return "1:1: Tokens : ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | FUNCTION | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS );";
         }
     }
  

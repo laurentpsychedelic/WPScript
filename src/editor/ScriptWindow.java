@@ -341,6 +341,7 @@ public class ScriptWindow extends javax.swing.JFrame {
             case ScriptLexer.ELSE :
             case ScriptLexer.WHILE :
             case ScriptLexer.FOR :
+            case ScriptLexer.FUNCTION :
                 style = "if_else_loop";
                 break;
             case ScriptLexer.BREAK ://FALL-THROUGH

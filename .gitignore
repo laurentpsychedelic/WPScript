@@ -8,3 +8,5 @@ dist
 log
 #git svn clone import script
 import_error_resistant.sh
+#editor window INI file
+editor.ini

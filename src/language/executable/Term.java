@@ -14,6 +14,7 @@ import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
+import language.memory.Environment;
 
 /**
  *
@@ -221,6 +222,16 @@ public class Term extends Calculable {
             }
         }
         return str.toString();
+    }
+
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	for (Object element : elements) {
+	    if (element instanceof Calculable) {
+		((Calculable) element).setEnv(_env);
+	    }
+	}
     }
 
     @Override

@@ -13,6 +13,8 @@ import language.executable.builtintypes.Numeric;
 import language.executable.builtintypes.ObjectArray;
 import language.executable.builtintypes.Dictionary;
 import language.executable.builtintypes.CharString;
+import language.memory.Environment;
+
 /**
  *
  * @author laurent
@@ -50,6 +52,16 @@ public class StorageAccessor extends Calculable {
 	    return "ARRAY_ELE_ASSIGN:: [" + expression_array  + " [ " + expression_index + " ] " + "] <- [EXPR:" + expression_content + "]";
 	} else {
 	    return "ARRAY_ELE[UNKNOW REFERENCE TYPE]:: [ARRAY:" + expression_array  + " ; INDEX:" + expression_index + " ; " + " ; CONTENT:" + expression_content + "]";
+	}
+    }
+
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	expression_array.setEnv(_env);
+	expression_index.setEnv(_env);
+	if (expression_content!=null) {
+	    expression_content.setEnv(_env);
 	}
     }
 

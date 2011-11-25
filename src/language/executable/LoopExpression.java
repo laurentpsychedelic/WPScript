@@ -10,6 +10,7 @@ import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.Bool;
+import language.memory.Environment;
 
 /**
  *
@@ -42,6 +43,17 @@ public class LoopExpression extends Calculable {
          condition = _condition;
          calculation = _calculation;
     }
+
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	pre_calculation.setEnv(_env);
+	increment_calculation.setEnv(_env);
+	condition.setEnv(_env);
+	calculation.setEnv(_env);
+
+    }
+
     @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {
         if (pre_calculation != null) {  

@@ -9,6 +9,7 @@ import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
+import language.memory.Environment;
 
 /**
  *
@@ -16,6 +17,8 @@ import language.exceptions.RuntimeErrorException;
  */
 public abstract class Calculable {
     public ScriptParser interpreter;
+    public Environment env;
+    public abstract void setEnv(Environment _env);
     public abstract void compilationCheck() throws CompilationErrorException, PanicException;
     @Override
     public abstract String toString();

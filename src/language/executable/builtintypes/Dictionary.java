@@ -11,6 +11,7 @@ import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
 import language.executable.Calculable;
+import language.memory.Environment;
 
 /**
  *
@@ -79,6 +80,21 @@ public class Dictionary extends BuiltInType {
     }
 
     @Override
+    public void setEnv(Environment _env) {
+	System.err.println("Dictionary#setEnv("+_env+")");
+	env = _env;
+	for (Object _key : dictionary.keySet()) {
+            if (_key instanceof Calculable) {
+                ((Calculable) _key).setEnv(_env);
+            }
+            Object _value = dictionary.get(_key);
+            if (_value instanceof Calculable) {
+                ((Calculable) _value).setEnv(_env);
+            }
+        }
+    }
+
+    @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {
 	for (Object _key : dictionary.keySet()) {
             if (_key instanceof Calculable) {
@@ -88,7 +104,7 @@ public class Dictionary extends BuiltInType {
             if (_value instanceof Calculable) {
                 ((Calculable) _value).compilationCheck();
             }
-        }
+	}
     }
 
     @Override

@@ -43,12 +43,11 @@ import language.exceptions.*;
     }
 
     /** Map variable name to Integer object holding value */
-    public Environment env = new Environment(null);
+    private Environment env = new Environment(null);
     public static final Environment env_const = new Environment(null);
     static {
         env_const.addConstants();
     }
-    public Environment compilation_env =  new Environment(null);
     public Environment functions_env = new Environment(null);
     private LinkedList <Expression> commands = new LinkedList();
     private int line_number = 1;
@@ -99,9 +98,18 @@ import language.exceptions.*;
         }
     }
 
+    public void setEnv() throws PanicException {
+        for (Object o : commands) {
+            if (!(o instanceof Expression)) {
+                scriptPanic("Command must be an instance of Expression [" + o.getClass() + "]", line_number);
+            }
+            ((Expression) o).setEnv(env);
+        }
+    }
+
     public boolean compilationCheck() throws PanicException, CompilationErrorException {
         try {
-            compilation_env.clear();
+            env.compilation_map.clear();
             if (__DEBUG__) {
                 System.out.println("\nCOMPILATION CHECK...");
             }
@@ -111,7 +119,7 @@ import language.exceptions.*;
                 }
                 ((Expression) o).compilationCheck();
             }
-            compilation_env.clear();
+            env.compilation_map.clear();
             if (__DEBUG__) {
                 System.out.println(" OK");
             }

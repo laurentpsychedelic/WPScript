@@ -19,7 +19,7 @@ public class FunctionDeclaration extends Calculable {
     String name;
     LinkedList <Object> params;
     Expression calculation;
-    Environment local_env;
+    Environment compilation_env = new Environment(null); 
 
     public FunctionDeclaration(ScriptParser _interpreter, String _name, LinkedList <Object> _params, Expression _calculation) {
         name = _name;
@@ -27,14 +27,13 @@ public class FunctionDeclaration extends Calculable {
         calculation = _calculation;
         interpreter = _interpreter;
         line_number = interpreter.getLineNumber();
-	local_env = new Environment(_interpreter.env);
     }
 
     @Override
     public Object eval() throws PanicException, RuntimeErrorException {
 	for (Object param : params) {
 	    if (param instanceof Variable) {
-		local_env.addEntry(((Variable) param).getName(), null);
+		env.addEntry(((Variable) param).getName(), null);
 	    } else {
 		interpreter.runtimeError("Parameters of variables declarations must be variable names [" + param.getClass() + "]", line_number);
 	    }
@@ -61,9 +60,21 @@ public class FunctionDeclaration extends Calculable {
         return str.toString();
     }
 
+    @Override
+    public void setEnv(Environment _env) {
+	env = new Environment(_env);
+	calculation.setEnv(env);
+    }
     
     @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {
+	for (Object param : params) {
+	    if (param instanceof Variable) {
+		env.compilation_map.put(((Variable) param).getName(), null);
+	    } else {
+		interpreter.compilationError("Function parameters must be variables [" + param.getClass() + "]", line_number);
+	    }
+	}
         calculation.compilationCheck();
     }
 

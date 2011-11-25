@@ -10,6 +10,7 @@ import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.Bool;
+import language.memory.Environment;
 
 /**
  *
@@ -33,6 +34,14 @@ public class IfExpression extends Calculable {
         calculation_if = _calculation_if;
         calculation_else = _calculation_else;
         interpreter = _interpreter;
+    }
+
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	condition.setEnv(_env);
+	calculation_if.setEnv(_env);
+	calculation_else.setEnv(_env);
     }
 
     @Override

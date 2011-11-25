@@ -8,6 +8,8 @@ package language.executable;
 import language.exceptions.CompilationErrorException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
+import language.memory.Environment;
+
 /**
  *
  * @author laurent
@@ -29,8 +31,13 @@ public class Variable extends Calculable {
     }
 
     @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+    }
+
+    @Override
     public void compilationCheck() throws CompilationErrorException {
-        if (!interpreter.compilation_env.containsEntry(name)
+	if (!env.compilation_map.containsKey(name)
 	    && !ScriptParser.env_const.containsEntry(name)) {
             throw new CompilationErrorException("Variable used before being defined [" + name + "]", line_number);
         }
@@ -38,7 +45,7 @@ public class Variable extends Calculable {
 
     @Override
     public Object eval() throws RuntimeErrorException {
-        Object val = interpreter.env.getValue(this.name);
+        Object val = env.getValue(this.name);
         if (val == null) {
 	    val = ScriptParser.env_const.getValue(this.name);
 	    if (val==null) {

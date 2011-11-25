@@ -13,6 +13,7 @@ import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.BuiltInType;
+import language.memory.Environment;
 
 /**
  *
@@ -135,6 +136,17 @@ public class FunctionCall extends Calculable {
         if (runtime_functions_class != null) {
             runtime_methods = runtime_functions_class.getMethods();
         }
+    }
+
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	for (int k=1; k<name_params.size(); k++) {
+	    Object param = name_params.get(k);
+	    if (param instanceof Calculable) {
+		((Calculable) param).setEnv(_env);
+	    }
+	}
     }
     
     @Override

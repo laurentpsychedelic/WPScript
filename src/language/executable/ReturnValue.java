@@ -7,6 +7,7 @@ package language.executable;
 import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.exceptions.RuntimeErrorException;
+import language.memory.Environment;
 
 /**
  *
@@ -37,6 +38,11 @@ public class ReturnValue extends Calculable {
             return "VOID";
         }
     };
+
+    @Override
+    public void setEnv(Environment _env) {
+	//NOTHING
+    }
 
     @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {

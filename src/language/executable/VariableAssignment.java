@@ -11,6 +11,7 @@ import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
 import language.executable.builtintypes.Numeric;
+import language.memory.Environment;
 
 /**
  *
@@ -53,13 +54,19 @@ public class VariableAssignment extends Calculable {
     @Override
     public Object eval() throws PanicException, RuntimeErrorException {
         Object ret_val = expression.eval();
-        interpreter.env.addEntry(var_name, ret_val);
+        env.addEntry(var_name, ret_val);
         return ret_val;
     }
 
     @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	expression.setEnv(_env);
+    }
+
+    @Override
     public void compilationCheck() throws CompilationErrorException, PanicException {
-        interpreter.compilation_env.addEntry(var_name, null);
+        env.compilation_map.put(var_name, null);
         expression.compilationCheck();
     }
 

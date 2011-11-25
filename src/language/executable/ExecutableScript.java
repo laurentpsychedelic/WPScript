@@ -52,6 +52,7 @@ public class ExecutableScript {
         }
         
         parser.treeRefactoring();
+	parser.setEnv();
         
         if (parser.__DEBUG__) {
 	    parser.dumpScriptCommands();

@@ -7,6 +7,7 @@ package language.executable.builtintypes;
 import language.exceptions.PanicException;
 import language.exceptions.RuntimeErrorException;
 import language.executable.Calculable;
+import language.memory.Environment;
 
 /**
  *
@@ -21,5 +22,9 @@ public abstract class BuiltInType extends Calculable {
     @Override
     public Calculable getSimplifiedCalculable() throws PanicException {
         return this;
+    }
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
     }
 }

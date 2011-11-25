@@ -10,6 +10,7 @@ import language.exceptions.CompilationErrorException;
 import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
+import language.memory.Environment;
 
 /**
  *
@@ -62,6 +63,14 @@ public class Expression extends Calculable {
     @Override
     public String toString() {
         return "EXPRESSION:: " + "\n    " + calculation.toString();
+    }
+
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	for (Calculable calc : calculation) {
+	    calc.setEnv(_env);
+	}
     }
 
     @Override

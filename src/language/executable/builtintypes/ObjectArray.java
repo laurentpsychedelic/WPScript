@@ -10,6 +10,7 @@ import language.exceptions.PanicException;
 import language.ScriptParser;
 import language.exceptions.RuntimeErrorException;
 import language.executable.Calculable;
+import language.memory.Environment;
 
 /**
  *
@@ -61,6 +62,17 @@ public class ObjectArray extends BuiltInType {
             new_value.add(new_object);
         }
         value = new_value;
+    }
+
+    @Override
+    public void setEnv(Environment _env) {
+	env = _env;
+	for (int k=0; k<value.size(); k++) {
+            Object object = value.get(k);
+            if (object instanceof Calculable) {
+                ((Calculable) object).setEnv(_env);
+            }
+        }
     }
 
     @Override

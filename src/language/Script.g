@@ -67,6 +67,11 @@ import language.exceptions.*;
             Object val = env.getValue(o.toString());
             ps.println("VAR [" + o + "]->" + val);
         }
+        ps.println("\nUSER DEFINED FUNCTIONS");
+        for (Object o : functions_env.getEntries()) {
+            Object val = functions_env.getValue(o.toString());
+            ps.println("USER FUNC->" + val);
+        }
     }
 
     public void dumpScriptCommands() {

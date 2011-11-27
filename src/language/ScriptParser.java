@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g 2011-11-25 11:36:37
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g 2011-11-25 18:35:10
 
 package language;
 
@@ -132,6 +132,11 @@ public class ScriptParser extends Parser {
             for (Object o : env.getEntries()) {
                 Object val = env.getValue(o.toString());
                 ps.println("VAR [" + o + "]->" + val);
+            }
+            ps.println("\nUSER DEFINED FUNCTIONS");
+            for (Object o : functions_env.getEntries()) {
+                Object val = functions_env.getValue(o.toString());
+                ps.println("USER FUNC->" + val);
             }
         }
 
@@ -281,7 +286,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "prog"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:212:1: prog : s= stats ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:217:1: prog : s= stats ;
     public final ScriptParser.prog_return prog() throws RecognitionException {
         ScriptParser.prog_return retval = new ScriptParser.prog_return();
         retval.start = input.LT(1);
@@ -294,8 +299,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:212:6: (s= stats )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:213:5: s= stats
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:217:6: (s= stats )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:218:5: s= stats
             {
             root_0 = (Object)adaptor.nil();
 
@@ -342,7 +347,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "block"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:220:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:225:1: block returns [LinkedList<Expression> expressions] : LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB ;
     public final ScriptParser.block_return block() throws RecognitionException {
         ScriptParser.block_return retval = new ScriptParser.block_return();
         retval.start = input.LT(1);
@@ -363,8 +368,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:220:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:221:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:225:51: ( LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:226:5: LEFT_CB ( NEWLINE )? stats ( NEWLINE )? RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
@@ -373,7 +378,7 @@ public class ScriptParser extends Parser {
             LEFT_CB1_tree = (Object)adaptor.create(LEFT_CB1);
             adaptor.addChild(root_0, LEFT_CB1_tree);
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:221:13: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:226:13: ( NEWLINE )?
             int alt1=2;
             alt1 = dfa1.predict(input);
             switch (alt1) {
@@ -397,7 +402,7 @@ public class ScriptParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, stats3.getTree());
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:221:28: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:226:28: ( NEWLINE )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -458,7 +463,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "stats"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:225:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:230:1: stats returns [LinkedList<Expression> expressions] : s= stat (s= stat )* ;
     public final ScriptParser.stats_return stats() throws RecognitionException {
         ScriptParser.stats_return retval = new ScriptParser.stats_return();
         retval.start = input.LT(1);
@@ -471,8 +476,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:225:51: (s= stat (s= stat )* )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:226:5: s= stat (s= stat )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:230:51: (s= stat (s= stat )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:231:5: s= stat (s= stat )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -490,7 +495,7 @@ public class ScriptParser extends Parser {
                       }
                   
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:231:7: (s= stat )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:236:7: (s= stat )*
             loop3:
             do {
                 int alt3=2;
@@ -512,7 +517,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:231:8: s= stat
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:236:8: s= stat
             	    {
             	    pushFollow(FOLLOW_stat_in_stats134);
             	    s=stat();
@@ -565,7 +570,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "stat"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:238:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:243:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration );
     public final ScriptParser.stat_return stat() throws RecognitionException {
         ScriptParser.stat_return retval = new ScriptParser.stat_return();
         retval.start = input.LT(1);
@@ -592,12 +597,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:239:5: ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:244:5: ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration )
             int alt4=7;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:239:7: pre_stat NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:244:7: pre_stat NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -622,7 +627,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:243:7: NEWLINE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:248:7: NEWLINE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -640,7 +645,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:246:7: block
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:251:7: block
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -659,7 +664,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:249:7: if_expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:254:7: if_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -678,7 +683,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:252:7: while_expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:257:7: while_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -697,7 +702,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:255:7: for_expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:260:7: for_expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -716,7 +721,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:258:7: function_declaration
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:263:7: function_declaration
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -762,7 +767,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_stat"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:261:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:266:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
     public final ScriptParser.pre_stat_return pre_stat() throws RecognitionException {
         ScriptParser.pre_stat_return retval = new ScriptParser.pre_stat_return();
         retval.start = input.LT(1);
@@ -807,12 +812,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:262:5: ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:267:5: ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
             int alt5=9;
             alt5 = dfa5.predict(input);
             switch (alt5) {
                 case 1 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:262:7: expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:267:7: expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -831,7 +836,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:265:7: BREAK
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:270:7: BREAK
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -849,7 +854,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:268:7: CONTINUE
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:273:7: CONTINUE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -867,7 +872,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:271:7: ID EQUAL expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:276:7: ID EQUAL expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -896,7 +901,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:274:7: array_element_reference EQUAL expression
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:279:7: array_element_reference EQUAL expression
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -926,7 +931,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:277:7: ID PLUS_PLUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:282:7: ID PLUS_PLUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -949,7 +954,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:280:7: PLUS_PLUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:285:7: PLUS_PLUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -972,7 +977,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 8 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:283:7: ID MINUS_MINUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:288:7: ID MINUS_MINUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -995,7 +1000,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 9 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:286:7: MINUS_MINUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:291:7: MINUS_MINUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1045,7 +1050,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "if_expression"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:292:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:297:1: if_expression returns [IfExpression expr] : p= pre_if_expression ;
     public final ScriptParser.if_expression_return if_expression() throws RecognitionException {
         ScriptParser.if_expression_return retval = new ScriptParser.if_expression_return();
         retval.start = input.LT(1);
@@ -1058,8 +1063,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:293:5: (p= pre_if_expression )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:293:7: p= pre_if_expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:298:5: (p= pre_if_expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:298:7: p= pre_if_expression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1115,7 +1120,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_if_expression"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:309:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:1: pre_if_expression returns [LinkedList<Expression> exprs] : IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? ;
     public final ScriptParser.pre_if_expression_return pre_if_expression() throws RecognitionException {
         ScriptParser.pre_if_expression_return retval = new ScriptParser.pre_if_expression_return();
         retval.start = input.LT(1);
@@ -1144,8 +1149,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:310:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:310:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:315:5: ( IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )? )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:315:7: IF LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ( NEWLINE )? ( ELSE ( NEWLINE )? s= stat )?
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1170,7 +1175,7 @@ public class ScriptParser extends Parser {
             RIGHT_P33_tree = (Object)adaptor.create(RIGHT_P33);
             adaptor.addChild(root_0, RIGHT_P33_tree);
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:310:38: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:315:38: ( NEWLINE )?
             int alt6=2;
             alt6 = dfa6.predict(input);
             switch (alt6) {
@@ -1201,7 +1206,7 @@ public class ScriptParser extends Parser {
                       retval.exprs.add( (s!=null?s.expr:null) );
                   
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:7: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:7: ( NEWLINE )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1227,7 +1232,7 @@ public class ScriptParser extends Parser {
 
             }
 
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:16: ( ELSE ( NEWLINE )? s= stat )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:16: ( ELSE ( NEWLINE )? s= stat )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1240,14 +1245,14 @@ public class ScriptParser extends Parser {
             }
             switch (alt9) {
                 case 1 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:17: ELSE ( NEWLINE )? s= stat
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:17: ELSE ( NEWLINE )? s= stat
                     {
                     ELSE36=(Token)match(input,ELSE,FOLLOW_ELSE_in_pre_if_expression406); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     ELSE36_tree = (Object)adaptor.create(ELSE36);
                     adaptor.addChild(root_0, ELSE36_tree);
                     }
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:22: ( NEWLINE )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:22: ( NEWLINE )?
                     int alt8=2;
                     alt8 = dfa8.predict(input);
                     switch (alt8) {
@@ -1311,7 +1316,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "while_expression"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:318:1: while_expression returns [LoopExpression expr] : p= pre_while_expression ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:323:1: while_expression returns [LoopExpression expr] : p= pre_while_expression ;
     public final ScriptParser.while_expression_return while_expression() throws RecognitionException {
         ScriptParser.while_expression_return retval = new ScriptParser.while_expression_return();
         retval.start = input.LT(1);
@@ -1324,8 +1329,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:5: (p= pre_while_expression )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:7: p= pre_while_expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:324:5: (p= pre_while_expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:324:7: p= pre_while_expression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1377,7 +1382,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_while_expression"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:331:1: pre_while_expression returns [LinkedList<Expression> exprs] : WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:336:1: pre_while_expression returns [LinkedList<Expression> exprs] : WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat ;
     public final ScriptParser.pre_while_expression_return pre_while_expression() throws RecognitionException {
         ScriptParser.pre_while_expression_return retval = new ScriptParser.pre_while_expression_return();
         retval.start = input.LT(1);
@@ -1400,8 +1405,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:332:5: ( WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:332:7: WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:337:5: ( WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:337:7: WHILE LEFT_P e= expression RIGHT_P ( NEWLINE )? s= stat
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1426,7 +1431,7 @@ public class ScriptParser extends Parser {
             RIGHT_P40_tree = (Object)adaptor.create(RIGHT_P40);
             adaptor.addChild(root_0, RIGHT_P40_tree);
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:332:41: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:337:41: ( NEWLINE )?
             int alt10=2;
             alt10 = dfa10.predict(input);
             switch (alt10) {
@@ -1486,7 +1491,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "for_expression"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:338:1: for_expression returns [LoopExpression expr] : p= pre_for_expression ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:343:1: for_expression returns [LoopExpression expr] : p= pre_for_expression ;
     public final ScriptParser.for_expression_return for_expression() throws RecognitionException {
         ScriptParser.for_expression_return retval = new ScriptParser.for_expression_return();
         retval.start = input.LT(1);
@@ -1499,8 +1504,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:339:5: (p= pre_for_expression )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:339:7: p= pre_for_expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:344:5: (p= pre_for_expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:344:7: p= pre_for_expression
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1552,7 +1557,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "pre_for_expression"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:351:1: pre_for_expression returns [LinkedList<Expression> exprs] : ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:356:1: pre_for_expression returns [LinkedList<Expression> exprs] : ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat );
     public final ScriptParser.pre_for_expression_return pre_for_expression() throws RecognitionException {
         ScriptParser.pre_for_expression_return retval = new ScriptParser.pre_for_expression_return();
         retval.start = input.LT(1);
@@ -1597,7 +1602,7 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:5: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:5: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat | FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -1627,7 +1632,7 @@ public class ScriptParser extends Parser {
             }
             switch (alt13) {
                 case 1 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1674,7 +1679,7 @@ public class ScriptParser extends Parser {
                     RIGHT_P46_tree = (Object)adaptor.create(RIGHT_P46);
                     adaptor.addChild(root_0, RIGHT_P46_tree);
                     }
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:81: ( NEWLINE )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:81: ( NEWLINE )?
                     int alt11=2;
                     alt11 = dfa11.predict(input);
                     switch (alt11) {
@@ -1711,7 +1716,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:359:7: FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:364:7: FOR LEFT_P ID EQUAL range RIGHT_P ( NEWLINE )? s= stat
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -1746,7 +1751,7 @@ public class ScriptParser extends Parser {
                     RIGHT_P53_tree = (Object)adaptor.create(RIGHT_P53);
                     adaptor.addChild(root_0, RIGHT_P53_tree);
                     }
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:359:41: ( NEWLINE )?
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:364:41: ( NEWLINE )?
                     int alt12=2;
                     alt12 = dfa12.predict(input);
                     switch (alt12) {
@@ -1845,7 +1850,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "range"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:402:1: range returns [LinkedList<Calculable> range_ele] : a= expression ( ARROW b= range )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:407:1: range returns [LinkedList<Calculable> range_ele] : a= expression ( ARROW b= range )* ;
     public final ScriptParser.range_return range() throws RecognitionException {
         ScriptParser.range_return retval = new ScriptParser.range_return();
         retval.start = input.LT(1);
@@ -1862,8 +1867,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:403:5: (a= expression ( ARROW b= range )* )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:403:7: a= expression ( ARROW b= range )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:408:5: (a= expression ( ARROW b= range )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:408:7: a= expression ( ARROW b= range )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1879,7 +1884,7 @@ public class ScriptParser extends Parser {
                       retval.range_ele.add((a!=null?a.expr:null));
                   
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:406:7: ( ARROW b= range )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:411:7: ( ARROW b= range )*
             loop14:
             do {
                 int alt14=2;
@@ -1898,7 +1903,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt14) {
             	case 1 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:406:8: ARROW b= range
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:411:8: ARROW b= range
             	    {
             	    ARROW55=(Token)match(input,ARROW,FOLLOW_ARROW_in_range585); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -1957,7 +1962,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "expression"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:413:1: expression returns [Expression expr] : terms ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:418:1: expression returns [Expression expr] : terms ;
     public final ScriptParser.expression_return expression() throws RecognitionException {
         ScriptParser.expression_return retval = new ScriptParser.expression_return();
         retval.start = input.LT(1);
@@ -1970,8 +1975,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:414:5: ( terms )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:414:7: terms
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:419:5: ( terms )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:419:7: terms
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2015,7 +2020,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "terms"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:418:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:423:1: terms returns [LinkedList<Object> terms] : t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* ;
     public final ScriptParser.terms_return terms() throws RecognitionException {
         ScriptParser.terms_return retval = new ScriptParser.terms_return();
         retval.start = input.LT(1);
@@ -2036,8 +2041,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:419:5: (t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:419:7: t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:424:5: (t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:424:7: t= term ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2053,7 +2058,7 @@ public class ScriptParser extends Parser {
                       retval.terms.add( new Term(this, (t!=null?t.atoms:null)) );
                   
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:422:7: ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:427:7: ( PLUS t= term | MINUS t= term | AND t= term | OR t= term )*
             loop15:
             do {
                 int alt15=5;
@@ -2083,7 +2088,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt15) {
             	case 1 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:422:9: PLUS t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:427:9: PLUS t= term
             	    {
             	    PLUS57=(Token)match(input,PLUS,FOLLOW_PLUS_in_terms636); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2106,7 +2111,7 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:426:9: MINUS t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:431:9: MINUS t= term
             	    {
             	    MINUS58=(Token)match(input,MINUS,FOLLOW_MINUS_in_terms652); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2129,7 +2134,7 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:430:9: AND t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:435:9: AND t= term
             	    {
             	    AND59=(Token)match(input,AND,FOLLOW_AND_in_terms668); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2152,7 +2157,7 @@ public class ScriptParser extends Parser {
             	    }
             	    break;
             	case 4 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:434:9: OR t= term
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:439:9: OR t= term
             	    {
             	    OR60=(Token)match(input,OR,FOLLOW_OR_in_terms684); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -2209,7 +2214,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "term"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:440:1: term returns [LinkedList<Object> atoms] : (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:445:1: term returns [LinkedList<Object> atoms] : (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );
     public final ScriptParser.term_return term() throws RecognitionException {
         ScriptParser.term_return retval = new ScriptParser.term_return();
         retval.start = input.LT(1);
@@ -2254,7 +2259,7 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:441:5: (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:446:5: (a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )* | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID )
             int alt17=5;
             switch ( input.LA(1) ) {
             case LEFT_CB:
@@ -2339,7 +2344,7 @@ public class ScriptParser extends Parser {
 
             switch (alt17) {
                 case 1 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:441:7: a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:446:7: a= atom ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2355,7 +2360,7 @@ public class ScriptParser extends Parser {
                               retval.atoms.add((a!=null?a.value:null));
                           
                     }
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:444:7: ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:449:7: ( MULT a= atom | DIV a= atom | CMP_LT a= atom | CMP_LT_EQ a= atom | CMP_GT a= atom | CMP_GT_EQ a= atom | CMP_EQ a= atom | CMP_NEQ a= atom )*
                     loop16:
                     do {
                         int alt16=9;
@@ -2405,7 +2410,7 @@ public class ScriptParser extends Parser {
 
                         switch (alt16) {
                     	case 1 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:444:9: MULT a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:449:9: MULT a= atom
                     	    {
                     	    MULT61=(Token)match(input,MULT,FOLLOW_MULT_in_term718); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2428,7 +2433,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:448:9: DIV a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:453:9: DIV a= atom
                     	    {
                     	    DIV62=(Token)match(input,DIV,FOLLOW_DIV_in_term734); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2451,7 +2456,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 3 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:452:9: CMP_LT a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:457:9: CMP_LT a= atom
                     	    {
                     	    CMP_LT63=(Token)match(input,CMP_LT,FOLLOW_CMP_LT_in_term750); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2474,7 +2479,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 4 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:456:9: CMP_LT_EQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:461:9: CMP_LT_EQ a= atom
                     	    {
                     	    CMP_LT_EQ64=(Token)match(input,CMP_LT_EQ,FOLLOW_CMP_LT_EQ_in_term767); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2497,7 +2502,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 5 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:460:9: CMP_GT a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:465:9: CMP_GT a= atom
                     	    {
                     	    CMP_GT65=(Token)match(input,CMP_GT,FOLLOW_CMP_GT_in_term784); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2520,7 +2525,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 6 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:464:9: CMP_GT_EQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:469:9: CMP_GT_EQ a= atom
                     	    {
                     	    CMP_GT_EQ66=(Token)match(input,CMP_GT_EQ,FOLLOW_CMP_GT_EQ_in_term800); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2543,7 +2548,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 7 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:468:9: CMP_EQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:473:9: CMP_EQ a= atom
                     	    {
                     	    CMP_EQ67=(Token)match(input,CMP_EQ,FOLLOW_CMP_EQ_in_term817); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2566,7 +2571,7 @@ public class ScriptParser extends Parser {
                     	    }
                     	    break;
                     	case 8 :
-                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:472:9: CMP_NEQ a= atom
+                    	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:477:9: CMP_NEQ a= atom
                     	    {
                     	    CMP_NEQ68=(Token)match(input,CMP_NEQ,FOLLOW_CMP_NEQ_in_term833); if (state.failed) return retval;
                     	    if ( state.backtracking==0 ) {
@@ -2598,7 +2603,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:477:7: ID PLUS_PLUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:482:7: ID PLUS_PLUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2623,7 +2628,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:482:7: PLUS_PLUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:487:7: PLUS_PLUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2648,7 +2653,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:487:7: ID MINUS_MINUS
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:492:7: ID MINUS_MINUS
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2673,7 +2678,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:492:7: MINUS_MINUS ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:497:7: MINUS_MINUS ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2725,7 +2730,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "function_declaration"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:499:1: function_declaration returns [FunctionDeclaration expr] : FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:504:1: function_declaration returns [FunctionDeclaration expr] : FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat ;
     public final ScriptParser.function_declaration_return function_declaration() throws RecognitionException {
         ScriptParser.function_declaration_return retval = new ScriptParser.function_declaration_return();
         retval.start = input.LT(1);
@@ -2750,8 +2755,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:499:57: ( FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:500:5: FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:504:57: ( FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:505:5: FUNCTION ID LEFT_P ( args )? RIGHT_P ( NEWLINE )? s= stat
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2770,7 +2775,7 @@ public class ScriptParser extends Parser {
             LEFT_P79_tree = (Object)adaptor.create(LEFT_P79);
             adaptor.addChild(root_0, LEFT_P79_tree);
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:500:24: ( args )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:505:24: ( args )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -2798,7 +2803,7 @@ public class ScriptParser extends Parser {
             RIGHT_P81_tree = (Object)adaptor.create(RIGHT_P81);
             adaptor.addChild(root_0, RIGHT_P81_tree);
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:500:38: ( NEWLINE )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:505:38: ( NEWLINE )?
             int alt19=2;
             alt19 = dfa19.predict(input);
             switch (alt19) {
@@ -2856,7 +2861,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "function_call"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:504:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P ( args )? RIGHT_P ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:509:1: function_call returns [LinkedList<Object> name_params] : ID LEFT_P ( args )? RIGHT_P ;
     public final ScriptParser.function_call_return function_call() throws RecognitionException {
         ScriptParser.function_call_return retval = new ScriptParser.function_call_return();
         retval.start = input.LT(1);
@@ -2875,8 +2880,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:504:55: ( ID LEFT_P ( args )? RIGHT_P )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:505:5: ID LEFT_P ( args )? RIGHT_P
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:509:55: ( ID LEFT_P ( args )? RIGHT_P )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:510:5: ID LEFT_P ( args )? RIGHT_P
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2890,7 +2895,7 @@ public class ScriptParser extends Parser {
             LEFT_P84_tree = (Object)adaptor.create(LEFT_P84);
             adaptor.addChild(root_0, LEFT_P84_tree);
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:505:15: ( args )?
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:510:15: ( args )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -2958,7 +2963,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "args"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:516:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:521:1: args returns [LinkedList<Object> params] : a= expression ( COMMA b= args )* ;
     public final ScriptParser.args_return args() throws RecognitionException {
         ScriptParser.args_return retval = new ScriptParser.args_return();
         retval.start = input.LT(1);
@@ -2975,8 +2980,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:516:41: (a= expression ( COMMA b= args )* )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:517:5: a= expression ( COMMA b= args )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:521:41: (a= expression ( COMMA b= args )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:522:5: a= expression ( COMMA b= args )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -2992,7 +2997,7 @@ public class ScriptParser extends Parser {
                       retval.params.add((a!=null?a.expr:null));
                   
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:520:7: ( COMMA b= args )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:525:7: ( COMMA b= args )*
             loop21:
             do {
                 int alt21=2;
@@ -3011,7 +3016,7 @@ public class ScriptParser extends Parser {
 
                 switch (alt21) {
             	case 1 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:520:8: COMMA b= args
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:525:8: COMMA b= args
             	    {
             	    COMMA87=(Token)match(input,COMMA,FOLLOW_COMMA_in_args976); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -3070,7 +3075,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "array"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:529:1: array returns [ObjectArray array] : LEFT_B a= args RIGHT_B ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:534:1: array returns [ObjectArray array] : LEFT_B a= args RIGHT_B ;
     public final ScriptParser.array_return array() throws RecognitionException {
         ScriptParser.array_return retval = new ScriptParser.array_return();
         retval.start = input.LT(1);
@@ -3087,8 +3092,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:529:34: ( LEFT_B a= args RIGHT_B )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:530:5: LEFT_B a= args RIGHT_B
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:534:34: ( LEFT_B a= args RIGHT_B )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:535:5: LEFT_B a= args RIGHT_B
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3142,7 +3147,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "array_element_reference"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:536:1: array_element_reference returns [StorageAccessor accessor] : (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:541:1: array_element_reference returns [StorageAccessor accessor] : (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B );
     public final ScriptParser.array_element_reference_return array_element_reference() throws RecognitionException {
         ScriptParser.array_element_reference_return retval = new ScriptParser.array_element_reference_return();
         retval.start = input.LT(1);
@@ -3171,7 +3176,7 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 20) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:537:5: (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:542:5: (a= ID LEFT_B b= ID RIGHT_B | a= ID LEFT_B b= NUM RIGHT_B | a= ID LEFT_B s= string_literal RIGHT_B )
             int alt22=3;
             int LA22_0 = input.LA(1);
 
@@ -3221,7 +3226,7 @@ public class ScriptParser extends Parser {
             }
             switch (alt22) {
                 case 1 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:537:7: a= ID LEFT_B b= ID RIGHT_B
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:542:7: a= ID LEFT_B b= ID RIGHT_B
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3254,7 +3259,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:540:7: a= ID LEFT_B b= NUM RIGHT_B
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:545:7: a= ID LEFT_B b= NUM RIGHT_B
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3287,7 +3292,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:543:7: a= ID LEFT_B s= string_literal RIGHT_B
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:548:7: a= ID LEFT_B s= string_literal RIGHT_B
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3348,7 +3353,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:547:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:552:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );
     public final ScriptParser.atom_return atom() throws RecognitionException {
         ScriptParser.atom_return retval = new ScriptParser.atom_return();
         retval.start = input.LT(1);
@@ -3387,12 +3392,12 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 21) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:548:5: ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:553:5: ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference )
             int alt23=11;
             alt23 = dfa23.predict(input);
             switch (alt23) {
                 case 1 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:548:7: NUM
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:553:7: NUM
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3410,7 +3415,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:551:7: MINUS NUM
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:556:7: MINUS NUM
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3433,7 +3438,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:554:7: BOOL
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:559:7: BOOL
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3455,7 +3460,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:561:7: LEFT_P expression RIGHT_P
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:566:7: LEFT_P expression RIGHT_P
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3484,7 +3489,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:564:7: ID
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:569:7: ID
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3502,7 +3507,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:567:7: CONSTANT
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:572:7: CONSTANT
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3520,7 +3525,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:570:7: string_literal
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:575:7: string_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3539,7 +3544,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 8 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:573:7: dictionary
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:578:7: dictionary
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3558,7 +3563,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 9 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:576:7: array
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:581:7: array
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3577,7 +3582,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 10 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:579:7: function_call
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:584:7: function_call
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3596,7 +3601,7 @@ public class ScriptParser extends Parser {
                     }
                     break;
                 case 11 :
-                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:582:7: array_element_reference
+                    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:587:7: array_element_reference
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -3642,7 +3647,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "string_literal"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:593:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:598:1: string_literal returns [CharString value] : s= STRING_LITERAL ;
     public final ScriptParser.string_literal_return string_literal() throws RecognitionException {
         ScriptParser.string_literal_return retval = new ScriptParser.string_literal_return();
         retval.start = input.LT(1);
@@ -3655,8 +3660,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 22) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:593:43: (s= STRING_LITERAL )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:593:45: s= STRING_LITERAL
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:598:43: (s= STRING_LITERAL )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:598:45: s= STRING_LITERAL
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3699,7 +3704,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "dictionary"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:598:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:603:1: dictionary returns [Dictionary value] : LEFT_CB dictionary_elements RIGHT_CB ;
     public final ScriptParser.dictionary_return dictionary() throws RecognitionException {
         ScriptParser.dictionary_return retval = new ScriptParser.dictionary_return();
         retval.start = input.LT(1);
@@ -3716,8 +3721,8 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 23) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:598:39: ( LEFT_CB dictionary_elements RIGHT_CB )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:599:5: LEFT_CB dictionary_elements RIGHT_CB
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:603:39: ( LEFT_CB dictionary_elements RIGHT_CB )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:604:5: LEFT_CB dictionary_elements RIGHT_CB
             {
             root_0 = (Object)adaptor.nil();
 
@@ -3776,7 +3781,7 @@ public class ScriptParser extends Parser {
     };
 
     // $ANTLR start "dictionary_elements"
-    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:608:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
+    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:1: dictionary_elements returns [LinkedList<Object> keys_values] : (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* ;
     public final ScriptParser.dictionary_elements_return dictionary_elements() throws RecognitionException {
         ScriptParser.dictionary_elements_return retval = new ScriptParser.dictionary_elements_return();
         retval.start = input.LT(1);
@@ -3801,13 +3806,13 @@ public class ScriptParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 24) ) { return retval; }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:608:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:609:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:62: ( (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )* )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:614:5: (e1= expression TP e2= expression ) ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
             {
             root_0 = (Object)adaptor.nil();
 
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:609:5: (e1= expression TP e2= expression )
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:609:6: e1= expression TP e2= expression
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:614:5: (e1= expression TP e2= expression )
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:614:6: e1= expression TP e2= expression
             {
             pushFollow(FOLLOW_expression_in_dictionary_elements1269);
             e1=expression();
@@ -3836,7 +3841,7 @@ public class ScriptParser extends Parser {
                       retval.keys_values.add((e2!=null?e2.expr:null));
                   
             }
-            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
+            // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:7: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )*
             loop26:
             do {
                 int alt26=2;
@@ -3864,9 +3869,9 @@ public class ScriptParser extends Parser {
 
                 switch (alt26) {
             	case 1 :
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
             	    {
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:8: ( NEWLINE )?
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:8: ( NEWLINE )?
             	    int alt24=2;
             	    int LA24_0 = input.LA(1);
 
@@ -3893,7 +3898,7 @@ public class ScriptParser extends Parser {
             	    COMMA115_tree = (Object)adaptor.create(COMMA115);
             	    adaptor.addChild(root_0, COMMA115_tree);
             	    }
-            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:23: ( NEWLINE )?
+            	    // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:23: ( NEWLINE )?
             	    int alt25=2;
             	    int LA25_0 = input.LA(1);
 
@@ -3961,8 +3966,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred1_Script
     public final void synpred1_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:221:13: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:221:13: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:226:13: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:226:13: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred1_Script100); if (state.failed) return ;
 
@@ -3975,8 +3980,8 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:231:8: (s= stat )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:231:8: s= stat
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:236:8: (s= stat )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:236:8: s= stat
         {
         pushFollow(FOLLOW_stat_in_synpred3_Script134);
         s=stat();
@@ -3990,8 +3995,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred4_Script
     public final void synpred4_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:239:7: ( pre_stat NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:239:7: pre_stat NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:244:7: ( pre_stat NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:244:7: pre_stat NEWLINE
         {
         pushFollow(FOLLOW_pre_stat_in_synpred4_Script159);
         pre_stat();
@@ -4006,8 +4011,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred6_Script
     public final void synpred6_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:246:7: ( block )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:246:7: block
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:251:7: ( block )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:251:7: block
         {
         pushFollow(FOLLOW_block_in_synpred6_Script181);
         block();
@@ -4021,8 +4026,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred10_Script
     public final void synpred10_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:262:7: ( expression )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:262:7: expression
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:267:7: ( expression )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:267:7: expression
         {
         pushFollow(FOLLOW_expression_in_synpred10_Script238);
         expression();
@@ -4036,8 +4041,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred15_Script
     public final void synpred15_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:277:7: ( ID PLUS_PLUS )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:277:7: ID PLUS_PLUS
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:282:7: ( ID PLUS_PLUS )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:282:7: ID PLUS_PLUS
         {
         match(input,ID,FOLLOW_ID_in_synpred15_Script296); if (state.failed) return ;
         match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_synpred15_Script298); if (state.failed) return ;
@@ -4048,8 +4053,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred16_Script
     public final void synpred16_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:280:7: ( PLUS_PLUS ID )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:280:7: PLUS_PLUS ID
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:285:7: ( PLUS_PLUS ID )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:285:7: PLUS_PLUS ID
         {
         match(input,PLUS_PLUS,FOLLOW_PLUS_PLUS_in_synpred16_Script308); if (state.failed) return ;
         match(input,ID,FOLLOW_ID_in_synpred16_Script310); if (state.failed) return ;
@@ -4060,8 +4065,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred17_Script
     public final void synpred17_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:283:7: ( ID MINUS_MINUS )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:283:7: ID MINUS_MINUS
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:288:7: ( ID MINUS_MINUS )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:288:7: ID MINUS_MINUS
         {
         match(input,ID,FOLLOW_ID_in_synpred17_Script320); if (state.failed) return ;
         match(input,MINUS_MINUS,FOLLOW_MINUS_MINUS_in_synpred17_Script322); if (state.failed) return ;
@@ -4072,8 +4077,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred18_Script
     public final void synpred18_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:310:38: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:310:38: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:315:38: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:315:38: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred18_Script393); if (state.failed) return ;
 
@@ -4083,8 +4088,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred19_Script
     public final void synpred19_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:7: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:7: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:7: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:7: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred19_Script402); if (state.failed) return ;
 
@@ -4094,8 +4099,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred20_Script
     public final void synpred20_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:22: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:22: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:22: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:22: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred20_Script408); if (state.failed) return ;
 
@@ -4108,11 +4113,11 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:17: ( ELSE ( NEWLINE )? s= stat )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:17: ELSE ( NEWLINE )? s= stat
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:17: ( ELSE ( NEWLINE )? s= stat )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:17: ELSE ( NEWLINE )? s= stat
         {
         match(input,ELSE,FOLLOW_ELSE_in_synpred21_Script406); if (state.failed) return ;
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:314:22: ( NEWLINE )?
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:319:22: ( NEWLINE )?
         int alt27=2;
         int LA27_0 = input.LA(1);
 
@@ -4146,8 +4151,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred22_Script
     public final void synpred22_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:332:41: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:332:41: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:337:41: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:337:41: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred22_Script463); if (state.failed) return ;
 
@@ -4157,8 +4162,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred23_Script
     public final void synpred23_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:81: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:81: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:81: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:81: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred23_Script528); if (state.failed) return ;
 
@@ -4177,8 +4182,8 @@ public class ScriptParser extends Parser {
         ScriptParser.stat_return s = null;
 
 
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:7: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:7: ( FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:7: FOR LEFT_P e_init= pre_stat PV e_cond= expression PV e_inc= pre_stat RIGHT_P ( NEWLINE )? s= stat
         {
         match(input,FOR,FOLLOW_FOR_in_synpred24_Script506); if (state.failed) return ;
         match(input,LEFT_P,FOLLOW_LEFT_P_in_synpred24_Script508); if (state.failed) return ;
@@ -4200,7 +4205,7 @@ public class ScriptParser extends Parser {
         state._fsp--;
         if (state.failed) return ;
         match(input,RIGHT_P,FOLLOW_RIGHT_P_in_synpred24_Script526); if (state.failed) return ;
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:352:81: ( NEWLINE )?
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:357:81: ( NEWLINE )?
         int alt28=2;
         int LA28_0 = input.LA(1);
 
@@ -4234,8 +4239,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred25_Script
     public final void synpred25_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:359:41: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:359:41: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:364:41: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:364:41: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred25_Script555); if (state.failed) return ;
 
@@ -4248,8 +4253,8 @@ public class ScriptParser extends Parser {
         ScriptParser.range_return b = null;
 
 
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:406:8: ( ARROW b= range )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:406:8: ARROW b= range
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:411:8: ( ARROW b= range )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:411:8: ARROW b= range
         {
         match(input,ARROW,FOLLOW_ARROW_in_synpred26_Script585); if (state.failed) return ;
         pushFollow(FOLLOW_range_in_synpred26_Script589);
@@ -4264,8 +4269,8 @@ public class ScriptParser extends Parser {
 
     // $ANTLR start synpred44_Script
     public final void synpred44_Script_fragment() throws RecognitionException {   
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:500:38: ( NEWLINE )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:500:38: NEWLINE
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:505:38: ( NEWLINE )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:505:38: NEWLINE
         {
         match(input,NEWLINE,FOLLOW_NEWLINE_in_synpred44_Script922); if (state.failed) return ;
 
@@ -4278,8 +4283,8 @@ public class ScriptParser extends Parser {
         ScriptParser.args_return b = null;
 
 
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:520:8: ( COMMA b= args )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:520:8: COMMA b= args
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:525:8: ( COMMA b= args )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:525:8: COMMA b= args
         {
         match(input,COMMA,FOLLOW_COMMA_in_synpred46_Script976); if (state.failed) return ;
         pushFollow(FOLLOW_args_in_synpred46_Script980);
@@ -4297,10 +4302,10 @@ public class ScriptParser extends Parser {
         ScriptParser.dictionary_elements_return d = null;
 
 
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:8: ( ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements )
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:8: ( NEWLINE )? COMMA ( NEWLINE )? d= dictionary_elements
         {
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:8: ( NEWLINE )?
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:8: ( NEWLINE )?
         int alt30=2;
         int LA30_0 = input.LA(1);
 
@@ -4319,7 +4324,7 @@ public class ScriptParser extends Parser {
         }
 
         match(input,COMMA,FOLLOW_COMMA_in_synpred61_Script1284); if (state.failed) return ;
-        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:613:23: ( NEWLINE )?
+        // /home/laurent/dev/WPA/SCRIPTING/WPScript/working_copy_git/src/language/Script.g:618:23: ( NEWLINE )?
         int alt31=2;
         int LA31_0 = input.LA(1);
 
@@ -4707,7 +4712,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA1_transition;
         }
         public String getDescription() {
-            return "221:13: ( NEWLINE )?";
+            return "226:13: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -4802,7 +4807,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "238:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration );";
+            return "243:1: stat returns [Expression expr] : ( pre_stat NEWLINE | NEWLINE | block | if_expression | while_expression | for_expression | function_declaration );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -4905,7 +4910,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "261:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );";
+            return "266:1: pre_stat returns [Expression expr] : ( expression | BREAK | CONTINUE | ID EQUAL expression | array_element_reference EQUAL expression | ID PLUS_PLUS | PLUS_PLUS ID | ID MINUS_MINUS | MINUS_MINUS ID );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5045,7 +5050,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "310:38: ( NEWLINE )?";
+            return "315:38: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5140,7 +5145,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "314:22: ( NEWLINE )?";
+            return "319:22: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5235,7 +5240,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA10_transition;
         }
         public String getDescription() {
-            return "332:41: ( NEWLINE )?";
+            return "337:41: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5330,7 +5335,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "352:81: ( NEWLINE )?";
+            return "357:81: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5425,7 +5430,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "359:41: ( NEWLINE )?";
+            return "364:41: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5520,7 +5525,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA19_transition;
         }
         public String getDescription() {
-            return "500:38: ( NEWLINE )?";
+            return "505:38: ( NEWLINE )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -5609,7 +5614,7 @@ public class ScriptParser extends Parser {
             this.transition = DFA23_transition;
         }
         public String getDescription() {
-            return "547:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );";
+            return "552:1: atom returns [Object value] : ( NUM | MINUS NUM | BOOL | LEFT_P expression RIGHT_P | ID | CONSTANT | string_literal | dictionary | array | function_call | array_element_reference );";
         }
     }
  

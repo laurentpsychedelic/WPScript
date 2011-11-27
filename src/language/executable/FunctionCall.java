@@ -157,30 +157,45 @@ public class FunctionCall extends Calculable {
         }
         String name = "";
         name = ((String)name_params.get(0));
-        if (native_methods != null) {
-            for (Method method : native_methods) {
-                if (method == null) {
-                    continue;
-                }
-                if (name.equals(method.getName())) {
-                    not_found = false;
-                    break;
-                }
-            }        
-        }
-        if (not_found) {
-            if (runtime_methods != null) {
-                for (Method method : runtime_methods) {
-                    if (method == null) {
-                        continue;
-                    }
-                    if (name.equals(method.getName())) {
-                        not_found = false;
-                        break;
-                    }
-                }        
-            }   
-        }
+	//ユーザ定義関数の中から検索
+	if (interpreter.functions_env.compilation_map.containsKey(name)) {
+	    not_found = false;
+	    FunctionDeclaration fd = (FunctionDeclaration) ( interpreter.functions_env.compilation_map.get(name) );
+	    int n_params_real = fd.getNumberOfArguments();
+	    int n_params_expected = name_params.size() - 1;
+	    if (n_params_real != n_params_expected) {
+		interpreter.compilationError("Wrong number of arguments: function [" + name + "] ! Expected: " + n_params_expected + " ; dound: " + n_params_real + " .", line_number);
+	    }
+	}
+
+	//ネイティブ関数の中から検索
+	if (not_found) {
+	    if (native_methods != null) {
+		for (Method method : native_methods) {
+		    if (method == null) {
+			continue;
+		    }
+		    if (name.equals(method.getName())) {
+			not_found = false;
+			break;
+		    }
+		}        
+	    }
+	    if (not_found) {
+		//ランタイム関数の中から検索
+		if (runtime_methods != null) {
+		    for (Method method : runtime_methods) {
+			if (method == null) {
+			    continue;
+			}
+			if (name.equals(method.getName())) {
+			    not_found = false;
+			    break;
+			}
+		    }        
+		}   
+	    }
+	}
         if (not_found) {
             interpreter.compilationError("Function [" + name + "] not found!", line_number);
         }

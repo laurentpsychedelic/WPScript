@@ -29,6 +29,10 @@ public class FunctionDeclaration extends Calculable {
         line_number = interpreter.getLineNumber();
     }
 
+    public int getNumberOfArguments() {
+	return params.size();
+    }
+
     @Override
     public Object eval() throws PanicException, RuntimeErrorException {
 	for (Object param : params) {
@@ -75,6 +79,7 @@ public class FunctionDeclaration extends Calculable {
 		interpreter.compilationError("Function parameters must be variables [" + param.getClass() + "]", line_number);
 	    }
 	}
+        interpreter.functions_env.compilation_map.put(name, this);
         calculation.compilationCheck();
     }
 

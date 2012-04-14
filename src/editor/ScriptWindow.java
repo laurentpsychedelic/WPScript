@@ -52,31 +52,34 @@ public class ScriptWindow extends javax.swing.JFrame {
     public static String DEFAULT_SCRIPT_FOLDER;
     private static final String path;
     static {
-	//Persistence
+        //Persistence
         String _path = ScriptWindow.class.getResource("").getPath();
-	if (_path.contains("!")) {
-	    _path = _path.split("!")[0];
-	}
-	if (_path.contains("/build/classes")) {
-	    _path = _path.split("/build/classes")[0];
-	}
-	File file = new File(_path);
-	if (!file.isDirectory()) {
-	    _path = file.getParent();
-	}
-	path = _path;
-	String ini_file_path = path + "/editor.ini";
-	if (path!=null && (new File(ini_file_path)).exists()) {
-	    readIniFile(ini_file_path);
-	}    
+        if (_path.contains(":")) {
+            _path = _path.split(":")[1];
+        }
+        if (_path.contains("!")) {
+            _path = _path.split("!")[0];
+        }
+        if (_path.contains("/build/classes")) {
+            _path = _path.split("/build/classes")[0];
+        }
+        File file = new File(_path);
+        if (!file.isDirectory()) {
+            _path = file.getParent();
+        }
+        path = _path;
+        String ini_file_path = path + "/editor.ini";
+        if (path!=null && (new File(ini_file_path)).exists()) {
+            readIniFile(ini_file_path);
+        }
     }
     public static void writeIniFile(String filepath) {
-	try {
+        try {
             java.util.Properties prop2 = new java.util.Properties();
-            prop2.setProperty("DEFAULT_SCRIPT_FOLDER", DEFAULT_SCRIPT_FOLDER);
-	    prop2.store(new java.io.FileOutputStream(filepath),"Editor Window persistence data");
+            prop2.setProperty("DEFAULT_SCRIPT_FOLDER", DEFAULT_SCRIPT_FOLDER==null ? path : DEFAULT_SCRIPT_FOLDER);
+            prop2.store(new java.io.FileOutputStream(filepath),"Editor Window persistence data");
         } catch (java.io.IOException e) {
-	    System.err.println("Error while writing editor window persistence file at [" + filepath + "]");
+            System.err.println("Error while writing editor window persistence file at [" + filepath + "]");
         }
     }
 
@@ -84,10 +87,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         try {
             java.util.Properties prop = new java.util.Properties();
             prop.load(new java.io.FileInputStream(filepath));
-
             DEFAULT_SCRIPT_FOLDER = prop.getProperty("DEFAULT_SCRIPT_FOLDER","");
         } catch (java.io.IOException e) {
-	    System.err.println("Error while reading editor window persistence file at [" + filepath + "]");
+            System.err.println("Error while reading editor window persistence file at [" + filepath + "]");
         }
     }
 
@@ -120,29 +122,29 @@ public class ScriptWindow extends javax.swing.JFrame {
             return StrLst[i][LANGUAGE];
         }
     }
-    
+
     private static final int W = 690;
     private static final int H = 380;
-    
+
     private boolean __DEBUG__ = true;
-    
+
     private PrintStream default_out = System.out;
     private PrintStream default_err = System.err;
-    
+
     /** Creates new form TestFrame */
     public ScriptWindow(final String _prog) {
-             
+
         prog = _prog;
-        
+
         initComponents();
-	setIconImage(new ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
-        
+        setIconImage(new ImageIcon(getClass().getResource("/resources/icon.png")).getImage());
+
         setTitle(LanguageInformation.getString(0));
-        getContentPane().setBackground(new Color(51, 51, 51));    
+        getContentPane().setBackground(new Color(51, 51, 51));
         setSize(W, H);
-        
+
         jCheckBoxDebug.setSelected(__DEBUG__);
-        
+
         boolean REDIRECT_STREAMS = true;
         if (REDIRECT_STREAMS) {
             PipedInputStream pIn_out = null;
@@ -169,15 +171,15 @@ public class ScriptWindow extends javax.swing.JFrame {
             _addStylesToMessagesPaneDocument(doc);
 
             _start_deamon();
-            
-            
+
+
         }
-        
+
         _updateScriptPane();
-        
+
         _addKeyboardShortcuts();
     }
-    
+
     private void _addKeyboardShortcuts() {
         AbstractAction act_compile = new AbstractAction() {
             @Override
@@ -188,7 +190,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jScrollPaneScript.getActionMap().put("name_compile", act_compile);
         InputMap im = jScrollPaneScript.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.CTRL_DOWN_MASK), "name_compile");
-        
+
         AbstractAction act_run = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -208,7 +210,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         jScrollPaneScript.getActionMap().put("name_open", act_read);
         im = jScrollPaneScript.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK), "name_open");
-        
+
         AbstractAction act_debug_on_off = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -219,7 +221,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         im = jScrollPaneScript.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK), "name_debug_on_off");
     }
-    
+
     private void _start_deamon() {
         Thread t = new Thread(deamon_out);
         t.setDaemon(true);
@@ -228,9 +230,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         t2.setDaemon(true);
         t2.start();
     }
-    
+
     boolean CLOSING = false;
-    
+
     Runnable deamon_out = new Runnable() {
 
         @Override
@@ -254,7 +256,7 @@ public class ScriptWindow extends javax.swing.JFrame {
             }
         }
     };
-    
+
     Runnable deamon_err = new Runnable() {
 
         @Override
@@ -278,20 +280,20 @@ public class ScriptWindow extends javax.swing.JFrame {
             }
         }
     };
-    
+
     String prog = "\n";
-    
+
     private void _updateScriptPane() {
         int cp = jScriptPane.getCaretPosition();
-        
+
         jScriptPane.setText("");
-        
+
         ScriptLexer lex = new ScriptLexer(new ANTLRStringStream(prog));
         CommonTokenStream tokens = new CommonTokenStream(lex);
-        
+
         LinkedList<String> initStyles = new LinkedList();
         LinkedList<String> initString = new LinkedList();
-                
+
         List lt = tokens.getTokens();
         for (Object t : lt) {
             int type = ((Token)t).getType();
@@ -300,9 +302,9 @@ public class ScriptWindow extends javax.swing.JFrame {
             initStyles.add(style);
             initString.add(text);
         }
-       
+
         StyledDocument doc = jScriptPane.getStyledDocument();
-        
+
         try {
             for (int i=0; i < initString.size(); i++) {
                 doc.insertString(doc.getLength(), initString.get(i),
@@ -311,26 +313,26 @@ public class ScriptWindow extends javax.swing.JFrame {
         } catch (BadLocationException ble) {
             System.err.println("Couldn't insert initial text into text pane.");
         }
-        
+
         try {
             jScriptPane.setCaretPosition(cp);
         } catch (IllegalArgumentException e) {
             //NOTHING
         }
     }
-    
+
     private String _getStyle(int token_type) {
         String style = "regular";
         switch (token_type) {
             case ScriptLexer.ID :
                 style = "word";
-                break;            
+                break;
             case ScriptLexer.NUM :
                 style = "number";
                 break;
-	    case ScriptLexer.CONSTANT :
-		style = "constant";
-		break;
+            case ScriptLexer.CONSTANT :
+                style = "constant";
+                break;
             case ScriptLexer.STRING_LITERAL:
                 style = "string_literal";
                 break;
@@ -393,9 +395,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
         return style;
     }
-    
-    private static final int font_size_script = 16; 
-    
+
+    private static final int font_size_script = 16;
+
     private void _addStylesToScriptPaneDocument(StyledDocument doc) {
         //Initialize some styles.
         Style def = StyleContext.getDefaultStyleContext().
@@ -404,42 +406,42 @@ public class ScriptWindow extends javax.swing.JFrame {
         Style regular = doc.addStyle("regular", def);
         StyleConstants.setFontFamily(def, "SansSerif");
         StyleConstants.setFontSize(def, font_size_script);
-        
+
         Style comment = doc.addStyle("comment", def);
         StyleConstants.setItalic(comment, true);
         StyleConstants.setForeground(comment, Color.gray);
-        
+
         Style bool = doc.addStyle("bool", regular);
         StyleConstants.setForeground(bool, Color.blue);
-        
+
         Style word = doc.addStyle("word", regular);
         StyleConstants.setBold(word, true);
         StyleConstants.setItalic(word, true);
 
-	Style constant = doc.addStyle("constant", word);
-	StyleConstants.setForeground(constant, Color.red);
+        Style constant = doc.addStyle("constant", word);
+        StyleConstants.setForeground(constant, Color.red);
 
         Style number = doc.addStyle("number", regular);
         StyleConstants.setItalic(number, true);
         StyleConstants.setForeground(number, Color.magenta);
-        
+
         Style if_else = doc.addStyle("if_else_loop", regular);
         StyleConstants.setForeground(if_else, Color.blue);
-        
+
         Style break_continue = doc.addStyle("break_continue", if_else);
         StyleConstants.setForeground(break_continue, Color.red);
-        
+
         Style operator = doc.addStyle("operator", regular);
         StyleConstants.setForeground(operator, new Color(0, 0, 128));
         StyleConstants.setBold(operator, true);
-        
+
         Style punctuation = doc.addStyle("punctuation", operator);
         StyleConstants.setForeground(punctuation, Color.gray);
-        
+
         Style string_literal = doc.addStyle("string_literal", operator);
         StyleConstants.setForeground(string_literal, Color.orange);
         StyleConstants.setItalic(string_literal, true);
-        
+
         Style unknown = doc.addStyle("unknown", regular);
         StyleConstants.setItalic(unknown, true);
         StyleConstants.setForeground(unknown, Color.red);
@@ -454,9 +456,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         //"unknown"
 
     }
-    
+
     private final int font_size_messages = 10;
-    
+
     private void _addStylesToMessagesPaneDocument(StyledDocument doc) {
         Style def = StyleContext.getDefaultStyleContext().
                         getStyle(StyleContext.DEFAULT_STYLE);
@@ -465,11 +467,11 @@ public class ScriptWindow extends javax.swing.JFrame {
         StyleConstants.setFontFamily(def, "SansSerif");
         StyleConstants.setForeground(regular, Color.gray);
         StyleConstants.setFontSize(def, font_size_messages);
-        
+
         Style error = doc.addStyle("error", regular);
         StyleConstants.setForeground(error, Color.red);
         StyleConstants.setBold(error, true);
-        
+
         //"regular"
         //"error"
     }
@@ -606,7 +608,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     ExecutableScript script;
-    
+
     private void jButtonExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExecuteActionPerformed
         jMessagesPane.setText("");
         if (script!=null) {
@@ -625,7 +627,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     private void _updateScriptPaneLater() {
         SwingUtilities.invokeLater(update_script_pane);
     }
-    
+
     private Runnable update_script_pane = new Runnable() {
         @Override
         public void run() {
@@ -638,22 +640,22 @@ public class ScriptWindow extends javax.swing.JFrame {
             _updateScriptPane();
         }
     };
-    
+
     private void jScriptPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jScriptPaneKeyTyped
         if (evt.getKeyChar()=='\n') {
             _updateScriptPaneLater();
         }
     }//GEN-LAST:event_jScriptPaneKeyTyped
 
-    
+
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         CLOSING = true;
         //Reset streams
-	System.setOut(default_out);
+        System.setOut(default_out);
         System.setErr(default_err);
-	//Save INI file
-	String ini_file_path = path + "/editor.ini";
-	writeIniFile(ini_file_path);
+        //Save INI file
+        String ini_file_path = path + "/editor.ini";
+        writeIniFile(ini_file_path);
 
     }//GEN-LAST:event_formWindowClosing
 
@@ -675,7 +677,7 @@ public class ScriptWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jScriptPaneFocusLost
 
     private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
-        
+
         final JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(new File(DEFAULT_SCRIPT_FOLDER));
         fc.setAcceptAllFileFilterUsed(false);
@@ -695,7 +697,7 @@ public class ScriptWindow extends javax.swing.JFrame {
             if (!file.exists()) {
                 return;
             }
-	    DEFAULT_SCRIPT_FOLDER = file.getParent();
+            DEFAULT_SCRIPT_FOLDER = file.getParent();
 
             String filepath = file.getAbsolutePath();
             if (filter.isWps(file)) {
@@ -719,7 +721,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -738,9 +740,9 @@ public class ScriptWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ScriptWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
     final String _prog = "";
-          
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

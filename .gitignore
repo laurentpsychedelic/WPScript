@@ -1,5 +1,6 @@
 #NetBeans project private properties
-nbproject/private/
+nbproject/private
+nbproject/private/*
 #build folder
 build
 #distributable folder

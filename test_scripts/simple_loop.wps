@@ -1,0 +1,8 @@
+for (a=-1; a<=1; a++) {
+    print(a)
+    if (a>=0) {
+        print("YES")
+    } else {
+        print("NO")
+    }
+}

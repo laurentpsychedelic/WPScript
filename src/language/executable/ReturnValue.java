@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package language.executable;
 
 import language.exceptions.CompilationErrorException;
@@ -10,38 +6,63 @@ import language.exceptions.RuntimeErrorException;
 import language.memory.Environment;
 
 /**
- *
- * @author laurent
+ * 実際のリターン値（計算された値）意外に戻るタイプ。
+ * BREAK, CONTINUEなどです。
+ * 入れ子構造を越えたBREAKなどを可能にするため。
+ * @author Laurent FABRE
  */
 public class ReturnValue extends Calculable {
-    public static final ReturnValue RETURN_BREAK = new ReturnValue() {
-        @Override
-        public String toString() {
-            return "BREAK";
+    /**
+     * リターン値のタイプを表す列挙型
+     */
+    private enum Type {
+        /**
+         * 各リターンバリューを表すタイプ
+         */
+        RETURN_BREAK("BREAK"), RETURN_CONTINUE("CONTINUE"), RETURN_RETURN("RETURN"), RETURN_NULL("VOID");
+        /**
+         * このタイプを表す文字列
+         */
+        private final String string;
+        /**
+         * コンストラクタ
+         * @param _string
+         */
+        private Type(String _string) {
+            string = _string;
         }
-    };
-    public static final ReturnValue RETURN_CONTINUE = new ReturnValue() {
-        @Override
-        public String toString() {
-            return "CONTINUE";
-        }
-    };
-    public static final ReturnValue RETURN_RETURN = new ReturnValue() {
-        @Override
-        public String toString() {
-            return "RETURN";
-        }
-    };
-    public static final ReturnValue RETURN_NULL = new ReturnValue() {
-        @Override
-        public String toString() {
-            return "VOID";
-        }
-    };
+    }
+    /**
+     * このリターンバリューのタイプ
+     */
+    private final Type type;
+    /**
+     * BREAKが戻り値のリターン値
+     */
+    public static final ReturnValue RETURN_BREAK = new ReturnValue(Type.RETURN_BREAK);
+    /**
+     * CONTINUEが戻り値のリターン値
+     */
+    public static final ReturnValue RETURN_CONTINUE = new ReturnValue(Type.RETURN_CONTINUE);
+    /**
+     * RETURNが戻り値のリターン値
+     */
+    public static final ReturnValue RETURN_RETURN = new ReturnValue(Type.RETURN_RETURN);
+    /**
+     * NULLが戻り値のリターン値
+     */
+    public static final ReturnValue RETURN_NULL = new ReturnValue(Type.RETURN_NULL);
+    /**
+     * コンストラクタ
+     * @param _type このリターン値のタイプ
+     */
+    private ReturnValue(Type _type) {
+        type = _type;
+    }
 
     @Override
     public void setEnv(Environment _env) {
-	//NOTHING
+        //NOTHING
     }
 
     @Override
@@ -51,7 +72,7 @@ public class ReturnValue extends Calculable {
 
     @Override
     public String toString() {
-        return toString();
+        return type.string;
     }
 
     @Override

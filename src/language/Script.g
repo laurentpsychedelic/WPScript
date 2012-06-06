@@ -652,7 +652,7 @@ CMP_EQ: '=' '=';
 CMP_NEQ:'!' '=';
 AND: '&';
 OR : '|';
-STRING_LITERAL: '"' ((' '?) ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'{'|'}'|'#'|'='|'.'|'/'|':') (' ')?)+ '"';
+STRING_LITERAL: '"' ((' '?) ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'{'|'}'|'#'|'='|'.'|'*'|'/'|':'|'+'|'-'|' ') (' ')?)+ '"';
 LEFT_CB : '{'; // left curved bracket
 RIGHT_CB : '}'; // right curved bracket
 LEFT_B : '[';

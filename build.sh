@@ -1,2 +1,2 @@
 #!/bin/bash
-java clean && java jar
+ant clean && ant jar

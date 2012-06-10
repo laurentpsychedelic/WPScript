@@ -679,7 +679,9 @@ public class ScriptWindow extends javax.swing.JFrame {
     private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
 
         final JFileChooser fc = new JFileChooser();
-        fc.setCurrentDirectory(new File(DEFAULT_SCRIPT_FOLDER));
+        if (DEFAULT_SCRIPT_FOLDER != null) {
+            fc.setCurrentDirectory(new File(DEFAULT_SCRIPT_FOLDER));
+        }
         fc.setAcceptAllFileFilterUsed(false);
 
         WpsFileFilter filter = new WpsFileFilter();

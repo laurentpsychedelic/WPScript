@@ -1,4 +1,4 @@
-// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPScript/src/language/Script.g 2012-06-07 14:49:57
+// $ANTLR 3.1.3 Mar 17, 2009 19:23:44 /home/laurent/dev/WPScript/src/language/Script.g 2012-06-10 21:18:29
 
 package language;
 
@@ -1276,40 +1276,83 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:655:15: ( '\"' (~ '\"' )* '\"' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:655:17: '\"' (~ '\"' )* '\"'
+            // /home/laurent/dev/WPScript/src/language/Script.g:656:16: ( '\"' ( options {greedy=false; } : (~ ( '\\\\' | '\"' ) | ( '\\\\' '\"' ) ) )* '\"' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:656:18: '\"' ( options {greedy=false; } : (~ ( '\\\\' | '\"' ) | ( '\\\\' '\"' ) ) )* '\"'
             {
             match('\"'); 
-            // /home/laurent/dev/WPScript/src/language/Script.g:655:21: (~ '\"' )*
-            loop8:
+            // /home/laurent/dev/WPScript/src/language/Script.g:656:22: ( options {greedy=false; } : (~ ( '\\\\' | '\"' ) | ( '\\\\' '\"' ) ) )*
+            loop9:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( ((LA8_0>='\u0000' && LA8_0<='!')||(LA8_0>='#' && LA8_0<='\uFFFF')) ) {
-                    alt8=1;
+                if ( ((LA9_0>='\u0000' && LA9_0<='!')||(LA9_0>='#' && LA9_0<='\uFFFF')) ) {
+                    alt9=1;
+                }
+                else if ( (LA9_0=='\"') ) {
+                    alt9=2;
                 }
 
 
-                switch (alt8) {
+                switch (alt9) {
             	case 1 :
-            	    // /home/laurent/dev/WPScript/src/language/Script.g:655:22: ~ '\"'
+            	    // /home/laurent/dev/WPScript/src/language/Script.g:656:54: (~ ( '\\\\' | '\"' ) | ( '\\\\' '\"' ) )
             	    {
-            	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='\uFFFF') ) {
-            	        input.consume();
+            	    // /home/laurent/dev/WPScript/src/language/Script.g:656:54: (~ ( '\\\\' | '\"' ) | ( '\\\\' '\"' ) )
+            	    int alt8=2;
+            	    int LA8_0 = input.LA(1);
 
+            	    if ( ((LA8_0>='\u0000' && LA8_0<='!')||(LA8_0>='#' && LA8_0<='[')||(LA8_0>=']' && LA8_0<='\uFFFF')) ) {
+            	        alt8=1;
+            	    }
+            	    else if ( (LA8_0=='\\') ) {
+            	        alt8=2;
             	    }
             	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;}
+            	        NoViableAltException nvae =
+            	            new NoViableAltException("", 8, 0, input);
+
+            	        throw nvae;
+            	    }
+            	    switch (alt8) {
+            	        case 1 :
+            	            // /home/laurent/dev/WPScript/src/language/Script.g:656:56: ~ ( '\\\\' | '\"' )
+            	            {
+            	            if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
+            	                input.consume();
+
+            	            }
+            	            else {
+            	                MismatchedSetException mse = new MismatchedSetException(null,input);
+            	                recover(mse);
+            	                throw mse;}
+
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // /home/laurent/dev/WPScript/src/language/Script.g:656:70: ( '\\\\' '\"' )
+            	            {
+            	            // /home/laurent/dev/WPScript/src/language/Script.g:656:70: ( '\\\\' '\"' )
+            	            // /home/laurent/dev/WPScript/src/language/Script.g:656:71: '\\\\' '\"'
+            	            {
+            	            match('\\'); 
+            	            match('\"'); 
+
+            	            }
+
+
+            	            }
+            	            break;
+
+            	    }
 
 
             	    }
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop9;
                 }
             } while (true);
 
@@ -1330,8 +1373,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:656:9: ( '{' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:656:11: '{'
+            // /home/laurent/dev/WPScript/src/language/Script.g:657:9: ( '{' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:657:11: '{'
             {
             match('{'); 
 
@@ -1350,8 +1393,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_CB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:657:10: ( '}' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:657:12: '}'
+            // /home/laurent/dev/WPScript/src/language/Script.g:658:10: ( '}' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:658:12: '}'
             {
             match('}'); 
 
@@ -1370,8 +1413,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LEFT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:658:8: ( '[' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:658:10: '['
+            // /home/laurent/dev/WPScript/src/language/Script.g:659:8: ( '[' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:659:10: '['
             {
             match('['); 
 
@@ -1390,8 +1433,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = RIGHT_B;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:659:8: ( ']' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:659:10: ']'
+            // /home/laurent/dev/WPScript/src/language/Script.g:660:8: ( ']' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:660:10: ']'
             {
             match(']'); 
 
@@ -1410,8 +1453,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = ARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:660:6: ( '-' '>' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:660:8: '-' '>'
+            // /home/laurent/dev/WPScript/src/language/Script.g:661:6: ( '-' '>' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:661:8: '-' '>'
             {
             match('-'); 
             match('>'); 
@@ -1431,8 +1474,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:661:8: ( '\\n' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:661:9: '\\n'
+            // /home/laurent/dev/WPScript/src/language/Script.g:662:8: ( '\\n' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:662:9: '\\n'
             {
             match('\n'); 
 
@@ -1451,25 +1494,25 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = LINE_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:662:13: ( '//' (~ ( '\\n' ) )* )
-            // /home/laurent/dev/WPScript/src/language/Script.g:662:15: '//' (~ ( '\\n' ) )*
+            // /home/laurent/dev/WPScript/src/language/Script.g:663:13: ( '//' (~ ( '\\n' ) )* )
+            // /home/laurent/dev/WPScript/src/language/Script.g:663:15: '//' (~ ( '\\n' ) )*
             {
             match("//"); 
 
-            // /home/laurent/dev/WPScript/src/language/Script.g:662:20: (~ ( '\\n' ) )*
-            loop9:
+            // /home/laurent/dev/WPScript/src/language/Script.g:663:20: (~ ( '\\n' ) )*
+            loop10:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( ((LA9_0>='\u0000' && LA9_0<='\t')||(LA9_0>='\u000B' && LA9_0<='\uFFFF')) ) {
-                    alt9=1;
+                if ( ((LA10_0>='\u0000' && LA10_0<='\t')||(LA10_0>='\u000B' && LA10_0<='\uFFFF')) ) {
+                    alt10=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt10) {
             	case 1 :
-            	    // /home/laurent/dev/WPScript/src/language/Script.g:662:20: ~ ( '\\n' )
+            	    // /home/laurent/dev/WPScript/src/language/Script.g:663:20: ~ ( '\\n' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1485,7 +1528,7 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop10;
                 }
             } while (true);
 
@@ -1508,37 +1551,37 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = BLOCK_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:665:14: ( '/*' ( . )* '*/' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:665:16: '/*' ( . )* '*/'
+            // /home/laurent/dev/WPScript/src/language/Script.g:666:14: ( '/*' ( . )* '*/' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:666:16: '/*' ( . )* '*/'
             {
             match("/*"); 
 
-            // /home/laurent/dev/WPScript/src/language/Script.g:665:21: ( . )*
-            loop10:
+            // /home/laurent/dev/WPScript/src/language/Script.g:666:21: ( . )*
+            loop11:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA10_0=='*') ) {
-                    int LA10_1 = input.LA(2);
+                if ( (LA11_0=='*') ) {
+                    int LA11_1 = input.LA(2);
 
-                    if ( (LA10_1=='/') ) {
-                        alt10=2;
+                    if ( (LA11_1=='/') ) {
+                        alt11=2;
                     }
-                    else if ( ((LA10_1>='\u0000' && LA10_1<='.')||(LA10_1>='0' && LA10_1<='\uFFFF')) ) {
-                        alt10=1;
+                    else if ( ((LA11_1>='\u0000' && LA11_1<='.')||(LA11_1>='0' && LA11_1<='\uFFFF')) ) {
+                        alt11=1;
                     }
 
 
                 }
-                else if ( ((LA10_0>='\u0000' && LA10_0<=')')||(LA10_0>='+' && LA10_0<='\uFFFF')) ) {
-                    alt10=1;
+                else if ( ((LA11_0>='\u0000' && LA11_0<=')')||(LA11_0>='+' && LA11_0<='\uFFFF')) ) {
+                    alt11=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt11) {
             	case 1 :
-            	    // /home/laurent/dev/WPScript/src/language/Script.g:665:21: .
+            	    // /home/laurent/dev/WPScript/src/language/Script.g:666:21: .
             	    {
             	    matchAny(); 
 
@@ -1546,7 +1589,7 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop10;
+            	    break loop11;
                 }
             } while (true);
 
@@ -1571,8 +1614,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = TP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:668:3: ( ':' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:668:5: ':'
+            // /home/laurent/dev/WPScript/src/language/Script.g:669:3: ( ':' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:669:5: ':'
             {
             match(':'); 
 
@@ -1591,8 +1634,8 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = PV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:669:3: ( ';' )
-            // /home/laurent/dev/WPScript/src/language/Script.g:669:5: ';'
+            // /home/laurent/dev/WPScript/src/language/Script.g:670:3: ( ';' )
+            // /home/laurent/dev/WPScript/src/language/Script.g:670:5: ';'
             {
             match(';'); 
 
@@ -1611,26 +1654,26 @@ public class ScriptLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/laurent/dev/WPScript/src/language/Script.g:670:4: ( ( ' ' | '\\t' | '\\r' )+ )
-            // /home/laurent/dev/WPScript/src/language/Script.g:670:8: ( ' ' | '\\t' | '\\r' )+
+            // /home/laurent/dev/WPScript/src/language/Script.g:671:4: ( ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+ )
+            // /home/laurent/dev/WPScript/src/language/Script.g:671:6: ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+
             {
-            // /home/laurent/dev/WPScript/src/language/Script.g:670:8: ( ' ' | '\\t' | '\\r' )+
-            int cnt11=0;
-            loop11:
+            // /home/laurent/dev/WPScript/src/language/Script.g:671:6: ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+
+            int cnt12=0;
+            loop12:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA11_0=='\t'||LA11_0=='\r'||LA11_0==' ') ) {
-                    alt11=1;
+                if ( ((LA12_0>='\t' && LA12_0<='\n')||(LA12_0>='\f' && LA12_0<='\r')||LA12_0==' ') ) {
+                    alt12=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt12) {
             	case 1 :
             	    // /home/laurent/dev/WPScript/src/language/Script.g:
             	    {
-            	    if ( input.LA(1)=='\t'||input.LA(1)=='\r'||input.LA(1)==' ' ) {
+            	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||(input.LA(1)>='\f' && input.LA(1)<='\r')||input.LA(1)==' ' ) {
             	        input.consume();
 
             	    }
@@ -1644,15 +1687,15 @@ public class ScriptLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt11 >= 1 ) break loop11;
+            	    if ( cnt12 >= 1 ) break loop12;
                         EarlyExitException eee =
-                            new EarlyExitException(11, input);
+                            new EarlyExitException(12, input);
                         throw eee;
                 }
-                cnt11++;
+                cnt12++;
             } while (true);
 
-             
+
                 _channel = HIDDEN;
 
 
@@ -1668,9 +1711,9 @@ public class ScriptLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // /home/laurent/dev/WPScript/src/language/Script.g:1:8: ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | FUNCTION | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS )
-        int alt12=42;
-        alt12 = dfa12.predict(input);
-        switch (alt12) {
+        int alt13=42;
+        alt13 = dfa13.predict(input);
+        switch (alt13) {
             case 1 :
                 // /home/laurent/dev/WPScript/src/language/Script.g:1:10: CONSTANT
                 {
@@ -1971,39 +2014,40 @@ public class ScriptLexer extends Lexer {
     }
 
 
-    protected DFA12 dfa12 = new DFA12(this);
-    static final String DFA12_eotS =
+    protected DFA13 dfa13 = new DFA13(this);
+    static final String DFA13_eotS =
         "\1\uffff\1\13\1\44\1\uffff\7\13\1\uffff\1\56\1\uffff\1\60\3\uffff"+
-        "\1\63\1\65\1\70\1\72\1\74\13\uffff\1\44\1\13\1\uffff\4\13\1\102"+
-        "\3\13\20\uffff\3\13\1\111\1\13\1\uffff\3\13\1\116\1\117\1\13\1\uffff"+
-        "\4\13\2\uffff\1\117\1\13\1\126\1\127\2\13\2\uffff\3\13\1\135\1\136"+
-        "\2\uffff";
-    static final String DFA12_eofS =
-        "\137\uffff";
-    static final String DFA12_minS =
+        "\1\63\1\65\1\70\1\72\1\74\7\uffff\1\75\3\uffff\1\44\1\13\1\uffff"+
+        "\4\13\1\103\3\13\21\uffff\3\13\1\112\1\13\1\uffff\3\13\1\117\1\120"+
+        "\1\13\1\uffff\4\13\2\uffff\1\120\1\13\1\127\1\130\2\13\2\uffff\3"+
+        "\13\1\136\1\137\2\uffff";
+    static final String DFA13_eofS =
+        "\140\uffff";
+    static final String DFA13_minS =
         "\1\11\1\111\1\60\1\uffff\1\122\1\101\1\106\1\114\1\110\1\122\1\117"+
-        "\1\uffff\1\75\1\uffff\1\0\3\uffff\1\52\1\53\1\55\2\75\13\uffff\1"+
-        "\60\1\123\1\uffff\1\125\1\114\1\122\1\116\1\60\1\111\1\105\1\116"+
-        "\20\uffff\2\105\1\123\1\60\1\103\1\uffff\1\114\1\101\1\124\2\60"+
-        "\1\105\1\uffff\1\124\1\105\1\113\1\111\2\uffff\1\60\1\111\2\60\1"+
-        "\116\1\117\2\uffff\1\125\1\116\1\105\2\60\2\uffff";
-    static final String DFA12_maxS =
+        "\1\uffff\1\75\1\uffff\1\0\3\uffff\1\52\1\53\1\55\2\75\7\uffff\1"+
+        "\11\3\uffff\1\60\1\123\1\uffff\1\125\1\114\1\122\1\116\1\60\1\111"+
+        "\1\105\1\116\21\uffff\2\105\1\123\1\60\1\103\1\uffff\1\114\1\101"+
+        "\1\124\2\60\1\105\1\uffff\1\124\1\105\1\113\1\111\2\uffff\1\60\1"+
+        "\111\2\60\1\116\1\117\2\uffff\1\125\1\116\1\105\2\60\2\uffff";
+    static final String DFA13_maxS =
         "\1\175\1\111\1\172\1\uffff\1\162\1\165\1\146\1\154\1\150\1\162\1"+
-        "\157\1\uffff\1\75\1\uffff\1\uffff\3\uffff\1\57\1\53\1\76\2\75\13"+
-        "\uffff\1\172\1\163\1\uffff\1\165\1\154\1\162\1\156\1\172\1\151\1"+
-        "\145\1\156\20\uffff\2\145\1\163\1\172\1\143\1\uffff\1\154\1\141"+
-        "\1\164\2\172\1\145\1\uffff\1\164\1\145\1\153\1\151\2\uffff\1\172"+
-        "\1\151\2\172\1\156\1\157\2\uffff\1\165\1\156\1\145\2\172\2\uffff";
-    static final String DFA12_acceptS =
+        "\157\1\uffff\1\75\1\uffff\1\uffff\3\uffff\1\57\1\53\1\76\2\75\7"+
+        "\uffff\1\40\3\uffff\1\172\1\163\1\uffff\1\165\1\154\1\162\1\156"+
+        "\1\172\1\151\1\145\1\156\21\uffff\2\145\1\163\1\172\1\143\1\uffff"+
+        "\1\154\1\141\1\164\2\172\1\145\1\uffff\1\164\1\145\1\153\1\151\2"+
+        "\uffff\1\172\1\151\2\172\1\156\1\157\2\uffff\1\165\1\156\1\145\2"+
+        "\172\2\uffff";
+    static final String DFA13_acceptS =
         "\3\uffff\1\2\7\uffff\1\13\1\uffff\1\15\1\uffff\1\17\1\20\1\21\5"+
-        "\uffff\1\34\1\35\1\36\1\40\1\41\1\42\1\43\1\45\1\50\1\51\1\52\2"+
-        "\uffff\1\1\10\uffff\1\33\1\14\1\37\1\16\1\46\1\47\1\22\1\24\1\23"+
-        "\1\26\1\44\1\25\1\30\1\27\1\32\1\31\5\uffff\1\4\6\uffff\1\7\4\uffff"+
-        "\1\5\1\3\6\uffff\1\6\1\10\5\uffff\1\12\1\11";
-    static final String DFA12_specialS =
-        "\16\uffff\1\0\120\uffff}>";
-    static final String[] DFA12_transitionS = {
-            "\1\41\1\36\2\uffff\1\41\22\uffff\1\41\1\27\1\16\3\uffff\1\30"+
+        "\uffff\1\34\1\35\1\36\1\40\1\41\1\42\1\43\1\uffff\1\50\1\51\1\52"+
+        "\2\uffff\1\1\10\uffff\1\33\1\14\1\37\1\16\1\46\1\47\1\22\1\24\1"+
+        "\23\1\26\1\44\1\25\1\30\1\27\1\32\1\31\1\45\5\uffff\1\4\6\uffff"+
+        "\1\7\4\uffff\1\5\1\3\6\uffff\1\6\1\10\5\uffff\1\12\1\11";
+    static final String DFA13_specialS =
+        "\16\uffff\1\0\121\uffff}>";
+    static final String[] DFA13_transitionS = {
+            "\1\41\1\36\1\uffff\2\41\22\uffff\1\41\1\27\1\16\3\uffff\1\30"+
             "\1\uffff\1\17\1\20\1\21\1\23\1\15\1\24\1\uffff\1\22\12\3\1\37"+
             "\1\40\1\25\1\14\1\26\2\uffff\1\13\1\11\1\12\1\13\1\7\1\5\2\13"+
             "\1\6\6\13\1\1\3\13\1\4\2\13\1\10\3\13\1\34\1\uffff\1\35\1\uffff"+
@@ -2040,101 +2084,102 @@ public class ScriptLexer extends Lexer {
             "",
             "",
             "",
-            "",
+            "\2\41\1\uffff\2\41\22\uffff\1\41",
             "",
             "",
             "",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\1\75\37\uffff\1\75",
-            "",
             "\1\76\37\uffff\1\76",
+            "",
             "\1\77\37\uffff\1\77",
             "\1\100\37\uffff\1\100",
             "\1\101\37\uffff\1\101",
+            "\1\102\37\uffff\1\102",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\1\103\37\uffff\1\103",
             "\1\104\37\uffff\1\104",
             "\1\105\37\uffff\1\105",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\106\37\uffff\1\106",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\107\37\uffff\1\107",
             "\1\110\37\uffff\1\110",
+            "\1\111\37\uffff\1\111",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\1\112\37\uffff\1\112",
-            "",
             "\1\113\37\uffff\1\113",
+            "",
             "\1\114\37\uffff\1\114",
             "\1\115\37\uffff\1\115",
+            "\1\116\37\uffff\1\116",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\1\120\37\uffff\1\120",
-            "",
             "\1\121\37\uffff\1\121",
+            "",
             "\1\122\37\uffff\1\122",
             "\1\123\37\uffff\1\123",
             "\1\124\37\uffff\1\124",
-            "",
-            "",
-            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\1\125\37\uffff\1\125",
+            "",
+            "",
+            "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
+            "\1\126\37\uffff\1\126",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
-            "\1\130\37\uffff\1\130",
             "\1\131\37\uffff\1\131",
-            "",
-            "",
             "\1\132\37\uffff\1\132",
+            "",
+            "",
             "\1\133\37\uffff\1\133",
             "\1\134\37\uffff\1\134",
+            "\1\135\37\uffff\1\135",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "\12\13\7\uffff\32\13\4\uffff\1\13\1\uffff\32\13",
             "",
             ""
     };
 
-    static final short[] DFA12_eot = DFA.unpackEncodedString(DFA12_eotS);
-    static final short[] DFA12_eof = DFA.unpackEncodedString(DFA12_eofS);
-    static final char[] DFA12_min = DFA.unpackEncodedStringToUnsignedChars(DFA12_minS);
-    static final char[] DFA12_max = DFA.unpackEncodedStringToUnsignedChars(DFA12_maxS);
-    static final short[] DFA12_accept = DFA.unpackEncodedString(DFA12_acceptS);
-    static final short[] DFA12_special = DFA.unpackEncodedString(DFA12_specialS);
-    static final short[][] DFA12_transition;
+    static final short[] DFA13_eot = DFA.unpackEncodedString(DFA13_eotS);
+    static final short[] DFA13_eof = DFA.unpackEncodedString(DFA13_eofS);
+    static final char[] DFA13_min = DFA.unpackEncodedStringToUnsignedChars(DFA13_minS);
+    static final char[] DFA13_max = DFA.unpackEncodedStringToUnsignedChars(DFA13_maxS);
+    static final short[] DFA13_accept = DFA.unpackEncodedString(DFA13_acceptS);
+    static final short[] DFA13_special = DFA.unpackEncodedString(DFA13_specialS);
+    static final short[][] DFA13_transition;
 
     static {
-        int numStates = DFA12_transitionS.length;
-        DFA12_transition = new short[numStates][];
+        int numStates = DFA13_transitionS.length;
+        DFA13_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA12_transition[i] = DFA.unpackEncodedString(DFA12_transitionS[i]);
+            DFA13_transition[i] = DFA.unpackEncodedString(DFA13_transitionS[i]);
         }
     }
 
-    class DFA12 extends DFA {
+    class DFA13 extends DFA {
 
-        public DFA12(BaseRecognizer recognizer) {
+        public DFA13(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 12;
-            this.eot = DFA12_eot;
-            this.eof = DFA12_eof;
-            this.min = DFA12_min;
-            this.max = DFA12_max;
-            this.accept = DFA12_accept;
-            this.special = DFA12_special;
-            this.transition = DFA12_transition;
+            this.decisionNumber = 13;
+            this.eot = DFA13_eot;
+            this.eof = DFA13_eof;
+            this.min = DFA13_min;
+            this.max = DFA13_max;
+            this.accept = DFA13_accept;
+            this.special = DFA13_special;
+            this.transition = DFA13_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( CONSTANT | NUM | BOOL | IF | ELSE | WHILE | FOR | BREAK | CONTINUE | FUNCTION | ID | EQUAL | COMMA | DQUOTE | LEFT_P | RIGHT_P | MULT | DIV | PLUS | PLUS_PLUS | MINUS | MINUS_MINUS | CMP_LT | CMP_LT_EQ | CMP_GT | CMP_GT_EQ | CMP_EQ | CMP_NEQ | AND | OR | STRING_LITERAL | LEFT_CB | RIGHT_CB | LEFT_B | RIGHT_B | ARROW | NEWLINE | LINE_COMMENT | BLOCK_COMMENT | TP | PV | WS );";
@@ -2144,10 +2189,10 @@ public class ScriptLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_14 = input.LA(1);
+                        int LA13_14 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_14>='\u0000' && LA12_14<='\uFFFF')) ) {s = 47;}
+                        if ( ((LA13_14>='\u0000' && LA13_14<='\uFFFF')) ) {s = 47;}
 
                         else s = 48;
 
@@ -2155,7 +2200,7 @@ public class ScriptLexer extends Lexer {
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 12, _s, input);
+                new NoViableAltException(getDescription(), 13, _s, input);
             error(nvae);
             throw nvae;
         }

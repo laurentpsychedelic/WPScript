@@ -667,6 +667,6 @@ BLOCK_COMMENT: '/*' .* '*/' {
 };
 TP: ':';
 PV: ';';
-WS : ( ' ' | '\t' | '\f' | '\r' | '\n' )+ {
+WS : ( ' ' | '\t' | '\f' | '\r' )+ {
     $channel = HIDDEN;
 };

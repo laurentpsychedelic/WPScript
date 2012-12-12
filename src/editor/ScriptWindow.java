@@ -743,7 +743,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-    final String _prog = "";
+        final String _prog = "";
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -48,7 +48,7 @@ import org.antlr.runtime.Token;
  *
  * @author LFabre
  */
-public class ScriptWindow extends javax.swing.JFrame {
+public class ScriptWindow extends javax.swing.JDialog {
     public static String DEFAULT_SCRIPT_FOLDER;
     private static final String path;
     static {
@@ -132,7 +132,8 @@ public class ScriptWindow extends javax.swing.JFrame {
     private PrintStream default_err = System.err;
 
     /** Creates new form TestFrame */
-    public ScriptWindow(final String _prog) {
+    public ScriptWindow(java.awt.Window parent, final String _prog) {
+        super(parent, java.awt.Dialog.ModalityType.MODELESS);
 
         prog = _prog;
 
@@ -496,10 +497,9 @@ public class ScriptWindow extends javax.swing.JFrame {
         jLabelIcon = new javax.swing.JLabel();
         jCheckBoxDebug = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
         addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -507,13 +507,11 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jScriptPane.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jScriptPaneFocusLost(evt);
             }
         });
         jScriptPane.addKeyListener(new java.awt.event.KeyAdapter() {
-            @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jScriptPaneKeyTyped(evt);
             }
@@ -530,7 +528,6 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonExecute.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonExecute.setMargin(new java.awt.Insets(0, 4, 0, 0));
         jButtonExecute.addActionListener(new java.awt.event.ActionListener() {
-            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExecuteActionPerformed(evt);
             }
@@ -554,7 +551,6 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonCompilation.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonCompilation.setMargin(new java.awt.Insets(0, 4, 0, 0));
         jButtonCompilation.addActionListener(new java.awt.event.ActionListener() {
-            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompilationActionPerformed(evt);
             }
@@ -569,7 +565,6 @@ public class ScriptWindow extends javax.swing.JFrame {
         jButtonOpen.setFocusable(false);
         jButtonOpen.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
-            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOpenActionPerformed(evt);
             }
@@ -583,7 +578,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         getContentPane().add(jButtonIcon);
         jButtonIcon.setBounds(640, 30, 0, 0);
 
-        jLabelIcon.setFont(new java.awt.Font("SansSerif", 3, 18));
+        jLabelIcon.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         jLabelIcon.setForeground(new java.awt.Color(216, 197, 255));
         jLabelIcon.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelIcon.setText("WPScript");
@@ -595,8 +590,8 @@ public class ScriptWindow extends javax.swing.JFrame {
         jCheckBoxDebug.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBoxDebug.setText(getString(3));
         jCheckBoxDebug.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBoxDebug.setOpaque(false);
         jCheckBoxDebug.addActionListener(new java.awt.event.ActionListener() {
-            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxDebugActionPerformed(evt);
             }
@@ -749,7 +744,7 @@ public class ScriptWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ScriptWindow(_prog).setVisible(true);
+                new ScriptWindow(null, _prog).setVisible(true);
             }
         });
     }

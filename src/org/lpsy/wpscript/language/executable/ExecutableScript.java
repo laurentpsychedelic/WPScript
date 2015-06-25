@@ -17,17 +17,19 @@ public class ExecutableScript {
     ScriptParser parser;
     private ScriptParser.prog_return tree;
     private boolean compilation_ok = false;
+    private String program;
     public ExecutableScript(String program) throws CompilationErrorException, PanicException {
 	this(program, false);
     }
     public ExecutableScript(String program, boolean __DEBUG__) throws CompilationErrorException, PanicException {
-
 	if (!program.endsWith("\n")) {
             program = program + "\n";
         }
 
         ScriptLexer lex = new ScriptLexer(new ANTLRStringStream(program));
         CommonTokenStream tokens = new CommonTokenStream(lex);
+
+        this.program = tokens.toString();
 
         parser = new ScriptParser(tokens);
 	parser.__DEBUG__ = __DEBUG__;
@@ -77,5 +79,9 @@ public class ExecutableScript {
         if (compilation_ok) {
             parser.dumpScriptCommands();
         }
+    }
+    @Override
+    public String toString() {
+        return this.program;
     }
 }

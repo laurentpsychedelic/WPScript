@@ -7,18 +7,18 @@ options {
 }
 
 @lexer::header {
-package language;
+package org.lpsy.wpscript.language;
 }
 
 @header {
-package language;
+package org.lpsy.wpscript.language;
 
 import java.io.PrintStream;
 import java.util.LinkedList;
-import language.memory.*;
-import language.executable.*;
-import language.executable.builtintypes.*;
-import language.exceptions.*;
+import org.lpsy.wpscript.language.memory.*;
+import org.lpsy.wpscript.language.executable.*;
+import org.lpsy.wpscript.language.executable.builtintypes.*;
+import org.lpsy.wpscript.language.exceptions.*;
 }
 
 @rulecatch {

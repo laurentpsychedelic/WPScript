@@ -100,7 +100,7 @@ public class ScriptWindow extends javax.swing.JDialog {
         static final int ENGLISH = 1;
         private static int LANGUAGE = JAPANESE;
         static String [][] StrLst = {
-        /* 0*/ { "WPAScript Ver. 0.1 :: エディターウィンドウ", "WPAScript Ver. 0.1 :: Editor Window" },
+        /* 0*/ { "WPScript Ver. 0.1 :: エディターウィンドウ", "WPScript Ver. 0.1 :: Editor Window" },
         /* 1*/ { "ビルド（B）", "Build (B)" },
         /* 2*/ { "実行（R）", "Run (R)" },
         /* 3*/ { "デバッグ出力（D）", "Debug output (D)" },

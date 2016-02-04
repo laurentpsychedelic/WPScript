@@ -17,7 +17,7 @@ public class Main {
     }
     public static void printVersion() {
 	System.err.println("WPScript version " + VERSION  + "\n"
-                         + "(c) 2011, FABRE Laurent, Photonic Lattice, Inc.");
+                         + "(c) 2011-2016, FABRE Laurent, Photonic Lattice, Inc.");
     }
     public static void executeScript(String prog, boolean DEBUG) {
 	try {
@@ -124,7 +124,7 @@ public class Main {
 "\n"+
 "\n"+
 "CCOOPPYYRRIIGGHHTT\n"+
-"        (c) 2011, FABRE Laurent, Photonic Lattice, Inc.\n"+
+"        (c) 2011-2016, FABRE Laurent, Photonic Lattice, Inc.\n"+
 "\n"+
 "\n"+
 "AAUUTTHHOORRSS\n"+

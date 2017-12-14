@@ -1,14 +1,16 @@
 package org.lpsy.wpscript.language.executable;
 
-import org.lpsy.wpscript.language.exceptions.CompilationErrorException;
-import org.lpsy.wpscript.language.exceptions.PanicException;
-import org.lpsy.wpscript.language.ScriptLexer;
-import org.lpsy.wpscript.language.ScriptParser;
-import org.lpsy.wpscript.language.exceptions.RuntimeErrorException;
+import java.util.Map;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.Tree;
+import org.lpsy.wpscript.language.ScriptLexer;
+import org.lpsy.wpscript.language.ScriptParser;
+import org.lpsy.wpscript.language.exceptions.CompilationErrorException;
+import org.lpsy.wpscript.language.exceptions.PanicException;
+import org.lpsy.wpscript.language.exceptions.RuntimeErrorException;
+import org.lpsy.wpscript.language.memory.Environment;
 
 /**
  * @author Laurent FABRE, 2011-2015
@@ -19,9 +21,12 @@ public class ExecutableScript {
     private boolean compilation_ok = false;
     private String program;
     public ExecutableScript(String program) throws CompilationErrorException, PanicException {
-	this(program, false);
+	this(program, null, false);
     }
     public ExecutableScript(String program, boolean __DEBUG__) throws CompilationErrorException, PanicException {
+        this(program, null, __DEBUG__);
+    }
+    public ExecutableScript(String program, Map<String, Object> constants, boolean __DEBUG__) throws CompilationErrorException, PanicException {
 	if (!program.endsWith("\n")) {
             program = program + "\n";
         }
@@ -31,7 +36,10 @@ public class ExecutableScript {
 
         this.program = tokens.toString();
 
+        if (constants != null)
+            ScriptParser.addConstants(constants);
         parser = new ScriptParser(tokens);
+
 	parser.__DEBUG__ = __DEBUG__;
 
         try {
@@ -59,6 +67,13 @@ public class ExecutableScript {
         if (!compilation_ok) {
             parser.compilationError("Compilation failed! Semantic error]", parser.getLineNumber());
         }
+    }
+    public void addConstants(Map<String, Object> variables) throws PanicException {
+        ScriptParser.addConstants(variables);
+    }
+    public void addVariables(Map<String, Object> variables) throws PanicException {
+        parser.addVariables(variables);
+        parser.setEnv();
     }
     public Object execute() throws PanicException, RuntimeErrorException {
         Object res =  parser.execute();

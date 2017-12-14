@@ -48,6 +48,15 @@ import org.lpsy.wpscript.language.exceptions.*;
     static {
         env_const.addConstants();
     }
+    public static void addConstants(Map<String, Object> map) throws PanicException {
+        for (String var : map.keySet()) {
+            Object val = map.get(var);
+            if (val instanceof Number)
+                val = new Numeric((Double) val);
+            env_const.addEntry(var, val);
+        }
+    }
+
     public Environment functions_env = new Environment(null);
     private LinkedList <Expression> commands = new LinkedList();
     private int line_number = 1;
@@ -103,6 +112,10 @@ import org.lpsy.wpscript.language.exceptions.*;
         }
     }
 
+    public void addVariables(Map<String, Object> map) {
+        for (String var : map.keySet())
+            env.addEntry(var, map.get(var));
+    }
     public void setEnv() throws PanicException {
         for (Object o : commands) {
             if (!(o instanceof Expression)) {

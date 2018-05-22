@@ -63,4 +63,11 @@ public class NativeFunctionsInterface {
             throw new NoSuchMethodException();
         }
     }
+    public static Numeric abs(Object in) throws NoSuchMethodException {
+        if (in instanceof Numeric) {
+            return new Numeric( Math.abs((Double)((Numeric) in).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
 }

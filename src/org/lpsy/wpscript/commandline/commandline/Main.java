@@ -19,9 +19,9 @@ public class Main {
 	System.err.println("WPScript version " + VERSION  + "\n"
                          + "(c) 2011-2016, FABRE Laurent, Photonic Lattice, Inc.");
     }
-    public static void executeScript(String prog, boolean DEBUG) {
+    public static void executeScript(String prog, boolean DEBUG, boolean OPTIMIZED) {
 	try {
-	    ExecutableScript script = new ExecutableScript(prog, DEBUG);
+	    ExecutableScript script = new ExecutableScript(prog, DEBUG, OPTIMIZED);
 	    try {
                 script.execute();
             } catch (PanicException pe) {
@@ -65,7 +65,7 @@ public class Main {
 		    if (arg.equals("-c")) {
 			if (i+1<args.length) {
 			    String script = args[i+1];
-			    executeScript(script, __DEBUG__);
+			    executeScript(script, __DEBUG__, false /* not optimized */);
 			    break;
 			} else {
 			    System.err.println("No command specified after -c...");
@@ -75,7 +75,7 @@ public class Main {
 		    } else if (!arg.startsWith("-")) {
 			String filepath = arg;
 			String script = FileIO.readScript(filepath);
-			executeScript(script, __DEBUG__);
+			executeScript(script, __DEBUG__, false /* not optimized */);
 			break;
 		    } else {
 			System.err.println("Unknown option " + args[0] + "...");

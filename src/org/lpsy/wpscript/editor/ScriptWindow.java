@@ -653,7 +653,7 @@ public class ScriptWindow extends javax.swing.JDialog {
         jMessagesPane.setText("");
         script = null;
         try {
-            script = new ExecutableScript(prog, __DEBUG__);
+            script = new ExecutableScript(prog, __DEBUG__, false /* not optimized */);
         } catch (CompilationErrorException cee) {
             //NOTHING
         } catch (PanicException pe) {

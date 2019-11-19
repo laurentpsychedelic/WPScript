@@ -21,12 +21,12 @@ public class ExecutableScript {
     private boolean compilation_ok = false;
     private String program;
     public ExecutableScript(String program) throws CompilationErrorException, PanicException {
-	this(program, null, false);
+	this(program, null /* no default env */, false /* not debug */, true /* optimized */);
     }
-    public ExecutableScript(String program, boolean __DEBUG__) throws CompilationErrorException, PanicException {
-        this(program, null, __DEBUG__);
+    public ExecutableScript(String program, boolean __DEBUG__, boolean __OPTIMIZED__) throws CompilationErrorException, PanicException {
+        this(program, null /* no default env */, __DEBUG__, __OPTIMIZED__);
     }
-    public ExecutableScript(String program, Map<String, Object> constants, boolean __DEBUG__) throws CompilationErrorException, PanicException {
+    public ExecutableScript(String program, Map<String, Object> constants, boolean __DEBUG__, boolean __OPTIMIZED__) throws CompilationErrorException, PanicException {
 	if (!program.endsWith("\n")) {
             program = program + "\n";
         }
@@ -56,7 +56,8 @@ public class ExecutableScript {
             throw new CompilationErrorException("Compilation failed! Wrong syntax", e.line);
         }
 
-        parser.treeRefactoring();
+        if (__OPTIMIZED__)
+            parser.treeRefactoring();
 	parser.setEnv();
 
         if (parser.__DEBUG__) {

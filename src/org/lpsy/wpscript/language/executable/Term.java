@@ -284,6 +284,7 @@ public class Term extends Calculable {
                 interpreter.scriptPanic("TERM element must be a Numeric type or an expression [" + ele2.getClass() + "]", line_number);
             }
             Operator operator = (Operator) (elements.get(k));
+            /* !! BUGGY(OPERATOR PRIORITY): TODO FIX
             if (ele instanceof BuiltInType && ele2 instanceof BuiltInType) {
                 BuiltInType new_ele = null;
                 try {
@@ -293,13 +294,12 @@ public class Term extends Calculable {
                 }
                 new_elements.set(new_elements.size()-1, new_ele);
                 ele = new_ele;
-            } else {
+            } else */ {
                 new_elements.add(operator);
                 Calculable new_ele = ((Calculable)ele2).getSimplifiedCalculable();
                 new_elements.add(new_ele);
                 ele = new_ele;
             }
-
         }
         if (new_elements.size()==1) {
             if (new_elements.get(0) instanceof Calculable) {

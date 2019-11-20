@@ -56,8 +56,11 @@ public class ExecutableScript {
             throw new CompilationErrorException("Compilation failed! Wrong syntax", e.line);
         }
 
-        if (__OPTIMIZED__)
+        if (__OPTIMIZED__) {
+            if (parser.__DEBUG__)
+                parser.dumpScriptCommands();
             parser.treeRefactoring();
+        }
 	parser.setEnv();
 
         if (parser.__DEBUG__) {

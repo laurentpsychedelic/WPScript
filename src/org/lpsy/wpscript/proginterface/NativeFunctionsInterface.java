@@ -70,4 +70,46 @@ public class NativeFunctionsInterface {
             throw new NoSuchMethodException();
         }
     }
+    public static Numeric sqrt(Object in) throws NoSuchMethodException {
+        if (in instanceof Numeric) {
+            return new Numeric( Math.sqrt((Double)((Numeric) in).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
+    public static Numeric log(Object in) throws NoSuchMethodException {
+        if (in instanceof Numeric) {
+            return new Numeric( Math.log((Double)((Numeric) in).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
+    public static Numeric log10(Object in) throws NoSuchMethodException {
+        if (in instanceof Numeric) {
+            return new Numeric( Math.log10((Double)((Numeric) in).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
+    public static Numeric pow(Object in, Object in2) throws NoSuchMethodException {
+        if ((in instanceof Numeric) && (in2 instanceof Numeric)) {
+            return new Numeric( Math.pow((Double)((Numeric) in).getNativeValue(), (Double)((Numeric) in2).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
+    public static Numeric max(Object in, Object in2) throws NoSuchMethodException {
+        if ((in instanceof Numeric) && (in2 instanceof Numeric)) {
+            return new Numeric( Math.max((Double)((Numeric) in).getNativeValue(), (Double)((Numeric) in2).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
+    public static Numeric min(Object in, Object in2) throws NoSuchMethodException {
+        if ((in instanceof Numeric) && (in2 instanceof Numeric)) {
+            return new Numeric( Math.min((Double)((Numeric) in).getNativeValue(), (Double)((Numeric) in2).getNativeValue()) );
+        } else {
+            throw new NoSuchMethodException();
+        }
+    }
 }

@@ -13,6 +13,7 @@ import org.lpsy.wpscript.language.exceptions.RuntimeErrorException;
 import org.lpsy.wpscript.language.executable.builtintypes.BuiltInType;
 import org.lpsy.wpscript.language.memory.Environment;
 import org.lpsy.wpscript.proginterface.NativeFunctionsInterface;
+import org.lpsy.wpscript.proginterface.NativeFunctionsInterface.Proxy;
 
 /**
  * @author Laurent FABRE, 2011-2015
@@ -45,7 +46,12 @@ public class FunctionCall extends Calculable {
         final String methodKey = getFunctionKeyForStoring(name, types);
         if (native_methods.containsKey(methodKey))
             return native_methods.get(methodKey);
-        final Method method = NativeFunctionsInterface.class.getMethod(name, types);
+        Method method = null;
+        try {
+            method = NativeFunctionsInterface.class.getMethod(name, types);
+        } catch (Exception e) {
+            method = NativeFunctionsInterface.getMethod(name, types);
+        }
         native_methods.put(methodKey, method);
         return method;
     }
@@ -113,7 +119,11 @@ public class FunctionCall extends Calculable {
                 final String methodStr = getFunctionKeyForStoring(name, argClasses.toArray(new Class [] {}), true /* Simplified */);
                 throw new NoSuchMethodException(methodStr);
             } else {
-                return method.invoke(null, params_values.toArray());
+                final Proxy proxy = NativeFunctionsInterface.getProxy(name);
+                if (proxy != null)
+                    return method.invoke(proxy, new Object [] { params_values.toArray() });
+                else
+                    return method.invoke(null, params_values.toArray());
             }
         } catch (NoSuchMethodException ex) {
             interpreter.runtimeError("FUNC_CALL>> No such method: " + ex.getMessage(), line_number);

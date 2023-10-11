@@ -1,5 +1,9 @@
 package org.lpsy.wpscript.proginterface;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.lpsy.wpscript.language.executable.builtintypes.*;
@@ -110,6 +114,33 @@ public class NativeFunctionsInterface {
             return new Numeric( Math.min((Double)((Numeric) in).getNativeValue(), (Double)((Numeric) in2).getNativeValue()) );
         } else {
             throw new NoSuchMethodException();
+        }
+    }
+    private static Map<String, Proxy> proxys = new HashMap<String, Proxy>();
+    public static Proxy getProxy(String name) { return proxys.get(name); }
+    public static Method getMethod(String name, Class [] types) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        for (Method _method : Math.class.getMethods()) {
+            final Method method = _method;
+            if (method.getName().equals(name) && method.getParameterCount() == types.length) {
+                Proxy proxy = getProxy(name);
+                if (proxy == null) {
+                    proxy = new Proxy(method);
+                    proxys.put(name, proxy);
+                }
+                return proxy.getClass().getMethod("apply", Object[].class);
+            }
+        }
+        throw new NoSuchMethodException("Method: \"" + name + "\"");
+    }
+    public static class Proxy {
+        private final Method method;
+        Proxy(Method method) { this.method = method; }
+        public Numeric apply(Object [] args) throws IllegalAccessException, InvocationTargetException {
+            final int len = args.length;
+            final Double [] argVals = new Double[len];
+            for (int i = 0; i < len; ++i)
+                argVals[i] = (Double) ((Numeric) args[i]).getNativeValue();
+            return new Numeric( (Double) method.invoke(null, (Object[]) argVals) );
         }
     }
 }
